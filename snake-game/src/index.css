@@ -1,0 +1,5 @@
+canvas {
+  background: rgba(1, 22, 39, 0.84);
+  box-shadow: inset 1px 5px 11px rgba(2, 18, 27, 0.71);
+  border-radius: 8px;
+}
