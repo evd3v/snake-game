@@ -12,7 +12,10 @@ let snakeParts = new Array(10)
 let directionStops = [];
 let currentDirection = "right";
 
-let pointPosition = null;
+let pointPosition = {
+  x:  Math.floor(Math.random() * (FIELD_SIZE / SNAKE_PART_SIZE)),
+  y:  Math.floor(Math.random() * (FIELD_SIZE / SNAKE_PART_SIZE))
+};
 let pointAnimationStage = 0;
 
 const getRGBAColor = (rgb, opacity) => {
@@ -39,22 +42,17 @@ const drawSnake = () => {
     const opacity = formatOpacity(opacityStep * (index + 1));
     drawSnakePart(position, opacity);
   }
-  // animatePoint()
+  animatePoint()
 };
 
 
 const drawPoint = () => {
-  const steps = (FIELD_SIZE / SNAKE_PART_SIZE)
+  // const steps = (FIELD_SIZE / SNAKE_PART_SIZE)
 
-  const x = Math.floor(Math.random() * steps)
-  const y = Math.floor(Math.random() * steps)
-
-  pointPosition = { x, y }
-
-  ctx.fillStyle = getRGBAColor(BASE_COLOR_RGB, 1);
-  ctx.beginPath();
-  ctx.arc(x * SNAKE_PART_SIZE, y * SNAKE_PART_SIZE, SNAKE_PART_SIZE, 0, 2 * Math.PI, false);
-  ctx.fill();
+  // const x = Math.floor(Math.random() * steps)
+  // const y = Math.floor(Math.random() * steps)
+  // const { x, y } = pointPosition
+  // animatePoint()
   //
   // ctx.fillStyle = getRGBAColor(BASE_COLOR_RGB, 0.25);
   // ctx.beginPath();
@@ -105,12 +103,6 @@ const animatePoint = () => {
       ctx.beginPath();
       ctx.arc(pointPosition.x * SNAKE_PART_SIZE, pointPosition.y * SNAKE_PART_SIZE, SNAKE_PART_SIZE + 16, 0, 2 * Math.PI, false);
       ctx.fill();
-    }
-
-    if(pointAnimationStage === 2) {
-      pointAnimationStage = 0;
-    } else {
-      pointAnimationStage += 1;
     }
 }
 
@@ -163,7 +155,15 @@ drawSnake();
 drawPoint();
 
 setInterval(moveSnake, 30);
-// setInterval(animatePoint, 30)
+setInterval(animatePoint, 30)
+
+setInterval(() => {
+  if(pointAnimationStage === 2) {
+    pointAnimationStage = 0;
+  } else {
+    pointAnimationStage += 1;
+  }
+}, 200)
 
 window.addEventListener("keydown", (e) => {
   if (e.code === "ArrowDown") {
