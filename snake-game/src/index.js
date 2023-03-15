@@ -2,15 +2,18 @@ const canvas = document.querySelector("#game");
 const ctx = canvas.getContext("2d");
 
 const BASE_COLOR_RGB = ["67", "217", "173"];
-const FIELD_SIZE = 500;
+const FIELD_SIZE = 400;
 const SNAKE_PART_SIZE = 8;
 
-let snakeParts = new Array(50)
+let snakeParts = new Array(10)
   .fill(0)
   .map((item, index) => [index * SNAKE_PART_SIZE, 50]);
 
 let directionStops = [];
 let currentDirection = "right";
+
+let pointPosition = null;
+let pointAnimationStage = 0;
 
 const getRGBAColor = (rgb, opacity) => {
   return `rgba(${rgb.join(",")}, ${opacity})`;
@@ -36,11 +39,83 @@ const drawSnake = () => {
     const opacity = formatOpacity(opacityStep * (index + 1));
     drawSnakePart(position, opacity);
   }
+  // animatePoint()
 };
+
+
+const drawPoint = () => {
+  const steps = (FIELD_SIZE / SNAKE_PART_SIZE)
+
+  const x = Math.floor(Math.random() * steps)
+  const y = Math.floor(Math.random() * steps)
+
+  pointPosition = { x, y }
+
+  ctx.fillStyle = getRGBAColor(BASE_COLOR_RGB, 1);
+  ctx.beginPath();
+  ctx.arc(x * SNAKE_PART_SIZE, y * SNAKE_PART_SIZE, SNAKE_PART_SIZE, 0, 2 * Math.PI, false);
+  ctx.fill();
+  //
+  // ctx.fillStyle = getRGBAColor(BASE_COLOR_RGB, 0.25);
+  // ctx.beginPath();
+  // ctx.arc(x * SNAKE_PART_SIZE, y * SNAKE_PART_SIZE, SNAKE_PART_SIZE + 8, 0, 2 * Math.PI, false);
+  // ctx.fill();
+  //
+  //
+  // ctx.fillStyle = getRGBAColor(BASE_COLOR_RGB, 0.1);
+  // ctx.beginPath();
+  // ctx.arc(x * SNAKE_PART_SIZE, y * SNAKE_PART_SIZE, SNAKE_PART_SIZE + 16, 0, 2 * Math.PI, false);
+  // ctx.fill();
+
+}
+
+const animatePoint = () => {
+    ctx.clearRect(pointPosition.x * SNAKE_PART_SIZE - 24, pointPosition.y * SNAKE_PART_SIZE - 24, 48, 48);
+
+    if(pointAnimationStage === 0) {
+      ctx.fillStyle = getRGBAColor(BASE_COLOR_RGB, 1);
+      ctx.beginPath();
+      ctx.arc(pointPosition.x * SNAKE_PART_SIZE, pointPosition.y * SNAKE_PART_SIZE, SNAKE_PART_SIZE, 0, 2 * Math.PI, false);
+      ctx.fill();
+    }
+
+    if(pointAnimationStage === 1) {
+      ctx.fillStyle = getRGBAColor(BASE_COLOR_RGB, 1);
+      ctx.beginPath();
+      ctx.arc(pointPosition.x * SNAKE_PART_SIZE, pointPosition.y * SNAKE_PART_SIZE, SNAKE_PART_SIZE, 0, 2 * Math.PI, false);
+      ctx.fill();
+
+      ctx.fillStyle = getRGBAColor(BASE_COLOR_RGB, 0.25);
+      ctx.beginPath();
+      ctx.arc(pointPosition.x * SNAKE_PART_SIZE, pointPosition.y * SNAKE_PART_SIZE, SNAKE_PART_SIZE + 8, 0, 2 * Math.PI, false);
+      ctx.fill();
+    }
+    if(pointAnimationStage === 2) {
+      ctx.fillStyle = getRGBAColor(BASE_COLOR_RGB, 1);
+      ctx.beginPath();
+      ctx.arc(pointPosition.x * SNAKE_PART_SIZE, pointPosition.y * SNAKE_PART_SIZE, SNAKE_PART_SIZE, 0, 2 * Math.PI, false);
+      ctx.fill();
+
+      ctx.fillStyle = getRGBAColor(BASE_COLOR_RGB, 0.25);
+      ctx.beginPath();
+      ctx.arc(pointPosition.x * SNAKE_PART_SIZE, pointPosition.y * SNAKE_PART_SIZE, SNAKE_PART_SIZE + 8, 0, 2 * Math.PI, false);
+      ctx.fill();
+
+      ctx.fillStyle = getRGBAColor(BASE_COLOR_RGB, 0.1);
+      ctx.beginPath();
+      ctx.arc(pointPosition.x * SNAKE_PART_SIZE, pointPosition.y * SNAKE_PART_SIZE, SNAKE_PART_SIZE + 16, 0, 2 * Math.PI, false);
+      ctx.fill();
+    }
+
+    if(pointAnimationStage === 2) {
+      pointAnimationStage = 0;
+    } else {
+      pointAnimationStage += 1;
+    }
+}
 
 const moveSnake = () => {
   snakeParts = snakeParts.map((part, index) => {
-    console.log(part)
     const [x, y] = part;
     let direction = currentDirection;
 
@@ -85,11 +160,16 @@ const moveSnake = () => {
 };
 
 drawSnake();
+drawPoint();
 
 setInterval(moveSnake, 30);
+// setInterval(animatePoint, 30)
 
 window.addEventListener("keydown", (e) => {
   if (e.code === "ArrowDown") {
+    if(currentDirection === 'top' || currentDirection === 'bottom') {
+      return
+    }
     const [x, y] = snakeParts.at(-1);
     const stop = { x, y, direction: currentDirection, index: 0 };
     directionStops.push(stop);
@@ -97,6 +177,9 @@ window.addEventListener("keydown", (e) => {
   }
 
   if (e.code === "ArrowRight") {
+    if(currentDirection === 'left' || currentDirection === 'right') {
+      return
+    }
     const [x, y] = snakeParts.at(-1);
     const stop = { x, y, direction: currentDirection, index: 0 };
     directionStops.push(stop);
@@ -104,6 +187,9 @@ window.addEventListener("keydown", (e) => {
   }
 
   if (e.code === "ArrowLeft") {
+    if(currentDirection === 'left' || currentDirection === 'right') {
+      return
+    }
     const [x, y] = snakeParts.at(-1);
     const stop = { x, y, direction: currentDirection, index: 0 };
     directionStops.push(stop);
@@ -111,6 +197,9 @@ window.addEventListener("keydown", (e) => {
   }
 
   if (e.code === "ArrowUp") {
+    if(currentDirection === 'top' || currentDirection === 'bottom') {
+      return
+    }
     const [x, y] = snakeParts.at(-1);
     const stop = { x, y, direction: currentDirection, index: 0 };
     directionStops.push(stop);
