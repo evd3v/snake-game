@@ -128,6 +128,18 @@ const moveSnake = () => {
   });
 
   drawSnake();
+
+  const partsWithoutHead = [...snakeParts].splice(0, snakeParts.length - 2);
+  const isCollapsed = partsWithoutHead.some(
+    ([x, y]) => x === xSnake && y === ySnake
+  );
+
+  if (isCollapsed) {
+    console.log("game over");
+    clearInterval(moveInterval);
+    return;
+  }
+
   directionStops = directionStops.map((stop) => ({
     ...stop,
     index: stop.index + 1,
@@ -146,7 +158,7 @@ const moveSnake = () => {
 drawPoint();
 drawSnake();
 
-setInterval(moveSnake, 40);
+const moveInterval = setInterval(moveSnake, 40);
 
 setInterval(() => {
   if (isAnimationStop) {
