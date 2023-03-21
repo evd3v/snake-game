@@ -1,3 +1,5 @@
+const EventEmitter = require("event-emitter");
+
 const getRGBAColor = (rgb, opacity) => {
   return `rgba(${rgb.join(",")}, ${opacity})`;
 };
@@ -8,7 +10,7 @@ const formatOpacity = (value) => {
   return `0.${value}`;
 };
 
-class SnakeGame {
+export class SnakeGame {
   BASE_COLOR_RGB = ["67", "217", "173"];
   SNAKE_PART_SIZE = 8;
   START_SNAKE_SIZE = 10;
@@ -18,11 +20,19 @@ class SnakeGame {
   ANIMATION_TIMEOUT = 120;
 
   constructor(selector, options) {
-    const { fieldHeight, fieldWidth } = options;
+    const { fieldHeight, fieldWidth, events } = options;
 
     this.canvasContext = document.querySelector(selector).getContext("2d");
     this.fieldSize = { width: fieldWidth, height: fieldHeight };
 
+    this.$eventEmitter = new EventEmitter();
+    this.events = events;
+
+    this.initiateState();
+    this.initiate();
+  }
+
+  initiateState() {
     this.directionStops = [];
     this.currentDirection = "right";
     this.isAnimationStop = false;
@@ -33,7 +43,10 @@ class SnakeGame {
     this.moveInterval = null;
     this.pointAnimationInterval = null;
     this.currentScore = 0;
+  }
 
+  restart() {
+    this.initiateState();
     this.initiate();
   }
 
@@ -66,6 +79,10 @@ class SnakeGame {
       this.changePointAnimationStep.bind(this),
       this.ANIMATION_TIMEOUT
     );
+
+    Object.entries(this.events).forEach(([event, cb]) => {
+      this.$eventEmitter.on(event, cb);
+    });
   }
 
   generateSnake() {
@@ -84,8 +101,8 @@ class SnakeGame {
 
   generatePointPosition() {
     this.pointPosition = [
-      Math.floor(Math.random() * this.XPoints) * this.SNAKE_PART_SIZE,
-      Math.floor(Math.random() * this.YPoints) * this.SNAKE_PART_SIZE,
+      Math.floor(1 + Math.random() * (this.XPoints - 2)) * this.SNAKE_PART_SIZE,
+      Math.floor(1 + Math.random() * (this.YPoints - 2)) * this.SNAKE_PART_SIZE,
     ];
   }
 
@@ -280,14 +297,16 @@ class SnakeGame {
   }
 
   onGameOver() {
-    console.log("game over");
-
     clearInterval(this.moveInterval);
     this.moveInterval = null;
+    clearInterval(this.pointAnimationInterval);
+    this.pointAnimationInterval = null;
+    this.$eventEmitter.emit("onGameOver");
   }
 
   addScore() {
     this.currentScore += 1;
+    this.$eventEmitter.emit("onUpdateScore", this.currentScore);
   }
 
   onGetPoint(currentTail) {
@@ -307,4 +326,16 @@ class SnakeGame {
   }
 }
 
-const snakeGame = new SnakeGame("#game", { fieldHeight: 400, fieldWidth: 400 });
+window.snakeGame = new SnakeGame("#game", {
+  fieldHeight: 400,
+  fieldWidth: 400,
+  events: {
+    onGameOver() {
+      console.log("game over");
+      // snakeGame.restart();
+    },
+    onUpdateScore(score) {
+      console.log("update score", score);
+    },
+  },
+});
