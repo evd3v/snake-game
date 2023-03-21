@@ -1,25 +1,3 @@
-const canvas = document.querySelector("#game");
-const ctx = canvas.getContext("2d");
-
-const BASE_COLOR_RGB = ["67", "217", "173"];
-const FIELD_SIZE = 400;
-const SNAKE_PART_SIZE = 8;
-
-let snakeParts = new Array(10)
-  .fill(0)
-  .map((item, index) => [index * SNAKE_PART_SIZE, 80]);
-
-let directionStops = [];
-let currentDirection = "right";
-let isAnimationStop = false;
-
-let pointPosition = {
-  x: Math.floor(Math.random() * 50) * 8,
-  y: Math.floor(Math.random() * 50) * 8,
-};
-
-let pointAnimationStage = 1;
-
 const getRGBAColor = (rgb, opacity) => {
   return `rgba(${rgb.join(",")}, ${opacity})`;
 };
@@ -30,183 +8,303 @@ const formatOpacity = (value) => {
   return `0.${value}`;
 };
 
-const drawSnakePart = (position, opacity) => {
-  const [x, y] = position;
-  ctx.fillStyle = getRGBAColor(BASE_COLOR_RGB, opacity);
-  ctx.fillRect(x, y, SNAKE_PART_SIZE, SNAKE_PART_SIZE);
-};
+class SnakeGame {
+  BASE_COLOR_RGB = ["67", "217", "173"];
+  SNAKE_PART_SIZE = 8;
+  START_SNAKE_SIZE = 10;
+  SNAKE_SPEED = 40;
+  POINT_ANIMATE_STEPS = 3;
+  POINT_OPACITY_STEP = 0.2;
+  ANIMATION_TIMEOUT = 120;
 
-const drawSnake = () => {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  constructor(selector, options) {
+    const { fieldHeight, fieldWidth } = options;
 
-  const opacityStep = Math.floor(100 / snakeParts.length);
+    this.canvasContext = document.querySelector(selector).getContext("2d");
+    this.fieldSize = { width: fieldWidth, height: fieldHeight };
 
-  for (let [index, position] of snakeParts.entries()) {
-    const opacity = formatOpacity(opacityStep * (index + 1));
-    drawSnakePart(position, opacity);
+    this.directionStops = [];
+    this.currentDirection = "right";
+    this.isAnimationStop = false;
+    this.pointAnimationStage = 1;
+    this.snakeParts = [];
+    this.pointPosition = [];
+
+    this.moveInterval = null;
+    this.pointAnimationInterval = null;
+    this.currentScore = 0;
+
+    this.initiate();
   }
-  animatePoint();
-};
 
-const drawPoint = () => {};
+  get XPoints() {
+    return Math.floor(this.fieldSize.width / this.SNAKE_PART_SIZE);
+  }
 
-const animatePoint = () => {
-  const animateSteps = 3;
-  const opacityStep = 0.2;
+  get YPoints() {
+    return Math.floor(this.fieldSize.height / this.SNAKE_PART_SIZE);
+  }
 
-  for (let i = 0; i < pointAnimationStage; i++) {
-    ctx.fillStyle = getRGBAColor(
-      BASE_COLOR_RGB,
-      i ? (animateSteps - i) * opacityStep : 1
+  get snakeHead() {
+    return this.snakeParts.at(-1);
+  }
+
+  get snakeTail() {
+    return this.snakeParts.at(0);
+  }
+
+  initiate() {
+    this.generateSnake();
+    this.generatePointPosition();
+    this.subscribeControlEvents();
+
+    this.moveInterval = setInterval(
+      this.moveSnake.bind(this),
+      this.SNAKE_SPEED
     );
-    ctx.beginPath();
-    ctx.arc(
-      pointPosition.x + 4,
-      pointPosition.y + 4,
-      SNAKE_PART_SIZE / 2 + i * 4,
-      0,
-      2 * Math.PI,
-      false
+    this.pointAnimationInterval = setInterval(
+      this.changePointAnimationStep.bind(this),
+      this.ANIMATION_TIMEOUT
     );
-    ctx.fill();
+  }
 
-    if (animateSteps === i) {
-      isAnimationStop = true;
+  generateSnake() {
+    const fieldXPoints = this.XPoints - this.START_SNAKE_SIZE;
+    const fieldYPoints = this.YPoints;
 
-      setTimeout(() => {
-        isAnimationStop = false;
-      }, 360);
+    const startX =
+      Math.floor(Math.random() * fieldXPoints) * this.SNAKE_PART_SIZE;
+    const startY =
+      Math.floor(Math.random() * fieldYPoints) * this.SNAKE_PART_SIZE;
+
+    this.snakeParts = new Array(this.START_SNAKE_SIZE)
+      .fill(0)
+      .map((item, index) => [startX + index * this.SNAKE_PART_SIZE, startY]);
+  }
+
+  generatePointPosition() {
+    this.pointPosition = [
+      Math.floor(Math.random() * this.XPoints) * this.SNAKE_PART_SIZE,
+      Math.floor(Math.random() * this.YPoints) * this.SNAKE_PART_SIZE,
+    ];
+  }
+
+  drawSnake() {
+    const { width, height } = this.fieldSize;
+    this.canvasContext.clearRect(0, 0, width, height);
+
+    const opacityStep = Math.floor(100 / this.snakeParts.length);
+
+    for (let [index, coords] of this.snakeParts.entries()) {
+      const opacity = formatOpacity(opacityStep * (index + 1));
+      this.drawSnakePart(coords, opacity);
+    }
+    this.animatePoint();
+  }
+
+  drawSnakePart(coords, opacity) {
+    const [x, y] = coords;
+    this.canvasContext.fillStyle = getRGBAColor(this.BASE_COLOR_RGB, opacity);
+    this.canvasContext.fillRect(
+      x,
+      y,
+      this.SNAKE_PART_SIZE,
+      this.SNAKE_PART_SIZE
+    );
+  }
+
+  moveSnake() {
+    const currentTail = this.snakeTail;
+
+    this.moveSnakeParts();
+    this.drawSnake();
+
+    const isGameOver = this.checkIsGameOver();
+
+    if (isGameOver) {
+      this.onGameOver();
+      return;
+    }
+
+    this.updateDirectionStops();
+
+    this.isGetPoint = this.checkIsGetPoint();
+
+    if (this.isGetPoint) {
+      this.onGetPoint(currentTail);
     }
   }
-};
 
-const moveSnake = () => {
-  const [xSnake, ySnake] = snakeParts.at(-1);
-  const [xSnakeTail, ySnakeTail] = snakeParts.at(0);
-  const { x: xPoint, y: yPoint } = pointPosition;
+  moveSnakeParts() {
+    this.snakeParts = this.snakeParts.map((part, index) => {
+      const direction = this.getSnakePartDirection(index);
+      return this.getNextSnakePartPosition(part, direction);
+    });
+  }
 
-  snakeParts = snakeParts.map((part, index) => {
-    const [x, y] = part;
-    let direction = currentDirection;
+  getNextSnakePartPosition(coords, direction) {
+    const [x, y] = coords;
+    const { width, height } = this.fieldSize;
 
-    if (directionStops.length) {
-      const stopIndex = directionStops.findIndex(
-        (stop) => snakeParts.length - 1 - stop.index >= index
-      );
-      if (stopIndex !== -1) {
-        direction = directionStops[stopIndex].direction;
-      }
-    }
-
-    let coords = [];
-
-    if (direction === "bottom") {
-      coords = [x, (y + SNAKE_PART_SIZE) % FIELD_SIZE];
+    if (direction === "down") {
+      return [x, (y + this.SNAKE_PART_SIZE) % height];
     }
 
     if (direction === "right") {
-      coords = [(x + SNAKE_PART_SIZE) % FIELD_SIZE, y];
+      return [(x + this.SNAKE_PART_SIZE) % width, y];
     }
 
     if (direction === "left") {
-      const isNegative = x - SNAKE_PART_SIZE <= 0;
-      const coord = isNegative
-        ? FIELD_SIZE - (x - SNAKE_PART_SIZE) * SNAKE_PART_SIZE
-        : (x - SNAKE_PART_SIZE) % FIELD_SIZE;
-      coords = [coord, y];
+      const isNegative = x - this.SNAKE_PART_SIZE <= 0;
+      const newX = isNegative
+        ? width - (x - this.SNAKE_PART_SIZE) * this.SNAKE_PART_SIZE
+        : (x - this.SNAKE_PART_SIZE) % width;
+
+      return [newX, y];
     }
 
-    if (direction === "top") {
-      const isNegative = y - SNAKE_PART_SIZE <= 0;
-      const coord = isNegative
-        ? FIELD_SIZE - (y - SNAKE_PART_SIZE) * SNAKE_PART_SIZE
-        : (y - SNAKE_PART_SIZE) % FIELD_SIZE;
-      coords = [x, coord];
+    if (direction === "up") {
+      const isNegative = y - this.SNAKE_PART_SIZE <= 0;
+      const newY = isNegative
+        ? height - (y - this.SNAKE_PART_SIZE) * this.SNAKE_PART_SIZE
+        : (y - this.SNAKE_PART_SIZE) % height;
+
+      return [x, newY];
     }
 
-    return coords;
-  });
+    return [x, y];
+  }
 
-  drawSnake();
+  addSnakePart(tailCoords) {
+    const [xSnakeTail, ySnakeTail] = tailCoords;
+    this.snakeParts.unshift([xSnakeTail, ySnakeTail]);
+  }
 
-  const partsWithoutHead = [...snakeParts].splice(0, snakeParts.length - 2);
-  const isCollapsed = partsWithoutHead.some(
-    ([x, y]) => x === xSnake && y === ySnake
-  );
+  getSnakePartDirection(index) {
+    let direction = this.currentDirection;
 
-  if (isCollapsed) {
+    if (this.directionStops.length) {
+      const stopIndex = this.directionStops.findIndex(
+        (stop) => this.snakeParts.length - 1 - stop.index >= index
+      );
+      if (stopIndex !== -1) {
+        direction = this.directionStops[stopIndex].direction;
+      }
+    }
+
+    return direction;
+  }
+
+  changeSnakeDirection(direction) {
+    const isNewVertical = this.checkIsDirectionVertical(direction);
+    const isNewHorizontal = this.checkIsDirectionHorizontal(direction);
+
+    const isVertical = this.checkIsDirectionVertical(this.currentDirection);
+    const isHorizontal = this.checkIsDirectionHorizontal(this.currentDirection);
+
+    if ((isVertical && isNewVertical) || (isHorizontal && isNewHorizontal)) {
+      return;
+    }
+
+    const [x, y] = this.snakeHead;
+    const stop = { x, y, direction: this.currentDirection, index: 0 };
+    this.directionStops.push(stop);
+    this.currentDirection = direction;
+  }
+
+  updateDirectionStops() {
+    this.directionStops = this.directionStops.map((stop) => ({
+      ...stop,
+      index: stop.index + 1,
+    }));
+  }
+
+  animatePoint() {
+    const [pointX, pointY] = this.pointPosition;
+    for (let i = 0; i < this.pointAnimationStage; i++) {
+      this.canvasContext.fillStyle = getRGBAColor(
+        this.BASE_COLOR_RGB,
+        i ? (this.POINT_ANIMATE_STEPS - i) * this.POINT_OPACITY_STEP : 1
+      );
+      this.canvasContext.beginPath();
+      this.canvasContext.arc(
+        pointX + this.SNAKE_PART_SIZE / 2,
+        pointY + this.SNAKE_PART_SIZE / 2,
+        this.SNAKE_PART_SIZE / 2 + (i * this.SNAKE_PART_SIZE) / 2,
+        0,
+        2 * Math.PI,
+        false
+      );
+      this.canvasContext.fill();
+
+      if (this.POINT_ANIMATE_STEPS === i) {
+        this.isAnimationStop = true;
+
+        setTimeout(() => {
+          this.isAnimationStop = false;
+        }, 360);
+      }
+    }
+  }
+
+  changePointAnimationStep() {
+    if (this.isAnimationStop) {
+      this.pointAnimationStage = 1;
+      return;
+    }
+
+    this.pointAnimationStage += 1;
+  }
+
+  checkIsGameOver() {
+    const [xHead, yHead] = this.snakeHead;
+    const partsWithoutHead = [...this.snakeParts].splice(
+      0,
+      this.snakeParts.length - 2
+    );
+    return partsWithoutHead.some(([x, y]) => x === xHead && y === yHead);
+  }
+
+  checkIsDirectionVertical(direction) {
+    return direction === "up" || direction === "down";
+  }
+
+  checkIsDirectionHorizontal(direction) {
+    return direction === "left" || direction === "right";
+  }
+
+  checkIsGetPoint() {
+    const [xHead, yHead] = this.snakeHead;
+    const [xPoint, yPoint] = this.pointPosition;
+    return xHead === xPoint && yHead === yPoint;
+  }
+
+  onGameOver() {
     console.log("game over");
-    clearInterval(moveInterval);
-    return;
+
+    clearInterval(this.moveInterval);
+    this.moveInterval = null;
   }
 
-  directionStops = directionStops.map((stop) => ({
-    ...stop,
-    index: stop.index + 1,
-  }));
-
-  if (xSnake === xPoint && ySnake === yPoint) {
-    snakeParts.unshift([xSnakeTail, ySnakeTail]);
-
-    pointPosition = {
-      x: Math.floor(Math.random() * 50) * 8,
-      y: Math.floor(Math.random() * 50) * 8,
-    };
-  }
-};
-
-drawPoint();
-drawSnake();
-
-const moveInterval = setInterval(moveSnake, 40);
-
-setInterval(() => {
-  if (isAnimationStop) {
-    pointAnimationStage = 1;
-    return;
+  addScore() {
+    this.currentScore += 1;
   }
 
-  pointAnimationStage += 1;
-}, 120);
-
-window.addEventListener("keydown", (e) => {
-  if (e.code === "ArrowDown") {
-    if (currentDirection === "top" || currentDirection === "bottom") {
-      return;
-    }
-    const [x, y] = snakeParts.at(-1);
-    const stop = { x, y, direction: currentDirection, index: 0 };
-    directionStops.push(stop);
-    currentDirection = "bottom";
+  onGetPoint(currentTail) {
+    this.addSnakePart(currentTail);
+    this.generatePointPosition();
+    this.addScore();
   }
 
-  if (e.code === "ArrowRight") {
-    if (currentDirection === "left" || currentDirection === "right") {
-      return;
-    }
-    const [x, y] = snakeParts.at(-1);
-    const stop = { x, y, direction: currentDirection, index: 0 };
-    directionStops.push(stop);
-    currentDirection = "right";
+  subscribeControlEvents() {
+    window.addEventListener("keydown", (e) => {
+      if (!e.code.includes("Arrow")) {
+        return;
+      }
+      const direction = e.code.split("Arrow")[1].toLowerCase();
+      this.changeSnakeDirection(direction);
+    });
   }
+}
 
-  if (e.code === "ArrowLeft") {
-    if (currentDirection === "left" || currentDirection === "right") {
-      return;
-    }
-    const [x, y] = snakeParts.at(-1);
-    const stop = { x, y, direction: currentDirection, index: 0 };
-    directionStops.push(stop);
-    currentDirection = "left";
-  }
-
-  if (e.code === "ArrowUp") {
-    if (currentDirection === "top" || currentDirection === "bottom") {
-      return;
-    }
-    const [x, y] = snakeParts.at(-1);
-    const stop = { x, y, direction: currentDirection, index: 0 };
-    directionStops.push(stop);
-    currentDirection = "top";
-  }
-});
+const snakeGame = new SnakeGame("#game", { fieldHeight: 400, fieldWidth: 400 });
