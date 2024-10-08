@@ -259,7 +259,7 @@ export class SnakeGame {
 
         setTimeout(() => {
           this.isAnimationStop = false;
-        }, 360);
+        }, nn360);
       }
     }
   }
