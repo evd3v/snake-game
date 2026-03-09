@@ -33,7 +33,7 @@
 - [x] **SRS-04**: Exercises pre-generated in batches (not at review time)
 - [x] **SRS-05**: Original book sentence shown as context during word review
 - [x] **SRS-06**: Grammar pattern progression (simple → complex variations)
-- [ ] **SRS-07**: Quick review session available in Telegram bot
+- [x] **SRS-07**: Quick review session available in Telegram bot
 
 ### Dashboard
 
@@ -104,7 +104,7 @@
 | SRS-04 | Phase 4 | Complete |
 | SRS-05 | Phase 4 | Complete |
 | SRS-06 | Phase 4 | Complete |
-| SRS-07 | Phase 4 | Pending |
+| SRS-07 | Phase 4 | Complete |
 | DASH-01 | Phase 5 | Pending |
 | DASH-02 | Phase 5 | Pending |
 | DASH-03 | Phase 5 | Pending |
