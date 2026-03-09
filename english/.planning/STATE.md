@@ -5,7 +5,7 @@ milestone_name: milestone
 status: completed
 stopped_at: Completed quick-1 plan
 last_updated: "2026-03-09T18:31:59.629Z"
-last_activity: 2026-03-09 -- Plan 05-03 executed
+last_activity: 2026-03-09 - Completed quick task 1: Fix sentence analysis flow
 progress:
   total_phases: 5
   completed_phases: 5
@@ -110,6 +110,12 @@ Recent decisions affecting current work:
 ### Pending Todos
 
 None yet.
+
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 1 | Fix sentence analysis flow - full message with translation, collocations, grammar, known/new markers | 2026-03-09 | 28cb7e0 | [1-fix-sentence-analysis-flow-missing-trans](./quick/1-fix-sentence-analysis-flow-missing-trans/) |
 
 ### Blockers/Concerns
 
