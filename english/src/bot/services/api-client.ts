@@ -5,6 +5,28 @@ export interface WordInfo {
   cefrLevel: string | null;
   familiarity: string;
   thematicCluster: string | null;
+  hasSrsCard: boolean;
+}
+
+export interface CollocationInfo {
+  text: string;
+  translation: string | null;
+  type: string;
+  cefrLevel: string | null;
+}
+
+export interface GrammarPatternInfo {
+  pattern: string;
+  description: string | null;
+  cefrLevel: string | null;
+}
+
+export interface SentenceDetails {
+  text: string;
+  translation: string | null;
+  cefrLevel: string | null;
+  collocations: CollocationInfo[];
+  grammarPatterns: GrammarPatternInfo[];
 }
 
 export interface JobResult {
@@ -105,6 +127,16 @@ export async function rateCard(cardId: number, rating: number): Promise<RateResu
   }
 
   return response.json() as Promise<RateResult>;
+}
+
+export async function getSentenceDetails(sentenceId: number): Promise<SentenceDetails> {
+  const response = await fetch(`${API_URL}/sentences/${sentenceId}/details`);
+
+  if (!response.ok) {
+    throw new Error(`Failed to get sentence details: ${response.status} ${response.statusText}`);
+  }
+
+  return response.json() as Promise<SentenceDetails>;
 }
 
 export async function setFamiliarity(wordId: number, familiarity: string): Promise<void> {

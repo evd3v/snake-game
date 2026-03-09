@@ -29,10 +29,13 @@ export function createSentenceHandler() {
         const status = await apiClient.getJobStatus(jobId);
 
         if (status.status === 'completed' && status.result) {
-          const words = await apiClient.getSentenceWords(status.result.sentenceId);
-          const formatted = formatAnalysisResult(status.result, words);
-
           const sentenceId = status.result.sentenceId;
+          const [words, details] = await Promise.all([
+            apiClient.getSentenceWords(sentenceId),
+            apiClient.getSentenceDetails(sentenceId),
+          ]);
+          const formatted = formatAnalysisResult(text, details, words);
+
           const chatId = processingMsg.chat.id;
 
           // Initialize word selection state and attach keyboard
