@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-09)
 
 **Core value:** User inputs a real sentence from a book and gets full analysis (translation, grammar, vocabulary, CEFR), with extracted items feeding into spaced repetition -- all in one flow.
-**Current focus:** Phase 3: Telegram Bot
+**Current focus:** Phase 4: Spaced Repetition and Exercises
 
 ## Current Position
 
-Phase: 3 of 5 (Telegram Bot)
-Plan: 2 of 2 in current phase (03-02 complete -- phase complete)
+Phase: 4 of 5 (Spaced Repetition and Exercises)
+Plan: 1 of 3 in current phase (04-01 complete)
 Status: In Progress
-Last activity: 2026-03-09 -- Plan 03-02 executed (Phase 03 complete)
+Last activity: 2026-03-09 -- Plan 04-01 executed
 
-Progress: [█████████░] 90%
+Progress: [█████████░] 92%
 
 ## Performance Metrics
 
@@ -54,6 +54,7 @@ Progress: [█████████░] 90%
 | Phase 02 P03 | 3min | 2 tasks | 3 files |
 | Phase 03 P01 | 3min | 2 tasks | 8 files |
 | Phase 03 P02 | 5min | 2 tasks | 5 files |
+| Phase 04 P01 | 3min | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -84,6 +85,9 @@ Recent decisions affecting current work:
 - 03-02: In-memory Map for selection state keyed by chatId:sentenceId (single-instance bot)
 - 03-02: Callback data encoding: sel/done/fam prefixes with numeric IDs, all under 64 bytes
 - 03-02: Stale callback detection returns friendly expiry message
+- 04-01: ts-fsrs scheduler.next(card, now, rating) returns {card, log} directly when given specific rating
+- 04-01: FSRS scheduler with request_retention=0.9 and enable_fuzz=true
+- 04-01: onConflictDoNothing for idempotent SRS card creation
 
 ### Pending Todos
 
@@ -96,6 +100,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-09T12:55:00Z
-Stopped at: Completed 03-02-PLAN.md (Phase 03 complete)
+Last session: 2026-03-09T14:15:00Z
+Stopped at: Completed 04-01-PLAN.md
 Resume file: None

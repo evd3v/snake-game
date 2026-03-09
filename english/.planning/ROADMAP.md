@@ -63,8 +63,8 @@ Plans:
 **Plans:** 2 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Word API routes, grammY bot scaffolding, sentence analysis flow
-- [ ] 03-02-PLAN.md — Word selection keyboard, familiarity flow, live bot verification
+- [x] 03-01-PLAN.md — Word API routes, grammY bot scaffolding, sentence analysis flow
+- [x] 03-02-PLAN.md — Word selection keyboard, familiarity flow, live bot verification
 
 ### Phase 4: Spaced Repetition and Exercises
 **Goal**: User can review saved vocabulary and grammar through FSRS-scheduled flashcards and AI-generated cloze exercises
@@ -78,7 +78,7 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
-- [ ] 04-01-PLAN.md — FSRS service, grammar exercises schema, cloze generation service
+- [x] 04-01-PLAN.md — FSRS service, grammar exercises schema, cloze generation service
 - [ ] 04-02-PLAN.md — Review API routes, SRS card creation hooks, exercise generation worker
 - [ ] 04-03-PLAN.md — Telegram bot /review command with session flow
 
@@ -108,6 +108,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 |-------|----------------|--------|-----------|
 | 1. Foundation and Data Layer | 2/2 | Complete | 2026-03-09 |
 | 2. AI Analysis Pipeline | 3/3 | Complete | 2026-03-09 |
-| 3. Telegram Bot | 0/2 | In Progress | - |
-| 4. Spaced Repetition and Exercises | 0/3 | Not started | - |
+| 3. Telegram Bot | 2/2 | Complete | 2026-03-09 |
+| 4. Spaced Repetition and Exercises | 1/3 | In Progress | - |
 | 5. Web Application and Dashboard | 0/0 | Not started | - |
