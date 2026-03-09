@@ -45,7 +45,7 @@ Plans:
   3. Collocations, phrasal verbs, and idioms are extracted and stored as independent learnable units linked to their source sentence
   4. Word families are detected and linked in the database (e.g., submitting "reluctantly" links to existing "reluctant" and "reluctance")
   5. Each extracted word is auto-assigned to a thematic cluster by the AI
-**Plans:** 1/3 plans executed
+**Plans:** 2/3 plans executed
 
 Plans:
 - [ ] 02-01-PLAN.md — AI SDK setup, Zod schemas, prompt templates, lemmatizer with unit tests
@@ -107,7 +107,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation and Data Layer | 2/2 | Complete | 2026-03-09 |
-| 2. AI Analysis Pipeline | 1/3 | In Progress|  |
+| 2. AI Analysis Pipeline | 2/3 | In Progress|  |
 | 3. Telegram Bot | 0/0 | Not started | - |
 | 4. Spaced Repetition and Exercises | 0/0 | Not started | - |
 | 5. Web Application and Dashboard | 0/0 | Not started | - |
