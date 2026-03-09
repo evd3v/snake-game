@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { Bot } from 'grammy';
 import { createSentenceHandler } from './handlers/sentence.ts';
 import { registerVocabularyHandlers } from './handlers/vocabulary.ts';
+import { registerReviewHandlers } from './handlers/review.ts';
 
 const token = process.env.TELEGRAM_BOT_TOKEN;
 if (!token) {
@@ -12,6 +13,7 @@ if (!token) {
 const bot = new Bot(token);
 
 registerVocabularyHandlers(bot);
+registerReviewHandlers(bot);
 bot.on('message:text', createSentenceHandler());
 
 bot.catch((err) => {

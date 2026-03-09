@@ -67,6 +67,46 @@ export async function createSrsCard(wordId: number): Promise<void> {
   }
 }
 
+export interface DueCard {
+  cardId: number;
+  cardType: 'vocabulary' | 'grammar';
+  state: string;
+  due: string;
+  word?: { lemma: string; translation: string | null; cefrLevel: string | null };
+  sentence?: string;
+  pattern?: { pattern: string; description: string };
+  exercise?: { id: number; sentence: string; answer: string; hint: string | null; difficultyLevel: number };
+}
+
+export interface RateResult {
+  success: boolean;
+  nextDue: string;
+}
+
+export async function getDueCards(limit: number = 20): Promise<DueCard[]> {
+  const response = await fetch(`${API_URL}/review/due?limit=${limit}`);
+
+  if (!response.ok) {
+    throw new Error(`Failed to get due cards: ${response.status} ${response.statusText}`);
+  }
+
+  return response.json() as Promise<DueCard[]>;
+}
+
+export async function rateCard(cardId: number, rating: number): Promise<RateResult> {
+  const response = await fetch(`${API_URL}/review/${cardId}/rate`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ rating }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to rate card: ${response.status} ${response.statusText}`);
+  }
+
+  return response.json() as Promise<RateResult>;
+}
+
 export async function setFamiliarity(wordId: number, familiarity: string): Promise<void> {
   const response = await fetch(`${API_URL}/words/${wordId}/familiarity`, {
     method: 'PATCH',
