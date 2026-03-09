@@ -45,12 +45,12 @@ Plans:
   3. Collocations, phrasal verbs, and idioms are extracted and stored as independent learnable units linked to their source sentence
   4. Word families are detected and linked in the database (e.g., submitting "reluctantly" links to existing "reluctant" and "reluctance")
   5. Each extracted word is auto-assigned to a thematic cluster by the AI
-**Plans**: TBD
+**Plans:** 3 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
-- [ ] 02-03: TBD
+- [ ] 02-01-PLAN.md — AI SDK setup, Zod schemas, prompt templates, lemmatizer with unit tests
+- [ ] 02-02-PLAN.md — Analysis storage service, word family linking, integration tests
+- [ ] 02-03-PLAN.md — Sentence API routes, worker integration, API tests
 
 ### Phase 3: Telegram Bot
 **Goal**: User can send English sentences from a book via Telegram and see analysis results with the ability to select words to learn
@@ -107,7 +107,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation and Data Layer | 2/2 | Complete | 2026-03-09 |
-| 2. AI Analysis Pipeline | 0/0 | Not started | - |
+| 2. AI Analysis Pipeline | 0/3 | In progress | - |
 | 3. Telegram Bot | 0/0 | Not started | - |
 | 4. Spaced Repetition and Exercises | 0/0 | Not started | - |
 | 5. Web Application and Dashboard | 0/0 | Not started | - |
