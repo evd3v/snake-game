@@ -1,6 +1,7 @@
 import type { FastifyPluginAsync } from 'fastify';
-import { eq } from 'drizzle-orm';
+import { eq, inArray, and } from 'drizzle-orm';
 import { words, sentenceWords } from '../db/schema/words.ts';
+import { srsCards } from '../db/schema/srs-cards.ts';
 
 const wordsRoute: FastifyPluginAsync = async (fastify) => {
   fastify.get<{ Params: { sentenceId: string } }>(
@@ -23,7 +24,22 @@ const wordsRoute: FastifyPluginAsync = async (fastify) => {
         .where(eq(sentenceWords.sentenceId, sentenceId))
         .orderBy(sentenceWords.position);
 
-      return rows.map(({ position, ...word }) => word);
+      const wordIds = rows.map((r) => r.id);
+      let srsWordIds = new Set<number>();
+
+      if (wordIds.length > 0) {
+        const srsRows = await fastify.db
+          .select({ wordId: srsCards.wordId })
+          .from(srsCards)
+          .where(and(eq(srsCards.cardType, 'vocabulary'), inArray(srsCards.wordId, wordIds)));
+
+        srsWordIds = new Set(srsRows.map((r) => r.wordId!).filter(Boolean));
+      }
+
+      return rows.map(({ position, ...word }) => ({
+        ...word,
+        hasSrsCard: srsWordIds.has(word.id),
+      }));
     },
   );
 
