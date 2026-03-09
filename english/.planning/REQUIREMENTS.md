@@ -9,15 +9,15 @@
 
 - [ ] **SENT-01**: User can input an English sentence via web UI
 - [ ] **SENT-02**: User can input an English sentence via Telegram bot
-- [ ] **SENT-03**: AI analyzes sentence and returns: translation, grammar breakdown, vocabulary, CEFR level
+- [x] **SENT-03**: AI analyzes sentence and returns: translation, grammar breakdown, vocabulary, CEFR level
 - [ ] **SENT-04**: AI extracts collocations and phrasal verbs as separate units
-- [ ] **SENT-05**: AI identifies grammar patterns with specific notation (e.g. "would have + V3")
+- [x] **SENT-05**: AI identifies grammar patterns with specific notation (e.g. "would have + V3")
 - [ ] **SENT-06**: AI detects word families and links related forms (reluctance → reluctant, reluctantly)
 - [ ] **SENT-07**: AI assigns thematic cluster to extracted vocabulary
 
 ### Vocabulary
 
-- [ ] **VOCAB-01**: Words stored as lemmas with automatic deduplication
+- [x] **VOCAB-01**: Words stored as lemmas with automatic deduplication
 - [ ] **VOCAB-02**: User selects which words to save after analysis
 - [ ] **VOCAB-03**: User sets familiarity level on add: "never seen" / "seen but unsure" / "understand in context"
 - [ ] **VOCAB-04**: Each word linked to original sentence(s) where encountered
@@ -86,12 +86,12 @@
 |-------------|-------|--------|
 | SENT-01 | Phase 5 | Pending |
 | SENT-02 | Phase 3 | Pending |
-| SENT-03 | Phase 2 | Pending |
+| SENT-03 | Phase 2 | Complete |
 | SENT-04 | Phase 2 | Pending |
-| SENT-05 | Phase 2 | Pending |
+| SENT-05 | Phase 2 | Complete |
 | SENT-06 | Phase 2 | Pending |
 | SENT-07 | Phase 2 | Pending |
-| VOCAB-01 | Phase 2 | Pending |
+| VOCAB-01 | Phase 2 | Complete |
 | VOCAB-02 | Phase 3 | Pending |
 | VOCAB-03 | Phase 3 | Pending |
 | VOCAB-04 | Phase 2 | Pending |
