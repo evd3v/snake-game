@@ -92,12 +92,12 @@ Plans:
   3. Dashboard highlights weak spots -- grammar patterns and words with lowest success rates
   4. Activity streak counter and heatmap show daily review and addition history
   5. Thematic cluster view shows vocabulary coverage gaps across topics
-**Plans**: TBD
+**Plans:** 3 plans
 
 Plans:
-- [ ] 05-01: TBD
-- [ ] 05-02: TBD
-- [ ] 05-03: TBD
+- [ ] 05-01-PLAN.md — Vue SPA scaffolding, API client, shared types, and dashboard API endpoints
+- [ ] 05-02-PLAN.md — Dashboard frontend with progress, weak spots, heatmap, and cluster widgets
+- [ ] 05-03-PLAN.md — Sentence input UI with analysis display and word selection
 
 ## Progress
 
@@ -110,4 +110,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 2. AI Analysis Pipeline | 3/3 | Complete | 2026-03-09 |
 | 3. Telegram Bot | 2/2 | Complete | 2026-03-09 |
 | 4. Spaced Repetition and Exercises | 2/3 | In Progress|  |
-| 5. Web Application and Dashboard | 0/0 | Not started | - |
+| 5. Web Application and Dashboard | 0/3 | Not started | - |
