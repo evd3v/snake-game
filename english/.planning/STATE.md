@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-stopped_at: Completed 03-01-PLAN.md
-last_updated: "2026-03-09T12:48:23.274Z"
-last_activity: 2026-03-09 -- Plan 03-01 executed
+stopped_at: Completed 03-02-PLAN.md (Phase 03 complete)
+last_updated: "2026-03-09T12:55:47Z"
+last_activity: 2026-03-09 -- Plan 03-02 executed (Phase 03 complete)
 progress:
   total_phases: 5
   completed_phases: 2
   total_plans: 7
-  completed_plans: 6
-  percent: 86
+  completed_plans: 7
+  percent: 90
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-09)
 ## Current Position
 
 Phase: 3 of 5 (Telegram Bot)
-Plan: 1 of 2 in current phase (03-01 complete)
+Plan: 2 of 2 in current phase (03-02 complete -- phase complete)
 Status: In Progress
-Last activity: 2026-03-09 -- Plan 03-01 executed
+Last activity: 2026-03-09 -- Plan 03-02 executed (Phase 03 complete)
 
-Progress: [█████████░] 86%
+Progress: [█████████░] 90%
 
 ## Performance Metrics
 
@@ -53,6 +53,7 @@ Progress: [█████████░] 86%
 *Updated after each plan completion*
 | Phase 02 P03 | 3min | 2 tasks | 3 files |
 | Phase 03 P01 | 3min | 2 tasks | 8 files |
+| Phase 03 P02 | 5min | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -80,6 +81,9 @@ Recent decisions affecting current work:
 - 03-01: Bot fetches words via GET /sentences/:sentenceId/words after job completion (job result only has counts)
 - 03-01: HTML parse_mode for Telegram messages (avoids MarkdownV2 escaping issues)
 - 03-01: API client uses native fetch against API_URL env var
+- 03-02: In-memory Map for selection state keyed by chatId:sentenceId (single-instance bot)
+- 03-02: Callback data encoding: sel/done/fam prefixes with numeric IDs, all under 64 bytes
+- 03-02: Stale callback detection returns friendly expiry message
 
 ### Pending Todos
 
@@ -92,6 +96,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-09T12:48:00Z
-Stopped at: Completed 03-01-PLAN.md
+Last session: 2026-03-09T12:55:00Z
+Stopped at: Completed 03-02-PLAN.md (Phase 03 complete)
 Resume file: None

@@ -18,8 +18,8 @@
 ### Vocabulary
 
 - [x] **VOCAB-01**: Words stored as lemmas with automatic deduplication
-- [ ] **VOCAB-02**: User selects which words to save after analysis
-- [ ] **VOCAB-03**: User sets familiarity level on add: "never seen" / "seen but unsure" / "understand in context"
+- [x] **VOCAB-02**: User selects which words to save after analysis
+- [x] **VOCAB-03**: User sets familiarity level on add: "never seen" / "seen but unsure" / "understand in context"
 - [x] **VOCAB-04**: Each word linked to original sentence(s) where encountered
 - [x] **VOCAB-05**: Collocations and phrasal verbs stored as independent learnable units
 - [x] **VOCAB-06**: Word families linked in database (one root → multiple forms)
@@ -92,8 +92,8 @@
 | SENT-06 | Phase 2 | Complete |
 | SENT-07 | Phase 2 | Complete |
 | VOCAB-01 | Phase 2 | Complete |
-| VOCAB-02 | Phase 3 | Pending |
-| VOCAB-03 | Phase 3 | Pending |
+| VOCAB-02 | Phase 3 | Complete |
+| VOCAB-03 | Phase 3 | Complete |
 | VOCAB-04 | Phase 2 | Complete |
 | VOCAB-05 | Phase 2 | Complete |
 | VOCAB-06 | Phase 2 | Complete |
