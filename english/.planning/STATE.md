@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 04-03-PLAN.md
-last_updated: "2026-03-09T14:33:38.992Z"
-last_activity: 2026-03-09 -- Plan 04-02 executed
+status: in_progress
+stopped_at: Completed 05-01-PLAN.md
+last_updated: "2026-03-09T17:01:10Z"
+last_activity: 2026-03-09 -- Plan 05-01 executed
 progress:
   total_phases: 5
   completed_phases: 4
-  total_plans: 10
-  completed_plans: 10
-  percent: 100
+  total_plans: 13
+  completed_plans: 11
+  percent: 85
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-09)
 
 **Core value:** User inputs a real sentence from a book and gets full analysis (translation, grammar, vocabulary, CEFR), with extracted items feeding into spaced repetition -- all in one flow.
-**Current focus:** Phase 4: Spaced Repetition and Exercises
+**Current focus:** Phase 5: Web Application and Dashboard
 
 ## Current Position
 
-Phase: 4 of 5 (Spaced Repetition and Exercises) -- COMPLETE
-Plan: 3 of 3 in current phase (04-03 complete)
-Status: Phase 04 Complete
-Last activity: 2026-03-09 -- Plan 04-03 executed
+Phase: 5 of 5 (Web Application and Dashboard)
+Plan: 1 of 3 in current phase (05-01 complete)
+Status: In Progress
+Last activity: 2026-03-09 -- Plan 05-01 executed
 
-Progress: [██████████] 100%
+Progress: [█████████░] 85%
 
 ## Performance Metrics
 
@@ -57,6 +57,7 @@ Progress: [██████████] 100%
 | Phase 04 P01 | 3min | 2 tasks | 10 files |
 | Phase 04 P02 | 5min | 2 tasks | 11 files |
 | Phase 04 P03 | 3min | 1 tasks | 5 files |
+| Phase 05 P01 | 4min | 2 tasks | 12 files |
 
 ## Accumulated Context
 
@@ -94,6 +95,9 @@ Recent decisions affecting current work:
 - 04-02: job-processor.ts extracted from worker for testable multi-job-type routing
 - 04-02: fileParallelism disabled in vitest for DB test isolation
 - [Phase 04]: In-memory Map for review session state keyed by chatId (consistent with vocabulary handler pattern)
+- 05-01: Raw SQL for dashboard aggregations (FILTER, FULL OUTER JOIN) where Drizzle ORM builder would be unwieldy
+- 05-01: Vite proxy rewrites /api prefix to forward to bare backend routes on localhost:3000
+- 05-01: Removed vite-plugin-vue-devtools to keep build lean
 
 ### Pending Todos
 
@@ -106,6 +110,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-09T14:33:38.990Z
-Stopped at: Completed 04-03-PLAN.md
+Last session: 2026-03-09T17:01:10Z
+Stopped at: Completed 05-01-PLAN.md
 Resume file: None

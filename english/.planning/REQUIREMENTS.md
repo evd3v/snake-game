@@ -37,16 +37,16 @@
 
 ### Dashboard
 
-- [ ] **DASH-01**: Overall progress counters (new / learning / known) for words and patterns
-- [ ] **DASH-02**: Weak spots: grammar patterns and words with low success rate
-- [ ] **DASH-03**: Activity streak and heatmap (days in a row, daily reviews/additions)
-- [ ] **DASH-04**: Thematic cluster coverage gaps
+- [x] **DASH-01**: Overall progress counters (new / learning / known) for words and patterns
+- [x] **DASH-02**: Weak spots: grammar patterns and words with low success rate
+- [x] **DASH-03**: Activity streak and heatmap (days in a row, daily reviews/additions)
+- [x] **DASH-04**: Thematic cluster coverage gaps
 
 ### Infrastructure
 
 - [x] **INFRA-01**: PostgreSQL database with Drizzle ORM
 - [x] **INFRA-02**: Fastify REST API backend (TypeScript)
-- [ ] **INFRA-03**: Vue 3 + TypeScript SPA frontend
+- [x] **INFRA-03**: Vue 3 + TypeScript SPA frontend
 - [x] **INFRA-04**: Telegram bot via grammY library
 - [x] **INFRA-05**: Docker Compose deployment configuration
 - [x] **INFRA-06**: Async AI processing (queue-based, non-blocking)
@@ -105,13 +105,13 @@
 | SRS-05 | Phase 4 | Complete |
 | SRS-06 | Phase 4 | Complete |
 | SRS-07 | Phase 4 | Complete |
-| DASH-01 | Phase 5 | Pending |
-| DASH-02 | Phase 5 | Pending |
-| DASH-03 | Phase 5 | Pending |
-| DASH-04 | Phase 5 | Pending |
+| DASH-01 | Phase 5 | Complete |
+| DASH-02 | Phase 5 | Complete |
+| DASH-03 | Phase 5 | Complete |
+| DASH-04 | Phase 5 | Complete |
 | INFRA-01 | Phase 1 | Complete |
 | INFRA-02 | Phase 1 | Complete |
-| INFRA-03 | Phase 5 | Pending |
+| INFRA-03 | Phase 5 | Complete |
 | INFRA-04 | Phase 3 | Complete |
 | INFRA-05 | Phase 1 | Complete |
 | INFRA-06 | Phase 1 | Complete |
