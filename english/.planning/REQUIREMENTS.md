@@ -28,10 +28,10 @@
 ### Spaced Repetition
 
 - [x] **SRS-01**: FSRS algorithm for scheduling reviews
-- [ ] **SRS-02**: Flashcard review for vocabulary (show word → recall translation → rate)
+- [x] **SRS-02**: Flashcard review for vocabulary (show word → recall translation → rate)
 - [x] **SRS-03**: Cloze exercises for grammar patterns (AI-generated sentence with gap)
 - [x] **SRS-04**: Exercises pre-generated in batches (not at review time)
-- [ ] **SRS-05**: Original book sentence shown as context during word review
+- [x] **SRS-05**: Original book sentence shown as context during word review
 - [x] **SRS-06**: Grammar pattern progression (simple → complex variations)
 - [ ] **SRS-07**: Quick review session available in Telegram bot
 
@@ -99,10 +99,10 @@
 | VOCAB-06 | Phase 2 | Complete |
 | VOCAB-07 | Phase 2 | Complete |
 | SRS-01 | Phase 4 | Complete |
-| SRS-02 | Phase 4 | Pending |
+| SRS-02 | Phase 4 | Complete |
 | SRS-03 | Phase 4 | Complete |
 | SRS-04 | Phase 4 | Complete |
-| SRS-05 | Phase 4 | Pending |
+| SRS-05 | Phase 4 | Complete |
 | SRS-06 | Phase 4 | Complete |
 | SRS-07 | Phase 4 | Pending |
 | DASH-01 | Phase 5 | Pending |

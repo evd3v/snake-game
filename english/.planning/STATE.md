@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 03-02-PLAN.md (Phase 03 complete)
-last_updated: "2026-03-09T13:02:08.675Z"
-last_activity: 2026-03-09 -- Plan 03-02 executed (Phase 03 complete)
+stopped_at: Completed 04-02-PLAN.md
+last_updated: "2026-03-09T14:24:02Z"
+last_activity: 2026-03-09 -- Plan 04-02 executed
 progress:
   total_phases: 5
   completed_phases: 3
-  total_plans: 7
-  completed_plans: 7
-  percent: 90
+  total_plans: 10
+  completed_plans: 9
+  percent: 95
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-09)
 ## Current Position
 
 Phase: 4 of 5 (Spaced Repetition and Exercises)
-Plan: 1 of 3 in current phase (04-01 complete)
+Plan: 2 of 3 in current phase (04-02 complete)
 Status: In Progress
-Last activity: 2026-03-09 -- Plan 04-01 executed
+Last activity: 2026-03-09 -- Plan 04-02 executed
 
-Progress: [█████████░] 92%
+Progress: [█████████░] 95%
 
 ## Performance Metrics
 
@@ -55,6 +55,7 @@ Progress: [█████████░] 92%
 | Phase 03 P01 | 3min | 2 tasks | 8 files |
 | Phase 03 P02 | 5min | 2 tasks | 5 files |
 | Phase 04 P01 | 3min | 2 tasks | 10 files |
+| Phase 04 P02 | 5min | 2 tasks | 11 files |
 
 ## Accumulated Context
 
@@ -88,6 +89,9 @@ Recent decisions affecting current work:
 - 04-01: ts-fsrs scheduler.next(card, now, rating) returns {card, log} directly when given specific rating
 - 04-01: FSRS scheduler with request_retention=0.9 and enable_fuzz=true
 - 04-01: onConflictDoNothing for idempotent SRS card creation
+- 04-02: Check-then-insert for grammar SRS card idempotency (no unique constraint on grammarPatternId)
+- 04-02: job-processor.ts extracted from worker for testable multi-job-type routing
+- 04-02: fileParallelism disabled in vitest for DB test isolation
 
 ### Pending Todos
 
@@ -100,6 +104,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-09T14:15:00Z
-Stopped at: Completed 04-01-PLAN.md
+Last session: 2026-03-09T14:24:02Z
+Stopped at: Completed 04-02-PLAN.md
 Resume file: None

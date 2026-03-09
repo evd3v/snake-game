@@ -75,7 +75,7 @@ Plans:
   2. Grammar patterns have cloze exercises (AI-generated fill-in-the-blank sentences) that progress from simple to complex variations
   3. Exercises are pre-generated in batches and ready when the user starts a review session -- no waiting for AI
   4. User can complete a quick review session (due cards only) directly in the Telegram bot
-**Plans:** 3 plans
+**Plans:** 2/3 plans executed
 
 Plans:
 - [x] 04-01-PLAN.md — FSRS service, grammar exercises schema, cloze generation service
@@ -109,5 +109,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 1. Foundation and Data Layer | 2/2 | Complete | 2026-03-09 |
 | 2. AI Analysis Pipeline | 3/3 | Complete | 2026-03-09 |
 | 3. Telegram Bot | 2/2 | Complete | 2026-03-09 |
-| 4. Spaced Repetition and Exercises | 1/3 | In Progress | - |
+| 4. Spaced Repetition and Exercises | 2/3 | In Progress|  |
 | 5. Web Application and Dashboard | 0/0 | Not started | - |
