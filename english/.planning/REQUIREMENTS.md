@@ -84,43 +84,43 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SENT-01 | — | Pending |
-| SENT-02 | — | Pending |
-| SENT-03 | — | Pending |
-| SENT-04 | — | Pending |
-| SENT-05 | — | Pending |
-| SENT-06 | — | Pending |
-| SENT-07 | — | Pending |
-| VOCAB-01 | — | Pending |
-| VOCAB-02 | — | Pending |
-| VOCAB-03 | — | Pending |
-| VOCAB-04 | — | Pending |
-| VOCAB-05 | — | Pending |
-| VOCAB-06 | — | Pending |
-| VOCAB-07 | — | Pending |
-| SRS-01 | — | Pending |
-| SRS-02 | — | Pending |
-| SRS-03 | — | Pending |
-| SRS-04 | — | Pending |
-| SRS-05 | — | Pending |
-| SRS-06 | — | Pending |
-| SRS-07 | — | Pending |
-| DASH-01 | — | Pending |
-| DASH-02 | — | Pending |
-| DASH-03 | — | Pending |
-| DASH-04 | — | Pending |
-| INFRA-01 | — | Pending |
-| INFRA-02 | — | Pending |
-| INFRA-03 | — | Pending |
-| INFRA-04 | — | Pending |
-| INFRA-05 | — | Pending |
-| INFRA-06 | — | Pending |
+| SENT-01 | Phase 5 | Pending |
+| SENT-02 | Phase 3 | Pending |
+| SENT-03 | Phase 2 | Pending |
+| SENT-04 | Phase 2 | Pending |
+| SENT-05 | Phase 2 | Pending |
+| SENT-06 | Phase 2 | Pending |
+| SENT-07 | Phase 2 | Pending |
+| VOCAB-01 | Phase 2 | Pending |
+| VOCAB-02 | Phase 3 | Pending |
+| VOCAB-03 | Phase 3 | Pending |
+| VOCAB-04 | Phase 2 | Pending |
+| VOCAB-05 | Phase 2 | Pending |
+| VOCAB-06 | Phase 2 | Pending |
+| VOCAB-07 | Phase 2 | Pending |
+| SRS-01 | Phase 4 | Pending |
+| SRS-02 | Phase 4 | Pending |
+| SRS-03 | Phase 4 | Pending |
+| SRS-04 | Phase 4 | Pending |
+| SRS-05 | Phase 4 | Pending |
+| SRS-06 | Phase 4 | Pending |
+| SRS-07 | Phase 4 | Pending |
+| DASH-01 | Phase 5 | Pending |
+| DASH-02 | Phase 5 | Pending |
+| DASH-03 | Phase 5 | Pending |
+| DASH-04 | Phase 5 | Pending |
+| INFRA-01 | Phase 1 | Pending |
+| INFRA-02 | Phase 1 | Pending |
+| INFRA-03 | Phase 5 | Pending |
+| INFRA-04 | Phase 3 | Pending |
+| INFRA-05 | Phase 1 | Pending |
+| INFRA-06 | Phase 1 | Pending |
 
 **Coverage:**
 - v1 requirements: 31 total
-- Mapped to phases: 0
-- Unmapped: 31 ⚠️
+- Mapped to phases: 31
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-09*
-*Last updated: 2026-03-09 after initial definition*
+*Last updated: 2026-03-09 after roadmap creation*
