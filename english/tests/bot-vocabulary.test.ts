@@ -8,6 +8,12 @@ const sampleWords: WordInfo[] = [
   { id: 3, lemma: 'evidence', translation: 'proof', cefrLevel: 'B1', familiarity: 'unknown', thematicCluster: null },
 ];
 
+/** Extract callback_data from a button (all our buttons are callback buttons) */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function cbData(btn: any): string {
+  return btn.callback_data;
+}
+
 describe('buildWordSelectionKeyboard', () => {
   it('returns one row per word plus no save button when nothing selected', () => {
     const kb = buildWordSelectionKeyboard(42, sampleWords, new Set());
@@ -33,14 +39,14 @@ describe('buildWordSelectionKeyboard', () => {
     expect(kb.inline_keyboard).toHaveLength(4);
     const lastRow = kb.inline_keyboard[3];
     expect(lastRow[0].text).toContain('Save 2 word(s)');
-    expect(lastRow[0].callback_data).toBe('done:42');
+    expect(cbData(lastRow[0])).toBe('done:42');
   });
 
   it('uses correct callback data format for word buttons', () => {
     const kb = buildWordSelectionKeyboard(42, sampleWords, new Set());
-    expect(kb.inline_keyboard[0][0].callback_data).toBe('sel:42:1');
-    expect(kb.inline_keyboard[1][0].callback_data).toBe('sel:42:2');
-    expect(kb.inline_keyboard[2][0].callback_data).toBe('sel:42:3');
+    expect(cbData(kb.inline_keyboard[0][0])).toBe('sel:42:1');
+    expect(cbData(kb.inline_keyboard[1][0])).toBe('sel:42:2');
+    expect(cbData(kb.inline_keyboard[2][0])).toBe('sel:42:3');
   });
 
   it('includes lemma, translation, and CEFR level in button text', () => {
@@ -57,10 +63,10 @@ describe('buildFamiliarityKeyboard', () => {
     const kb = buildFamiliarityKeyboard(10, 5);
     const buttons = kb.inline_keyboard.map((row) => row[0]);
     expect(buttons).toHaveLength(4);
-    expect(buttons[0].callback_data).toBe('fam:10:5:ns');
-    expect(buttons[1].callback_data).toBe('fam:10:5:su');
-    expect(buttons[2].callback_data).toBe('fam:10:5:uc');
-    expect(buttons[3].callback_data).toBe('fam:10:5:skip');
+    expect(cbData(buttons[0])).toBe('fam:10:5:ns');
+    expect(cbData(buttons[1])).toBe('fam:10:5:su');
+    expect(cbData(buttons[2])).toBe('fam:10:5:uc');
+    expect(cbData(buttons[3])).toBe('fam:10:5:skip');
   });
 
   it('has descriptive button labels', () => {

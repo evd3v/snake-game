@@ -1,6 +1,8 @@
 import type { Context } from 'grammy';
 import * as apiClient from '../services/api-client.ts';
 import { formatAnalysisResult } from '../format.ts';
+import { buildWordSelectionKeyboard } from '../keyboards/analysis.ts';
+import { initSelection } from './vocabulary.ts';
 
 const POLL_INTERVAL_MS = 2000;
 const MAX_POLL_ATTEMPTS = 30;
@@ -30,12 +32,27 @@ export function createSentenceHandler() {
           const words = await apiClient.getSentenceWords(status.result.sentenceId);
           const formatted = formatAnalysisResult(status.result, words);
 
-          await ctx.api.editMessageText(
-            processingMsg.chat.id,
-            processingMsg.message_id,
-            formatted,
-            { parse_mode: 'HTML' },
-          );
+          const sentenceId = status.result.sentenceId;
+          const chatId = processingMsg.chat.id;
+
+          // Initialize word selection state and attach keyboard
+          if (words.length > 0) {
+            initSelection(chatId, sentenceId, words);
+            const keyboard = buildWordSelectionKeyboard(sentenceId, words, new Set());
+            await ctx.api.editMessageText(
+              chatId,
+              processingMsg.message_id,
+              formatted,
+              { parse_mode: 'HTML', reply_markup: keyboard },
+            );
+          } else {
+            await ctx.api.editMessageText(
+              chatId,
+              processingMsg.message_id,
+              formatted,
+              { parse_mode: 'HTML' },
+            );
+          }
           return;
         }
 
