@@ -7,7 +7,7 @@
 
 ### Sentence Analysis
 
-- [ ] **SENT-01**: User can input an English sentence via web UI
+- [x] **SENT-01**: User can input an English sentence via web UI
 - [x] **SENT-02**: User can input an English sentence via Telegram bot
 - [x] **SENT-03**: AI analyzes sentence and returns: translation, grammar breakdown, vocabulary, CEFR level
 - [x] **SENT-04**: AI extracts collocations and phrasal verbs as separate units
@@ -84,7 +84,7 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SENT-01 | Phase 5 | Pending |
+| SENT-01 | Phase 5 | Complete |
 | SENT-02 | Phase 3 | Complete |
 | SENT-03 | Phase 2 | Complete |
 | SENT-04 | Phase 2 | Complete |
