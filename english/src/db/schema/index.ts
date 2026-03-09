@@ -4,3 +4,5 @@ export { collocationTypeEnum, collocations, sentenceCollocations } from './collo
 export { grammarPatterns, sentenceGrammarPatterns } from './grammar-patterns.ts';
 export { wordFamilies } from './word-families.ts';
 export { cardTypeEnum, cardStateEnum, srsCards } from './srs-cards.ts';
+export { grammarExercises } from './grammar-exercises.ts';
+export { reviewLogs } from './review-logs.ts';
