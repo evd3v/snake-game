@@ -56,6 +56,17 @@ export async function getSentenceWords(sentenceId: number): Promise<WordInfo[]> 
   return response.json() as Promise<WordInfo[]>;
 }
 
+export async function createSrsCard(wordId: number): Promise<void> {
+  const response = await fetch(`${API_URL}/words/${wordId}/srs-card`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to create SRS card: ${response.status} ${response.statusText}`);
+  }
+}
+
 export async function setFamiliarity(wordId: number, familiarity: string): Promise<void> {
   const response = await fetch(`${API_URL}/words/${wordId}/familiarity`, {
     method: 'PATCH',
