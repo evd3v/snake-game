@@ -8,7 +8,7 @@
 ### Sentence Analysis
 
 - [ ] **SENT-01**: User can input an English sentence via web UI
-- [ ] **SENT-02**: User can input an English sentence via Telegram bot
+- [x] **SENT-02**: User can input an English sentence via Telegram bot
 - [x] **SENT-03**: AI analyzes sentence and returns: translation, grammar breakdown, vocabulary, CEFR level
 - [x] **SENT-04**: AI extracts collocations and phrasal verbs as separate units
 - [x] **SENT-05**: AI identifies grammar patterns with specific notation (e.g. "would have + V3")
@@ -47,7 +47,7 @@
 - [x] **INFRA-01**: PostgreSQL database with Drizzle ORM
 - [x] **INFRA-02**: Fastify REST API backend (TypeScript)
 - [ ] **INFRA-03**: Vue 3 + TypeScript SPA frontend
-- [ ] **INFRA-04**: Telegram bot via grammY library
+- [x] **INFRA-04**: Telegram bot via grammY library
 - [x] **INFRA-05**: Docker Compose deployment configuration
 - [x] **INFRA-06**: Async AI processing (queue-based, non-blocking)
 
@@ -85,7 +85,7 @@
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | SENT-01 | Phase 5 | Pending |
-| SENT-02 | Phase 3 | Pending |
+| SENT-02 | Phase 3 | Complete |
 | SENT-03 | Phase 2 | Complete |
 | SENT-04 | Phase 2 | Complete |
 | SENT-05 | Phase 2 | Complete |
@@ -112,7 +112,7 @@
 | INFRA-01 | Phase 1 | Complete |
 | INFRA-02 | Phase 1 | Complete |
 | INFRA-03 | Phase 5 | Pending |
-| INFRA-04 | Phase 3 | Pending |
+| INFRA-04 | Phase 3 | Complete |
 | INFRA-05 | Phase 1 | Complete |
 | INFRA-06 | Phase 1 | Complete |
 

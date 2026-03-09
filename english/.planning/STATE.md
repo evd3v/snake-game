@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: completed
-stopped_at: Completed 02-03-PLAN.md
-last_updated: "2026-03-09T11:55:52.655Z"
-last_activity: 2026-03-09 -- Plan 02-03 executed
+status: in-progress
+stopped_at: Completed 03-01-PLAN.md
+last_updated: "2026-03-09T12:48:23.274Z"
+last_activity: 2026-03-09 -- Plan 03-01 executed
 progress:
   total_phases: 5
   completed_phases: 2
-  total_plans: 5
-  completed_plans: 5
-  percent: 100
+  total_plans: 7
+  completed_plans: 6
+  percent: 86
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-09)
 
 **Core value:** User inputs a real sentence from a book and gets full analysis (translation, grammar, vocabulary, CEFR), with extracted items feeding into spaced repetition -- all in one flow.
-**Current focus:** Phase 2: AI Analysis Pipeline (Complete)
+**Current focus:** Phase 3: Telegram Bot
 
 ## Current Position
 
-Phase: 2 of 5 (AI Analysis Pipeline) -- COMPLETE
-Plan: 3 of 3 in current phase (02-03 complete)
-Status: Phase 2 Complete
-Last activity: 2026-03-09 -- Plan 02-03 executed
+Phase: 3 of 5 (Telegram Bot)
+Plan: 1 of 2 in current phase (03-01 complete)
+Status: In Progress
+Last activity: 2026-03-09 -- Plan 03-01 executed
 
-Progress: [██████████] 100%
+Progress: [█████████░] 86%
 
 ## Performance Metrics
 
@@ -52,6 +52,7 @@ Progress: [██████████] 100%
 
 *Updated after each plan completion*
 | Phase 02 P03 | 3min | 2 tasks | 3 files |
+| Phase 03 P01 | 3min | 2 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -76,6 +77,9 @@ Recent decisions affecting current work:
 - 02-02: Junction table inserts use onConflictDoNothing for idempotent re-submission
 - [Phase 02]: Worker concurrency set to 2 to limit parallel AI API calls
 - [Phase 02]: Fastify JSON schema validation for input (minLength: 1 on text field)
+- 03-01: Bot fetches words via GET /sentences/:sentenceId/words after job completion (job result only has counts)
+- 03-01: HTML parse_mode for Telegram messages (avoids MarkdownV2 escaping issues)
+- 03-01: API client uses native fetch against API_URL env var
 
 ### Pending Todos
 
@@ -88,6 +92,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-09T11:52:37.745Z
-Stopped at: Completed 02-03-PLAN.md
+Last session: 2026-03-09T12:48:00Z
+Stopped at: Completed 03-01-PLAN.md
 Resume file: None
