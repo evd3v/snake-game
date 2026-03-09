@@ -9,7 +9,7 @@ export const collocationTypeEnum = pgEnum('collocation_type', [
 
 export const collocations = pgTable('collocations', {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  text: text().notNull(),
+  text: text().notNull().unique(),
   translation: text(),
   type: collocationTypeEnum().notNull(),
   cefrLevel: text('cefr_level'),
