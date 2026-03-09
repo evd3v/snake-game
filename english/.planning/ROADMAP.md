@@ -12,7 +12,7 @@ This roadmap delivers a personal AI-powered English learning tool in five phases
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation and Data Layer** - Database schema, API skeleton, Docker environment, async job queue
+- [x] **Phase 1: Foundation and Data Layer** - Database schema, API skeleton, Docker environment, async job queue
 - [ ] **Phase 2: AI Analysis Pipeline** - Sentence analysis, vocabulary extraction, lemmatization, collocations, grammar patterns
 - [ ] **Phase 3: Telegram Bot** - Sentence input via bot, word selection, familiarity tagging
 - [ ] **Phase 4: Spaced Repetition and Exercises** - FSRS engine, flashcard review, cloze exercises, batch generation, bot review
@@ -33,7 +33,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 Plans:
 - [x] 01-01-PLAN.md — Project scaffolding, Docker environment, and database schema
-- [ ] 01-02-PLAN.md — Fastify server, BullMQ worker, and integration tests
+- [x] 01-02-PLAN.md — Fastify server, BullMQ worker, and integration tests
 
 ### Phase 2: AI Analysis Pipeline
 **Goal**: A sentence submitted via API is analyzed by AI and produces structured vocabulary, collocations, grammar patterns, and word families stored in the database
@@ -106,7 +106,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation and Data Layer | 1/2 | In Progress | - |
+| 1. Foundation and Data Layer | 2/2 | Complete | 2026-03-09 |
 | 2. AI Analysis Pipeline | 0/0 | Not started | - |
 | 3. Telegram Bot | 0/0 | Not started | - |
 | 4. Spaced Repetition and Exercises | 0/0 | Not started | - |

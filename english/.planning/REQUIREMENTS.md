@@ -45,11 +45,11 @@
 ### Infrastructure
 
 - [x] **INFRA-01**: PostgreSQL database with Drizzle ORM
-- [ ] **INFRA-02**: Fastify REST API backend (TypeScript)
+- [x] **INFRA-02**: Fastify REST API backend (TypeScript)
 - [ ] **INFRA-03**: Vue 3 + TypeScript SPA frontend
 - [ ] **INFRA-04**: Telegram bot via grammY library
 - [x] **INFRA-05**: Docker Compose deployment configuration
-- [ ] **INFRA-06**: Async AI processing (queue-based, non-blocking)
+- [x] **INFRA-06**: Async AI processing (queue-based, non-blocking)
 
 ## v2 Requirements
 
@@ -110,11 +110,11 @@
 | DASH-03 | Phase 5 | Pending |
 | DASH-04 | Phase 5 | Pending |
 | INFRA-01 | Phase 1 | Complete |
-| INFRA-02 | Phase 1 | Pending |
+| INFRA-02 | Phase 1 | Complete |
 | INFRA-03 | Phase 5 | Pending |
 | INFRA-04 | Phase 3 | Pending |
 | INFRA-05 | Phase 1 | Complete |
-| INFRA-06 | Phase 1 | Pending |
+| INFRA-06 | Phase 1 | Complete |
 
 **Coverage:**
 - v1 requirements: 31 total
