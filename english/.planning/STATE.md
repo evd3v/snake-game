@@ -21,7 +21,7 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-09)
 
 **Core value:** User inputs a real sentence from a book and gets full analysis (translation, grammar, vocabulary, CEFR), with extracted items feeding into spaced repetition -- all in one flow.
-**Current focus:** Phase 5: Web Application and Dashboard
+**Current focus:** v1.0 milestone complete — all 5 phases finished
 
 ## Current Position
 
@@ -117,6 +117,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-09T17:08:03.474Z
-Stopped at: Completed 05-03-PLAN.md
+Last session: 2026-03-09
+Stopped at: Phase 04 verified, all v1.0 phases complete
 Resume file: None
