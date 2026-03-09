@@ -32,7 +32,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans:** 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Project scaffolding, Docker environment, and database schema
+- [x] 01-01-PLAN.md — Project scaffolding, Docker environment, and database schema
 - [ ] 01-02-PLAN.md — Fastify server, BullMQ worker, and integration tests
 
 ### Phase 2: AI Analysis Pipeline
@@ -106,7 +106,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation and Data Layer | 0/2 | Planning | - |
+| 1. Foundation and Data Layer | 1/2 | In Progress | - |
 | 2. AI Analysis Pipeline | 0/0 | Not started | - |
 | 3. Telegram Bot | 0/0 | Not started | - |
 | 4. Spaced Repetition and Exercises | 0/0 | Not started | - |
