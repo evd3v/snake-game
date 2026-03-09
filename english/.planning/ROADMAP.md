@@ -29,11 +29,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Fastify API server starts and responds to health-check requests
   3. BullMQ worker process connects to Redis and can process a test job
   4. Docker Compose brings up the full dev environment (app + PostgreSQL + Redis) with one command
-**Plans**: TBD
+**Plans:** 2 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
+- [ ] 01-01-PLAN.md — Project scaffolding, Docker environment, and database schema
+- [ ] 01-02-PLAN.md — Fastify server, BullMQ worker, and integration tests
 
 ### Phase 2: AI Analysis Pipeline
 **Goal**: A sentence submitted via API is analyzed by AI and produces structured vocabulary, collocations, grammar patterns, and word families stored in the database
@@ -106,7 +106,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation and Data Layer | 0/0 | Not started | - |
+| 1. Foundation and Data Layer | 0/2 | Planning | - |
 | 2. AI Analysis Pipeline | 0/0 | Not started | - |
 | 3. Telegram Bot | 0/0 | Not started | - |
 | 4. Spaced Repetition and Exercises | 0/0 | Not started | - |
