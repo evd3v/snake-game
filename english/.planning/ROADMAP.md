@@ -13,7 +13,7 @@ This roadmap delivers a personal AI-powered English learning tool in five phases
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation and Data Layer** - Database schema, API skeleton, Docker environment, async job queue
-- [ ] **Phase 2: AI Analysis Pipeline** - Sentence analysis, vocabulary extraction, lemmatization, collocations, grammar patterns
+- [x] **Phase 2: AI Analysis Pipeline** - Sentence analysis, vocabulary extraction, lemmatization, collocations, grammar patterns
 - [ ] **Phase 3: Telegram Bot** - Sentence input via bot, word selection, familiarity tagging
 - [ ] **Phase 4: Spaced Repetition and Exercises** - FSRS engine, flashcard review, cloze exercises, batch generation, bot review
 - [ ] **Phase 5: Web Application and Dashboard** - Vue SPA with sentence input, vocabulary management, review UI, progress dashboard
@@ -45,12 +45,12 @@ Plans:
   3. Collocations, phrasal verbs, and idioms are extracted and stored as independent learnable units linked to their source sentence
   4. Word families are detected and linked in the database (e.g., submitting "reluctantly" links to existing "reluctant" and "reluctance")
   5. Each extracted word is auto-assigned to a thematic cluster by the AI
-**Plans:** 2/3 plans executed
+**Plans:** 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — AI SDK setup, Zod schemas, prompt templates, lemmatizer with unit tests
-- [ ] 02-02-PLAN.md — Analysis storage service, word family linking, integration tests
-- [ ] 02-03-PLAN.md — Sentence API routes, worker integration, API tests
+- [x] 02-01-PLAN.md — AI SDK setup, Zod schemas, prompt templates, lemmatizer with unit tests
+- [x] 02-02-PLAN.md — Analysis storage service, word family linking, integration tests
+- [x] 02-03-PLAN.md — Sentence API routes, worker integration, API tests
 
 ### Phase 3: Telegram Bot
 **Goal**: User can send English sentences from a book via Telegram and see analysis results with the ability to select words to learn
@@ -60,11 +60,11 @@ Plans:
   1. User sends a sentence to the Telegram bot and receives a compact analysis (translation, key vocabulary, CEFR level) within seconds
   2. User can select which extracted words to save to their vocabulary via inline keyboard buttons
   3. User can set familiarity level for each saved word ("never seen" / "seen but unsure" / "understand in context")
-**Plans**: TBD
+**Plans:** 2 plans
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
+- [ ] 03-01-PLAN.md — Word API routes, grammY bot scaffolding, sentence analysis flow
+- [ ] 03-02-PLAN.md — Word selection keyboard, familiarity flow, live bot verification
 
 ### Phase 4: Spaced Repetition and Exercises
 **Goal**: User can review saved vocabulary and grammar through FSRS-scheduled flashcards and AI-generated cloze exercises
@@ -107,7 +107,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation and Data Layer | 2/2 | Complete | 2026-03-09 |
-| 2. AI Analysis Pipeline | 2/3 | In Progress|  |
-| 3. Telegram Bot | 0/0 | Not started | - |
+| 2. AI Analysis Pipeline | 3/3 | Complete | 2026-03-09 |
+| 3. Telegram Bot | 0/2 | In Progress | - |
 | 4. Spaced Repetition and Exercises | 0/0 | Not started | - |
 | 5. Web Application and Dashboard | 0/0 | Not started | - |
