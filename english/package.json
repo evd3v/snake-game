@@ -8,6 +8,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
+    "bot": "tsx src/bot/index.ts",
     "test": "NODE_OPTIONS='--import tsx' vitest run --reporter=verbose"
   },
   "license": "ISC",
@@ -24,6 +25,7 @@
     "drizzle-orm": "^0.45.1",
     "fastify": "^5.8.2",
     "fastify-plugin": "^5.1.0",
+    "grammy": "^1.41.1",
     "ioredis": "^5.10.0",
     "pg": "^8.20.0",
     "wink-lemmatizer": "^3.0.4",
