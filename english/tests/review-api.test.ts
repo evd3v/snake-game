@@ -6,9 +6,10 @@ import { sql, eq } from 'drizzle-orm';
 import { sentences } from '../src/db/schema/sentences.ts';
 import { words, sentenceWords } from '../src/db/schema/words.ts';
 import { srsCards } from '../src/db/schema/srs-cards.ts';
-import { grammarPatterns } from '../src/db/schema/grammar-patterns.ts';
+import { grammarPatterns, sentenceGrammarPatterns } from '../src/db/schema/grammar-patterns.ts';
 import { grammarExercises } from '../src/db/schema/grammar-exercises.ts';
 import { reviewLogs } from '../src/db/schema/review-logs.ts';
+import { collocations, sentenceCollocations } from '../src/db/schema/collocations.ts';
 
 let app: FastifyInstance;
 
@@ -25,7 +26,10 @@ async function cleanAll() {
   await app.db.delete(grammarExercises).where(sql`1=1`);
   await app.db.delete(srsCards).where(sql`1=1`);
   await app.db.delete(sentenceWords).where(sql`1=1`);
+  await app.db.delete(sentenceGrammarPatterns).where(sql`1=1`);
+  await app.db.delete(sentenceCollocations).where(sql`1=1`);
   await app.db.delete(words).where(sql`1=1`);
+  await app.db.delete(collocations).where(sql`1=1`);
   await app.db.delete(grammarPatterns).where(sql`1=1`);
   await app.db.delete(sentences).where(sql`1=1`);
 }

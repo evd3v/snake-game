@@ -1,9 +1,8 @@
 import 'dotenv/config';
 import { Worker } from 'bullmq';
 import { getRedisUrl } from '../lib/redis.ts';
-import { analyzeSentence } from '../lib/ai/analyze-sentence.ts';
-import { storeAnalysisResults } from '../services/analysis.ts';
 import { createDb } from '../db/index.ts';
+import { processJob } from './job-processor.ts';
 
 const redisUrl = new URL(getRedisUrl());
 const db = createDb(process.env.DATABASE_URL!);
@@ -11,14 +10,8 @@ const db = createDb(process.env.DATABASE_URL!);
 const worker = new Worker(
   'sentence-analysis',
   async (job) => {
-    console.log(`Processing job ${job.id}:`, job.data);
-    const { text, sourceBook } = job.data as {
-      text: string;
-      sourceBook?: string;
-    };
-    const analysis = await analyzeSentence(text);
-    const result = await storeAnalysisResults(db, text, sourceBook, analysis);
-    return result;
+    console.log(`Processing job ${job.id} (${job.name}):`, job.data);
+    return processJob(db, job);
   },
   {
     connection: {

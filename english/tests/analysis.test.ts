@@ -11,6 +11,9 @@ import {
   grammarPatterns,
   sentenceGrammarPatterns,
   wordFamilies,
+  srsCards,
+  grammarExercises,
+  reviewLogs,
 } from '../src/db/schema/index.ts';
 import { storeAnalysisResults } from '../src/services/analysis.ts';
 import { mockAnalysisResult, MOCK_SENTENCE } from './fixtures/analysis-result.ts';
@@ -22,6 +25,9 @@ beforeAll(() => {
 });
 
 async function cleanAll() {
+  await db.delete(reviewLogs).where(sql`1=1`);
+  await db.delete(grammarExercises).where(sql`1=1`);
+  await db.delete(srsCards).where(sql`1=1`);
   await db.delete(sentenceWords).where(sql`1=1`);
   await db.delete(sentenceCollocations).where(sql`1=1`);
   await db.delete(sentenceGrammarPatterns).where(sql`1=1`);

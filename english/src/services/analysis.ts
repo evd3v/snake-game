@@ -1,3 +1,6 @@
+import { Queue } from 'bullmq';
+import { createEmptyCard } from 'ts-fsrs';
+import { eq, and } from 'drizzle-orm';
 import type { Database } from '../db/index.ts';
 import {
   sentences,
@@ -7,10 +10,28 @@ import {
   sentenceCollocations,
   grammarPatterns,
   sentenceGrammarPatterns,
+  srsCards,
 } from '../db/schema/index.ts';
 import { normalizeLemma } from '../lib/lemmatizer.ts';
 import type { SentenceAnalysis } from '../lib/ai/schemas.ts';
 import { linkWordFamilies } from './word-family.ts';
+import { getRedisUrl } from '../lib/redis.ts';
+
+let exerciseQueue: Queue | null = null;
+
+function getExerciseQueue(): Queue {
+  if (!exerciseQueue) {
+    const redisUrl = new URL(getRedisUrl());
+    exerciseQueue = new Queue('sentence-analysis', {
+      connection: {
+        host: redisUrl.hostname,
+        port: Number(redisUrl.port) || 6379,
+        maxRetriesPerRequest: null,
+      },
+    });
+  }
+  return exerciseQueue;
+}
 
 export async function storeAnalysisResults(
   db: Database,
@@ -133,6 +154,54 @@ export async function storeAnalysisResults(
         grammarPatternId: upsertedPattern.id,
       })
       .onConflictDoNothing();
+
+    // Auto-create SRS card for grammar pattern (idempotent - check first)
+    const [existingCard] = await db
+      .select({ id: srsCards.id })
+      .from(srsCards)
+      .where(
+        and(
+          eq(srsCards.cardType, 'grammar'),
+          eq(srsCards.grammarPatternId, upsertedPattern.id),
+        ),
+      )
+      .limit(1);
+
+    let newSrsCard = null;
+    if (!existingCard) {
+      const emptyCard = createEmptyCard();
+      const [inserted] = await db
+        .insert(srsCards)
+        .values({
+          cardType: 'grammar',
+          grammarPatternId: upsertedPattern.id,
+          state: 'new',
+          due: emptyCard.due,
+          stability: emptyCard.stability,
+          difficulty: emptyCard.difficulty,
+          elapsedDays: emptyCard.elapsed_days,
+          scheduledDays: emptyCard.scheduled_days,
+          reps: emptyCard.reps,
+          lapses: emptyCard.lapses,
+        })
+        .returning();
+      newSrsCard = inserted;
+    }
+
+    // Queue exercise generation only for newly created SRS cards
+    if (newSrsCard) {
+      try {
+        const queue = getExerciseQueue();
+        await queue.add('generate-exercises', {
+          grammarPatternId: upsertedPattern.id,
+          pattern: gp.pattern,
+          description: gp.description,
+          count: 6,
+        });
+      } catch (err) {
+        console.error('Failed to queue exercise generation:', err);
+      }
+    }
   }
 
   // f. Link word families
