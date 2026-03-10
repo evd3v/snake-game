@@ -1,113 +1,87 @@
 # Roadmap: English Learning App
 
-## Overview
+## Milestones
 
-This roadmap delivers a personal AI-powered English learning tool in five phases. We start with the data layer and API foundation, then build the AI analysis engine that powers everything. The Telegram bot comes next as the primary input method during reading sessions. Spaced repetition and exercise generation follow once there is vocabulary data to review. Finally, the web application provides the rich interface for review sessions, vocabulary management, and progress dashboards.
+- **v1.0 MVP** - Phases 1-5 (shipped)
+- **v1.1 UX Polish & Web Features** - Phases 6-9 (in progress)
 
 ## Phases
 
-**Phase Numbering:**
-- Integer phases (1, 2, 3): Planned milestone work
-- Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
-
-Decimal phases appear between their surrounding integers in numeric order.
+<details>
+<summary>v1.0 MVP (Phases 1-5) - SHIPPED</summary>
 
 - [x] **Phase 1: Foundation and Data Layer** - Database schema, API skeleton, Docker environment, async job queue
 - [x] **Phase 2: AI Analysis Pipeline** - Sentence analysis, vocabulary extraction, lemmatization, collocations, grammar patterns
-- [ ] **Phase 3: Telegram Bot** - Sentence input via bot, word selection, familiarity tagging
-- [ ] **Phase 4: Spaced Repetition and Exercises** - FSRS engine, flashcard review, cloze exercises, batch generation, bot review
-- [ ] **Phase 5: Web Application and Dashboard** - Vue SPA with sentence input, vocabulary management, review UI, progress dashboard
+- [x] **Phase 3: Telegram Bot** - Sentence input via bot, word selection, familiarity tagging
+- [x] **Phase 4: Spaced Repetition and Exercises** - FSRS engine, flashcard review, cloze exercises, batch generation, bot review
+- [x] **Phase 5: Web Application and Dashboard** - Vue SPA with sentence input, dashboard, progress tracking
+
+</details>
+
+**Phase Numbering:**
+- Integer phases (6, 7, 8, 9): Planned v1.1 work
+- Decimal phases (7.1, 7.2): Urgent insertions (marked with INSERTED)
+
+- [ ] **Phase 6: Data Model Evolution** - POS-aware word senses, composite uniqueness, SRS card linkage migration
+- [ ] **Phase 7: Service Updates & Telegram Auto-Add** - POS-aware upserts, automatic SRS card creation, simplified Telegram flow
+- [ ] **Phase 8: Vocabulary Page & Collocations UI** - Full vocabulary browser with filters, word detail, collocations display across all views
+- [ ] **Phase 9: Web SRS Review** - Card-by-card review flow in browser with keyboard shortcuts and session tracking
 
 ## Phase Details
 
-### Phase 1: Foundation and Data Layer
-**Goal**: A running development environment with database, API, and job queue ready to accept domain logic
-**Depends on**: Nothing (first phase)
-**Requirements**: INFRA-01, INFRA-02, INFRA-05, INFRA-06
+### Phase 6: Data Model Evolution
+**Goal**: Words support multiple parts of speech with independent translations and SRS tracking per sense
+**Depends on**: Phase 5 (v1.0 complete)
+**Requirements**: DATA-01, DATA-02, DATA-03
 **Success Criteria** (what must be TRUE):
-  1. PostgreSQL database is running with schema tables for sentences, words, collocations, grammar patterns, word families, and SRS cards created via Drizzle migrations
-  2. Fastify API server starts and responds to health-check requests
-  3. BullMQ worker process connects to Redis and can process a test job
-  4. Docker Compose brings up the full dev environment (app + PostgreSQL + Redis) with one command
-**Plans:** 2 plans
+  1. A word like "run" can exist as both verb and noun with different translations, without constraint violations
+  2. Each word sense has its own SRS card -- reviewing "run (verb)" does not affect "run (noun)"
+  3. All existing words have been migrated to the new schema with a sense derived from their current POS/translation
+  4. The analysis pipeline continues to work after migration -- submitting a sentence produces correct word entries
+**Plans**: TBD
 
-Plans:
-- [x] 01-01-PLAN.md — Project scaffolding, Docker environment, and database schema
-- [x] 01-02-PLAN.md — Fastify server, BullMQ worker, and integration tests
-
-### Phase 2: AI Analysis Pipeline
-**Goal**: A sentence submitted via API is analyzed by AI and produces structured vocabulary, collocations, grammar patterns, and word families stored in the database
-**Depends on**: Phase 1
-**Requirements**: SENT-03, SENT-04, SENT-05, SENT-06, SENT-07, VOCAB-01, VOCAB-04, VOCAB-05, VOCAB-06, VOCAB-07
+### Phase 7: Service Updates & Telegram Auto-Add
+**Goal**: New words from sentence analysis are automatically added with SRS cards, no manual selection required
+**Depends on**: Phase 6
+**Requirements**: TG-01, TG-02
 **Success Criteria** (what must be TRUE):
-  1. Submitting a sentence via API returns AI analysis with translation, grammar breakdown, vocabulary list, and CEFR level
-  2. Extracted words are stored as lemmas with automatic deduplication -- submitting the same word twice does not create duplicates
-  3. Collocations, phrasal verbs, and idioms are extracted and stored as independent learnable units linked to their source sentence
-  4. Word families are detected and linked in the database (e.g., submitting "reluctantly" links to existing "reluctant" and "reluctance")
-  5. Each extracted word is auto-assigned to a thematic cluster by the AI
-**Plans:** 3 plans
+  1. When user submits a sentence in Telegram, all new words automatically get SRS cards without prompting for familiarity selection
+  2. Words that already have SRS cards are not duplicated when encountered in a new sentence
+  3. The review queue is not flooded with trivial words -- CEFR-based filtering prevents basic vocabulary from auto-adding
+**Plans**: TBD
 
-Plans:
-- [x] 02-01-PLAN.md — AI SDK setup, Zod schemas, prompt templates, lemmatizer with unit tests
-- [x] 02-02-PLAN.md — Analysis storage service, word family linking, integration tests
-- [x] 02-03-PLAN.md — Sentence API routes, worker integration, API tests
-
-### Phase 3: Telegram Bot
-**Goal**: User can send English sentences from a book via Telegram and see analysis results with the ability to select words to learn
-**Depends on**: Phase 2
-**Requirements**: INFRA-04, SENT-02, VOCAB-02, VOCAB-03
+### Phase 8: Vocabulary Page & Collocations UI
+**Goal**: Users can browse, search, filter, and manage their entire vocabulary through the web app, with collocations visible everywhere
+**Depends on**: Phase 7
+**Requirements**: VOCPG-01, VOCPG-02, VOCPG-03, VOCPG-04, VOCPG-05, VOCPG-06, VOCPG-07, VOCPG-08, COLL-01, COLL-02
 **Success Criteria** (what must be TRUE):
-  1. User sends a sentence to the Telegram bot and receives a compact analysis (translation, key vocabulary, CEFR level) within seconds
-  2. User can select which extracted words to save to their vocabulary via inline keyboard buttons
-  3. User can set familiarity level for each saved word ("never seen" / "seen but unsure" / "understand in context")
-**Plans:** 2 plans
+  1. User can see all saved words in a paginated list and search by lemma
+  2. User can filter words by familiarity level, SRS state, CEFR level, and thematic cluster -- and sort by alphabet, date added, or CEFR level
+  3. User can view word detail showing associated collocations and word family members
+  4. User can mark a word as "known" (removing it from review queue) or reset it to "forgotten" (returning it to queue)
+  5. Collocations are displayed on the sentence analysis result page and on the vocabulary word detail page
+**Plans**: TBD
 
-Plans:
-- [x] 03-01-PLAN.md — Word API routes, grammY bot scaffolding, sentence analysis flow
-- [x] 03-02-PLAN.md — Word selection keyboard, familiarity flow, live bot verification
-
-### Phase 4: Spaced Repetition and Exercises
-**Goal**: User can review saved vocabulary and grammar through FSRS-scheduled flashcards and AI-generated cloze exercises
-**Depends on**: Phase 3
-**Requirements**: SRS-01, SRS-02, SRS-03, SRS-04, SRS-05, SRS-06, SRS-07
+### Phase 9: Web SRS Review
+**Goal**: Users can complete full review sessions in the browser with the same quality as Telegram review
+**Depends on**: Phase 6
+**Requirements**: WREV-01, WREV-02, WREV-03, WREV-04, WREV-05, WREV-06
 **Success Criteria** (what must be TRUE):
-  1. Due vocabulary cards appear for review scheduled by FSRS algorithm, with the original book sentence shown as context
-  2. Grammar patterns have cloze exercises (AI-generated fill-in-the-blank sentences) that progress from simple to complex variations
-  3. Exercises are pre-generated in batches and ready when the user starts a review session -- no waiting for AI
-  4. User can complete a quick review session (due cards only) directly in the Telegram bot
-**Plans:** 2/3 plans executed
-
-Plans:
-- [x] 04-01-PLAN.md — FSRS service, grammar exercises schema, cloze generation service
-- [ ] 04-02-PLAN.md — Review API routes, SRS card creation hooks, exercise generation worker
-- [ ] 04-03-PLAN.md — Telegram bot /review command with session flow
-
-### Phase 5: Web Application and Dashboard
-**Goal**: User has a full web interface for sentence input, vocabulary browsing, review sessions, and progress tracking
-**Depends on**: Phase 4
-**Requirements**: INFRA-03, SENT-01, DASH-01, DASH-02, DASH-03, DASH-04
-**Success Criteria** (what must be TRUE):
-  1. User can input sentences via web UI and see full AI analysis with word selection
-  2. Dashboard shows overall progress counters (new / learning / known) for words and grammar patterns
-  3. Dashboard highlights weak spots -- grammar patterns and words with lowest success rates
-  4. Activity streak counter and heatmap show daily review and addition history
-  5. Thematic cluster view shows vocabulary coverage gaps across topics
-**Plans:** 3 plans
-
-Plans:
-- [ ] 05-01-PLAN.md — Vue SPA scaffolding, API client, shared types, and dashboard API endpoints
-- [ ] 05-02-PLAN.md — Dashboard frontend with progress, weak spots, heatmap, and cluster widgets
-- [ ] 05-03-PLAN.md — Sentence input UI with analysis display and word selection
+  1. User can review vocabulary flashcards (with original book sentence as context) and grammar cloze exercises in the browser
+  2. User can rate cards using Again/Hard/Good/Easy buttons or keyboard shortcuts (1-4)
+  3. User sees a progress bar during the session and a summary screen after completion showing counts per rating
+  4. Reviewing on web does not corrupt Telegram review state -- staleness guard prevents conflicts
+**Plans**: TBD
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
+Phases execute in numeric order: 6 -> 7 -> 8 -> 9
+Note: Phase 9 depends on Phase 6 (not Phase 8), so Phases 8 and 9 could potentially overlap.
 
-| Phase | Plans Complete | Status | Completed |
-|-------|----------------|--------|-----------|
-| 1. Foundation and Data Layer | 2/2 | Complete | 2026-03-09 |
-| 2. AI Analysis Pipeline | 3/3 | Complete | 2026-03-09 |
-| 3. Telegram Bot | 2/2 | Complete | 2026-03-09 |
-| 4. Spaced Repetition and Exercises | 2/3 | In Progress|  |
-| 5. Web Application and Dashboard | 0/3 | Not started | - |
+| Phase | Milestone | Plans Complete | Status | Completed |
+|-------|-----------|----------------|--------|-----------|
+| 6. Data Model Evolution | v1.1 | 0/? | Not started | - |
+| 7. Service Updates & Telegram Auto-Add | v1.1 | 0/? | Not started | - |
+| 8. Vocabulary Page & Collocations UI | v1.1 | 0/? | Not started | - |
+| 9. Web SRS Review | v1.1 | 0/? | Not started | - |

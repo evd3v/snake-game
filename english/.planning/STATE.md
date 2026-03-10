@@ -3,11 +3,11 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: UX Polish & Web Features
 status: active
-stopped_at: Milestone v1.1 started
+stopped_at: Roadmap created for v1.1
 last_updated: "2026-03-10"
-last_activity: 2026-03-10 — Milestone v1.1 started
+last_activity: 2026-03-10 — Roadmap created for v1.1 milestone
 progress:
-  total_phases: 0
+  total_phases: 4
   completed_phases: 0
   total_plans: 0
   completed_plans: 0
@@ -21,45 +21,39 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-10)
 
 **Core value:** User inputs a real sentence from a book and gets full analysis (translation, grammar, vocabulary, CEFR), with extracted items feeding into spaced repetition -- all in one flow.
-**Current focus:** v1.1 UX Polish & Web Features — vocabulary page, web review, collocations UI, Telegram auto-add, multiple POS/translations
+**Current focus:** Phase 6 - Data Model Evolution
 
 ## Current Position
 
-Phase: Not started (defining requirements)
-Plan: —
-Status: Defining requirements
-Last activity: 2026-03-10 — Milestone v1.1 started
+Phase: 6 of 9 (Data Model Evolution)
+Plan: 0 of ? in current phase
+Status: Ready to plan
+Last activity: 2026-03-10 — Roadmap created for v1.1 milestone
 
 Progress: [░░░░░░░░░░] 0%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
+- Total plans completed: 15 (v1.0)
 - Average duration: 4min
-- Total execution time: 0.25 hours
+- Total execution time: ~1 hour
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01 | 2 | 9min | 4.5min |
-| 02 | 2 | 6min | 3min |
+| 02 | 3 | 9min | 3min |
+| 03 | 2 | 8min | 4min |
+| 04 | 3 | 11min | 3.7min |
+| 05 | 3 | 11min | 3.7min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (4min), 01-02 (5min), 02-01 (3min), 02-02 (3min)
-- Trend: improving
+- Last 5 plans: 04-02 (5min), 04-03 (3min), 05-01 (4min), 05-02 (3min), 05-03 (4min)
+- Trend: Stable
 
 *Updated after each plan completion*
-| Phase 02 P03 | 3min | 2 tasks | 3 files |
-| Phase 03 P01 | 3min | 2 tasks | 8 files |
-| Phase 03 P02 | 5min | 2 tasks | 5 files |
-| Phase 04 P01 | 3min | 2 tasks | 10 files |
-| Phase 04 P02 | 5min | 2 tasks | 11 files |
-| Phase 04 P03 | 3min | 1 tasks | 5 files |
-| Phase 05 P01 | 4min | 2 tasks | 12 files |
-| Phase 05 P02 | 3min | 2 tasks | 6 files |
-| Phase 05 P03 | 4min | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -68,44 +62,11 @@ Progress: [░░░░░░░░░░] 0%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
-- Research: Use FSRS (ts-fsrs) instead of SM-2 for spaced repetition
-- Research: Use grammY (not Telegraf) for Telegram bot
-- Research: All AI calls go through BullMQ job queue, never in request path
-- Research: Two-pass vocabulary extraction (deterministic lemmatizer + LLM for context-dependent units)
-- 01-01: Used .ts import extensions with allowImportingTsExtensions for drizzle-kit CJS compatibility
-- 01-01: Glob pattern in drizzle.config.ts schema path for reliable drizzle-kit discovery
-- 01-01: word_family_id FK enforced via Drizzle relations, not inline reference
-- 01-02: BullMQ URL-based connection config to avoid ioredis type mismatch with bundled version
-- 01-02: Docker postgres port 5433 to avoid local PG conflict
-- 01-02: NODE_OPTIONS='--import tsx' for vitest + @fastify/autoload .ts file compatibility
-- 02-01: Adverb lemmatization strips -ly suffix before adjective lookup (wink-lemmatizer has no adverb function)
-- 02-01: Custom .d.ts type declaration for wink-lemmatizer CJS package (no @types available)
-- 02-02: Upsert words on lemma conflict updates thematicCluster (AI may refine on re-encounter)
-- 02-02: Junction table inserts use onConflictDoNothing for idempotent re-submission
-- [Phase 02]: Worker concurrency set to 2 to limit parallel AI API calls
-- [Phase 02]: Fastify JSON schema validation for input (minLength: 1 on text field)
-- 03-01: Bot fetches words via GET /sentences/:sentenceId/words after job completion (job result only has counts)
-- 03-01: HTML parse_mode for Telegram messages (avoids MarkdownV2 escaping issues)
-- 03-01: API client uses native fetch against API_URL env var
-- 03-02: In-memory Map for selection state keyed by chatId:sentenceId (single-instance bot)
-- 03-02: Callback data encoding: sel/done/fam prefixes with numeric IDs, all under 64 bytes
-- 03-02: Stale callback detection returns friendly expiry message
-- 04-01: ts-fsrs scheduler.next(card, now, rating) returns {card, log} directly when given specific rating
-- 04-01: FSRS scheduler with request_retention=0.9 and enable_fuzz=true
-- 04-01: onConflictDoNothing for idempotent SRS card creation
-- 04-02: Check-then-insert for grammar SRS card idempotency (no unique constraint on grammarPatternId)
-- 04-02: job-processor.ts extracted from worker for testable multi-job-type routing
-- 04-02: fileParallelism disabled in vitest for DB test isolation
-- [Phase 04]: In-memory Map for review session state keyed by chatId (consistent with vocabulary handler pattern)
-- 05-01: Raw SQL for dashboard aggregations (FILTER, FULL OUTER JOIN) where Drizzle ORM builder would be unwieldy
-- 05-01: Vite proxy rewrites /api prefix to forward to bare backend routes on localhost:3000
-- 05-01: Removed vite-plugin-vue-devtools to keep build lean
-- [Phase 05]: Custom SVG heatmap (52x7 grid) instead of vue3-calendar-heatmap (stale)
-- [Phase 05]: CSS flexbox stacked bars for cluster coverage, no charting library
-- [Phase 05]: CSS Grid 3fr/2fr layout with single-column breakpoint at 768px
-- [Phase 05]: Direct reactive mutation for Vue array items to avoid TS type loss through proxy
-- [Phase 05]: AbortController pattern for cancellable polling in Pinia store
-- [Phase quick-1]: Promise.all for parallel fetching of words and sentence details
+- [v1.1 roadmap]: Schema migration first -- composite unique on (lemma, partOfSpeech) is prerequisite for all features
+- [v1.1 roadmap]: Auto-add uses CEFR filtering to prevent queue flooding (threshold TBD, likely B2+)
+- [v1.1 roadmap]: Web review is stateless (fetch-rate-fetch) to avoid SRS conflicts with Telegram
+- [v1.0 carry-forward]: Upsert words on lemma conflict updates thematicCluster (AI may refine on re-encounter)
+- [v1.0 carry-forward]: Adverb lemmatization strips -ly suffix before adjective lookup
 
 ### Pending Todos
 
@@ -119,11 +80,12 @@ None yet.
 
 ### Blockers/Concerns
 
-- Grammar taxonomy (50-100 patterns for B1-C1) needs definition before Phase 2 prompt engineering
-- ~~Deterministic lemmatizer choice for Node.js~~ RESOLVED: wink-lemmatizer selected and implemented in 02-01
+- normalizeLemma() collapses adverbs to adjective form -- may cause POS collisions after migration. Investigate in Phase 6.
+- CEFR auto-add threshold not finalized (B1+ vs B2+). Decide during Phase 7 planning.
+- Grammar exercise exhaustion may accelerate with web review added. Monitor during Phase 9.
 
 ## Session Continuity
 
-Last session: 2026-03-09T18:31:55.968Z
-Stopped at: Completed quick-1 plan
+Last session: 2026-03-10
+Stopped at: Roadmap created for v1.1 milestone
 Resume file: None

@@ -167,37 +167,37 @@ Deferred to future release.
 | INFRA-05 | Phase 1 | Complete |
 | INFRA-06 | Phase 1 | Complete |
 
-### v1.1 (Pending)
+### v1.1 (Active)
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DATA-01 | — | Pending |
-| DATA-02 | — | Pending |
-| DATA-03 | — | Pending |
-| VOCPG-01 | — | Pending |
-| VOCPG-02 | — | Pending |
-| VOCPG-03 | — | Pending |
-| VOCPG-04 | — | Pending |
-| VOCPG-05 | — | Pending |
-| VOCPG-06 | — | Pending |
-| VOCPG-07 | — | Pending |
-| VOCPG-08 | — | Pending |
-| WREV-01 | — | Pending |
-| WREV-02 | — | Pending |
-| WREV-03 | — | Pending |
-| WREV-04 | — | Pending |
-| WREV-05 | — | Pending |
-| WREV-06 | — | Pending |
-| TG-01 | — | Pending |
-| TG-02 | — | Pending |
-| COLL-01 | — | Pending |
-| COLL-02 | — | Pending |
+| DATA-01 | Phase 6 | Pending |
+| DATA-02 | Phase 6 | Pending |
+| DATA-03 | Phase 6 | Pending |
+| TG-01 | Phase 7 | Pending |
+| TG-02 | Phase 7 | Pending |
+| VOCPG-01 | Phase 8 | Pending |
+| VOCPG-02 | Phase 8 | Pending |
+| VOCPG-03 | Phase 8 | Pending |
+| VOCPG-04 | Phase 8 | Pending |
+| VOCPG-05 | Phase 8 | Pending |
+| VOCPG-06 | Phase 8 | Pending |
+| VOCPG-07 | Phase 8 | Pending |
+| VOCPG-08 | Phase 8 | Pending |
+| COLL-01 | Phase 8 | Pending |
+| COLL-02 | Phase 8 | Pending |
+| WREV-01 | Phase 9 | Pending |
+| WREV-02 | Phase 9 | Pending |
+| WREV-03 | Phase 9 | Pending |
+| WREV-04 | Phase 9 | Pending |
+| WREV-05 | Phase 9 | Pending |
+| WREV-06 | Phase 9 | Pending |
 
 **Coverage:**
 - v1.1 requirements: 21 total
-- Mapped to phases: 0
-- Unmapped: 21 ⚠️
+- Mapped to phases: 21/21
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-09*
-*Last updated: 2026-03-10 after v1.1 milestone requirements*
+*Last updated: 2026-03-10 after v1.1 roadmap creation*
