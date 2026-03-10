@@ -88,8 +88,8 @@ Requirements for UX Polish & Web Features milestone. Each maps to roadmap phases
 
 ### Collocations
 
-- [ ] **COLL-01**: Collocations отображаются в веб-UI при анализе предложения
-- [ ] **COLL-02**: Collocations видны на странице vocabulary для каждого слова
+- [x] **COLL-01**: Collocations отображаются в веб-UI при анализе предложения
+- [x] **COLL-02**: Collocations видны на странице vocabulary для каждого слова
 
 ## v2 Requirements
 
@@ -184,8 +184,8 @@ Deferred to future release.
 | VOCPG-06 | Phase 8 | Complete |
 | VOCPG-07 | Phase 8 | Complete |
 | VOCPG-08 | Phase 8 | Complete |
-| COLL-01 | Phase 8 | Pending |
-| COLL-02 | Phase 8 | Pending |
+| COLL-01 | Phase 8 | Complete |
+| COLL-02 | Phase 8 | Complete |
 | WREV-01 | Phase 9 | Pending |
 | WREV-02 | Phase 9 | Pending |
 | WREV-03 | Phase 9 | Pending |
