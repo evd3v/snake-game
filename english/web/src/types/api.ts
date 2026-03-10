@@ -126,3 +126,52 @@ export interface ReviewStats {
   total: number
   ratings: Record<1 | 2 | 3 | 4, number>
 }
+
+// Grammar browse page types
+
+export interface GrammarPatternItem {
+  id: number
+  pattern: string
+  description: string | null
+  cefrLevel: string | null
+  srsState: string | null
+  exampleSentences: Array<{ id: number; text: string }>
+}
+
+export interface GrammarListResponse {
+  items: GrammarPatternItem[]
+  total: number
+  page: number
+  limit: number
+}
+
+export interface GrammarFilters {
+  search: string
+  cefrLevel: string
+  srsState: string
+}
+
+// Collocations browse page types
+
+export interface CollocationItem {
+  id: number
+  text: string
+  translation: string | null
+  type: 'collocation' | 'phrasal_verb' | 'idiom'
+  cefrLevel: string | null
+  srsState: string | null
+  exampleSentences: Array<{ id: number; text: string }>
+}
+
+export interface CollocationListResponse {
+  items: CollocationItem[]
+  total: number
+  page: number
+  limit: number
+}
+
+export interface CollocationFilters {
+  search: string
+  cefrLevel: string
+  type: string
+}

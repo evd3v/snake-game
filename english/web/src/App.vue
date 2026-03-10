@@ -13,6 +13,8 @@ const route = useRoute()
           <RouterLink to="/" class="nav-link" :class="{ active: route.path === '/' }">Dashboard</RouterLink>
           <RouterLink to="/sentences" class="nav-link" :class="{ active: route.path === '/sentences' }">Sentences</RouterLink>
           <RouterLink to="/vocabulary" class="nav-link" :class="{ active: route.path === '/vocabulary' }">Vocabulary</RouterLink>
+          <RouterLink to="/grammar" class="nav-link" :class="{ active: route.path === '/grammar' }">Grammar</RouterLink>
+          <RouterLink to="/collocations" class="nav-link" :class="{ active: route.path === '/collocations' }">Collocations</RouterLink>
           <RouterLink to="/review" class="nav-link" :class="{ active: route.path === '/review' }">Review</RouterLink>
         </nav>
       </div>

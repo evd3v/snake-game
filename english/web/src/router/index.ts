@@ -19,6 +19,16 @@ const router = createRouter({
       component: () => import('../views/VocabularyView.vue'),
     },
     {
+      path: '/grammar',
+      name: 'grammar',
+      component: () => import('../views/GrammarView.vue'),
+    },
+    {
+      path: '/collocations',
+      name: 'collocations',
+      component: () => import('../views/CollocationsView.vue'),
+    },
+    {
       path: '/review',
       name: 'review',
       component: () => import('../views/ReviewView.vue'),
