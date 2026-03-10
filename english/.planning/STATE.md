@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: active
-stopped_at: Completed 06-02-PLAN.md
-last_updated: "2026-03-10T05:15:21.203Z"
+stopped_at: Completed 07-01-PLAN.md
+last_updated: "2026-03-10T06:46:33.028Z"
 last_activity: 2026-03-10 — Completed 06-02 consumer updates for word_senses
 progress:
   total_phases: 4
   completed_phases: 1
-  total_plans: 3
-  completed_plans: 3
+  total_plans: 5
+  completed_plans: 4
   percent: 100
 ---
 
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-10)
 
 **Core value:** User inputs a real sentence from a book and gets full analysis (translation, grammar, vocabulary, CEFR), with extracted items feeding into spaced repetition -- all in one flow.
-**Current focus:** Phase 6 - Data Model Evolution
+**Current focus:** Phase 7 - Service Updates / Telegram Auto-Add
 
 ## Current Position
 
-Phase: 6 of 9 (Data Model Evolution)
-Plan: 3 of 3 in current phase
+Phase: 7 of 9 (Service Updates / Telegram Auto-Add)
+Plan: 1 of 2 in current phase
 Status: active
-Last activity: 2026-03-10 — Completed 06-02 consumer updates for word_senses
+Last activity: 2026-03-10 — Completed 07-01 auto-SRS with CEFR filter
 
-Progress: [██████████] 100%
+Progress: [█████████░] 94%
 
 ## Performance Metrics
 
@@ -57,6 +57,7 @@ Progress: [██████████] 100%
 | Phase 06 P00 | 1min | 1 tasks | 1 files |
 | Phase 06 P01 | 4min | 2 tasks | 8 files |
 | Phase 06 P02 | 9min | 2 tasks | 17 files |
+| Phase 07 P01 | 2min | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -76,6 +77,8 @@ Recent decisions affecting current work:
 - [Phase 06-01]: familiarityEnum kept in words.ts, column moved to word_senses
 - [Phase 06-02]: SRS card endpoint renamed from /words/:wordId/srs-card to /word-senses/:wordSenseId/srs-card
 - [Phase 06-02]: PATCH /words/:id/familiarity kept for compat but updates word_senses
+- [Phase 07]: CEFR auto-add threshold set to B1 -- broader inclusion catches more useful vocabulary
+- [Phase 07]: Check-then-insert for vocab SRS dedup (no unique constraint on wordSenseId in srs_cards)
 
 ### Pending Todos
 
@@ -95,6 +98,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-10T05:10:30Z
-Stopped at: Completed 06-02-PLAN.md
+Last session: 2026-03-10T06:46:33.025Z
+Stopped at: Completed 07-01-PLAN.md
 Resume file: None

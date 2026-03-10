@@ -83,8 +83,8 @@ Requirements for UX Polish & Web Features milestone. Each maps to roadmap phases
 
 ### Telegram UX
 
-- [ ] **TG-01**: Все новые слова автоматически добавляются с SRS-карточками при анализе предложения
-- [ ] **TG-02**: Уже известные слова (есть SRS-карточка) не дублируются
+- [x] **TG-01**: Все новые слова автоматически добавляются с SRS-карточками при анализе предложения
+- [x] **TG-02**: Уже известные слова (есть SRS-карточка) не дублируются
 
 ### Collocations
 
@@ -174,8 +174,8 @@ Deferred to future release.
 | DATA-01 | Phase 6 | Complete |
 | DATA-02 | Phase 6 | Complete |
 | DATA-03 | Phase 6 | Complete |
-| TG-01 | Phase 7 | Pending |
-| TG-02 | Phase 7 | Pending |
+| TG-01 | Phase 7 | Complete |
+| TG-02 | Phase 7 | Complete |
 | VOCPG-01 | Phase 8 | Pending |
 | VOCPG-02 | Phase 8 | Pending |
 | VOCPG-03 | Phase 8 | Pending |
