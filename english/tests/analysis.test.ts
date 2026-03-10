@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { describe, it, expect, beforeAll, afterAll, afterEach } from 'vitest';
-import { sql, eq } from 'drizzle-orm';
+import { sql, eq, and } from 'drizzle-orm';
 import { createDb, type Database } from '../src/db/index.ts';
 import {
   sentences,
@@ -144,6 +144,87 @@ describe('storeAnalysisResults', () => {
       .where(eq(sentenceGrammarPatterns.sentenceId, result.sentenceId));
 
     expect(junctions.length).toBe(mockAnalysisResult.grammarPatterns.length);
+  });
+
+  it('auto-creates SRS cards for words with CEFR >= B1', async () => {
+    await storeAnalysisResults(db, MOCK_SENTENCE, undefined, mockAnalysisResult);
+
+    // Should create vocabulary SRS cards for B1+ words only
+    // matter (B1), account (B1), reluctance (B2) = 3 cards
+    // take (A2), know (A1) = 0 cards
+    const vocabCards = await db
+      .select()
+      .from(srsCards)
+      .where(eq(srsCards.cardType, 'vocabulary'));
+
+    expect(vocabCards).toHaveLength(3);
+
+    // Verify no cards for A1/A2 words by checking word senses
+    const knowWord = await db.select().from(words).where(eq(words.lemma, 'know'));
+    const takeWord = await db.select().from(words).where(eq(words.lemma, 'take'));
+
+    if (knowWord.length > 0) {
+      const knowSenses = await db
+        .select()
+        .from(wordSenses)
+        .where(eq(wordSenses.wordId, knowWord[0].id));
+      for (const sense of knowSenses) {
+        const knowCards = await db
+          .select()
+          .from(srsCards)
+          .where(
+            and(
+              eq(srsCards.cardType, 'vocabulary'),
+              eq(srsCards.wordSenseId, sense.id),
+            ),
+          );
+        expect(knowCards).toHaveLength(0);
+      }
+    }
+
+    if (takeWord.length > 0) {
+      const takeSenses = await db
+        .select()
+        .from(wordSenses)
+        .where(eq(wordSenses.wordId, takeWord[0].id));
+      for (const sense of takeSenses) {
+        const takeCards = await db
+          .select()
+          .from(srsCards)
+          .where(
+            and(
+              eq(srsCards.cardType, 'vocabulary'),
+              eq(srsCards.wordSenseId, sense.id),
+            ),
+          );
+        expect(takeCards).toHaveLength(0);
+      }
+    }
+  });
+
+  it('does not duplicate SRS cards on re-analysis', async () => {
+    await storeAnalysisResults(db, MOCK_SENTENCE, undefined, mockAnalysisResult);
+    await storeAnalysisResults(db, MOCK_SENTENCE + ' Again.', undefined, mockAnalysisResult);
+
+    const vocabCards = await db
+      .select()
+      .from(srsCards)
+      .where(eq(srsCards.cardType, 'vocabulary'));
+
+    // Still exactly 3 vocabulary cards, not 6
+    expect(vocabCards).toHaveLength(3);
+  });
+
+  it('preserves grammar SRS card auto-creation', async () => {
+    await storeAnalysisResults(db, MOCK_SENTENCE, undefined, mockAnalysisResult);
+
+    const grammarCards = await db
+      .select()
+      .from(srsCards)
+      .where(eq(srsCards.cardType, 'grammar'));
+
+    // 1 grammar pattern in mock data = 1 grammar SRS card
+    expect(grammarCards).toHaveLength(1);
   });
 
   it('links word families', async () => {

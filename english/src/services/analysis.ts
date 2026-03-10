@@ -16,6 +16,7 @@ import {
 import { normalizeLemma } from '../lib/lemmatizer.ts';
 import type { SentenceAnalysis } from '../lib/ai/schemas.ts';
 import { linkWordFamilies } from './word-family.ts';
+import { shouldAutoAddWord } from './cefr-filter.ts';
 import { getRedisUrl } from '../lib/redis.ts';
 
 let exerciseQueue: Queue | null = null;
@@ -83,7 +84,7 @@ export async function storeAnalysisResults(
       .returning({ id: words.id });
 
     // Step 2: Upsert word sense (POS-level, with translation)
-    await db
+    const [upsertedSense] = await db
       .insert(wordSenses)
       .values({
         wordId: upsertedWord.id,
@@ -93,7 +94,38 @@ export async function storeAnalysisResults(
       .onConflictDoUpdate({
         target: [wordSenses.wordId, wordSenses.partOfSpeech],
         set: { translation: vocab.translation },
-      });
+      })
+      .returning({ id: wordSenses.id });
+
+    // Step 3: Auto-create vocabulary SRS card for CEFR >= B1 (idempotent)
+    if (shouldAutoAddWord(vocab.cefrLevel)) {
+      const [existingVocabCard] = await db
+        .select({ id: srsCards.id })
+        .from(srsCards)
+        .where(
+          and(
+            eq(srsCards.cardType, 'vocabulary'),
+            eq(srsCards.wordSenseId, upsertedSense.id),
+          ),
+        )
+        .limit(1);
+
+      if (!existingVocabCard) {
+        const emptyCard = createEmptyCard();
+        await db.insert(srsCards).values({
+          cardType: 'vocabulary',
+          wordSenseId: upsertedSense.id,
+          state: 'new',
+          due: emptyCard.due,
+          stability: emptyCard.stability,
+          difficulty: emptyCard.difficulty,
+          elapsedDays: emptyCard.elapsed_days,
+          scheduledDays: emptyCard.scheduled_days,
+          reps: emptyCard.reps,
+          lapses: emptyCard.lapses,
+        });
+      }
+    }
 
     insertedWordsMap.set(normalizedLemma, upsertedWord.id);
     wordsInserted++;
