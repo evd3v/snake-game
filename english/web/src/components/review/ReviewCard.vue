@@ -55,6 +55,8 @@ const cefrColors: Record<string, string> = {
           <div class="divider" />
           <div class="card-back">
             <p class="exercise-answer">{{ card.exercise.answer }}</p>
+            <p v-if="card.pattern?.description" class="pattern-description">{{ card.pattern.description }}</p>
+            <p v-if="card.exampleSentence" class="example-sentence">"{{ card.exampleSentence }}"</p>
           </div>
         </template>
 
@@ -64,9 +66,30 @@ const cefrColors: Record<string, string> = {
       <template v-else>
         <div class="card-front">
           <div class="pattern-title">{{ card.pattern?.pattern }}</div>
+          <p v-if="card.pattern?.description" class="pattern-description">{{ card.pattern.description }}</p>
+          <p v-if="card.exampleSentence" class="example-sentence">"{{ card.exampleSentence }}"</p>
           <p class="no-exercise">No exercises available -- rate based on your knowledge of this pattern</p>
         </div>
       </template>
+    </template>
+
+    <!-- Collocation card -->
+    <template v-else-if="card.cardType === 'collocation'">
+      <div class="card-front">
+        <div class="collocation-text">{{ card.collocation?.text }}</div>
+        <div class="badges">
+          <span v-if="card.collocation?.type" class="badge type-badge">{{ card.collocation.type.replace('_', ' ') }}</span>
+          <span v-if="card.collocation?.cefrLevel" class="badge cefr-badge" :style="{ background: cefrColors[card.collocation.cefrLevel] || '#94a3b8' }">{{ card.collocation.cefrLevel }}</span>
+        </div>
+        <p v-if="card.sentence" class="context-sentence">{{ card.sentence }}</p>
+      </div>
+      <template v-if="revealed">
+        <div class="divider" />
+        <div class="card-back">
+          <p class="translation">{{ card.collocation?.translation || '---' }}</p>
+        </div>
+      </template>
+      <p v-if="!revealed" class="reveal-hint">Press Space or Enter to reveal</p>
     </template>
   </div>
 </template>
@@ -170,5 +193,29 @@ const cefrColors: Record<string, string> = {
 .no-exercise {
   font-size: 14px;
   color: #94a3b8;
+}
+
+.collocation-text {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.type-badge {
+  background: #8b5cf6;
+}
+
+.pattern-description {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 8px;
+}
+
+.example-sentence {
+  font-size: 15px;
+  font-style: italic;
+  color: #64748b;
+  margin-top: 8px;
 }
 </style>

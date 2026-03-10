@@ -21,6 +21,10 @@ function onCefrChange(e: Event) {
 function onTypeChange(e: Event) {
   store.updateFilters({ type: (e.target as HTMLSelectElement).value })
 }
+
+function onSrsStateChange(e: Event) {
+  store.updateFilters({ srsState: (e.target as HTMLSelectElement).value })
+}
 </script>
 
 <template>
@@ -50,8 +54,16 @@ function onTypeChange(e: Event) {
         <option value="idiom">Idiom</option>
       </select>
 
+      <select :value="store.filters.srsState" class="filter-select" @change="onSrsStateChange">
+        <option value="">All SRS states</option>
+        <option value="new">New</option>
+        <option value="learning">Learning</option>
+        <option value="known">Known</option>
+        <option value="no_card">No card</option>
+      </select>
+
       <button
-        v-if="store.filters.search || store.filters.cefrLevel || store.filters.type"
+        v-if="store.filters.search || store.filters.cefrLevel || store.filters.type || store.filters.srsState"
         class="clear-btn"
         @click="store.clearFilters()"
       >

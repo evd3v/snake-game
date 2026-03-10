@@ -1,6 +1,7 @@
 export interface ProgressStats {
   words: { new: number; learning: number; known: number }
   grammar: { new: number; learning: number; known: number }
+  collocations: { new: number; learning: number; known: number }
 }
 
 export interface WeakSpot {
@@ -102,7 +103,7 @@ export interface WordDetailResponse {
 
 export interface DueCard {
   cardId: number
-  cardType: 'vocabulary' | 'grammar'
+  cardType: 'vocabulary' | 'grammar' | 'collocation'
   state: string
   due: string
   word?: {
@@ -119,6 +120,13 @@ export interface DueCard {
     answer: string
     hint: string | null
     difficultyLevel: number
+  }
+  exampleSentence?: string
+  collocation?: {
+    text: string
+    translation: string | null
+    type: string
+    cefrLevel: string | null
   }
 }
 
@@ -174,4 +182,5 @@ export interface CollocationFilters {
   search: string
   cefrLevel: string
   type: string
+  srsState: string
 }

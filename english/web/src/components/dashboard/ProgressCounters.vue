@@ -6,6 +6,7 @@ const props = defineProps<{ stats: ProgressStats }>()
 
 const wordsTotal = computed(() => props.stats.words.new + props.stats.words.learning + props.stats.words.known)
 const grammarTotal = computed(() => props.stats.grammar.new + props.stats.grammar.learning + props.stats.grammar.known)
+const collocationsTotal = computed(() => props.stats.collocations.new + props.stats.collocations.learning + props.stats.collocations.known)
 </script>
 
 <template>
@@ -46,6 +47,25 @@ const grammarTotal = computed(() => props.stats.grammar.new + props.stats.gramma
         </div>
       </div>
       <div class="group-total">Total: {{ grammarTotal }}</div>
+    </div>
+
+    <div class="group">
+      <h3 class="group-title">Collocations</h3>
+      <div class="counters">
+        <div class="counter counter--new">
+          <span class="counter__count">{{ stats.collocations.new }}</span>
+          <span class="counter__label">New</span>
+        </div>
+        <div class="counter counter--learning">
+          <span class="counter__count">{{ stats.collocations.learning }}</span>
+          <span class="counter__label">Learning</span>
+        </div>
+        <div class="counter counter--known">
+          <span class="counter__count">{{ stats.collocations.known }}</span>
+          <span class="counter__label">Known</span>
+        </div>
+      </div>
+      <div class="group-total">Total: {{ collocationsTotal }}</div>
     </div>
   </div>
 </template>

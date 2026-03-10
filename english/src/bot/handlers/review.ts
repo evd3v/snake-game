@@ -34,6 +34,14 @@ export function formatCardFront(card: DueCard): string {
     return `<b>${patternName}</b>\n\nNo exercises available`;
   }
 
+  if (card.cardType === 'collocation' && card.collocation) {
+    const text = escapeHtml(card.collocation.text);
+    const type = escapeHtml(card.collocation.type.replace('_', ' '));
+    const cefr = card.collocation.cefrLevel ? ` (${escapeHtml(card.collocation.cefrLevel)})` : '';
+    const sentence = card.sentence ? `\n\n<i>"${escapeHtml(card.sentence)}"</i>` : '';
+    return `<b>${text}</b> [${type}]${cefr}${sentence}`;
+  }
+
   return 'Unknown card type';
 }
 
@@ -45,10 +53,21 @@ export function formatCardReveal(card: DueCard): string {
     return `${front}\n\nTranslation: <b>${translation}</b>`;
   }
 
-  if (card.cardType === 'grammar' && card.exercise) {
-    const answer = escapeHtml(card.exercise.answer);
-    const hint = card.exercise.hint ? `\nHint: <i>${escapeHtml(card.exercise.hint)}</i>` : '';
-    return `${front}\n\nAnswer: <b>${answer}</b>${hint}`;
+  if (card.cardType === 'grammar') {
+    let result = front;
+    if (card.exercise) {
+      const answer = escapeHtml(card.exercise.answer);
+      const hint = card.exercise.hint ? `\nHint: <i>${escapeHtml(card.exercise.hint)}</i>` : '';
+      result = `${front}\n\nAnswer: <b>${answer}</b>${hint}`;
+    }
+    const desc = card.pattern?.description ? `\n\n${escapeHtml(card.pattern.description)}` : '';
+    const example = card.exampleSentence ? `\n<i>"${escapeHtml(card.exampleSentence)}"</i>` : '';
+    return `${result}${desc}${example}`;
+  }
+
+  if (card.cardType === 'collocation' && card.collocation) {
+    const translation = card.collocation.translation ? escapeHtml(card.collocation.translation) : '---';
+    return `${front}\n\nTranslation: <b>${translation}</b>`;
   }
 
   return front;

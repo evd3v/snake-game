@@ -19,6 +19,7 @@ export const useCollocationsStore = defineStore('collocations', () => {
     search: '',
     cefrLevel: '',
     type: '',
+    srsState: '',
   })
 
   async function fetchItems() {
@@ -31,6 +32,7 @@ export const useCollocationsStore = defineStore('collocations', () => {
       if (filters.search) params.set('search', filters.search)
       if (filters.cefrLevel) params.set('cefrLevel', filters.cefrLevel)
       if (filters.type) params.set('type', filters.type)
+      if (filters.srsState) params.set('srsState', filters.srsState)
 
       const data = await apiGet<CollocationListResponse>(`/collocations?${params.toString()}`)
       items.value = data.items
@@ -58,6 +60,7 @@ export const useCollocationsStore = defineStore('collocations', () => {
       search: '',
       cefrLevel: '',
       type: '',
+      srsState: '',
     })
     page.value = 1
     fetchItems()

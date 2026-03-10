@@ -93,13 +93,15 @@ export async function createSrsCard(wordSenseId: number): Promise<void> {
 
 export interface DueCard {
   cardId: number;
-  cardType: 'vocabulary' | 'grammar';
+  cardType: 'vocabulary' | 'grammar' | 'collocation';
   state: string;
   due: string;
   word?: { lemma: string; translation: string | null; cefrLevel: string | null; partOfSpeech: string | null };
   sentence?: string;
   pattern?: { pattern: string; description: string };
   exercise?: { id: number; sentence: string; answer: string; hint: string | null; difficultyLevel: number };
+  exampleSentence?: string;
+  collocation?: { text: string; translation: string | null; type: string; cefrLevel: string | null };
 }
 
 export interface RateResult {
