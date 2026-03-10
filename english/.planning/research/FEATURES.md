@@ -1,217 +1,179 @@
-# Feature Research
+# Feature Landscape
 
-**Domain:** AI-powered reading-based English learning app (Telegram bot + web)
-**Researched:** 2026-03-09
-**Confidence:** HIGH
+**Domain:** Language learning app v1.1 -- vocabulary management, web SRS review, collocations UI, Telegram auto-add, multiple POS/translations
+**Researched:** 2026-03-10
+**Existing system:** AI sentence analysis, Telegram bot (input + word selection + familiarity + /review), FSRS SRS (vocab + grammar cards), web dashboard (stats/heatmap/clusters), web sentence input with word selector. All working in v1.0.
 
-## Feature Landscape
+## Table Stakes
 
-### Table Stakes (Users Expect These)
+Features users expect given v1.0 exists. Missing = the web app feels like a dashboard without a workhorse.
 
-Features that a reading-based learning tool must have. Without these, the product is broken.
+| Feature | Why Expected | Complexity | Dependencies | Notes |
+|---------|--------------|------------|--------------|-------|
+| Vocabulary list with search | Users need to see what they have learned; every SRS tool (Anki, LingQ, Memrise) has this | Low | Existing `words` table, `GET /sentences/:id/words` route pattern | Simple paginated list with text search on `lemma` field |
+| Filter by familiarity status | LingQ's vocab page filters by status as a core navigation pattern; 3 familiarity levels already in schema | Low | `familiarityEnum` already defined | Dropdown/chip filter on `never_seen`, `seen_unsure`, `understand_in_context` |
+| Filter by SRS state | Users need to see "what's due", "what's new", "what's learned" -- standard in every SRS app | Medium | Requires JOIN with `srs_cards` table to get card state per word | States: no card, new, learning, review, relearning |
+| Sort options (alpha, date added, CEFR level) | LingQ supports alpha/date/status/importance sorting; minimum viable is alpha + date | Low | Existing columns `lemma`, `createdAt`, `cefrLevel` | Default sort by `createdAt` DESC (newest first) |
+| Web SRS review flow (vocab cards) | The bot has /review; web MUST have equivalent -- users expect to review where they study | Medium | Existing `GET /review/due` and `POST /review/:cardId/rate` API endpoints already built | Reuse backend entirely; build Vue card UI with reveal + 4-button rating |
+| Web SRS review flow (grammar cloze) | Grammar exercises already generated and served via API; web just needs the UI | Medium | Existing grammar exercise data in `grammar_exercises` table, served by review API | Text input or tap-to-reveal for cloze answer |
+| Collocation display on sentence analysis | Collocations are extracted and stored but invisible in web UI; Telegram already shows them (quick-1 fix) | Low | `collocations` + `sentence_collocations` tables populated; need API endpoint + frontend component | Show type badge (collocation/phrasal verb/idiom), text, translation |
+| Collocation display on vocabulary page | When viewing a word, seeing its collocations provides the "not just isolated words" value proposition | Medium | Requires query: word -> sentence_words -> sentence_collocations -> collocations | Show inline or expandable per word row |
 
-| Feature | Why Expected | Complexity | Notes |
-|---------|--------------|------------|-------|
-| Sentence input with translation | Core loop: user enters sentence, gets translation. Without it there is no product. | LOW | LLM API call with structured output. Straightforward. |
-| Vocabulary extraction from sentences | Every reading-based tool (LingQ, Readlang) does this. Users paste text, words get saved. | MEDIUM | Requires lemmatization, POS tagging, deduplication. LLM handles this well in a single prompt. |
-| Vocabulary list with status tracking | LingQ has 4 stages (New/Learning/Familiar/Known). Minimum viable: 3 levels as specified in PROJECT.md. | LOW | CRUD on vocab entries with status field. Simple DB + UI. |
-| Spaced repetition for vocabulary | Every SRS-based learning app has this. Users expect words to resurface at optimal intervals. | MEDIUM | Use FSRS over SM-2 -- 20-30% fewer reviews for same retention. `ts-fsrs` npm package is mature and well-maintained. |
-| Basic flashcard review (word -> meaning) | Most basic review format. Users expect to be able to drill vocabulary. | LOW | Front/back card with FSRS scheduling. Standard pattern. |
-| Context display during review | Showing the original sentence where word was encountered. LingQ and Readlang both do this. | LOW | Store sentence-word relationship. Display during review. |
-| CEFR level estimation per sentence | Users at B1-B2 targeting C1 need to understand difficulty. Standard in language learning. | LOW | LLM estimates CEFR reliably. Include in sentence analysis prompt. |
-| Progress dashboard (basic stats) | Word counts by status, review streak, activity over time. Every learning app tracks this. | MEDIUM | Aggregate queries + chart UI. Heat map and streak are standard. |
-| Telegram bot for sentence input | Specified as core entry point. Bot must accept text and return analysis. | MEDIUM | Telegram Bot API, session management, formatted response. Use inline keyboards for actions. |
+## Differentiators
 
-### Differentiators (Competitive Advantage)
+Features that set the app apart from generic Anki clones. Not expected, but high value for the C1 reading goal.
 
-Features that set this apart from Anki + LingQ + Readlang. These align with the project's core value proposition.
+| Feature | Value Proposition | Complexity | Dependencies | Notes |
+|---------|-------------------|------------|--------------|-------|
+| Multiple POS/translations per lemma | "run" as verb vs noun have different translations and learning trajectories; most SRS apps treat words as flat strings | High | **Schema change required**: current `words.lemma` has UNIQUE constraint; need `word_senses` table or composite unique on (lemma, pos) | This is the most architecturally impactful feature -- see detailed analysis below |
+| Telegram auto-add words (skip familiarity) | Removes friction: user sends sentence, ALL new words auto-added with SRS cards; current flow requires manual selection of each word + familiarity tap | Low | Modify bot `vocabulary.ts` handler; auto-call `createSrsCard` for each new word | Default familiarity to `never_seen`; can still allow manual override later |
+| Thematic cluster filter on vocabulary page | Users can browse "all my food words" or "all my emotion words" -- unique to this app's AI clustering | Low | `thematicCluster` column already populated on words | Simple filter/group-by on existing data |
+| Session progress bar in web review | Visual feedback during review session (3/15 cards done) with session summary at end | Low | Frontend-only; count from due cards array | Anki shows remaining counts; replicate with simple progress bar |
+| Word family links on vocabulary page | Click "reluctant" and see "reluctantly", "reluctance" linked -- unique word family feature | Low | `wordFamilyId` already in schema | Group or link words sharing same `wordFamilyId` |
+| Review session stats summary | After completing review, show Again/Hard/Good/Easy breakdown -- mirrors what Telegram bot already does | Low | Frontend-only; track ratings during session | Already implemented in bot's `formatSessionSummary` |
+| Keyboard shortcuts for review | Power users review faster with 1/2/3/4 keys instead of clicking buttons | Low | Frontend key event listeners | Anki standard: 1=Again, 2=Hard, 3=Good, 4=Easy |
 
-| Feature | Value Proposition | Complexity | Notes |
-|---------|-------------------|------------|-------|
-| AI grammar pattern extraction and tracking | LingQ and Anki ignore grammar entirely. Extracting patterns like "would have + V3" from real sentences and tracking mastery across encounters is genuinely novel for a personal tool. | HIGH | LLM extracts patterns from sentences. Need a pattern taxonomy/normalization scheme so "would have gone" and "would have seen" map to the same pattern. DB schema for patterns with progression tracking. |
-| Collocation and phrasal verb extraction | Moving beyond isolated words to multi-word units. LingQ tracks individual words; this tracks "make a decision" as a unit. Critical for C1 level. | HIGH | LLM identifies collocations, phrasal verbs, idioms per sentence. Deduplication is hard -- "make a decision" vs "make decisions" need to resolve to the same collocation. |
-| Word families linking | Connecting "reluctance", "reluctant", "reluctantly" as a family. No mainstream app does this automatically. Reduces cognitive overhead by showing related forms together. | MEDIUM | LLM can identify word family relationships. Store as graph edges. Surface during review: "You know reluctant -- here's reluctantly." |
-| AI-generated exercises (cloze, grammar drills) | Not just flashcards. Fill-in-the-blank for grammar patterns, sentence reordering, collocation matching. Generated in batches to save API costs. | HIGH | Batch generation via LLM. Research shows ~75% well-formedness rate for LLM-generated cloze items (GPT study, arxiv 2403.02078). Need quality filtering. Pre-generate and cache exercises. |
-| Thematic vocabulary clusters | Auto-grouping words by topic (legal, medical, emotions). Shows gaps: "you know 15 food words but only 2 emotion words." | MEDIUM | LLM assigns topic tags during extraction. Aggregate by cluster for dashboard. Value is in the gap analysis visualization. |
-| Grammar pattern progression within topics | Tracking that user has seen "Past Perfect" in 12 sentences, got 8/10 exercises right, and showing mastery level per pattern. Not just "you reviewed this" but "you understand this." | MEDIUM | Requires exercise results feeding back into pattern mastery scores. FSRS can be applied to grammar patterns, not just vocab. |
-| Adaptive difficulty in exercises | Exercises that match current level -- easy for well-known patterns, challenging for weak spots. | MEDIUM | Use FSRS difficulty + retrievability scores to select what to practice. LLM generates exercises at appropriate difficulty. |
+## Anti-Features
 
-### Anti-Features (Commonly Requested, Often Problematic)
+Features to explicitly NOT build in v1.1.
 
-| Feature | Why Requested | Why Problematic | Alternative |
-|---------|---------------|-----------------|-------------|
-| Real-time AI response during review | Feels "smart" -- AI generates exercise on the spot | Adds 2-5s latency per review card. Kills flow. Burns tokens. At personal budget, unsustainable for daily use. | Batch-generate exercises ahead of time. Pre-compute next 50 reviews with exercises. |
-| Audio/pronunciation features | Complete language learning experience | Massively increases scope. TTS quality varies. Focus is reading comprehension, not speaking. PROJECT.md explicitly excludes this. | Link to external pronunciation resources if needed. |
-| Book tracking and progress | Know which books you've read, track pages | Adds complexity without improving learning. Sentence-level input doesn't need book metadata. PROJECT.md excludes this. | User can tag sentences informally if desired. |
-| Social features / leaderboards | Motivation through competition | Single user app. Social features require auth, profiles, privacy. PROJECT.md explicitly excludes. | Streak and personal stats provide sufficient motivation. |
-| Gamification (XP, levels, badges) | Duolingo-style engagement | Distracts from actual learning. Single user doesn't need artificial motivation loops. Adds UI complexity. | Simple streak counter and progress percentages are enough. |
-| Native mobile app | Better mobile experience | Web app + Telegram bot covers mobile use cases. Native app doubles development effort. | PWA if mobile web needs improvement later. |
-| Multiple language support | Broader appeal | Single user learning English. Multi-language adds DB complexity, prompt engineering per language. | Hard-code English as target language. |
-| Grammar explanations / lessons | Educational completeness | Turns tool into a course. User is B1-B2, not a beginner. They need pattern recognition, not grammar lessons. | Link to external grammar references. Show pattern examples from user's own sentences. |
-| Importing full texts / ebooks | Read inside the app like LingQ | Massive feature: text rendering, pagination, word highlighting, position tracking. LingQ's core and took years. | Sentence-by-sentence input is the design choice. Keep it simple. |
-| AI conversation practice | Trendy in 2025-2026 apps | Out of scope. Reading focus, not speaking. | Not applicable for this product. |
+| Anti-Feature | Why Avoid | What to Do Instead |
+|--------------|-----------|-------------------|
+| Card template editor (Anki-style) | Single user, fixed card types (vocab + grammar cloze); template flexibility adds complexity without value for personal tool | Hardcode two card templates in Vue components |
+| Deck/tag organization | Current architecture uses thematic clusters from AI; manual deck management adds UX overhead for a single user | Use AI-generated thematic clusters as the organizational primitive |
+| Audio/pronunciation on cards | Out of scope per PROJECT.md; focus is reading comprehension, not listening/speaking | Defer entirely |
+| Gamification (points, streaks on review) | Dashboard already has streak counter; adding XP/levels to review is scope creep | Keep existing streak; no gamification on review flow |
+| Bulk import/export | Single user, data enters through sentence analysis only; no Anki import needed | Keep sentence-based input as sole entry point |
+| Custom SRS parameters UI | ts-fsrs defaults with `request_retention=0.9` and `enable_fuzz=true` already set; exposing knobs adds complexity | Keep hardcoded FSRS config |
+| Collocation SRS cards | Collocations exist as display units but adding them to SRS doubles card volume and requires new card type; better to show them as context for word cards | Show collocations as enrichment on word cards and vocabulary page |
 
 ## Feature Dependencies
 
 ```
-[Sentence Input + AI Analysis]
-    +-- requires --> [LLM Integration (structured output)]
-    +-- produces --> [Vocabulary Extraction]
-    |                   +-- requires --> [Lemmatization + Dedup]
-    |                   +-- produces --> [Vocabulary List]
-    |                                       +-- enables --> [Flashcard Review]
-    |                                       +-- enables --> [Spaced Repetition (FSRS)]
-    |                                       +-- enables --> [Word Family Linking]
-    +-- produces --> [Collocation Extraction]
-    |                   +-- requires --> [Lemmatization + Dedup]
-    |                   +-- enables --> [Collocation Review Cards]
-    +-- produces --> [Grammar Pattern Extraction]
-    |                   +-- requires --> [Pattern Taxonomy/Normalization]
-    |                   +-- enables --> [Pattern Tracking + Progression]
-    |                   +-- enables --> [Grammar Exercises (cloze)]
-    +-- produces --> [CEFR Level Estimation]
+Multiple POS/translations ──> Vocabulary page (needs to display senses correctly)
+                          ──> Web review (card front/back must show correct sense)
+                          ──> Telegram auto-add (must decide which sense to auto-add)
 
-[Spaced Repetition (FSRS)]
-    +-- enables --> [Flashcard Review]
-    +-- enables --> [Exercise Scheduling]
+Vocabulary page ──> Collocation display (collocations shown per-word)
+               ──> Word family links (family grouping on vocab page)
+               ──> Thematic cluster filter (filter by cluster)
 
-[AI Exercise Generation (batch)]
-    +-- requires --> [Vocabulary List]
-    +-- requires --> [Grammar Pattern Extraction]
-    +-- requires --> [LLM Integration]
-    +-- produces --> [Cloze Exercises]
-    +-- produces --> [Collocation Matching Exercises]
+Web SRS review ──> Session stats summary (tracks ratings during session)
+              ──> Keyboard shortcuts (keybindings on review UI)
+              ──> Progress bar (needs card count from session)
 
-[Progress Dashboard]
-    +-- requires --> [Vocabulary List] (word counts by status)
-    +-- requires --> [Spaced Repetition] (review history)
-    +-- requires --> [Grammar Pattern Tracking] (pattern mastery)
-    +-- enhanced-by --> [Thematic Clusters] (gap analysis)
+Telegram auto-add ──> (independent, can ship standalone)
 
-[Telegram Bot]
-    +-- uses --> [Sentence Input + AI Analysis]
-    +-- independent-of --> [Web Dashboard]
-    +-- shares-backend --> [Web Application]
+Collocations on sentence analysis ──> (independent, extends existing AnalysisResult component)
 ```
 
-### Dependency Notes
+## Detailed Analysis: Multiple POS/Translations
 
-- **AI Analysis requires LLM Integration:** All extraction (vocab, grammar, collocations) happens in a single LLM call per sentence. This is the foundational capability.
-- **Flashcard Review requires both Vocabulary List and FSRS:** Cannot review what hasn't been extracted; cannot schedule without FSRS.
-- **Exercise Generation requires Pattern Extraction:** Grammar exercises need identified patterns to generate targeted cloze tests.
-- **Dashboard requires all data sources:** Must be built after vocab, review, and pattern tracking are functional.
-- **Telegram Bot and Web App share backend:** They are two frontends to the same API. Build API first, then both clients.
-- **Word Families enhance Vocabulary List:** Not required for vocab to work, but improves the experience by grouping related words.
-- **Thematic Clusters enhance Dashboard:** Not required for dashboard, but enables gap analysis view.
+This is the highest-complexity feature and the only one requiring schema changes. Current state:
 
-## MVP Definition
+**Current schema:**
+- `words.lemma` is `text().notNull().unique()` -- one row per lemma
+- `words.translation` is a single `text()` field
+- No POS column exists
 
-### Launch With (v1)
+**The problem:** "run" (verb, "бежать") and "run" (noun, "пробежка") are the same lemma but different vocabulary items. Currently they collapse into one row.
 
-Minimum viable product -- enough to replace manual Anki workflow.
+**Recommended approach -- word senses table:**
 
-- [ ] **Sentence input via Telegram bot** -- core entry point while reading
-- [ ] **AI analysis per sentence** -- translation, vocabulary extraction with lemmas, CEFR level
-- [ ] **Vocabulary storage with status tracking** -- 3 levels (new / learning / know)
-- [ ] **Basic web UI for vocabulary list** -- view, search, change status
-- [ ] **FSRS-based flashcard review in web UI** -- word -> meaning cards with original sentence context
-- [ ] **Basic progress stats** -- total words, words per status, daily count
+The established pattern (WordNet, LingQ, the GlobalSense model from lemma-based dictionary design) is to separate the word form from its senses:
 
-### Add After Validation (v1.x)
+1. Keep `words` table as the lemma anchor (id, lemma, wordFamilyId, createdAt)
+2. Add `word_senses` table: (id, wordId FK, pos, translation, cefrLevel, familiarity, thematicCluster)
+3. SRS cards point to `word_senses.id` instead of `words.id`
+4. Sentence-word junction links to the specific sense encountered
 
-Features to add once the core input-review loop works.
+**Why not composite unique (lemma, pos):** Multiple senses can share the same POS ("run" as verb can mean "to move quickly" or "to operate a machine"). The senses table handles this naturally.
 
-- [ ] **Collocation and phrasal verb extraction** -- add after vocab extraction is proven reliable
-- [ ] **Grammar pattern extraction and tracking** -- requires pattern taxonomy; add once sentence analysis prompts are stable
-- [ ] **Word family linking** -- connect related word forms; add once vocab dedup is solid
-- [ ] **AI-generated cloze exercises** -- batch-generate fill-in-the-blank; add once grammar patterns are tracked
-- [ ] **Review streak and heat map** -- engagement features for the dashboard
-- [ ] **Thematic vocabulary clusters** -- auto-grouping + gap analysis
+**Migration path:**
+- Create `word_senses` table
+- Migrate existing words: for each word, create one sense row copying translation/cefrLevel/familiarity/thematicCluster
+- Update `srs_cards.wordId` to point to sense IDs (or add `wordSenseId` column)
+- Update AI analysis pipeline to output POS per word
+- Update all queries (vocabulary page, review, Telegram)
 
-### Future Consideration (v2+)
+**Risk:** This touches every layer. Must be done first if included in v1.1, as all other features depend on the word data model.
 
-Features to defer until the system is mature.
+**Simpler interim alternative:** Add a `pos` column to `words` and change the unique constraint to `(lemma, pos)`. This handles the most common case (same word as verb vs noun) without a full senses refactor. Loses the ability to track multiple meanings within the same POS, but that is rare at B1-B2 level.
 
-- [ ] **Grammar pattern progression and mastery scores** -- needs sufficient data (100+ sentences with patterns)
-- [ ] **Adaptive exercise difficulty** -- needs exercise history to calibrate
-- [ ] **Dashboard gap analysis by thematic clusters** -- needs enough vocabulary to show meaningful patterns
-- [ ] **Exercise type variety** -- sentence reordering, collocation matching, error correction
-- [ ] **Telegram bot inline review** -- quick review sessions inside Telegram (complex UX in chat)
+## Detailed Analysis: Web SRS Review UI
 
-## Feature Prioritization Matrix
+Standard flashcard review UI pattern based on Anki/Mochi/every SRS app:
 
-| Feature | User Value | Implementation Cost | Priority |
-|---------|------------|---------------------|----------|
-| Sentence input + AI analysis | HIGH | MEDIUM | P1 |
-| Telegram bot for input | HIGH | MEDIUM | P1 |
-| Vocabulary extraction with lemmas | HIGH | MEDIUM | P1 |
-| Vocabulary list with status | HIGH | LOW | P1 |
-| FSRS flashcard review | HIGH | MEDIUM | P1 |
-| Context display in review | HIGH | LOW | P1 |
-| CEFR level estimation | MEDIUM | LOW | P1 |
-| Basic progress stats | MEDIUM | LOW | P1 |
-| Collocation extraction | HIGH | HIGH | P2 |
-| Grammar pattern extraction | HIGH | HIGH | P2 |
-| Word family linking | MEDIUM | MEDIUM | P2 |
-| AI cloze exercise generation | HIGH | HIGH | P2 |
-| Review streak + heat map | MEDIUM | LOW | P2 |
-| Thematic clusters | MEDIUM | MEDIUM | P2 |
-| Pattern mastery progression | MEDIUM | MEDIUM | P3 |
-| Adaptive difficulty | MEDIUM | HIGH | P3 |
-| Cluster gap analysis dashboard | MEDIUM | MEDIUM | P3 |
-| Exercise type variety | LOW | HIGH | P3 |
+**Card states in UI:**
+1. **Front shown** -- word (vocab) or cloze sentence (grammar), context sentence, "Show Answer" button
+2. **Answer revealed** -- translation shown (vocab) or answer filled in (grammar), 4 rating buttons appear
+3. **Rated** -- card dismissed, next card shown, progress bar advances
 
-**Priority key:**
-- P1: Must have for launch (MVP)
-- P2: Should have, add after core loop works
-- P3: Nice to have, future consideration
+**Layout pattern:**
+- Single card centered on screen, max-width ~600px
+- Front: word/lemma large, context sentence below in italic, CEFR badge
+- Reveal transition: answer slides in below (no flip animation needed for web -- flip is a mobile pattern)
+- Rating buttons: horizontal row, color-coded (red=Again, orange=Hard, green=Good, blue=Easy)
+- Each button shows next review interval ("10m", "1d", "3d", "7d") -- requires computing preview schedules via ts-fsrs
 
-## Competitor Feature Analysis
+**Session flow:**
+1. Fetch due cards (`GET /review/due?limit=20`)
+2. Show first card front
+3. User clicks "Show Answer" or presses Space
+4. User rates (click or keyboard 1-4)
+5. `POST /review/:cardId/rate` fires
+6. Next card shown; progress bar updates
+7. All cards done: show session summary (same as bot's `formatSessionSummary`)
 
-| Feature | LingQ | Anki | Readlang | Our Approach |
-|---------|-------|------|----------|--------------|
-| Sentence/text input | Full text import + reader UI | Manual card creation | Web reader with click-to-translate | Single sentence input via bot or web. Simpler but friction-free. |
-| Vocabulary extraction | Click unknown words in text | Manual | Click words in text | AI auto-extracts all relevant vocabulary from sentence |
-| Lemmatization | Basic (groups inflections) | None (manual) | Basic | LLM-powered lemmatization with deduplication |
-| Collocations | Not tracked | Manual if user creates cards | Not tracked | **AI extracts collocations as first-class learning units** |
-| Grammar patterns | Not tracked | Manual if user creates cards | Not tracked | **AI extracts and tracks grammar patterns with progression** |
-| Word families | Not tracked | Manual | Not tracked | **Auto-linked word families** |
-| Spaced repetition | Custom SRS | SM-2 (default), FSRS (opt-in) | Basic SRS | FSRS via ts-fsrs -- modern, fewer reviews needed |
-| Exercise types | Flashcards, cloze (basic) | Flashcards (customizable) | Flashcards | Flashcards + AI-generated cloze + collocation matching |
-| CEFR tracking | Not per-sentence | None | None | **Per-sentence CEFR estimation** |
-| Progress dashboard | Detailed (words known, reading stats) | Basic (review forecast) | Basic | Words + patterns + clusters + gaps |
-| Mobile access | Native apps | Native apps | Web | Telegram bot (mobile input) + web (review + dashboard) |
-| Content library | Massive built-in library | None | Web reader | None -- user brings own sentences from books |
-| Price | $12.99/mo | Free + addons | $5/mo or free tier | Self-hosted, AI API costs only |
+**The backend is already complete.** The review API (`/review/due`, `/review/:cardId/rate`) returns enriched card data with word info, sentence context, grammar exercises. The web UI is purely a frontend task.
 
-**Key competitive insight:** LingQ and Readlang are strong at text reading interfaces but weak at linguistic analysis. Anki is strong at SRS but requires manual card creation. This project automates the analysis that users currently do manually, and tracks linguistic dimensions (collocations, patterns, word families) that no competitor handles automatically.
+## Detailed Analysis: Telegram Auto-Add
 
-## Technical Notes on Key Features
+Current flow: sentence -> analysis -> word selection keyboard -> user taps each word -> familiarity question per word -> SRS card created.
 
-### FSRS vs SM-2
-Use FSRS (Free Spaced Repetition Scheduler) instead of SM-2. FSRS was trained on 700M+ reviews from 20K users, produces 20-30% fewer reviews for same retention. The `ts-fsrs` npm package is the canonical TypeScript implementation, actively maintained, supports ESM/CJS/UMD.
+This is 3-5 taps per word. For 8 words in a sentence, that is 24-40 taps.
 
-### AI Sentence Analysis Prompt Design
-A single LLM call per sentence should extract: translation, vocabulary (with lemmas and POS), collocations, grammar patterns, CEFR estimate. Structured JSON output. This is the most token-intensive operation but happens only once per sentence (not during review).
+**Proposed flow:** sentence -> analysis -> ALL new words auto-added with `familiarity: never_seen` -> SRS cards auto-created -> user sees confirmation message with word count.
 
-### Exercise Generation Quality
-Research (arxiv 2403.02078) shows LLM-generated cloze questions achieve ~75% well-formedness and ~67% suitable distractors. For a personal tool this is acceptable -- user can skip bad exercises. Batch-generate and let FSRS schedule them.
+**Implementation:**
+- In the sentence handler (after analysis job completes), fetch words for sentence
+- For each word without an existing SRS card, call `createSrsCard`
+- Send single message: "Added N new words to vocabulary" with the word list
+- Keep the option to manually adjust familiarity later (via vocabulary page or dedicated bot command)
 
-### Collocation Deduplication
-Hardest technical challenge. "make a decision" / "make decisions" / "making a decision" must resolve to one collocation. Approach: store canonical form (lemmatized), match new collocations against existing ones using LLM similarity judgment or normalized string matching.
+**Preserving manual mode:** Add a `/settings` command or bot config to toggle between auto-add and manual selection. Default to auto-add for speed.
+
+## Detailed Analysis: Collocations UI
+
+**On sentence analysis page:**
+- After AnalysisResult component, show a "Collocations" section
+- Each collocation as a pill/badge with type indicator (collocation / phrasal verb / idiom)
+- Translation shown on hover or inline
+- API: add collocations to the sentence analysis response (they are already in DB via `sentence_collocations`)
+
+**On vocabulary page:**
+- When expanding a word row, show associated collocations
+- Query path: word -> sentence_words -> sentences -> sentence_collocations -> collocations
+- This is a N+1 query risk; solve with a dedicated API endpoint that returns collocations for a word ID
+- Alternative: preload collocations for visible words in a batch query
+
+## MVP Recommendation
+
+**Priority order for v1.1 implementation:**
+
+1. **Telegram auto-add** -- lowest complexity, highest daily UX impact, zero schema changes, independent of other features
+2. **Vocabulary page (list + search + filters + sort)** -- table stakes for web app to be useful beyond dashboard
+3. **Collocations on sentence analysis** -- low complexity, data already exists, completes the analysis display
+4. **Web SRS review flow** -- medium complexity but backend is done; brings review capability to web (currently bot-only)
+5. **Multiple POS/translations** -- highest complexity, schema migration, touches all layers; implement last
+
+**Defer consideration:** If polysemous words are rarely encountered in practice (most B1-B2 vocabulary is not heavily polysemous), a simpler interim solution works: append POS to the existing translation field as "(v.) бежать" without schema changes. This buys time while delivering all other features. Revisit for v1.2 if it becomes a real pain point.
 
 ## Sources
 
-- [ts-fsrs npm package](https://www.npmjs.com/package/ts-fsrs) -- TypeScript FSRS implementation
-- [FSRS vs SM-2 comparison](https://memoforge.app/blog/fsrs-vs-sm2-anki-algorithm-guide-2025/) -- performance benchmarks
-- [awesome-fsrs](https://github.com/open-spaced-repetition/awesome-fsrs) -- FSRS ecosystem
-- [LLM cloze generation research](https://arxiv.org/abs/2403.02078) -- exercise generation quality metrics
-- [LingQ vs Anki comparison](https://ling-app.com/blog/lingq-vs-anki/) -- competitor analysis
-- [LingQ alternatives](https://lingochampion.com/en-US/lingq-alternatives/) -- Readlang comparison
-- [Collocation extraction](https://en.wikipedia.org/wiki/Collocation_extraction) -- NLP approaches
-- [Top AI language learning apps 2026](https://www.devopsschool.com/blog/top-10-ai-language-learning-apps-in-2025-features-pros-cons-comparison/) -- feature landscape
-- [Taalhammer SRS comparison](https://www.taalhammer.com/best-language-learning-apps-with-spaced-repetition-srs-and-ai-in-2025-taalhammer-vs-11-other-apps/) -- SRS app features
-
----
-*Feature research for: AI-powered reading-based English learning app*
-*Researched: 2026-03-09*
+- [LingQ vocabulary page filtering guide](https://forum.lingq.com/t/how-and-why-to-filter-your-vocabulary-list-like-a-pro/6858) -- vocabulary list filter patterns (MEDIUM confidence)
+- [LingQ vocabulary review features](https://www.lingq.com/blog/reviewing-vocabulary/) -- status-based filtering and sorting (MEDIUM confidence)
+- [Lemma-based multilingual dictionary dataset design](https://bierfeldt.com/posts/2022-10-06-designing-dataset-lemma-translation-dictionary/) -- GlobalSense model for multi-sense words (HIGH confidence, direct source)
+- [Anki preferences and review UI](https://docs.ankiweb.net/preferences.html) -- review interface patterns, rating buttons, minimalist mode (HIGH confidence, official docs)
+- [Mochi SRS](https://mochi.cards/) -- modern web SRS UI reference (MEDIUM confidence)
+- Existing codebase: `src/routes/review.ts`, `src/bot/handlers/vocabulary.ts`, `src/db/schema/words.ts` -- current API and schema (HIGH confidence, primary source)

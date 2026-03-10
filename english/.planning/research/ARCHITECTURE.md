@@ -1,464 +1,571 @@
-# Architecture Patterns
+# Architecture Research: v1.1 Feature Integration
 
-**Domain:** AI-powered personal English learning app (sentence analysis + spaced repetition)
-**Researched:** 2026-03-09
+**Domain:** English learning app -- vocabulary management, web SRS review, multiple POS/translations, collocations UI
+**Researched:** 2026-03-10
+**Confidence:** HIGH (based on full codebase analysis, no external dependencies to verify)
 
-## Recommended Architecture
-
-Modular monolith deployed as a single Node.js process behind Nginx, with a background worker process for AI batch jobs. Not microservices -- this is a single-user personal tool. Splitting into separate services adds deployment complexity with zero scaling benefit.
-
-```
-                    +------------------+
-                    |     Nginx        |
-                    |  (reverse proxy) |
-                    +--------+---------+
-                             |
-              +--------------+--------------+
-              |                             |
-     +--------v--------+          +---------v--------+
-     |   Vue 3 SPA     |          |  Telegram Bot    |
-     |  (static files) |          |  (webhook mode)  |
-     +--------+--------+          +---------+--------+
-              |                             |
-              +-------------+---------------+
-                            |
-                   +--------v--------+
-                   |   REST API       |
-                   |   (Express/     |
-                   |    Fastify)      |
-                   +--------+--------+
-                            |
-              +-------------+-------------+
-              |             |             |
-     +--------v---+  +-----v------+ +----v---------+
-     | Domain      |  | AI Service | | SRS Engine   |
-     | Services    |  | Layer      | | (SM-2)       |
-     | (sentences, |  | (analysis, | | (scheduling, |
-     |  words,     |  |  exercise  | |  review      |
-     |  grammar)   |  |  gen)      | |  sessions)   |
-     +--------+----+  +-----+------+ +----+---------+
-              |              |             |
-              +------+-------+-------------+
-                     |
-              +------v-------+
-              |  PostgreSQL  |
-              +--------------+
-
-     Separate process:
-              +------------------+
-              | Background Worker|
-              | (BullMQ + Redis) |
-              | - AI batch jobs  |
-              | - Exercise gen   |
-              +------------------+
-```
-
-### Why This Shape
-
-1. **Monolith, not microservices.** Single user, single VPS. A monolith with clear module boundaries gives you all the separation benefits without inter-service communication overhead, distributed transactions, or multi-container orchestration complexity. You can always extract a service later if needed (you won't need to).
-
-2. **Telegram bot as a thin client.** The bot uses webhooks (not long polling) and translates Telegram messages into the same API calls the Vue SPA makes. No separate business logic in the bot -- it is a UI layer only.
-
-3. **Background worker as a separate process.** AI calls are slow (2-15 seconds) and expensive. They must not block the API. A BullMQ worker backed by Redis processes AI jobs asynchronously. The API enqueues a job and returns immediately; the worker picks it up, calls Claude/OpenAI, stores results in PostgreSQL.
-
-### Component Boundaries
-
-| Component | Responsibility | Communicates With |
-|-----------|---------------|-------------------|
-| **Vue 3 SPA** | UI for input, review, dashboard | REST API via HTTP |
-| **Telegram Bot** | Quick sentence input, review notifications | REST API via internal HTTP calls or shared service layer |
-| **REST API** | Request handling, validation, routing | Domain Services, AI Service, SRS Engine |
-| **Domain Services** | Business logic: sentences, words, collocations, grammar patterns, word families | PostgreSQL (via ORM/query builder) |
-| **AI Service Layer** | Abstracts Claude/OpenAI; prompt management; response parsing | External AI APIs, BullMQ (enqueue jobs) |
-| **SRS Engine** | SM-2 algorithm, scheduling, review session management | PostgreSQL |
-| **Background Worker** | Processes AI analysis and exercise generation jobs | BullMQ/Redis, AI Service Layer, PostgreSQL |
-| **PostgreSQL** | Persistent storage | All services read/write |
-| **Redis** | Job queue state, optional caching | BullMQ, API (cache) |
-
-### Data Flow
-
-#### Flow 1: Sentence Input (primary flow)
+## Existing Architecture Snapshot
 
 ```
-User enters sentence (via Vue SPA or Telegram Bot)
-  |
-  v
-REST API receives sentence text + source info
-  |
-  v
-Domain Service saves raw sentence to DB (status: "pending_analysis")
-  |
-  v
-AI Service enqueues analysis job to BullMQ
-  |
-  v
-API returns immediately: { id, status: "pending_analysis" }
-  |
-  v (async, seconds later)
-Background Worker picks up job
-  |
-  v
-AI Service calls Claude/OpenAI with structured prompt:
-  - Translate sentence
-  - Extract words (lemmatized)
-  - Identify collocations, phrasal verbs, idioms
-  - Detect grammar patterns
-  - Assign CEFR level
-  |
-  v
-Worker parses AI response (structured JSON via system prompt)
-  |
-  v
-Domain Service processes extracted data:
-  - Upsert words (deduplicate by lemma)
-  - Link collocations to constituent words
-  - Upsert grammar patterns
-  - Create word family associations
-  - Assign thematic clusters
-  - Create SRS cards for new items
-  |
-  v
-Sentence status updated to "analyzed"
-  |
-  v
-SPA polls or receives WebSocket notification: analysis complete
+┌─────────────────────────────────────────────────────────────────┐
+│                        CLIENTS                                   │
+│  ┌──────────────┐        ┌──────────────────────────────┐        │
+│  │ Telegram Bot  │        │ Vue 3 SPA (web/)             │        │
+│  │ grammY        │        │ Pinia stores, vue-router     │        │
+│  │ handlers/     │        │ views/ components/ api/      │        │
+│  └──────┬───────┘        └──────────────┬───────────────┘        │
+│         │  HTTP (api-client.ts)          │  HTTP (client.ts)     │
+├─────────┴───────────────────────────────┴────────────────────────┤
+│                    Fastify API (autoloaded routes/)               │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────────┐     │
+│  │sentences │  │ words    │  │ review   │  │ dashboard    │     │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └──────┬───────┘     │
+│       │              │             │               │             │
+├───────┴──────────────┴─────────────┴───────────────┴─────────────┤
+│                    Services Layer                                 │
+│  ┌────────────┐  ┌─────────┐  ┌───────────────────┐              │
+│  │ analysis   │  │ srs     │  │ exercise-generator│              │
+│  └────────────┘  └─────────┘  └───────────────────┘              │
+├──────────────────────────────────────────────────────────────────┤
+│              BullMQ Workers (sentence-analysis queue)             │
+├──────────────────────────────────────────────────────────────────┤
+│                    Drizzle ORM + PostgreSQL                       │
+│  words | sentences | srs_cards | collocations | grammar_patterns │
+│  sentence_words | sentence_collocations | review_logs            │
+│  grammar_exercises | word_families                               │
+└──────────────────────────────────────────────────────────────────┘
 ```
 
-#### Flow 2: Review Session
+## Feature-by-Feature Integration Analysis
+
+### 1. Vocabulary Page (/vocabulary)
+
+**Current state:** VocabularyView.vue is a stub (`<div>Vocabulary</div>`). Words route only serves `GET /sentences/:sentenceId/words` (scoped to a sentence) and `PATCH /words/:id/familiarity`.
+
+**What needs to change:**
+
+| Layer | Change Type | Details |
+|-------|-------------|---------|
+| API route | NEW endpoint | `GET /words` -- paginated word list with filters (familiarity, cluster, CEFR, search) |
+| API route | NEW endpoint | `GET /words/:id` -- single word detail with sentences, collocations, SRS state |
+| Pinia store | NEW | `stores/vocabulary.ts` -- word list state, filters, pagination |
+| Vue view | REWRITE | `VocabularyView.vue` -- table/list with filters, search, word detail drawer |
+| Vue components | NEW | `WordCard.vue`, `VocabularyFilters.vue`, `WordDetail.vue` |
+
+**New API endpoint design:**
 
 ```
-User opens review (Vue SPA)
-  |
-  v
-SRS Engine queries due cards: WHERE next_review <= NOW()
-  |
-  v
-Returns cards with pre-generated exercises (from batch job)
-  |
-  v
-User answers exercise
-  |
-  v
-SRS Engine applies SM-2:
-  - Update easiness_factor
-  - Calculate next interval
-  - Update repetition count
-  - Set next_review date
-  |
-  v
-Record response in review_history for analytics
+GET /words?page=1&limit=50&familiarity=never_seen&cluster=emotions&search=happi&cefr=B2&sort=created_at
 ```
 
-#### Flow 3: Batch Exercise Generation (background, periodic)
+Response should include SRS card state (joined from srs_cards) and sentence count. Use Drizzle's `sql` template for the aggregation:
 
-```
-Cron or manual trigger
-  |
-  v
-Query items needing exercises:
-  - Cards due in next 48 hours with < 3 pre-generated exercises
-  |
-  v
-Group items by type (word cards, grammar exercises, collocation fill-in-blank)
-  |
-  v
-Batch AI requests (multiple items per prompt to save tokens)
-  |
-  v
-Store generated exercises linked to their SRS cards
-```
-
-## Database Schema Design
-
-### Core Entities and Relationships
-
-```
-sentences
-  id, text, translation, source_book, source_page,
-  cefr_level, analysis_status, raw_ai_response,
-  created_at
-
-words
-  id, lemma, pos (part of speech), translation,
-  cefr_level, familiarity_level (0/1/2),
-  created_at
-
-word_occurrences
-  id, word_id -> words, sentence_id -> sentences,
-  surface_form (actual form in sentence)
-
-word_families
-  id, root_lemma
-
-word_family_members
-  word_family_id -> word_families, word_id -> words
-
-collocations
-  id, text, type (collocation/phrasal_verb/idiom),
-  translation, cefr_level, familiarity_level
-
-collocation_words
-  collocation_id -> collocations, word_id -> words,
-  position
-
-collocation_occurrences
-  collocation_id -> collocations, sentence_id -> sentences
-
-grammar_patterns
-  id, pattern_name, pattern_template (e.g. "would have + V3"),
-  category, cefr_level, description
-
-grammar_pattern_occurrences
-  grammar_pattern_id -> grammar_patterns,
-  sentence_id -> sentences,
-  matched_fragment (exact text from sentence)
-
-thematic_clusters
-  id, name, description
-
-word_clusters
-  word_id -> words, cluster_id -> thematic_clusters
-
-srs_cards
-  id, item_type (word/collocation/grammar_pattern),
-  item_id, -- polymorphic reference
-  easiness_factor (default 2.5),
-  interval_days,
-  repetition_count,
-  next_review,
-  last_review,
-  created_at
-
-exercises
-  id, srs_card_id -> srs_cards,
-  exercise_type (flashcard/fill_blank/choose_correct/construct),
-  prompt, correct_answer, distractors (jsonb),
-  used (boolean),
-  created_at
-
-review_history
-  id, srs_card_id -> srs_cards,
-  exercise_id -> exercises (nullable),
-  quality (0-5, SM-2 grade),
-  response_time_ms,
-  reviewed_at
+```typescript
+// In new words route handler
+const wordList = await db
+  .select({
+    id: words.id,
+    lemma: words.lemma,
+    partOfSpeech: words.partOfSpeech,
+    translation: words.translation,
+    cefrLevel: words.cefrLevel,
+    familiarity: words.familiarity,
+    thematicCluster: words.thematicCluster,
+    createdAt: words.createdAt,
+    srsState: srsCards.state,
+    sentenceCount: sql<number>`count(distinct ${sentenceWords.sentenceId})::int`,
+  })
+  .from(words)
+  .leftJoin(srsCards, and(eq(srsCards.wordId, words.id), eq(srsCards.cardType, 'vocabulary')))
+  .leftJoin(sentenceWords, eq(sentenceWords.wordId, words.id))
+  .where(/* dynamic filters */)
+  .groupBy(words.id, srsCards.state)
+  .orderBy(/* dynamic sort */)
+  .limit(limit)
+  .offset((page - 1) * limit);
 ```
 
-### Schema Design Decisions
+**Word detail endpoint** (`GET /words/:id`) should return:
+- Word data + SRS card state
+- All sentences containing this word (via sentenceWords join)
+- Collocations containing this word (ILIKE search on collocation text)
+- Word family members (via wordFamilyId)
 
-1. **Polymorphic SRS cards.** One `srs_cards` table with `item_type` + `item_id` instead of separate card tables per type. Simpler querying for "what's due today" -- a single query across all item types. The polymorphic FK is acceptable here because this is a personal tool, not a multi-tenant SaaS.
+### 2. Web SRS Review Flow
 
-2. **Separate occurrence tables.** `word_occurrences` and `collocation_occurrences` link items to their source sentences. This preserves context ("where did I encounter this word?") without denormalizing.
+**Current state:** Review API exists (`GET /review/due`, `POST /review/:cardId/rate`). Bot already uses it via api-client.ts. Web has no review view or store.
 
-3. **Pre-generated exercises stored in DB.** Exercises are generated in batches and stored, not generated on-the-fly. The `used` flag prevents repeating the same exercise. This is central to the token-saving strategy.
+**What needs to change:**
 
-4. **`raw_ai_response` on sentences.** Store the full AI response for debugging and potential re-parsing if the extraction logic changes. JSONB column.
+| Layer | Change Type | Details |
+|-------|-------------|---------|
+| API route | NO CHANGE | `/review/due` and `/review/:cardId/rate` already work |
+| API route | MINOR ENHANCE | Add collocations to vocabulary card enrichment in `/review/due` |
+| Router | ADD route | `/review` path in vue-router |
+| Pinia store | NEW | `stores/review.ts` -- due cards queue, current card, answer state |
+| Vue view | NEW | `ReviewView.vue` -- card flip UI for vocabulary, cloze input for grammar |
+| Vue components | NEW | `VocabCard.vue`, `GrammarExercise.vue`, `RatingButtons.vue`, `ReviewSummary.vue` |
+| Nav | MODIFY | Add "Review" link to App.vue nav |
 
-5. **Familiarity as integer, not boolean.** Three levels (0: never seen, 1: seen/recognized, 2: understand in context) maps directly to the project requirement and is simpler than a separate status table.
+**Review flow data:**
 
-### Key Indexes
+The existing `/review/due` response already has everything needed:
+- Vocabulary cards: lemma, translation, cefrLevel, one sentence context
+- Grammar cards: pattern, description, exercise (sentence with cloze, answer, hint)
+
+The web review store should:
+1. Fetch due cards batch on mount
+2. Present one card at a time (flip card for vocab, text input for grammar cloze)
+3. On rating, POST to `/review/:cardId/rate`, advance to next card
+4. Show session summary when batch is done (cards reviewed, avg score)
+
+**No schema changes needed for this feature.**
+
+### 3. Multiple Translations / POS Support
+
+**Current state:** `words.lemma` is `UNIQUE`. The lemmatizer normalizes by POS (e.g., `normalizeLemma("running", "noun")` vs `normalizeLemma("running", "verb")`). However, same base lemma with different POS collide on the unique constraint. A word like "run" as noun and verb maps to the same lemma "run" and only stores one translation.
+
+**The problem:** `words` table has a single `translation` text field. When AI extracts "run" as verb (translation: "бежать") and later "run" as noun (translation: "забег"), the upsert in `storeAnalysisResults` overwrites `thematicCluster` but keeps the first `translation`. The word only exists once.
+
+**Schema change required:**
+
+Option A (recommended): Add `partOfSpeech` column to `words`, change unique constraint from `lemma` to `(lemma, partOfSpeech)`.
+
+Option B: Create a separate `word_translations` table with multiple translations per word.
+
+**Recommendation: Option A** because it is simpler, the AI already returns POS, and the lemmatizer already accepts POS. A word used as different POS genuinely IS a different vocabulary item to learn (different SRS cards, different familiarity).
+
+| Layer | Change Type | Details |
+|-------|-------------|---------|
+| Schema | MODIFY | Add `partOfSpeech` to `words` table, change unique to `(lemma, partOfSpeech)` |
+| Schema | MIGRATION | Backfill existing words -- set POS from most recent sentence analysis or default to null |
+| Service | MODIFY | `analysis.ts` -- upsert key changes from `lemma` to `(lemma, partOfSpeech)` |
+| Lemmatizer | NO CHANGE | Already accepts POS |
+| SRS | MINOR | SRS card creation already links by `wordId`, no change needed |
+| API | MODIFY | Word endpoints return POS, vocabulary page filters by POS |
+| AI schema | NO CHANGE | Already returns `partOfSpeech` per vocabulary item |
+| Bot | MODIFY | Display POS in word selection keyboard |
+
+**Migration approach:**
 
 ```sql
--- SRS scheduling (most frequent query)
-CREATE INDEX idx_srs_cards_next_review ON srs_cards(next_review) WHERE next_review IS NOT NULL;
-
--- Word deduplication
-CREATE UNIQUE INDEX idx_words_lemma_pos ON words(lemma, pos);
-
--- Sentence analysis status
-CREATE INDEX idx_sentences_status ON sentences(analysis_status) WHERE analysis_status = 'pending_analysis';
-
--- Exercises for a card that haven't been used
-CREATE INDEX idx_exercises_card_unused ON exercises(srs_card_id) WHERE used = false;
+ALTER TABLE words ADD COLUMN part_of_speech text;
+ALTER TABLE words DROP CONSTRAINT words_lemma_unique;
+ALTER TABLE words ADD CONSTRAINT words_lemma_pos_unique UNIQUE (lemma, part_of_speech);
 ```
 
-## Patterns to Follow
-
-### Pattern 1: AI Provider Abstraction
-
-Wrap AI calls behind an interface so you can swap Claude for OpenAI (or use both).
+Drizzle schema change:
 
 ```typescript
-interface AIProvider {
-  analyzeSentence(text: string): Promise<SentenceAnalysis>;
-  generateExercises(items: ReviewItem[], count: number): Promise<Exercise[]>;
-}
-
-class ClaudeProvider implements AIProvider {
-  async analyzeSentence(text: string): Promise<SentenceAnalysis> {
-    // Structured prompt + response parsing
-  }
-}
-
-class OpenAIProvider implements AIProvider {
-  // Same interface, different implementation
-}
+export const words = pgTable('words', {
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  lemma: text().notNull(),
+  partOfSpeech: text('part_of_speech'),
+  translation: text(),
+  cefrLevel: text('cefr_level'),
+  familiarity: familiarityEnum().default('never_seen'),
+  thematicCluster: text('thematic_cluster'),
+  wordFamilyId: integer('word_family_id'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+}, (t) => [
+  unique().on(t.lemma, t.partOfSpeech),
+]);
 ```
 
-**Why:** The project explicitly requires provider independence. This costs almost nothing to implement upfront and saves a rewrite later.
-
-### Pattern 2: Job Queue for AI Calls
-
-Never call AI synchronously in the request path. Always enqueue.
+**Impact on `storeAnalysisResults`:**
 
 ```typescript
-// In API handler
-const sentence = await sentenceService.create(text, source);
-await aiQueue.add('analyze-sentence', { sentenceId: sentence.id });
-return { id: sentence.id, status: 'pending_analysis' };
-
-// In worker
-aiQueue.process('analyze-sentence', async (job) => {
-  const result = await aiProvider.analyzeSentence(job.data.text);
-  await sentenceService.saveAnalysis(job.data.sentenceId, result);
-});
+// Current: onConflictDoUpdate target: words.lemma
+// New: onConflictDoUpdate target: [words.lemma, words.partOfSpeech]
+const [upsertedWord] = await db
+  .insert(words)
+  .values({
+    lemma: normalizedLemma,
+    partOfSpeech: vocab.partOfSpeech,  // NEW
+    translation: vocab.translation,
+    cefrLevel: vocab.cefrLevel,
+    thematicCluster: vocab.thematicCluster,
+  })
+  .onConflictDoUpdate({
+    target: [words.lemma, words.partOfSpeech],  // CHANGED
+    set: { thematicCluster: vocab.thematicCluster },
+  })
+  .returning({ id: words.id });
 ```
 
-**Why:** AI calls take 2-15 seconds. Blocking the API degrades UX and risks timeouts. The queue also provides automatic retries on failure (AI APIs have ~1-3% error rate).
+### 4. Collocations Display in Web UI
 
-### Pattern 3: Structured AI Output with Validation
+**Current state:** Collocations are stored and linked to sentences via `sentence_collocations`. The `GET /sentences/:id/details` endpoint already returns collocations. But there is no standalone collocations browsing, and collocations are not shown on word detail pages.
 
-Force AI responses into structured JSON and validate before storing.
+**What needs to change:**
+
+| Layer | Change Type | Details |
+|-------|-------------|---------|
+| API route | NEW endpoint | `GET /collocations` -- browsable list with type filter |
+| API route | NEW endpoint | `GET /words/:id/collocations` -- collocations containing a specific word |
+| Vue components | NEW | `CollocationList.vue` -- used in word detail and sentence analysis |
+| Vue view | MODIFY | `VocabularyView.vue` word detail shows related collocations |
+| Sentence analysis | MODIFY | `AnalysisResult.vue` -- render collocations section (data already available) |
+
+**Finding collocations for a word** requires a text search because collocations are stored as free text (e.g., "take a break"). There is no `collocation_words` junction table. Two approaches:
+
+Approach A (simple, good enough): SQL `ILIKE` search for the word lemma within collocation text.
 
 ```typescript
-// System prompt forces JSON output
-const systemPrompt = `Analyze the English sentence. Respond ONLY with JSON matching this schema:
-{
-  "translation": "string",
-  "cefr_level": "A1|A2|B1|B2|C1|C2",
-  "words": [{ "lemma": "string", "pos": "string", "translation": "string" }],
-  "collocations": [{ "text": "string", "type": "collocation|phrasal_verb|idiom", "translation": "string" }],
-  "grammar_patterns": [{ "name": "string", "template": "string", "matched_fragment": "string" }]
-}`;
-
-// Validate with Zod before storing
-const AnalysisSchema = z.object({
-  translation: z.string(),
-  cefr_level: z.enum(['A1', 'A2', 'B1', 'B2', 'C1', 'C2']),
-  words: z.array(WordSchema),
-  // ...
-});
+// GET /words/:id/collocations
+const word = await db.select().from(words).where(eq(words.id, wordId));
+const related = await db
+  .select()
+  .from(collocations)
+  .where(sql`${collocations.text} ILIKE ${'%' + word.lemma + '%'}`);
 ```
 
-**Why:** LLMs return inconsistent formats. Without validation, you get runtime errors downstream. Zod catches bad responses immediately, and the job can be retried with a different prompt variation.
+Approach B (normalized): Add a `collocation_words` junction table linking collocations to their component words.
 
-### Pattern 4: Shared Service Layer (Bot + API)
+**Recommendation: Approach A** for now. The dataset is personal (hundreds, not millions of collocations). ILIKE on a small table is fast enough. Add a junction table later if search quality becomes an issue.
 
-The Telegram bot and REST API share the same service layer. No logic duplication.
+**Collocations in sentence analysis UI:** The data is already returned by `/sentences/:id/details` -- the `AnalysisResult.vue` component just needs to render the `collocations` array that comes from the store's `result.collocations`.
+
+### 5. Telegram Auto-Add Words
+
+**Current state:** After analysis, bot shows word selection keyboard. User manually selects words, then sets familiarity for each. Only selected words get SRS cards.
+
+**What needs to change:**
+
+| Layer | Change Type | Details |
+|-------|-------------|---------|
+| Service | MODIFY | `analysis.ts` `storeAnalysisResults` -- auto-create SRS cards for all words |
+| Bot handler | MODIFY | `sentence.ts` -- skip word selection flow, show analysis only |
+| Bot handler | SIMPLIFY | `vocabulary.ts` -- selection states no longer needed for new sentences |
+| Config | OPTIONAL | Add setting to toggle auto-add behavior |
+
+**Implementation:** In `storeAnalysisResults`, after upserting each word, automatically create an SRS card (same pattern grammar patterns already use):
+
+```typescript
+// After word upsert, auto-create SRS card
+const [existingCard] = await db
+  .select({ id: srsCards.id })
+  .from(srsCards)
+  .where(and(
+    eq(srsCards.cardType, 'vocabulary'),
+    eq(srsCards.wordId, upsertedWord.id),
+  ))
+  .limit(1);
+
+if (!existingCard) {
+  const emptyCard = createEmptyCard();
+  await db.insert(srsCards).values({
+    cardType: 'vocabulary',
+    wordId: upsertedWord.id,
+    state: 'new',
+    due: emptyCard.due,
+    stability: emptyCard.stability,
+    difficulty: emptyCard.difficulty,
+    elapsedDays: emptyCard.elapsed_days,
+    scheduledDays: emptyCard.scheduled_days,
+    reps: emptyCard.reps,
+    lapses: emptyCard.lapses,
+  });
+}
+```
+
+The familiarity field stays at `never_seen` by default. The user can still change familiarity from the web vocabulary page. The bot flow simplifies to: send sentence -> see analysis result -> done.
+
+**Word selection keyboard becomes optional.** Keep the code but do not show it by default. The user can still manually manage familiarity via the web vocabulary page.
+
+## Schema Changes Summary
+
+Only ONE migration is needed:
+
+```sql
+-- Add part_of_speech to words table
+ALTER TABLE words ADD COLUMN part_of_speech text;
+
+-- Replace unique constraint: lemma -> (lemma, part_of_speech)
+ALTER TABLE words DROP CONSTRAINT words_lemma_unique;
+ALTER TABLE words ADD CONSTRAINT words_lemma_pos_unique UNIQUE (lemma, part_of_speech);
+```
+
+No other tables need changes. The existing schema supports all other features.
+
+## New Components Map
+
+### Backend (src/)
 
 ```
-REST API Handler --> sentenceService.create()
-Telegram Bot Handler --> sentenceService.create()  // same function
+src/
+├── routes/
+│   ├── words.ts           # MODIFY: add GET /words (paginated), GET /words/:id
+│   ├── review.ts          # MINOR: add collocations to vocab card enrichment
+│   ├── collocations.ts    # NEW: GET /collocations, GET /words/:id/collocations
+│   ├── sentences.ts       # NO CHANGE
+│   └── dashboard.ts       # NO CHANGE
+├── services/
+│   ├── analysis.ts        # MODIFY: auto-create SRS cards, use (lemma, POS) upsert
+│   └── srs.ts             # NO CHANGE
+├── db/schema/
+│   └── words.ts           # MODIFY: add partOfSpeech, change unique constraint
+└── bot/handlers/
+    ├── sentence.ts        # MODIFY: skip word selection, show analysis only
+    └── vocabulary.ts      # SIMPLIFY: remove selection flow for auto-add mode
 ```
 
-**Why:** Two UIs, one brain. If the bot duplicates business logic, you maintain two codebases that drift apart.
+### Frontend (web/src/)
+
+```
+web/src/
+├── router/index.ts        # MODIFY: add /review route
+├── views/
+│   ├── VocabularyView.vue # REWRITE: full vocabulary list with filters
+│   └── ReviewView.vue     # NEW: SRS review session
+├── stores/
+│   ├── vocabulary.ts      # NEW: word list, filters, pagination
+│   └── review.ts          # NEW: review session state
+├── components/
+│   ├── vocabulary/
+│   │   ├── WordTable.vue           # NEW: sortable word table
+│   │   ├── VocabularyFilters.vue   # NEW: filter controls
+│   │   └── WordDetail.vue          # NEW: detail drawer/modal
+│   ├── review/
+│   │   ├── VocabCard.vue           # NEW: flip card for vocabulary
+│   │   ├── GrammarExercise.vue     # NEW: cloze input for grammar
+│   │   ├── RatingButtons.vue       # NEW: Again/Hard/Good/Easy buttons
+│   │   └── ReviewSummary.vue       # NEW: session end summary
+│   ├── collocations/
+│   │   └── CollocationList.vue     # NEW: reusable collocation display
+│   └── sentence/
+│       └── AnalysisResult.vue      # MODIFY: render collocations section
+└── App.vue                # MODIFY: add Review nav link
+```
+
+## Data Flow: New Flows
+
+### Vocabulary Browse Flow
+
+```
+User opens /vocabulary
+    |
+    v
+VocabularyView mounts -> vocabulary store fetches
+    |
+    v
+GET /words?page=1&limit=50&sort=created_at
+    |
+    v
+words route -> Drizzle query (words LEFT JOIN srs_cards LEFT JOIN sentence_words)
+    |
+    v
+Response: { items: Word[], total: number, page: number }
+    |
+    v
+User clicks word -> GET /words/:id (detail + sentences + collocations)
+    |
+    v
+WordDetail drawer opens with full context
+```
+
+### Web Review Flow
+
+```
+User opens /review
+    |
+    v
+ReviewView mounts -> review store fetches
+    |
+    v
+GET /review/due?limit=20  (existing endpoint, no change)
+    |
+    v
+Store queues cards, shows first card
+    |
+    v
+Vocabulary: show lemma -> user thinks -> flip -> see translation + sentence context
+Grammar: show cloze sentence -> user types answer -> reveal correct answer
+    |
+    v
+User rates (Again=1, Hard=2, Good=3, Easy=4)
+    |
+    v
+POST /review/:cardId/rate { rating }  (existing endpoint)
+    |
+    v
+Store advances to next card (or shows summary if done)
+```
+
+### Auto-Add Flow (Telegram)
+
+```
+User sends sentence in Telegram
+    |
+    v
+Bot handler -> POST /sentences { text }
+    |
+    v
+BullMQ job -> AI analysis -> storeAnalysisResults
+    |
+    v
+For each word: upsert word -> auto-create SRS card (NEW)
+    |
+    v
+Bot shows analysis result (translation, grammar, collocations)
+    |
+    v
+NO word selection keyboard (CHANGED)
+```
+
+## Architectural Patterns
+
+### Pattern 1: Paginated List Endpoint
+
+**What:** Standard offset pagination for word lists.
+**When to use:** Any list endpoint that could grow beyond ~100 items.
+
+```typescript
+// Consistent pagination response shape
+interface PaginatedResponse<T> {
+  items: T[];
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+}
+```
+
+Use offset pagination (not cursor) because the dataset is small (personal app, <10k words) and offset is simpler for random page access.
+
+### Pattern 2: Filter Builder
+
+**What:** Dynamic Drizzle `where` clause construction from query params.
+**When to use:** Vocabulary endpoint with multiple optional filters.
+
+```typescript
+function buildWordFilters(query: WordQueryParams) {
+  const conditions = [];
+  if (query.familiarity) conditions.push(eq(words.familiarity, query.familiarity));
+  if (query.cluster) conditions.push(eq(words.thematicCluster, query.cluster));
+  if (query.cefr) conditions.push(eq(words.cefrLevel, query.cefr));
+  if (query.search) conditions.push(ilike(words.lemma, `%${query.search}%`));
+  if (query.pos) conditions.push(eq(words.partOfSpeech, query.pos));
+  return conditions.length > 0 ? and(...conditions) : undefined;
+}
+```
+
+### Pattern 3: Review Session State Machine
+
+**What:** Client-side state machine for review flow (idle -> reviewing -> rating -> next/summary).
+**When to use:** Review view only.
+
+```typescript
+// In review store
+type ReviewPhase = 'loading' | 'showing' | 'revealed' | 'summary';
+const phase = ref<ReviewPhase>('loading');
+const currentIndex = ref(0);
+const cards = ref<DueCard[]>([]);
+const sessionStats = ref({ reviewed: 0, ratings: [] as number[] });
+```
+
+No need for a state machine library -- a simple ref with explicit transitions is sufficient for this linear flow.
 
 ## Anti-Patterns to Avoid
 
-### Anti-Pattern 1: Synchronous AI in Request Path
-**What:** Calling Claude/OpenAI directly in the API handler and waiting for the response.
-**Why bad:** 2-15 second response times. Telegram webhook times out after ~30 seconds. User sees loading spinner. If AI API is down, your whole app is down.
-**Instead:** Enqueue job, return pending status, notify when complete.
+### Anti-Pattern 1: Fetching All Words Without Pagination
 
-### Anti-Pattern 2: Storing Exercises Inline in Card Records
-**What:** Putting generated exercises as a JSONB column on the SRS card.
-**Why bad:** Can't easily query "how many unused exercises exist?", can't track which exercises were used, can't independently expire/regenerate exercises.
-**Instead:** Separate `exercises` table linked to `srs_cards`.
+**What people do:** `GET /words` returning the entire word table.
+**Why it is wrong:** Grows unbounded. At 5000+ words, response becomes slow and UI freezes.
+**Do this instead:** Always paginate. Default limit=50, max limit=100.
 
-### Anti-Pattern 3: Separate Databases or Services Per Feature
-**What:** Words in one service, grammar in another, SRS in a third.
-**Why bad:** For a single-user app, this creates network hops, distributed transaction problems, and deployment complexity with zero benefit.
-**Instead:** Modules within a monolith. Separate files/folders, shared database.
+### Anti-Pattern 2: Separate API Calls for Related Data on List Pages
 
-### Anti-Pattern 4: Real-Time AI for Exercise Generation
-**What:** Calling AI when user starts a review session to generate exercises on-the-fly.
-**Why bad:** User waits 5-10 seconds before each review session. Costs more tokens (no batching discount). If AI API is down, user can't review.
-**Instead:** Batch pre-generate exercises for items due in the next 48 hours. User always has exercises ready.
+**What people do:** Fetch word list, then N separate calls for SRS state per word.
+**Why it is wrong:** N+1 query pattern. 50 words = 51 API calls.
+**Do this instead:** JOIN srs_cards in the word list query. Return srsState alongside each word.
 
-### Anti-Pattern 5: Letting AI Determine Database Structure
-**What:** Storing raw AI output as the source of truth without normalization.
-**Why bad:** AI outputs vary between calls. "make a decision" might be tagged as a collocation in one analysis and ignored in another. You lose consistency and can't reliably query/aggregate.
-**Instead:** Parse AI output into normalized schema, validate, deduplicate by lemma/pattern, and store structured data. Keep raw response for debugging only.
+### Anti-Pattern 3: Storing Review Session State on Server
 
-## Suggested Build Order
+**What people do:** Create a "review session" entity in the database.
+**Why it is wrong:** Unnecessary complexity for a single-user app. Session state is ephemeral.
+**Do this instead:** Keep session state in Pinia store. Fetch due cards, iterate client-side, POST ratings individually.
 
-Based on dependency analysis between components:
+### Anti-Pattern 4: Adding a collocation_words Junction Table Prematurely
 
-### Phase 1: Core Data Layer
-Build first because everything depends on it.
-- PostgreSQL schema (sentences, words, collocations, grammar_patterns, srs_cards)
-- Domain services (CRUD for all entities)
-- Basic REST API skeleton (Express/Fastify with typed routes)
+**What people do:** Normalize collocations by linking individual words to collocations via a junction table.
+**Why it is wrong:** Over-engineering for a personal app with hundreds of collocations. ILIKE search is fast enough and simpler to implement and maintain.
+**Do this instead:** Use ILIKE text matching on the collocations.text column. Revisit if search quality becomes a real problem.
 
-### Phase 2: AI Analysis Pipeline
-Depends on Phase 1 (needs schema to store results).
-- AI provider abstraction (start with Claude)
-- Redis + BullMQ setup
-- Background worker process
-- Sentence analysis job (input -> AI -> parsed -> stored)
-- Basic prompt engineering for sentence analysis
+### Anti-Pattern 5: Making POS a Separate Table
 
-### Phase 3: Telegram Bot
-Depends on Phase 1-2 (needs API and analysis pipeline).
-- Telegraf webhook setup
-- Sentence input command
-- Analysis result notification
-- Docker integration
+**What people do:** Create a `word_senses` or `word_translations` table with POS and translation as child records.
+**Why it is wrong:** Adds a JOIN to every query, complicates the upsert logic, and is unnecessary when POS is 1:1 with the vocabulary item concept (a noun "run" and verb "run" are genuinely different things to learn).
+**Do this instead:** Add POS as a column on the words table with a composite unique constraint.
 
-### Phase 4: SRS Engine
-Depends on Phase 1 (needs srs_cards table).
-- SM-2 algorithm implementation (pure function, easy to test)
-- Review scheduling queries
-- Review session flow (get due cards -> present -> grade -> reschedule)
+## Build Order (Dependency-Aware)
 
-### Phase 5: Exercise Generation
-Depends on Phase 2 + 4 (needs AI pipeline and SRS cards).
-- Exercise generation prompts (per type: flashcard, fill-blank, etc.)
-- Batch generation job (cron-triggered)
-- Exercise storage and retrieval
+The features have dependencies that dictate optimal build order:
 
-### Phase 6: Vue 3 SPA
-Depends on Phase 1, 4, 5 (needs API, SRS, exercises).
-- Sentence input UI
-- Review session UI
-- Dashboard (progress, streaks, heatmap)
-- Thematic cluster browser
+```
+1. Multiple POS schema migration     (no deps, blocks everything else)
+    |
+    v
+2. Auto-add in Telegram + analysis   (depends on POS upsert logic change)
+   service changes
+    |
+    v
+3. Vocabulary page (GET /words API   (depends on POS column existing)
+   + Vue components)
+    |
+    v
+4. Collocations display              (depends on vocabulary page for word detail)
 
-### Rationale for This Order
-- **Data layer first** because you can't build anything without it. Also lets you iterate on schema before it's in production.
-- **AI pipeline before bot** because the bot's primary value is "input sentence and get analysis." Without AI, the bot is just a text box.
-- **SRS before exercises** because SM-2 is a pure algorithm that doesn't depend on AI. You can test it independently. Exercises need SRS cards to exist.
-- **Vue SPA last** because you can validate the entire backend flow via Telegram bot + API tests before building the frontend. This reduces wasted UI work on unstable APIs.
+5. Web SRS review                    (independent -- can run in parallel with 2-4)
+```
 
-## Scalability Considerations
+**Rationale:**
+- POS migration MUST be first because it changes the words table unique constraint, which affects all upsert logic in `storeAnalysisResults`.
+- Auto-add changes the analysis service which also needs the POS upsert change, so it naturally follows the migration.
+- Vocabulary page depends on POS being in the schema so the word list shows POS correctly from day one.
+- Collocations display is most useful alongside the vocabulary word detail page.
+- Web SRS review is fully independent -- the API already exists. It can be built in parallel with items 2-4.
 
-| Concern | At 1 user (current) | At 10 users | At 100 users |
-|---------|---------------------|-------------|--------------|
-| AI costs | ~$5-15/month | $50-150/month, need batching optimization | Unsustainable without caching/dedup |
-| Database | SQLite would work, PostgreSQL is fine | PostgreSQL fine | PostgreSQL fine, add connection pooling |
-| Background jobs | Single worker, no concurrency needed | Single worker with concurrency=3 | Multiple workers, priority queues |
-| API | No load concerns | No load concerns | Add rate limiting, basic auth |
+**Parallel opportunity:** Web SRS review (item 5) can be built simultaneously with items 2-4 since it only touches new frontend files and the existing review API.
 
-For a personal tool, scalability is not a concern. The architecture is designed for **maintainability and reliability**, not scale. The queue-based AI pattern is not for scale -- it's for UX (don't block the user) and resilience (retry on failure).
+## Integration Points
 
-## Technology Recommendations (Architecture-Driven)
+### Existing Services Impact
 
-| Layer | Recommendation | Why |
-|-------|---------------|-----|
-| API Framework | **Fastify** | Faster than Express, built-in TypeScript support, schema validation via JSON Schema |
-| ORM/Query | **Drizzle ORM** | Type-safe, SQL-like API, good PostgreSQL support, no magic |
-| Job Queue | **BullMQ** | Mature, Redis-backed, supports retries/delays/priorities, good TypeScript types |
-| Telegram | **Telegraf** | Most popular Node.js Telegram framework, webhook support, good middleware pattern |
-| Validation | **Zod** | Runtime validation for AI responses, integrates with TypeScript types |
-| AI SDK | **Direct HTTP** (Anthropic SDK / OpenAI SDK) | Official SDKs are thin wrappers; no need for LangChain overhead |
+| Service | Impact | Risk |
+|---------|--------|------|
+| `analysis.ts` storeAnalysisResults | MODIFY upsert key + auto-SRS | MEDIUM -- must update carefully, test with existing data |
+| `srs.ts` | NO CHANGE | NONE |
+| `exercise-generator.ts` | NO CHANGE | NONE |
+| `word-family.ts` | NO CHANGE | NONE |
+| `lemmatizer.ts` | NO CHANGE | NONE |
+
+### Bot / Web Shared API
+
+| Endpoint | Used By | Change |
+|----------|---------|--------|
+| `GET /review/due` | Bot + Web (new) | None needed |
+| `POST /review/:cardId/rate` | Bot + Web (new) | None needed |
+| `GET /sentences/:id/words` | Bot + Web | None needed |
+| `GET /sentences/:id/details` | Bot + Web | None needed |
+| `PATCH /words/:id/familiarity` | Bot + Web | None needed |
+| `POST /words/:wordId/srs-card` | Bot + Web | None needed (auto-add makes this less used) |
+| `GET /words` | Web only (new) | New endpoint |
+| `GET /words/:id` | Web only (new) | New endpoint |
+| `GET /collocations` | Web only (new) | New endpoint |
+| `GET /words/:id/collocations` | Web only (new) | New endpoint |
+
+The bot and web share the same Fastify API. No CORS changes needed (web already configured). No new authentication concerns (single-user app).
 
 ## Sources
 
-- [SM-2 algorithm explanation](https://dev.to/umangsinha12/how-spaced-repetition-actually-works-the-sm-2-algorithm-1ge3) - SM-2 internals
-- [SM-2 algorithm explained](https://tegaru.app/en/blog/sm2-algorithm-explained) - Algorithm parameters
-- [PostgreSQL SRS implementation](https://github.com/sivers/srs) - SRS in PostgreSQL functions
-- [Scalable Telegram Bot with BullMQ](https://medium.com/@pushpesh0/building-a-scalable-telegram-bot-with-node-js-bullmq-and-webhooks-6b0070fcbdfc) - Queue pattern for bots
-- [Telegraf framework](https://github.com/telegraf/telegraf) - Telegram bot framework
-- [5 Patterns for Scalable LLM Integration](https://latitude-blog.ghost.io/blog/5-patterns-for-scalable-llm-service-integration/) - Queue-based AI patterns
-- [Design Patterns for LLM Microservices](https://latitude.so/blog/design-patterns-llm-microservices/) - AI service architecture
-- [AI-powered backend architecture 2026](https://www.refontelearning.com/blog/ai-powered-backend-architecture-in-2026-how-backend-engineers-build-scalable-intelligent-systems) - Modern backend patterns
+- Full codebase analysis of `src/` (routes, services, db/schema, bot/handlers, workers)
+- Full codebase analysis of `web/src/` (stores, views, components, api, router)
+- Drizzle ORM schema files for current table structure
+- Existing route handlers for current API contract
+- ts-fsrs integration in `services/srs.ts`
+- AI analysis schema in `lib/ai/schemas.ts`
+
+---
+*Architecture research for: English learning app v1.1 feature integration*
+*Researched: 2026-03-10*
