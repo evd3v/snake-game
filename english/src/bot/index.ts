@@ -2,6 +2,8 @@ import 'dotenv/config';
 import { Bot } from 'grammy';
 import { createSentenceHandler } from './handlers/sentence.ts';
 import { registerReviewHandlers } from './handlers/review.ts';
+import { createAuthMiddleware } from './middleware/auth.ts';
+import { startNotificationScheduler } from './notifications/scheduler.ts';
 
 const token = process.env.TELEGRAM_BOT_TOKEN;
 if (!token) {
@@ -10,6 +12,8 @@ if (!token) {
 }
 
 const bot = new Bot(token);
+
+bot.use(createAuthMiddleware());
 
 registerReviewHandlers(bot);
 bot.on('message:text', createSentenceHandler());
@@ -27,5 +31,6 @@ process.on('SIGINT', shutdown);
 bot.start({
   onStart: () => {
     console.log('Bot started');
+    startNotificationScheduler(bot);
   },
 });
