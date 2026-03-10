@@ -28,13 +28,16 @@ describe('Database connection and schema', () => {
 
     const expectedTables = [
       'collocations',
+      'grammar_exercises',
       'grammar_patterns',
+      'review_logs',
       'sentence_collocations',
       'sentence_grammar_patterns',
       'sentence_words',
       'sentences',
       'srs_cards',
       'word_families',
+      'word_senses',
       'words',
     ];
 

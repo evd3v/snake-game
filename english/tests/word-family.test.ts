@@ -3,6 +3,7 @@ import { describe, it, expect, beforeAll, afterAll, afterEach } from 'vitest';
 import { sql } from 'drizzle-orm';
 import { createDb, type Database } from '../src/db/index.ts';
 import { words, sentenceWords } from '../src/db/schema/words.ts';
+import { wordSenses } from '../src/db/schema/word-senses.ts';
 import { wordFamilies } from '../src/db/schema/word-families.ts';
 import { linkWordFamilies } from '../src/services/word-family.ts';
 
@@ -15,6 +16,7 @@ beforeAll(() => {
 afterEach(async () => {
   // Clean up in correct order (FK constraints)
   await db.delete(sentenceWords).where(sql`1=1`);
+  await db.delete(wordSenses).where(sql`1=1`);
   await db.delete(words).where(sql`1=1`);
   await db.delete(wordFamilies).where(sql`1=1`);
 });
@@ -22,6 +24,7 @@ afterEach(async () => {
 afterAll(async () => {
   // Final cleanup
   await db.delete(sentenceWords).where(sql`1=1`);
+  await db.delete(wordSenses).where(sql`1=1`);
   await db.delete(words).where(sql`1=1`);
   await db.delete(wordFamilies).where(sql`1=1`);
 });
@@ -31,11 +34,11 @@ describe('linkWordFamilies', () => {
     // Insert two words that belong to the same family
     const [w1] = await db
       .insert(words)
-      .values({ lemma: 'reluctant', translation: 'неохотный', cefrLevel: 'B2' })
+      .values({ lemma: 'reluctant', cefrLevel: 'B2' })
       .returning();
     const [w2] = await db
       .insert(words)
-      .values({ lemma: 'reluctance', translation: 'нежелание', cefrLevel: 'B2' })
+      .values({ lemma: 'reluctance', cefrLevel: 'B2' })
       .returning();
 
     const insertedWords = new Map<string, number>([
@@ -76,7 +79,6 @@ describe('linkWordFamilies', () => {
       .insert(words)
       .values({
         lemma: 'reluctant',
-        translation: 'неохотный',
         cefrLevel: 'B2',
         wordFamilyId: family.id,
       })
@@ -85,7 +87,7 @@ describe('linkWordFamilies', () => {
     // Insert new word without family
     const [w2] = await db
       .insert(words)
-      .values({ lemma: 'reluctantly', translation: 'неохотно', cefrLevel: 'B2' })
+      .values({ lemma: 'reluctantly', cefrLevel: 'B2' })
       .returning();
 
     const insertedWords = new Map<string, number>([

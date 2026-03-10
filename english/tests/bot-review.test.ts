@@ -77,7 +77,7 @@ describe('review handler logic', () => {
       cardType: 'vocabulary' as const,
       state: 'new',
       due: new Date().toISOString(),
-      word: { lemma: 'resilient', translation: 'able to recover', cefrLevel: 'C1' },
+      word: { lemma: 'resilient', translation: 'able to recover', cefrLevel: 'C1', partOfSpeech: 'adjective' },
       sentence: 'She remained resilient despite all challenges.',
     };
     const text = mod.formatCardFront(dueCard);
@@ -122,7 +122,7 @@ describe('review handler logic', () => {
       cardType: 'vocabulary' as const,
       state: 'new',
       due: new Date().toISOString(),
-      word: { lemma: 'resilient', translation: 'able to recover', cefrLevel: 'C1' },
+      word: { lemma: 'resilient', translation: 'able to recover', cefrLevel: 'C1', partOfSpeech: 'adjective' },
       sentence: 'She remained resilient despite all challenges.',
     };
     const text = mod.formatCardReveal(dueCard);

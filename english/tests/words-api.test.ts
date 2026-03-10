@@ -4,11 +4,14 @@ import type { FastifyInstance } from 'fastify';
 import { buildTestApp, cleanupTestApp } from './helpers/setup.ts';
 import { sentences } from '../src/db/schema/sentences.ts';
 import { words, sentenceWords } from '../src/db/schema/words.ts';
-import { eq } from 'drizzle-orm';
+import { wordSenses } from '../src/db/schema/word-senses.ts';
+import { srsCards } from '../src/db/schema/srs-cards.ts';
+import { eq, sql } from 'drizzle-orm';
 
 let app: FastifyInstance;
 let sentenceId: number;
 let wordIds: number[];
+let senseIds: number[];
 
 beforeAll(async () => {
   app = await buildTestApp();
@@ -19,7 +22,7 @@ afterAll(async () => {
 });
 
 beforeEach(async () => {
-  // Seed data: a sentence with linked words
+  // Seed data: a sentence with linked words and word senses
   const [sentence] = await app.db
     .insert(sentences)
     .values({ text: 'The cat sat on the mat.' })
@@ -29,11 +32,20 @@ beforeEach(async () => {
   const insertedWords = await app.db
     .insert(words)
     .values([
-      { lemma: `cat_${sentenceId}`, translation: 'кот', cefrLevel: 'A1', familiarity: 'never_seen', thematicCluster: 'animals' },
-      { lemma: `sit_${sentenceId}`, translation: 'сидеть', cefrLevel: 'A1', familiarity: 'never_seen', thematicCluster: 'actions' },
+      { lemma: `cat_${sentenceId}`, cefrLevel: 'A1', thematicCluster: 'animals' },
+      { lemma: `sit_${sentenceId}`, cefrLevel: 'A1', thematicCluster: 'actions' },
     ])
     .returning();
   wordIds = insertedWords.map((w) => w.id);
+
+  const insertedSenses = await app.db
+    .insert(wordSenses)
+    .values([
+      { wordId: wordIds[0], partOfSpeech: 'noun', translation: 'кот', familiarity: 'never_seen' },
+      { wordId: wordIds[1], partOfSpeech: 'verb', translation: 'сидеть', familiarity: 'never_seen' },
+    ])
+    .returning();
+  senseIds = insertedSenses.map((s) => s.id);
 
   await app.db.insert(sentenceWords).values([
     { sentenceId, wordId: wordIds[0], position: 1 },
@@ -42,11 +54,13 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  // Clean up in correct order (junction first, then words, then sentences)
+  // Clean up in correct order (junction first, then senses, then words, then sentences)
   if (sentenceId) {
+    await app.db.delete(srsCards).where(sql`1=1`);
     await app.db.delete(sentenceWords).where(eq(sentenceWords.sentenceId, sentenceId));
   }
   for (const wId of wordIds ?? []) {
+    await app.db.delete(wordSenses).where(eq(wordSenses.wordId, wId));
     await app.db.delete(words).where(eq(words.id, wId));
   }
   if (sentenceId) {
@@ -55,7 +69,7 @@ afterEach(async () => {
 });
 
 describe('GET /sentences/:sentenceId/words', () => {
-  it('returns words linked to a sentence', async () => {
+  it('returns words linked to a sentence with sense data', async () => {
     const response = await app.inject({
       method: 'GET',
       url: `/sentences/${sentenceId}/words`,
@@ -71,6 +85,8 @@ describe('GET /sentences/:sentenceId/words', () => {
       cefrLevel: expect.any(String),
       familiarity: 'never_seen',
       thematicCluster: expect.any(String),
+      partOfSpeech: expect.any(String),
+      senseId: expect.any(Number),
     });
     // Ordered by position
     expect(body[0].lemma).toContain('cat');
@@ -90,7 +106,7 @@ describe('GET /sentences/:sentenceId/words', () => {
 });
 
 describe('PATCH /words/:id/familiarity', () => {
-  it('updates familiarity and returns updated word', async () => {
+  it('updates familiarity on word senses and returns updated sense', async () => {
     const response = await app.inject({
       method: 'PATCH',
       url: `/words/${wordIds[0]}/familiarity`,
@@ -99,7 +115,6 @@ describe('PATCH /words/:id/familiarity', () => {
 
     expect(response.statusCode).toBe(200);
     const body = response.json();
-    expect(body.id).toBe(wordIds[0]);
     expect(body.familiarity).toBe('seen_unsure');
   });
 

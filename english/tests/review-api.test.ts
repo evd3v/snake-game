@@ -6,6 +6,7 @@ import { sql, eq } from 'drizzle-orm';
 import { sentences } from '../src/db/schema/sentences.ts';
 import { words, sentenceWords } from '../src/db/schema/words.ts';
 import { srsCards } from '../src/db/schema/srs-cards.ts';
+import { wordSenses } from '../src/db/schema/word-senses.ts';
 import { grammarPatterns, sentenceGrammarPatterns } from '../src/db/schema/grammar-patterns.ts';
 import { grammarExercises } from '../src/db/schema/grammar-exercises.ts';
 import { reviewLogs } from '../src/db/schema/review-logs.ts';
@@ -25,6 +26,7 @@ async function cleanAll() {
   await app.db.delete(reviewLogs).where(sql`1=1`);
   await app.db.delete(grammarExercises).where(sql`1=1`);
   await app.db.delete(srsCards).where(sql`1=1`);
+  await app.db.delete(wordSenses).where(sql`1=1`);
   await app.db.delete(sentenceWords).where(sql`1=1`);
   await app.db.delete(sentenceGrammarPatterns).where(sql`1=1`);
   await app.db.delete(sentenceCollocations).where(sql`1=1`);
@@ -49,8 +51,13 @@ describe('GET /review/due', () => {
 
     const [word] = await app.db.insert(words).values({
       lemma: 'cat_review_test',
-      translation: 'кот',
       cefrLevel: 'A1',
+    }).returning();
+
+    const [sense] = await app.db.insert(wordSenses).values({
+      wordId: word.id,
+      partOfSpeech: 'noun',
+      translation: 'кот',
     }).returning();
 
     await app.db.insert(sentenceWords).values({
@@ -61,7 +68,7 @@ describe('GET /review/due', () => {
 
     await app.db.insert(srsCards).values({
       cardType: 'vocabulary',
-      wordId: word.id,
+      wordSenseId: sense.id,
       state: 'new',
       due: new Date(Date.now() - 60000), // due in the past
       stability: 0,
@@ -87,6 +94,7 @@ describe('GET /review/due', () => {
       lemma: 'cat_review_test',
       translation: 'кот',
       cefrLevel: 'A1',
+      partOfSpeech: 'noun',
     });
     expect(vocabCard.sentence).toBe('The cat sat on the mat.');
   });
@@ -95,7 +103,7 @@ describe('GET /review/due', () => {
     // Seed a card with future due date
     await app.db.insert(srsCards).values({
       cardType: 'vocabulary',
-      wordId: null,
+      wordSenseId: null,
       state: 'new',
       due: new Date(Date.now() + 86400000), // due tomorrow
       stability: 0,
@@ -117,9 +125,13 @@ describe('GET /review/due', () => {
       const [w] = await app.db.insert(words).values({
         lemma: `limit_test_${i}_${Date.now()}`,
       }).returning();
+      const [ws] = await app.db.insert(wordSenses).values({
+        wordId: w.id,
+        partOfSpeech: 'noun',
+      }).returning();
       await app.db.insert(srsCards).values({
         cardType: 'vocabulary',
-        wordId: w.id,
+        wordSenseId: ws.id,
         state: 'new',
         due: new Date(Date.now() - 60000),
       });
@@ -183,7 +195,7 @@ describe('POST /review/:cardId/rate', () => {
   it('updates card scheduling and returns next due date', async () => {
     const [card] = await app.db.insert(srsCards).values({
       cardType: 'vocabulary',
-      wordId: null,
+      wordSenseId: null,
       state: 'new',
       due: new Date(Date.now() - 60000),
     }).returning();
@@ -203,7 +215,7 @@ describe('POST /review/:cardId/rate', () => {
   it('returns 400 for invalid rating', async () => {
     const [card] = await app.db.insert(srsCards).values({
       cardType: 'vocabulary',
-      wordId: null,
+      wordSenseId: null,
       state: 'new',
       due: new Date(Date.now() - 60000),
     }).returning();
@@ -228,39 +240,49 @@ describe('POST /review/:cardId/rate', () => {
   });
 });
 
-describe('POST /words/:wordId/srs-card', () => {
-  it('creates an SRS card for a vocabulary word', async () => {
+describe('POST /word-senses/:wordSenseId/srs-card', () => {
+  it('creates an SRS card for a vocabulary word sense', async () => {
     const [word] = await app.db.insert(words).values({
       lemma: `srs_create_${Date.now()}`,
+    }).returning();
+
+    const [sense] = await app.db.insert(wordSenses).values({
+      wordId: word.id,
+      partOfSpeech: 'noun',
       translation: 'test',
     }).returning();
 
     const response = await app.inject({
       method: 'POST',
-      url: `/words/${word.id}/srs-card`,
+      url: `/word-senses/${sense.id}/srs-card`,
     });
 
     expect(response.statusCode).toBe(201);
     const body = response.json();
     expect(body.cardType).toBe('vocabulary');
-    expect(body.wordId).toBe(word.id);
+    expect(body.wordSenseId).toBe(sense.id);
     expect(body.state).toBe('new');
   });
 
   it('is idempotent (second call returns 201 without error)', async () => {
     const [word] = await app.db.insert(words).values({
       lemma: `srs_idempotent_${Date.now()}`,
+    }).returning();
+
+    const [sense] = await app.db.insert(wordSenses).values({
+      wordId: word.id,
+      partOfSpeech: 'noun',
       translation: 'test',
     }).returning();
 
     await app.inject({
       method: 'POST',
-      url: `/words/${word.id}/srs-card`,
+      url: `/word-senses/${sense.id}/srs-card`,
     });
 
     const response = await app.inject({
       method: 'POST',
-      url: `/words/${word.id}/srs-card`,
+      url: `/word-senses/${sense.id}/srs-card`,
     });
 
     expect(response.statusCode).toBe(201);

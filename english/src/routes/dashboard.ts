@@ -22,12 +22,13 @@ const dashboardRoute: FastifyPluginAsync = async (fastify) => {
       .from(words);
 
     // Words with SRS cards count (through word_senses)
-    const [{ wordsWithCards }] = await fastify.db.execute(sql`
+    const wordsWithCardsResult = await fastify.db.execute(sql`
       SELECT count(DISTINCT ws.word_id)::int AS "wordsWithCards"
       FROM srs_cards sc
       JOIN word_senses ws ON ws.id = sc.word_sense_id
       WHERE sc.card_type = 'vocabulary'
-    `) as unknown as [{ wordsWithCards: number }];
+    `);
+    const wordsWithCards = (wordsWithCardsResult.rows[0] as any)?.wordsWithCards ?? 0;
 
     const wordsWithoutCards = totalWords - wordsWithCards;
 

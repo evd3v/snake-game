@@ -3,8 +3,10 @@ export interface WordInfo {
   lemma: string;
   translation: string | null;
   cefrLevel: string | null;
-  familiarity: string;
+  familiarity: string | null;
   thematicCluster: string | null;
+  partOfSpeech: string | null;
+  senseId: number | null;
   hasSrsCard: boolean;
 }
 
@@ -78,8 +80,8 @@ export async function getSentenceWords(sentenceId: number): Promise<WordInfo[]> 
   return response.json() as Promise<WordInfo[]>;
 }
 
-export async function createSrsCard(wordId: number): Promise<void> {
-  const response = await fetch(`${API_URL}/words/${wordId}/srs-card`, {
+export async function createSrsCard(wordSenseId: number): Promise<void> {
+  const response = await fetch(`${API_URL}/word-senses/${wordSenseId}/srs-card`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
@@ -94,7 +96,7 @@ export interface DueCard {
   cardType: 'vocabulary' | 'grammar';
   state: string;
   due: string;
-  word?: { lemma: string; translation: string | null; cefrLevel: string | null };
+  word?: { lemma: string; translation: string | null; cefrLevel: string | null; partOfSpeech: string | null };
   sentence?: string;
   pattern?: { pattern: string; description: string };
   exercise?: { id: number; sentence: string; answer: string; hint: string | null; difficultyLevel: number };

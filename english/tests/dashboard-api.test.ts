@@ -6,6 +6,7 @@ import { sql } from 'drizzle-orm';
 import { sentences } from '../src/db/schema/sentences.ts';
 import { words, sentenceWords } from '../src/db/schema/words.ts';
 import { srsCards } from '../src/db/schema/srs-cards.ts';
+import { wordSenses } from '../src/db/schema/word-senses.ts';
 import { grammarPatterns, sentenceGrammarPatterns } from '../src/db/schema/grammar-patterns.ts';
 import { grammarExercises } from '../src/db/schema/grammar-exercises.ts';
 import { reviewLogs } from '../src/db/schema/review-logs.ts';
@@ -25,6 +26,7 @@ async function cleanAll() {
   await app.db.delete(reviewLogs).where(sql`1=1`);
   await app.db.delete(grammarExercises).where(sql`1=1`);
   await app.db.delete(srsCards).where(sql`1=1`);
+  await app.db.delete(wordSenses).where(sql`1=1`);
   await app.db.delete(sentenceWords).where(sql`1=1`);
   await app.db.delete(sentenceGrammarPatterns).where(sql`1=1`);
   await app.db.delete(sentenceCollocations).where(sql`1=1`);
@@ -54,19 +56,23 @@ describe('GET /dashboard/stats', () => {
   });
 
   it('returns correct counts grouped by card type and state', async () => {
-    // Create words
+    // Create words and senses
     const [w1] = await app.db.insert(words).values({ lemma: 'stat_w1' }).returning();
     const [w2] = await app.db.insert(words).values({ lemma: 'stat_w2' }).returning();
     const [w3] = await app.db.insert(words).values({ lemma: 'stat_w3_no_card' }).returning();
+
+    const [ws1] = await app.db.insert(wordSenses).values({ wordId: w1.id, partOfSpeech: 'noun' }).returning();
+    const [ws2] = await app.db.insert(wordSenses).values({ wordId: w2.id, partOfSpeech: 'noun' }).returning();
+    await app.db.insert(wordSenses).values({ wordId: w3.id, partOfSpeech: 'noun' });
 
     // Create grammar patterns
     const [g1] = await app.db.insert(grammarPatterns).values({ pattern: 'stat_g1' }).returning();
 
     // Create SRS cards
     await app.db.insert(srsCards).values([
-      { cardType: 'vocabulary', wordId: w1.id, state: 'new', due: new Date() },
-      { cardType: 'vocabulary', wordId: w2.id, state: 'review', due: new Date() },
-      { cardType: 'grammar', grammarPatternId: g1.id, state: 'learning', due: new Date() },
+      { cardType: 'vocabulary' as const, wordSenseId: ws1.id, state: 'new' as const, due: new Date() },
+      { cardType: 'vocabulary' as const, wordSenseId: ws2.id, state: 'review' as const, due: new Date() },
+      { cardType: 'grammar' as const, grammarPatternId: g1.id, state: 'learning' as const, due: new Date() },
     ]);
 
     const response = await app.inject({
@@ -98,9 +104,10 @@ describe('GET /dashboard/weak-spots', () => {
   });
 
   it('returns items with highest fail rates (>= 2 reviews)', async () => {
-    const [w1] = await app.db.insert(words).values({ lemma: 'weak_w1', translation: 'translation1' }).returning();
+    const [w1] = await app.db.insert(words).values({ lemma: 'weak_w1' }).returning();
+    const [ws1] = await app.db.insert(wordSenses).values({ wordId: w1.id, partOfSpeech: 'noun', translation: 'translation1' }).returning();
     const [card1] = await app.db.insert(srsCards).values({
-      cardType: 'vocabulary', wordId: w1.id, state: 'review', due: new Date(),
+      cardType: 'vocabulary', wordSenseId: ws1.id, state: 'review', due: new Date(),
     }).returning();
 
     // 3 reviews: 2 fails (rating 1,2), 1 pass (rating 3) => failRate = 2/3
@@ -145,8 +152,9 @@ describe('GET /dashboard/weak-spots', () => {
 
   it('excludes items with fewer than 2 reviews', async () => {
     const [w1] = await app.db.insert(words).values({ lemma: 'weak_single' }).returning();
+    const [ws1] = await app.db.insert(wordSenses).values({ wordId: w1.id, partOfSpeech: 'noun' }).returning();
     const [card1] = await app.db.insert(srsCards).values({
-      cardType: 'vocabulary', wordId: w1.id, state: 'review', due: new Date(),
+      cardType: 'vocabulary', wordSenseId: ws1.id, state: 'review', due: new Date(),
     }).returning();
 
     // Only 1 review
@@ -178,7 +186,7 @@ describe('GET /dashboard/activity', () => {
   it('returns combined review and sentence counts per day', async () => {
     // Create a card for review logs
     const [card] = await app.db.insert(srsCards).values({
-      cardType: 'vocabulary', wordId: null, state: 'new', due: new Date(),
+      cardType: 'vocabulary', wordSenseId: null, state: 'new', due: new Date(),
     }).returning();
 
     const today = new Date();
@@ -231,10 +239,14 @@ describe('GET /dashboard/clusters', () => {
     // w4 has no cluster - should be excluded
     await app.db.insert(words).values({ lemma: 'cluster_w4_no_cluster' });
 
+    const [ws1] = await app.db.insert(wordSenses).values({ wordId: w1.id, partOfSpeech: 'noun' }).returning();
+    await app.db.insert(wordSenses).values({ wordId: w2.id, partOfSpeech: 'noun' });
+    const [ws3] = await app.db.insert(wordSenses).values({ wordId: w3.id, partOfSpeech: 'noun' }).returning();
+
     // w1 has SRS card in review state (known), w2 no card (new), w3 card in learning
     await app.db.insert(srsCards).values([
-      { cardType: 'vocabulary', wordId: w1.id, state: 'review', due: new Date() },
-      { cardType: 'vocabulary', wordId: w3.id, state: 'learning', due: new Date() },
+      { cardType: 'vocabulary' as const, wordSenseId: ws1.id, state: 'review' as const, due: new Date() },
+      { cardType: 'vocabulary' as const, wordSenseId: ws3.id, state: 'learning' as const, due: new Date() },
     ]);
 
     const response = await app.inject({

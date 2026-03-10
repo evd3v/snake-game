@@ -3,9 +3,9 @@ import { buildWordSelectionKeyboard, buildFamiliarityKeyboard } from '../src/bot
 import type { WordInfo } from '../src/bot/services/api-client.ts';
 
 const sampleWords: WordInfo[] = [
-  { id: 1, lemma: 'reluctant', translation: 'unwilling', cefrLevel: 'B2', familiarity: 'unknown', thematicCluster: null, hasSrsCard: false },
-  { id: 2, lemma: 'crucial', translation: 'very important', cefrLevel: 'B1', familiarity: 'unknown', thematicCluster: null, hasSrsCard: true },
-  { id: 3, lemma: 'evidence', translation: 'proof', cefrLevel: 'B1', familiarity: 'unknown', thematicCluster: null, hasSrsCard: false },
+  { id: 1, lemma: 'reluctant', translation: 'unwilling', cefrLevel: 'B2', familiarity: 'unknown', thematicCluster: null, partOfSpeech: 'adjective', senseId: 10, hasSrsCard: false },
+  { id: 2, lemma: 'crucial', translation: 'very important', cefrLevel: 'B1', familiarity: 'unknown', thematicCluster: null, partOfSpeech: 'adjective', senseId: 20, hasSrsCard: true },
+  { id: 3, lemma: 'evidence', translation: 'proof', cefrLevel: 'B1', familiarity: 'unknown', thematicCluster: null, partOfSpeech: 'noun', senseId: 30, hasSrsCard: false },
 ];
 
 /** Extract callback_data from a button (all our buttons are callback buttons) */

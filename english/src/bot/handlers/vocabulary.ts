@@ -120,11 +120,14 @@ export function registerVocabularyHandlers(bot: Bot): void {
     if (code !== 'skip' && FAMILIARITY_MAP[code]) {
       try {
         await apiClient.setFamiliarity(wordId, FAMILIARITY_MAP[code]);
-        // Auto-create SRS card for vocabulary review
-        try {
-          await apiClient.createSrsCard(wordId);
-        } catch (srsError) {
-          console.error('Failed to create SRS card:', srsError);
+        // Auto-create SRS card for vocabulary review (using word sense)
+        const wordInfo = state.words.find((w) => w.id === wordId);
+        if (wordInfo?.senseId) {
+          try {
+            await apiClient.createSrsCard(wordInfo.senseId);
+          } catch (srsError) {
+            console.error('Failed to create SRS card:', srsError);
+          }
         }
       } catch (error) {
         console.error('Failed to set familiarity:', error);

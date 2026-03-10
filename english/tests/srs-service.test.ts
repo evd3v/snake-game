@@ -11,9 +11,24 @@ import {
   toDbState,
   Rating,
 } from '../src/services/srs.ts';
-import { srsCards, reviewLogs } from '../src/db/schema/index.ts';
+import { srsCards, reviewLogs, words, wordSenses } from '../src/db/schema/index.ts';
 
 let db: Database;
+
+// Track created word/sense IDs for cleanup and test use
+let testWordIds: number[] = [];
+let testSenseIds: number[] = [];
+
+async function createTestWordSense(lemma: string): Promise<number> {
+  const [word] = await db.insert(words).values({ lemma }).returning();
+  testWordIds.push(word.id);
+  const [sense] = await db.insert(wordSenses).values({
+    wordId: word.id,
+    partOfSpeech: 'noun',
+  }).returning();
+  testSenseIds.push(sense.id);
+  return sense.id;
+}
 
 beforeAll(() => {
   db = createDb(process.env.DATABASE_URL!);
@@ -23,6 +38,10 @@ afterAll(async () => {
   // Clean up test data
   await db.delete(reviewLogs).where(sql`1=1`);
   await db.delete(srsCards).where(sql`1=1`);
+  await db.delete(wordSenses).where(sql`1=1`);
+  for (const wId of testWordIds) {
+    await db.delete(words).where(sql`${words.id} = ${wId}`);
+  }
 });
 
 describe('toFsrsCard / toDbState mapping', () => {
@@ -30,7 +49,7 @@ describe('toFsrsCard / toDbState mapping', () => {
     const row = {
       id: 1,
       cardType: 'vocabulary' as const,
-      wordId: 1,
+      wordSenseId: 1,
       grammarPatternId: null,
       state: 'new' as const,
       due: new Date(),
@@ -60,11 +79,12 @@ describe('toFsrsCard / toDbState mapping', () => {
 
 describe('createSrsCard', () => {
   it('inserts a vocabulary card with state=new and due~now', async () => {
-    const card = await createSrsCard(db, 'vocabulary', { wordId: 9999 });
+    const senseId = await createTestWordSense(`srs_test_vocab_${Date.now()}`);
+    const card = await createSrsCard(db, 'vocabulary', { wordSenseId: senseId });
     expect(card).toBeDefined();
     expect(card.cardType).toBe('vocabulary');
     expect(card.state).toBe('new');
-    expect(card.wordId).toBe(9999);
+    expect(card.wordSenseId).toBe(senseId);
     expect(card.due).toBeInstanceOf(Date);
   });
 
@@ -76,16 +96,19 @@ describe('createSrsCard', () => {
   });
 
   it('does not throw on duplicate insert (onConflictDoNothing)', async () => {
-    // Insert the same wordId again -- should not throw
+    const senseId = await createTestWordSense(`srs_test_dup_${Date.now()}`);
+    await createSrsCard(db, 'vocabulary', { wordSenseId: senseId });
+    // Insert the same senseId again -- should not throw
     await expect(
-      createSrsCard(db, 'vocabulary', { wordId: 9999 }),
+      createSrsCard(db, 'vocabulary', { wordSenseId: senseId }),
     ).resolves.not.toThrow();
   });
 });
 
 describe('rateCard', () => {
   it('updates due date to future and increments reps on Rating.Good', async () => {
-    const card = await createSrsCard(db, 'vocabulary', { wordId: 8888 });
+    const senseId = await createTestWordSense(`srs_test_rate_${Date.now()}`);
+    const card = await createSrsCard(db, 'vocabulary', { wordSenseId: senseId });
     const before = new Date();
 
     const result = await rateCard(db, card.id, Rating.Good);
@@ -94,7 +117,8 @@ describe('rateCard', () => {
   });
 
   it('transitions a new card to learning state', async () => {
-    const card = await createSrsCard(db, 'vocabulary', { wordId: 7777 });
+    const senseId = await createTestWordSense(`srs_test_trans_${Date.now()}`);
+    const card = await createSrsCard(db, 'vocabulary', { wordSenseId: senseId });
     expect(card.state).toBe('new');
 
     await rateCard(db, card.id, Rating.Good);
@@ -112,8 +136,10 @@ describe('rateCard', () => {
 describe('getDueCards', () => {
   it('returns only cards where due <= now, ordered by due ASC', async () => {
     // Create cards with past due dates
-    const card1 = await createSrsCard(db, 'vocabulary', { wordId: 6661 });
-    const card2 = await createSrsCard(db, 'vocabulary', { wordId: 6662 });
+    const senseId1 = await createTestWordSense(`srs_test_due1_${Date.now()}`);
+    const senseId2 = await createTestWordSense(`srs_test_due2_${Date.now()}`);
+    await createSrsCard(db, 'vocabulary', { wordSenseId: senseId1 });
+    await createSrsCard(db, 'vocabulary', { wordSenseId: senseId2 });
 
     const dueCards = await getDueCards(db);
     expect(dueCards.length).toBeGreaterThanOrEqual(2);

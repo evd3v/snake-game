@@ -11,6 +11,7 @@ import {
   grammarPatterns,
   sentenceGrammarPatterns,
   wordFamilies,
+  wordSenses,
   srsCards,
   grammarExercises,
   reviewLogs,
@@ -28,6 +29,7 @@ async function cleanAll() {
   await db.delete(reviewLogs).where(sql`1=1`);
   await db.delete(grammarExercises).where(sql`1=1`);
   await db.delete(srsCards).where(sql`1=1`);
+  await db.delete(wordSenses).where(sql`1=1`);
   await db.delete(sentenceWords).where(sql`1=1`);
   await db.delete(sentenceCollocations).where(sql`1=1`);
   await db.delete(sentenceGrammarPatterns).where(sql`1=1`);
