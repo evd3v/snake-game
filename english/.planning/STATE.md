@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: active
-stopped_at: Completed 09-01-PLAN.md
-last_updated: "2026-03-10T08:47:03.345Z"
+stopped_at: Completed 09-02-PLAN.md
+last_updated: "2026-03-10T08:50:52.389Z"
 last_activity: 2026-03-10 — Completed 09-01 review API staleness guard + frontend store
 progress:
   total_phases: 4
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 9
-  completed_plans: 8
+  completed_plans: 9
   percent: 95
 ---
 
@@ -62,6 +62,7 @@ Progress: [██████████] 95%
 | Phase 08 P01 | 3min | 3 tasks | 2 files |
 | Phase 08 P02 | 3min | 2 tasks | 6 files |
 | Phase 09 P01 | 2min | 2 tasks | 5 files |
+| Phase 09 P02 | 2min | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -91,6 +92,7 @@ Recent decisions affecting current work:
 - [Phase 08]: Optimistic UI updates for mark-known and reset actions
 - [Phase 09]: 409 skip logic: stale cards silently skipped without counting in session stats
 - [Phase 09]: fetchedAt stored once at session start, sent with every rate call for staleness detection
+- [Phase 09]: Grammar cards without exercises show pattern title and immediate rating (no reveal step)
 
 ### Pending Todos
 
@@ -110,6 +112,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-10T08:47:03.343Z
-Stopped at: Completed 09-01-PLAN.md
+Last session: 2026-03-10T08:50:52.387Z
+Stopped at: Completed 09-02-PLAN.md
 Resume file: None
