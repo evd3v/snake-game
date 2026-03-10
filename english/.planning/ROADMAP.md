@@ -38,7 +38,11 @@
   2. Each word sense has its own SRS card -- reviewing "run (verb)" does not affect "run (noun)"
   3. All existing words have been migrated to the new schema with a sense derived from their current POS/translation
   4. The analysis pipeline continues to work after migration -- submitting a sentence produces correct word entries
-**Plans**: TBD
+**Plans:** 2 plans
+
+Plans:
+- [ ] 06-01-PLAN.md -- Schema + migration + analysis pipeline (word_senses table, data migration, two-step upsert)
+- [ ] 06-02-PLAN.md -- Consumer updates (routes, dashboard, SRS service, bot types, tests)
 
 ### Phase 7: Service Updates & Telegram Auto-Add
 **Goal**: New words from sentence analysis are automatically added with SRS cards, no manual selection required
@@ -81,7 +85,7 @@ Note: Phase 9 depends on Phase 6 (not Phase 8), so Phases 8 and 9 could potentia
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
-| 6. Data Model Evolution | v1.1 | 0/? | Not started | - |
+| 6. Data Model Evolution | v1.1 | 0/2 | Planning complete | - |
 | 7. Service Updates & Telegram Auto-Add | v1.1 | 0/? | Not started | - |
 | 8. Vocabulary Page & Collocations UI | v1.1 | 0/? | Not started | - |
 | 9. Web SRS Review | v1.1 | 0/? | Not started | - |
