@@ -53,7 +53,11 @@ Plans:
   1. When user submits a sentence in Telegram, all new words automatically get SRS cards without prompting for familiarity selection
   2. Words that already have SRS cards are not duplicated when encountered in a new sentence
   3. The review queue is not flooded with trivial words -- CEFR-based filtering prevents basic vocabulary from auto-adding
-**Plans**: TBD
+**Plans:** 2 plans
+
+Plans:
+- [ ] 07-01-PLAN.md -- Auto-SRS creation in analysis service with CEFR filtering
+- [ ] 07-02-PLAN.md -- Simplify Telegram bot (remove word selection/familiarity flow)
 
 ### Phase 8: Vocabulary Page & Collocations UI
 **Goal**: Users can browse, search, filter, and manage their entire vocabulary through the web app, with collocations visible everywhere
@@ -87,6 +91,6 @@ Note: Phase 9 depends on Phase 6 (not Phase 8), so Phases 8 and 9 could potentia
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 6. Data Model Evolution | 3/3 | Complete   | 2026-03-10 | - |
-| 7. Service Updates & Telegram Auto-Add | v1.1 | 0/? | Not started | - |
+| 7. Service Updates & Telegram Auto-Add | v1.1 | 0/2 | Not started | - |
 | 8. Vocabulary Page & Collocations UI | v1.1 | 0/? | Not started | - |
 | 9. Web SRS Review | v1.1 | 0/? | Not started | - |
