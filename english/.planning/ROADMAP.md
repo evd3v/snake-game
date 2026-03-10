@@ -113,7 +113,7 @@ Plans:
   1. User can see all grammar patterns on /grammar page with CEFR level, description, SRS status, and example sentences
   2. User can see all collocations on /collocations page with CEFR level, type, translation, and example sentences
   3. Both pages support filtering by CEFR level, type, and text search
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 
 Plans:
 - [ ] 11-01-PLAN.md -- Grammar and collocations API routes with tests (pagination, filters, search, example sentences)
@@ -132,4 +132,4 @@ Note: Phase 9 depends on Phase 6 (not Phase 8), so Phases 8 and 9 could potentia
 | 8. Vocabulary Page & Collocations UI | v1.1 | 0/2 | Not started | - |
 | 9. Web SRS Review | v1.1 | Complete    | 2026-03-10 | - |
 | 10. Collocation SRS & Review Enhancement | v1.1 | 0/? | Not started | - |
-| 11. Grammar & Collocations Browse Pages | v1.1 | 0/2 | Not started | - |
+| 11. Grammar & Collocations Browse Pages | 1/2 | In Progress|  | - |

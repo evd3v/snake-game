@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: active
-stopped_at: Completed 09-02-PLAN.md
-last_updated: "2026-03-10T08:53:15.689Z"
+stopped_at: Completed 11-01-PLAN.md
+last_updated: "2026-03-10T11:52:52.505Z"
 last_activity: 2026-03-10 — Completed 09-01 review API staleness guard + frontend store
 progress:
-  total_phases: 4
+  total_phases: 6
   completed_phases: 4
-  total_plans: 9
-  completed_plans: 9
+  total_plans: 11
+  completed_plans: 10
   percent: 95
 ---
 
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-10)
 
 **Core value:** User inputs a real sentence from a book and gets full analysis (translation, grammar, vocabulary, CEFR), with extracted items feeding into spaced repetition -- all in one flow.
-**Current focus:** Phase 9 - Web SRS Review
+**Current focus:** Phase 11 - Grammar & Collocations Browse Pages
 
 ## Current Position
 
-Phase: 9 of 9 (Web SRS Review)
+Phase: 11 of 11 (Grammar & Collocations Browse Pages)
 Plan: 1 of 2 in current phase
 Status: active
-Last activity: 2026-03-10 — Completed 09-01 review API staleness guard + frontend store
+Last activity: 2026-03-10 — Completed 11-01 grammar & collocations browse API
 
-Progress: [██████████] 95%
+Progress: [██████████] 96%
 
 ## Performance Metrics
 
@@ -63,6 +63,7 @@ Progress: [██████████] 95%
 | Phase 08 P02 | 3min | 2 tasks | 6 files |
 | Phase 09 P01 | 2min | 2 tasks | 5 files |
 | Phase 09 P02 | 2min | 2 tasks | 6 files |
+| Phase 11 P01 | 3min | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -93,6 +94,7 @@ Recent decisions affecting current work:
 - [Phase 09]: 409 skip logic: stale cards silently skipped without counting in session stats
 - [Phase 09]: fetchedAt stored once at session start, sent with every rate call for staleness detection
 - [Phase 09]: Grammar cards without exercises show pattern title and immediate rating (no reveal step)
+- [Phase 11]: Collocations SRS state filter deferred to Phase 10 (collocationId not yet on srs_cards)
 
 ### Pending Todos
 
@@ -112,6 +114,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-10T08:50:52.387Z
-Stopped at: Completed 09-02-PLAN.md
+Last session: 2026-03-10T11:52:52.502Z
+Stopped at: Completed 11-01-PLAN.md
 Resume file: None

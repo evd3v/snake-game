@@ -91,6 +91,18 @@ Requirements for UX Polish & Web Features milestone. Each maps to roadmap phases
 - [x] **COLL-01**: Collocations отображаются в веб-UI при анализе предложения
 - [x] **COLL-02**: Collocations видны на странице vocabulary для каждого слова
 
+### Collocation SRS & Review Enhancement
+
+- [ ] **CSRS-01**: Collocations автоматически получают SRS-карточки при анализе предложения (аналогично grammar)
+- [ ] **CSRS-02**: Collocation карточки появляются в review: лицо — коллокация + контекстное предложение, оборот — перевод + тип
+- [ ] **CSRS-03**: При review grammar карточки показывается описание паттерна и оригинальное предложение-пример на обороте
+
+### Grammar & Collocations Browse Pages
+
+- [x] **BROWSE-01**: Страница /grammar — список всех grammar patterns с CEFR, описанием, количеством повторений, примерами предложений
+- [x] **BROWSE-02**: Страница /collocations — список всех collocations с CEFR, типом, переводом, примерами предложений
+- [x] **BROWSE-03**: Фильтрация и поиск на обеих страницах (по CEFR, типу, тексту)
+
 ## v2 Requirements
 
 Deferred to future release.
@@ -106,7 +118,6 @@ Deferred to future release.
 - **REV-01**: Multiple exercise types (translation, sentence building, matching)
 - **REV-02**: Adaptive difficulty based on user performance trends
 - **MSENSE-01**: Одно значение слова может иметь несколько вариантов перевода с контекстом
-- **ADVREV-01**: Spaced repetition для collocations как отдельных единиц
 - **ADVREV-02**: Настраиваемые параметры FSRS через UI
 
 ### Social / Export
@@ -127,7 +138,7 @@ Deferred to future release.
 | Card template editor | Один пользователь, фиксированные типы карточек |
 | Deck/tag организация | Тематические кластеры от AI заменяют ручную организацию |
 | Bulk import/export | Данные входят только через sentence analysis |
-| Collocation SRS cards | Показывать как контекст, не как отдельные карточки |
+| ~~Collocation SRS cards~~ | Moved to v1.1 (CSRS-01, CSRS-02) |
 
 ## Traceability
 
@@ -193,9 +204,16 @@ Deferred to future release.
 | WREV-05 | Phase 9 | Complete |
 | WREV-06 | Phase 9 | Complete |
 
+| CSRS-01 | Phase 10 | Not started |
+| CSRS-02 | Phase 10 | Not started |
+| CSRS-03 | Phase 10 | Not started |
+| BROWSE-01 | Phase 11 | Not started |
+| BROWSE-02 | Phase 11 | Not started |
+| BROWSE-03 | Phase 11 | Not started |
+
 **Coverage:**
-- v1.1 requirements: 21 total
-- Mapped to phases: 21/21
+- v1.1 requirements: 27 total
+- Mapped to phases: 27/27
 - Unmapped: 0
 
 ---
