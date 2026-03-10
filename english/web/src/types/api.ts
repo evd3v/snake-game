@@ -97,3 +97,32 @@ export interface WordDetailResponse {
   wordFamily: WordFamilyMember[]
   sentences: Array<{ id: number; text: string }>
 }
+
+// Review types
+
+export interface DueCard {
+  cardId: number
+  cardType: 'vocabulary' | 'grammar'
+  state: string
+  due: string
+  word?: {
+    lemma: string
+    translation: string | null
+    cefrLevel: string | null
+    partOfSpeech: string | null
+  }
+  sentence?: string
+  pattern?: { pattern: string; description: string }
+  exercise?: {
+    id: number
+    sentence: string
+    answer: string
+    hint: string | null
+    difficultyLevel: number
+  }
+}
+
+export interface ReviewStats {
+  total: number
+  ratings: Record<1 | 2 | 3 | 4, number>
+}
