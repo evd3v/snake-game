@@ -1,6 +1,7 @@
 import type { FastifyPluginAsync } from 'fastify';
-import { eq, inArray, and } from 'drizzle-orm';
+import { eq, inArray, and, sql } from 'drizzle-orm';
 import { words, sentenceWords } from '../db/schema/words.ts';
+import { wordSenses } from '../db/schema/word-senses.ts';
 import { srsCards } from '../db/schema/srs-cards.ts';
 
 const wordsRoute: FastifyPluginAsync = async (fastify) => {
@@ -9,36 +10,68 @@ const wordsRoute: FastifyPluginAsync = async (fastify) => {
     async (request) => {
       const sentenceId = Number(request.params.sentenceId);
 
+      // Join words -> sentenceWords, LEFT JOIN word_senses for translation/familiarity
       const rows = await fastify.db
         .select({
           id: words.id,
           lemma: words.lemma,
-          translation: words.translation,
           cefrLevel: words.cefrLevel,
-          familiarity: words.familiarity,
           thematicCluster: words.thematicCluster,
           position: sentenceWords.position,
+          translation: wordSenses.translation,
+          familiarity: wordSenses.familiarity,
+          partOfSpeech: wordSenses.partOfSpeech,
+          senseId: wordSenses.id,
         })
         .from(words)
         .innerJoin(sentenceWords, eq(words.id, sentenceWords.wordId))
+        .leftJoin(wordSenses, eq(words.id, wordSenses.wordId))
         .where(eq(sentenceWords.sentenceId, sentenceId))
         .orderBy(sentenceWords.position);
 
-      const wordIds = rows.map((r) => r.id);
-      let srsWordIds = new Set<number>();
+      // Deduplicate: pick first sense per word (by word id + position)
+      const seen = new Set<string>();
+      const uniqueRows = rows.filter((r) => {
+        const key = `${r.id}:${r.position}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+
+      const wordIds = uniqueRows.map((r) => r.id);
+      let srsWordSenseIds = new Set<number>();
 
       if (wordIds.length > 0) {
+        // Check SRS cards via word_senses
         const srsRows = await fastify.db
-          .select({ wordId: srsCards.wordId })
+          .select({ wordSenseId: srsCards.wordSenseId })
           .from(srsCards)
-          .where(and(eq(srsCards.cardType, 'vocabulary'), inArray(srsCards.wordId, wordIds)));
+          .where(
+            and(
+              eq(srsCards.cardType, 'vocabulary'),
+              inArray(
+                srsCards.wordSenseId,
+                fastify.db
+                  .select({ id: wordSenses.id })
+                  .from(wordSenses)
+                  .where(inArray(wordSenses.wordId, wordIds)),
+              ),
+            ),
+          );
 
-        srsWordIds = new Set(srsRows.map((r) => r.wordId!).filter(Boolean));
+        srsWordSenseIds = new Set(srsRows.map((r) => r.wordSenseId!).filter(Boolean));
       }
 
-      return rows.map(({ position, ...word }) => ({
-        ...word,
-        hasSrsCard: srsWordIds.has(word.id),
+      return uniqueRows.map(({ position, ...word }) => ({
+        id: word.id,
+        lemma: word.lemma,
+        cefrLevel: word.cefrLevel,
+        thematicCluster: word.thematicCluster,
+        translation: word.translation ?? null,
+        familiarity: word.familiarity ?? null,
+        partOfSpeech: word.partOfSpeech ?? null,
+        senseId: word.senseId ?? null,
+        hasSrsCard: word.senseId ? srsWordSenseIds.has(word.senseId) : false,
       }));
     },
   );
@@ -63,17 +96,18 @@ const wordsRoute: FastifyPluginAsync = async (fastify) => {
       const id = Number(request.params.id);
       const { familiarity } = request.body;
 
-      const [updated] = await fastify.db
-        .update(words)
-        .set({ familiarity: familiarity as typeof words.$inferInsert.familiarity })
-        .where(eq(words.id, id))
+      // Update all word_senses for this word_id
+      const updated = await fastify.db
+        .update(wordSenses)
+        .set({ familiarity: familiarity as typeof wordSenses.$inferInsert.familiarity })
+        .where(eq(wordSenses.wordId, id))
         .returning();
 
-      if (!updated) {
-        return reply.status(404).send({ error: 'Word not found' });
+      if (updated.length === 0) {
+        return reply.status(404).send({ error: 'Word senses not found' });
       }
 
-      return updated;
+      return updated[0];
     },
   );
 };

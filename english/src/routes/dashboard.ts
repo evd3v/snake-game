@@ -1,10 +1,7 @@
 import type { FastifyPluginAsync } from 'fastify';
-import { sql, eq, and, isNotNull } from 'drizzle-orm';
+import { sql, eq } from 'drizzle-orm';
 import { srsCards } from '../db/schema/srs-cards.ts';
 import { words } from '../db/schema/words.ts';
-import { grammarPatterns } from '../db/schema/grammar-patterns.ts';
-import { reviewLogs } from '../db/schema/review-logs.ts';
-import { sentences } from '../db/schema/sentences.ts';
 
 const dashboardRoute: FastifyPluginAsync = async (fastify) => {
   // GET /dashboard/stats (DASH-01)
@@ -24,11 +21,13 @@ const dashboardRoute: FastifyPluginAsync = async (fastify) => {
       .select({ totalWords: sql<number>`count(*)::int` })
       .from(words);
 
-    // Words with SRS cards count
-    const [{ wordsWithCards }] = await fastify.db
-      .select({ wordsWithCards: sql<number>`count(distinct ${srsCards.wordId})::int` })
-      .from(srsCards)
-      .where(eq(srsCards.cardType, 'vocabulary'));
+    // Words with SRS cards count (through word_senses)
+    const [{ wordsWithCards }] = await fastify.db.execute(sql`
+      SELECT count(DISTINCT ws.word_id)::int AS "wordsWithCards"
+      FROM srs_cards sc
+      JOIN word_senses ws ON ws.id = sc.word_sense_id
+      WHERE sc.card_type = 'vocabulary'
+    `) as unknown as [{ wordsWithCards: number }];
 
     const wordsWithoutCards = totalWords - wordsWithCards;
 
@@ -62,15 +61,16 @@ const dashboardRoute: FastifyPluginAsync = async (fastify) => {
       SELECT
         w.id,
         w.lemma AS name,
-        w.translation,
+        ws.translation,
         'vocabulary' AS type,
         count(*)::int AS "totalReviews",
         (count(*) FILTER (WHERE rl.rating <= 2))::float / count(*) AS "failRate"
       FROM review_logs rl
       JOIN srs_cards sc ON sc.id = rl.srs_card_id
-      JOIN words w ON w.id = sc.word_id
+      JOIN word_senses ws ON ws.id = sc.word_sense_id
+      JOIN words w ON w.id = ws.word_id
       WHERE sc.card_type = 'vocabulary'
-      GROUP BY w.id, w.lemma, w.translation
+      GROUP BY w.id, w.lemma, ws.translation
       HAVING count(*) >= 2
       ORDER BY "failRate" DESC
       LIMIT 10
@@ -143,7 +143,8 @@ const dashboardRoute: FastifyPluginAsync = async (fastify) => {
         count(*) FILTER (WHERE sc.state IN ('learning', 'relearning'))::int AS learning,
         count(*) FILTER (WHERE sc.state = 'review')::int AS known
       FROM words w
-      LEFT JOIN srs_cards sc ON sc.word_id = w.id AND sc.card_type = 'vocabulary'
+      LEFT JOIN word_senses ws ON ws.word_id = w.id
+      LEFT JOIN srs_cards sc ON sc.word_sense_id = ws.id AND sc.card_type = 'vocabulary'
       WHERE w.thematic_cluster IS NOT NULL
       GROUP BY w.thematic_cluster
       ORDER BY total DESC

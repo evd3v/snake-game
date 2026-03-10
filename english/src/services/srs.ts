@@ -44,7 +44,7 @@ export function toDbState(fsrsState: number): CardState {
 export async function createSrsCard(
   db: Database,
   cardType: CardType,
-  opts: { wordId?: number; grammarPatternId?: number },
+  opts: { wordSenseId?: number; grammarPatternId?: number },
 ) {
   const emptyCard = createEmptyCard();
 
@@ -52,7 +52,7 @@ export async function createSrsCard(
     .insert(srsCards)
     .values({
       cardType,
-      wordId: opts.wordId ?? null,
+      wordSenseId: opts.wordSenseId ?? null,
       grammarPatternId: opts.grammarPatternId ?? null,
       state: 'new',
       due: emptyCard.due,

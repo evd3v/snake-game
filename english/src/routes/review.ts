@@ -2,6 +2,7 @@ import type { FastifyPluginAsync } from 'fastify';
 import { eq, lte, asc, and } from 'drizzle-orm';
 import { srsCards } from '../db/schema/srs-cards.ts';
 import { words, sentenceWords } from '../db/schema/words.ts';
+import { wordSenses } from '../db/schema/word-senses.ts';
 import { sentences } from '../db/schema/sentences.ts';
 import { grammarPatterns } from '../db/schema/grammar-patterns.ts';
 import { grammarExercises } from '../db/schema/grammar-exercises.ts';
@@ -24,26 +25,28 @@ const reviewRoute: FastifyPluginAsync = async (fastify) => {
             due: card.due,
           };
 
-          if (card.cardType === 'vocabulary' && card.wordId) {
-            // Fetch word data + first sentence context
+          if (card.cardType === 'vocabulary' && card.wordSenseId) {
+            // Fetch word data via word_senses + first sentence context
             const wordRows = await fastify.db
               .select({
                 lemma: words.lemma,
-                translation: words.translation,
+                translation: wordSenses.translation,
                 cefrLevel: words.cefrLevel,
+                partOfSpeech: wordSenses.partOfSpeech,
                 sentenceText: sentences.text,
               })
-              .from(words)
+              .from(wordSenses)
+              .innerJoin(words, eq(wordSenses.wordId, words.id))
               .innerJoin(sentenceWords, eq(words.id, sentenceWords.wordId))
               .innerJoin(sentences, eq(sentenceWords.sentenceId, sentences.id))
-              .where(eq(words.id, card.wordId))
+              .where(eq(wordSenses.id, card.wordSenseId))
               .limit(1);
 
             const wordData = wordRows[0];
             return {
               ...base,
               word: wordData
-                ? { lemma: wordData.lemma, translation: wordData.translation, cefrLevel: wordData.cefrLevel }
+                ? { lemma: wordData.lemma, translation: wordData.translation, cefrLevel: wordData.cefrLevel, partOfSpeech: wordData.partOfSpeech }
                 : undefined,
               sentence: wordData?.sentenceText ?? undefined,
             };
@@ -150,13 +153,13 @@ const reviewRoute: FastifyPluginAsync = async (fastify) => {
     },
   );
 
-  // POST /words/:wordId/srs-card - Create SRS card for a vocabulary word
-  fastify.post<{ Params: { wordId: string } }>(
-    '/words/:wordId/srs-card',
+  // POST /word-senses/:wordSenseId/srs-card - Create SRS card for a vocabulary word sense
+  fastify.post<{ Params: { wordSenseId: string } }>(
+    '/word-senses/:wordSenseId/srs-card',
     async (request, reply) => {
-      const wordId = Number(request.params.wordId);
+      const wordSenseId = Number(request.params.wordSenseId);
 
-      const card = await createSrsCard(fastify.db, 'vocabulary', { wordId });
+      const card = await createSrsCard(fastify.db, 'vocabulary', { wordSenseId });
 
       if (!card) {
         // onConflictDoNothing returned nothing - card already exists, fetch it
@@ -166,7 +169,7 @@ const reviewRoute: FastifyPluginAsync = async (fastify) => {
           .where(
             and(
               eq(srsCards.cardType, 'vocabulary'),
-              eq(srsCards.wordId, wordId),
+              eq(srsCards.wordSenseId, wordSenseId),
             ),
           );
 
