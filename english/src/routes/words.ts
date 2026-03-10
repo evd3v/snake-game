@@ -42,9 +42,9 @@ const wordsRoute: FastifyPluginAsync = async (fastify) => {
       let srsWordSenseIds = new Set<number>();
 
       if (wordIds.length > 0) {
-        // Check SRS cards via word_senses
+        // Check SRS cards via word_senses — only count as "known" if user has reviewed at least once
         const srsRows = await fastify.db
-          .select({ wordSenseId: srsCards.wordSenseId })
+          .select({ wordSenseId: srsCards.wordSenseId, reps: srsCards.reps })
           .from(srsCards)
           .where(
             and(
@@ -59,7 +59,10 @@ const wordsRoute: FastifyPluginAsync = async (fastify) => {
             ),
           );
 
-        srsWordSenseIds = new Set(srsRows.map((r) => r.wordSenseId!).filter(Boolean));
+        // A word is "known" only if the user has actually reviewed it (reps > 0)
+        srsWordSenseIds = new Set(
+          srsRows.filter((r) => r.reps > 0).map((r) => r.wordSenseId!).filter(Boolean),
+        );
       }
 
       return uniqueRows.map(({ position, ...word }) => ({

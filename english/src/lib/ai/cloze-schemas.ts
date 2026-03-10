@@ -17,8 +17,7 @@ export const clozeExerciseSchema = z.object({
         .describe('Difficulty level: 1=simple, 2=moderate, 3=complex'),
       hint: z
         .string()
-        .optional()
-        .describe('Optional hint for the learner'),
+        .describe('A short hint to help the learner (e.g., "use past participle", "think about the tense")'),
     }),
   ),
 });

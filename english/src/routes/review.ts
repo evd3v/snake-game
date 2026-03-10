@@ -65,7 +65,7 @@ const reviewRoute: FastifyPluginAsync = async (fastify) => {
               .limit(1);
 
             // Fetch one unused exercise, ordered by difficulty ascending (SRS-06)
-            const [exercise] = await fastify.db
+            let [exercise] = await fastify.db
               .select({
                 id: grammarExercises.id,
                 sentence: grammarExercises.sentence,
@@ -82,6 +82,32 @@ const reviewRoute: FastifyPluginAsync = async (fastify) => {
               )
               .orderBy(asc(grammarExercises.difficultyLevel))
               .limit(1);
+
+            // If all exercises used, reset them for another cycle
+            if (!exercise) {
+              await fastify.db
+                .update(grammarExercises)
+                .set({ used: false })
+                .where(eq(grammarExercises.grammarPatternId, card.grammarPatternId));
+
+              [exercise] = await fastify.db
+                .select({
+                  id: grammarExercises.id,
+                  sentence: grammarExercises.sentence,
+                  answer: grammarExercises.clozeAnswer,
+                  hint: grammarExercises.hint,
+                  difficultyLevel: grammarExercises.difficultyLevel,
+                })
+                .from(grammarExercises)
+                .where(
+                  and(
+                    eq(grammarExercises.grammarPatternId, card.grammarPatternId),
+                    eq(grammarExercises.used, false),
+                  ),
+                )
+                .orderBy(asc(grammarExercises.difficultyLevel))
+                .limit(1);
+            }
 
             // Fetch example sentence from user's texts (CSRS-03)
             const [exampleRow] = await fastify.db

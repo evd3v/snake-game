@@ -30,7 +30,7 @@ export async function generateClozeExercises(
     sentence: ex.sentence,
     clozeAnswer: ex.answer,
     difficultyLevel: ex.difficulty,
-    hint: ex.hint ?? null,
+    hint: ex.hint,
   }));
 
   await db.insert(grammarExercises).values(rows);
