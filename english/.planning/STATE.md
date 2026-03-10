@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: active
-stopped_at: Completed 07-02-PLAN.md
-last_updated: "2026-03-10T07:22:10.327Z"
+stopped_at: Completed 08-01-PLAN.md
+last_updated: "2026-03-10T08:11:46.299Z"
 last_activity: 2026-03-10 — Completed 07-02 bot simplification
 progress:
   total_phases: 4
   completed_phases: 2
-  total_plans: 5
-  completed_plans: 5
+  total_plans: 7
+  completed_plans: 6
   percent: 100
 ---
 
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-10)
 
 **Core value:** User inputs a real sentence from a book and gets full analysis (translation, grammar, vocabulary, CEFR), with extracted items feeding into spaced repetition -- all in one flow.
-**Current focus:** Phase 7 - Service Updates / Telegram Auto-Add
+**Current focus:** Phase 8 - Vocabulary Page & Collocations UI
 
 ## Current Position
 
-Phase: 7 of 9 (Service Updates / Telegram Auto-Add)
-Plan: 2 of 2 in current phase (phase complete)
+Phase: 8 of 9 (Vocabulary Page & Collocations UI)
+Plan: 1 of 2 in current phase
 Status: active
-Last activity: 2026-03-10 — Completed 07-02 bot simplification
+Last activity: 2026-03-10 — Completed 08-01 vocabulary API
 
-Progress: [██████████] 100%
+Progress: [██████████] 95%
 
 ## Performance Metrics
 
@@ -59,6 +59,7 @@ Progress: [██████████] 100%
 | Phase 06 P02 | 9min | 2 tasks | 17 files |
 | Phase 07 P01 | 2min | 2 tasks | 4 files |
 | Phase 07 P02 | 1min | 2 tasks | 5 files |
+| Phase 08 P01 | 3min | 3 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -81,6 +82,9 @@ Recent decisions affecting current work:
 - [Phase 07]: CEFR auto-add threshold set to B1 -- broader inclusion catches more useful vocabulary
 - [Phase 07]: Check-then-insert for vocab SRS dedup (no unique constraint on wordSenseId in srs_cards)
 - [Phase 07]: Deleted vocabulary handler and keyboard files entirely rather than emptying them
+- [Phase 08]: Batch-fetch strategy: query words first with filters/pagination, then batch senses and SRS cards
+- [Phase 08]: SRS state filtering uses EXISTS/NOT EXISTS subqueries for vocabulary card type
+- [Phase 08]: Collocations fetched via indirect sentenceWords->sentenceCollocations->collocations with selectDistinct
 
 ### Pending Todos
 
@@ -100,6 +104,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-10T07:19:31.003Z
-Stopped at: Completed 07-02-PLAN.md
+Last session: 2026-03-10T08:11:46.297Z
+Stopped at: Completed 08-01-PLAN.md
 Resume file: None

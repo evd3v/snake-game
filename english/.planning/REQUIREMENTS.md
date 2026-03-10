@@ -63,14 +63,14 @@ Requirements for UX Polish & Web Features milestone. Each maps to roadmap phases
 
 ### Vocabulary Page
 
-- [ ] **VOCPG-01**: Пользователь видит полный список слов с поиском по lemma
-- [ ] **VOCPG-02**: Пользователь может фильтровать слова по familiarity, SRS state, CEFR уровню и тематическому кластеру
-- [ ] **VOCPG-03**: Пользователь может сортировать слова по алфавиту, дате добавления, CEFR уровню
-- [ ] **VOCPG-04**: Пользователь видит collocations связанные с каждым словом
-- [ ] **VOCPG-05**: Пользователь видит word family (однокоренные слова) для каждого слова
-- [ ] **VOCPG-06**: Пользователь может группировать слова по тематическим кластерам
-- [ ] **VOCPG-07**: Пользователь может пометить слово как "знаю" — оно исчезает из очереди повторения
-- [ ] **VOCPG-08**: Пользователь может сбросить статус слова ("забыл") — оно возвращается в очередь
+- [x] **VOCPG-01**: Пользователь видит полный список слов с поиском по lemma
+- [x] **VOCPG-02**: Пользователь может фильтровать слова по familiarity, SRS state, CEFR уровню и тематическому кластеру
+- [x] **VOCPG-03**: Пользователь может сортировать слова по алфавиту, дате добавления, CEFR уровню
+- [x] **VOCPG-04**: Пользователь видит collocations связанные с каждым словом
+- [x] **VOCPG-05**: Пользователь видит word family (однокоренные слова) для каждого слова
+- [x] **VOCPG-06**: Пользователь может группировать слова по тематическим кластерам
+- [x] **VOCPG-07**: Пользователь может пометить слово как "знаю" — оно исчезает из очереди повторения
+- [x] **VOCPG-08**: Пользователь может сбросить статус слова ("забыл") — оно возвращается в очередь
 
 ### Web Review
 
@@ -176,14 +176,14 @@ Deferred to future release.
 | DATA-03 | Phase 6 | Complete |
 | TG-01 | Phase 7 | Complete |
 | TG-02 | Phase 7 | Complete |
-| VOCPG-01 | Phase 8 | Pending |
-| VOCPG-02 | Phase 8 | Pending |
-| VOCPG-03 | Phase 8 | Pending |
-| VOCPG-04 | Phase 8 | Pending |
-| VOCPG-05 | Phase 8 | Pending |
-| VOCPG-06 | Phase 8 | Pending |
-| VOCPG-07 | Phase 8 | Pending |
-| VOCPG-08 | Phase 8 | Pending |
+| VOCPG-01 | Phase 8 | Complete |
+| VOCPG-02 | Phase 8 | Complete |
+| VOCPG-03 | Phase 8 | Complete |
+| VOCPG-04 | Phase 8 | Complete |
+| VOCPG-05 | Phase 8 | Complete |
+| VOCPG-06 | Phase 8 | Complete |
+| VOCPG-07 | Phase 8 | Complete |
+| VOCPG-08 | Phase 8 | Complete |
 | COLL-01 | Phase 8 | Pending |
 | COLL-02 | Phase 8 | Pending |
 | WREV-01 | Phase 9 | Pending |
