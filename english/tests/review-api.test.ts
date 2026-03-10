@@ -238,6 +238,78 @@ describe('POST /review/:cardId/rate', () => {
 
     expect(response.statusCode).toBe(404);
   });
+
+  it('returns 409 when card was reviewed after fetchedAt (staleness guard)', async () => {
+    // Create a card and rate it once to set lastReview
+    const [card] = await app.db.insert(srsCards).values({
+      cardType: 'vocabulary',
+      wordSenseId: null,
+      state: 'new',
+      due: new Date(Date.now() - 60000),
+    }).returning();
+
+    // First rate - sets lastReview
+    await app.inject({
+      method: 'POST',
+      url: `/review/${card.id}/rate`,
+      payload: { rating: 3 },
+    });
+
+    // Second rate with stale fetchedAt (in the past, before lastReview)
+    const response = await app.inject({
+      method: 'POST',
+      url: `/review/${card.id}/rate`,
+      payload: { rating: 3, fetchedAt: '2020-01-01T00:00:00Z' },
+    });
+
+    expect(response.statusCode).toBe(409);
+    const body = response.json();
+    expect(body.error).toBe('Card was already reviewed');
+  });
+
+  it('succeeds when fetchedAt is newer than lastReview', async () => {
+    const [card] = await app.db.insert(srsCards).values({
+      cardType: 'vocabulary',
+      wordSenseId: null,
+      state: 'new',
+      due: new Date(Date.now() - 60000),
+    }).returning();
+
+    const response = await app.inject({
+      method: 'POST',
+      url: `/review/${card.id}/rate`,
+      payload: { rating: 3, fetchedAt: '2099-01-01T00:00:00Z' },
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(response.json().success).toBe(true);
+  });
+
+  it('succeeds without fetchedAt (backward compatibility)', async () => {
+    const [card] = await app.db.insert(srsCards).values({
+      cardType: 'vocabulary',
+      wordSenseId: null,
+      state: 'new',
+      due: new Date(Date.now() - 60000),
+    }).returning();
+
+    // Rate once to set lastReview
+    await app.inject({
+      method: 'POST',
+      url: `/review/${card.id}/rate`,
+      payload: { rating: 3 },
+    });
+
+    // Rate again without fetchedAt - should succeed (backward compat)
+    const response = await app.inject({
+      method: 'POST',
+      url: `/review/${card.id}/rate`,
+      payload: { rating: 3 },
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(response.json().success).toBe(true);
+  });
 });
 
 describe('POST /word-senses/:wordSenseId/srs-card', () => {

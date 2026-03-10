@@ -98,7 +98,7 @@ const reviewRoute: FastifyPluginAsync = async (fastify) => {
   );
 
   // POST /review/:cardId/rate - Rate a card
-  fastify.post<{ Params: { cardId: string }; Body: { rating: number } }>(
+  fastify.post<{ Params: { cardId: string }; Body: { rating: number; fetchedAt?: string } }>(
     '/review/:cardId/rate',
     {
       schema: {
@@ -107,13 +107,14 @@ const reviewRoute: FastifyPluginAsync = async (fastify) => {
           required: ['rating'],
           properties: {
             rating: { type: 'number', minimum: 1, maximum: 4 },
+            fetchedAt: { type: 'string' },
           },
         },
       },
     },
     async (request, reply) => {
       const cardId = Number(request.params.cardId);
-      const { rating } = request.body;
+      const { rating, fetchedAt } = request.body;
 
       // Check card exists
       const [card] = await fastify.db
@@ -123,6 +124,11 @@ const reviewRoute: FastifyPluginAsync = async (fastify) => {
 
       if (!card) {
         return reply.status(404).send({ error: 'Card not found' });
+      }
+
+      // Staleness guard: reject if card was reviewed after fetchedAt
+      if (fetchedAt && card.lastReview && card.lastReview > new Date(fetchedAt)) {
+        return reply.status(409).send({ error: 'Card was already reviewed', lastReview: card.lastReview });
       }
 
       const scheduled = await rateCard(fastify.db, cardId, rating as Rating);
