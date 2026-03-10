@@ -3,7 +3,7 @@
 ## Milestones
 
 - **v1.0 MVP** - Phases 1-5 (shipped)
-- **v1.1 UX Polish & Web Features** - Phases 6-9 (in progress)
+- **v1.1 UX Polish & Web Features** - Phases 6-11 (in progress)
 
 ## Phases
 
@@ -90,6 +90,35 @@ Plans:
 - [ ] 09-01-PLAN.md -- Staleness guard + review types, Pinia store, and route setup
 - [ ] 09-02-PLAN.md -- Review UI components (card display, rating, progress, summary)
 
+- [ ] **Phase 10: Collocation SRS & Review Enhancement** - Collocations as SRS cards, grammar review shows pattern description and context sentence
+- [ ] **Phase 11: Grammar & Collocations Browse Pages** - Dedicated pages to browse all grammar patterns and collocations with filters
+
+## Phase Details (continued)
+
+### Phase 10: Collocation SRS & Review Enhancement
+**Goal**: Collocations become reviewable SRS items and grammar review cards show richer context
+**Depends on**: Phase 9
+**Requirements**: CSRS-01, CSRS-02, CSRS-03
+**Success Criteria** (what must be TRUE):
+  1. When a sentence is analyzed, collocations automatically get SRS cards (new cardType='collocation')
+  2. Collocation cards appear in /review — front shows collocation text + context sentence, back shows translation + type (collocation/phrasal_verb/idiom)
+  3. Grammar cards in /review show pattern description and an example sentence from user's texts on the back side
+**Plans**: TBD
+
+### Phase 11: Grammar & Collocations Browse Pages
+**Goal**: Users can browse, search, and filter all grammar patterns and collocations they've encountered
+**Depends on**: Phase 10
+**Requirements**: BROWSE-01, BROWSE-02, BROWSE-03
+**Success Criteria** (what must be TRUE):
+  1. User can see all grammar patterns on /grammar page with CEFR level, description, SRS status, and example sentences
+  2. User can see all collocations on /collocations page with CEFR level, type, translation, and example sentences
+  3. Both pages support filtering by CEFR level, type, and text search
+**Plans:** 2 plans
+
+Plans:
+- [ ] 11-01-PLAN.md -- Grammar and collocations API routes with tests (pagination, filters, search, example sentences)
+- [ ] 11-02-PLAN.md -- Frontend views, stores, components, routing, and navigation
+
 ## Progress
 
 **Execution Order:**
@@ -102,3 +131,5 @@ Note: Phase 9 depends on Phase 6 (not Phase 8), so Phases 8 and 9 could potentia
 | 7. Service Updates & Telegram Auto-Add | v1.1 | 0/2 | Not started | - |
 | 8. Vocabulary Page & Collocations UI | v1.1 | 0/2 | Not started | - |
 | 9. Web SRS Review | v1.1 | Complete    | 2026-03-10 | - |
+| 10. Collocation SRS & Review Enhancement | v1.1 | 0/? | Not started | - |
+| 11. Grammar & Collocations Browse Pages | v1.1 | 0/2 | Not started | - |
