@@ -32,13 +32,14 @@ const dashboardRoute: FastifyPluginAsync = async (fastify) => {
 
     const wordsWithoutCards = totalWords - wordsWithCards;
 
-    const result = {
+    const result: Record<string, { new: number; learning: number; known: number }> = {
       words: { new: 0, learning: 0, known: 0 },
       grammar: { new: 0, learning: 0, known: 0 },
+      collocations: { new: 0, learning: 0, known: 0 },
     };
 
     for (const row of cardCounts) {
-      const category = row.cardType === 'vocabulary' ? 'words' : 'grammar';
+      const category = row.cardType === 'vocabulary' ? 'words' : row.cardType === 'collocation' ? 'collocations' : 'grammar';
       const state = row.state;
       if (state === 'new') {
         result[category].new += row.count;

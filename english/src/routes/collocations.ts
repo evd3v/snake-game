@@ -1,7 +1,8 @@
 import type { FastifyPluginAsync } from 'fastify';
-import { eq, and, ilike, inArray, sql, asc } from 'drizzle-orm';
+import { eq, and, ilike, inArray, sql, asc, exists, notExists } from 'drizzle-orm';
 import { collocations, sentenceCollocations } from '../db/schema/collocations.ts';
 import { sentences } from '../db/schema/sentences.ts';
+import { srsCards } from '../db/schema/srs-cards.ts';
 
 const collocationsRoute: FastifyPluginAsync = async (fastify) => {
   fastify.get<{
@@ -17,8 +18,7 @@ const collocationsRoute: FastifyPluginAsync = async (fastify) => {
     const page = Math.max(1, Number(request.query.page) || 1);
     const limit = Math.min(100, Math.max(1, Number(request.query.limit) || 50));
     const offset = (page - 1) * limit;
-    const { search, cefrLevel, type } = request.query;
-    // Note: srsState filtering requires Phase 10 (collocationId on srs_cards + cardType='collocation')
+    const { search, cefrLevel, type, srsState } = request.query;
 
     // Build WHERE conditions
     const conditions: ReturnType<typeof eq>[] = [];
@@ -35,8 +35,44 @@ const collocationsRoute: FastifyPluginAsync = async (fastify) => {
       conditions.push(eq(collocations.type, type as 'collocation' | 'phrasal_verb' | 'idiom'));
     }
 
-    // TODO: SRS state filter - enable after Phase 10 adds collocationId to srs_cards
-    // and 'collocation' to cardTypeEnum
+    // SRS state filtering
+    if (srsState === 'new') {
+      conditions.push(
+        exists(
+          fastify.db
+            .select({ id: srsCards.id })
+            .from(srsCards)
+            .where(and(eq(srsCards.collocationId, collocations.id), eq(srsCards.cardType, 'collocation'), eq(srsCards.state, 'new'))),
+        ),
+      );
+    } else if (srsState === 'learning') {
+      conditions.push(
+        exists(
+          fastify.db
+            .select({ id: srsCards.id })
+            .from(srsCards)
+            .where(and(eq(srsCards.collocationId, collocations.id), eq(srsCards.cardType, 'collocation'), inArray(srsCards.state, ['learning', 'relearning']))),
+        ),
+      );
+    } else if (srsState === 'known') {
+      conditions.push(
+        exists(
+          fastify.db
+            .select({ id: srsCards.id })
+            .from(srsCards)
+            .where(and(eq(srsCards.collocationId, collocations.id), eq(srsCards.cardType, 'collocation'), eq(srsCards.state, 'review'))),
+        ),
+      );
+    } else if (srsState === 'no_card') {
+      conditions.push(
+        notExists(
+          fastify.db
+            .select({ id: srsCards.id })
+            .from(srsCards)
+            .where(and(eq(srsCards.collocationId, collocations.id), eq(srsCards.cardType, 'collocation'))),
+        ),
+      );
+    }
 
     const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
 
@@ -89,14 +125,27 @@ const collocationsRoute: FastifyPluginAsync = async (fastify) => {
       }
     }
 
-    // Step 4: Assemble response
-    // Note: srsState will be added after Phase 10 enables collocation SRS cards
+    // Step 4: Batch-fetch SRS cards for page collocations
+    const srsRows = await fastify.db
+      .select({ collocationId: srsCards.collocationId, state: srsCards.state })
+      .from(srsCards)
+      .where(and(inArray(srsCards.collocationId, collocationIds), eq(srsCards.cardType, 'collocation')));
+
+    const srsStateByCollocation = new Map<number, string>();
+    for (const row of srsRows) {
+      if (row.collocationId) {
+        srsStateByCollocation.set(row.collocationId, row.state ?? 'new');
+      }
+    }
+
+    // Step 5: Assemble response
     const items = pageCollocations.map((c) => ({
       id: c.id,
       text: c.text,
       translation: c.translation,
       type: c.type,
       cefrLevel: c.cefrLevel,
+      srsState: srsStateByCollocation.get(c.id) ?? null,
       exampleSentences: sentencesByCollocation.get(c.id) ?? [],
     }));
 

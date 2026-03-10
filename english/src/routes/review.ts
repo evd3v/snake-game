@@ -4,8 +4,9 @@ import { srsCards } from '../db/schema/srs-cards.ts';
 import { words, sentenceWords } from '../db/schema/words.ts';
 import { wordSenses } from '../db/schema/word-senses.ts';
 import { sentences } from '../db/schema/sentences.ts';
-import { grammarPatterns } from '../db/schema/grammar-patterns.ts';
+import { grammarPatterns, sentenceGrammarPatterns } from '../db/schema/grammar-patterns.ts';
 import { grammarExercises } from '../db/schema/grammar-exercises.ts';
+import { collocations, sentenceCollocations } from '../db/schema/collocations.ts';
 import { getDueCards, rateCard, createSrsCard, Rating } from '../services/srs.ts';
 
 const reviewRoute: FastifyPluginAsync = async (fastify) => {
@@ -82,10 +83,47 @@ const reviewRoute: FastifyPluginAsync = async (fastify) => {
               .orderBy(asc(grammarExercises.difficultyLevel))
               .limit(1);
 
+            // Fetch example sentence from user's texts (CSRS-03)
+            const [exampleRow] = await fastify.db
+              .select({ text: sentences.text })
+              .from(sentenceGrammarPatterns)
+              .innerJoin(sentences, eq(sentenceGrammarPatterns.sentenceId, sentences.id))
+              .where(eq(sentenceGrammarPatterns.grammarPatternId, card.grammarPatternId))
+              .limit(1);
+
             return {
               ...base,
               pattern: patternData ?? undefined,
               exercise: exercise ?? undefined,
+              exampleSentence: exampleRow?.text ?? undefined,
+            };
+          }
+
+          if (card.cardType === 'collocation' && card.collocationId) {
+            // Fetch collocation data
+            const [collData] = await fastify.db
+              .select({
+                text: collocations.text,
+                translation: collocations.translation,
+                type: collocations.type,
+                cefrLevel: collocations.cefrLevel,
+              })
+              .from(collocations)
+              .where(eq(collocations.id, card.collocationId))
+              .limit(1);
+
+            // Fetch context sentence via sentenceCollocations
+            const [sentenceRow] = await fastify.db
+              .select({ text: sentences.text })
+              .from(sentenceCollocations)
+              .innerJoin(sentences, eq(sentenceCollocations.sentenceId, sentences.id))
+              .where(eq(sentenceCollocations.collocationId, card.collocationId))
+              .limit(1);
+
+            return {
+              ...base,
+              collocation: collData ?? undefined,
+              sentence: sentenceRow?.text ?? undefined,
             };
           }
 
