@@ -170,6 +170,34 @@ export async function storeAnalysisResults(
         collocationId: upsertedCollocation.id,
       })
       .onConflictDoNothing();
+
+    // Auto-create SRS card for collocation (idempotent - check first)
+    const [existingCollocationCard] = await db
+      .select({ id: srsCards.id })
+      .from(srsCards)
+      .where(
+        and(
+          eq(srsCards.cardType, 'collocation'),
+          eq(srsCards.collocationId, upsertedCollocation.id),
+        ),
+      )
+      .limit(1);
+
+    if (!existingCollocationCard) {
+      const emptyCard = createEmptyCard();
+      await db.insert(srsCards).values({
+        cardType: 'collocation',
+        collocationId: upsertedCollocation.id,
+        state: 'new',
+        due: emptyCard.due,
+        stability: emptyCard.stability,
+        difficulty: emptyCard.difficulty,
+        elapsedDays: emptyCard.elapsed_days,
+        scheduledDays: emptyCard.scheduled_days,
+        reps: emptyCard.reps,
+        lapses: emptyCard.lapses,
+      });
+    }
   }
 
   // e. Upsert grammar patterns
