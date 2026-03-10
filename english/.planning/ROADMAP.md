@@ -25,7 +25,7 @@
 - [x] **Phase 6: Data Model Evolution** - POS-aware word senses, composite uniqueness, SRS card linkage migration (completed 2026-03-10)
 - [ ] **Phase 7: Service Updates & Telegram Auto-Add** - POS-aware upserts, automatic SRS card creation, simplified Telegram flow
 - [ ] **Phase 8: Vocabulary Page & Collocations UI** - Full vocabulary browser with filters, word detail, collocations display across all views
-- [ ] **Phase 9: Web SRS Review** - Card-by-card review flow in browser with keyboard shortcuts and session tracking
+- [x] **Phase 9: Web SRS Review** - Card-by-card review flow in browser with keyboard shortcuts and session tracking (completed 2026-03-10)
 
 ## Phase Details
 
@@ -84,7 +84,7 @@ Plans:
   2. User can rate cards using Again/Hard/Good/Easy buttons or keyboard shortcuts (1-4)
   3. User sees a progress bar during the session and a summary screen after completion showing counts per rating
   4. Reviewing on web does not corrupt Telegram review state -- staleness guard prevents conflicts
-**Plans:** 2 plans
+**Plans:** 2/2 plans complete
 
 Plans:
 - [ ] 09-01-PLAN.md -- Staleness guard + review types, Pinia store, and route setup
@@ -101,4 +101,4 @@ Note: Phase 9 depends on Phase 6 (not Phase 8), so Phases 8 and 9 could potentia
 | 6. Data Model Evolution | 3/3 | Complete   | 2026-03-10 | - |
 | 7. Service Updates & Telegram Auto-Add | v1.1 | 0/2 | Not started | - |
 | 8. Vocabulary Page & Collocations UI | v1.1 | 0/2 | Not started | - |
-| 9. Web SRS Review | v1.1 | 0/2 | Not started | - |
+| 9. Web SRS Review | v1.1 | Complete    | 2026-03-10 | - |
