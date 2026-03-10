@@ -93,7 +93,7 @@ Requirements for UX Polish & Web Features milestone. Each maps to roadmap phases
 
 ### Collocation SRS & Review Enhancement
 
-- [ ] **CSRS-01**: Collocations автоматически получают SRS-карточки при анализе предложения (аналогично grammar)
+- [x] **CSRS-01**: Collocations автоматически получают SRS-карточки при анализе предложения (аналогично grammar)
 - [ ] **CSRS-02**: Collocation карточки появляются в review: лицо — коллокация + контекстное предложение, оборот — перевод + тип
 - [ ] **CSRS-03**: При review grammar карточки показывается описание паттерна и оригинальное предложение-пример на обороте
 

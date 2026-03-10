@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: completed
-stopped_at: Completed 11-02-PLAN.md
-last_updated: "2026-03-10T13:08:56.014Z"
-last_activity: 2026-03-10 — Completed 11-02 grammar & collocations browse pages
+status: in-progress
+stopped_at: Completed 10-01-PLAN.md
+last_updated: "2026-03-10T15:31:13Z"
+last_activity: 2026-03-10 — Completed 10-01 collocation SRS schema & auto-creation
 progress:
   total_phases: 6
   completed_phases: 5
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-10)
 
 **Core value:** User inputs a real sentence from a book and gets full analysis (translation, grammar, vocabulary, CEFR), with extracted items feeding into spaced repetition -- all in one flow.
-**Current focus:** Phase 11 - Grammar & Collocations Browse Pages
+**Current focus:** Phase 10 - Collocation SRS Review Enhancement
 
 ## Current Position
 
-Phase: 11 of 11 (Grammar & Collocations Browse Pages)
-Plan: 2 of 2 in current phase
-Status: complete
-Last activity: 2026-03-10 — Completed 11-02 grammar & collocations browse pages
+Phase: 10 (Collocation SRS Review Enhancement)
+Plan: 1 of 2 in current phase
+Status: in-progress
+Last activity: 2026-03-10 — Completed 10-01 collocation SRS schema & auto-creation
 
-Progress: [██████████] 100%
+Progress: [█████████░] 93%
 
 ## Performance Metrics
 
@@ -65,6 +65,7 @@ Progress: [██████████] 100%
 | Phase 09 P02 | 2min | 2 tasks | 6 files |
 | Phase 11 P01 | 3min | 2 tasks | 4 files |
 | Phase 11 P02 | 3min | 3 tasks | 11 files |
+| Phase 10 P01 | 3min | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -96,6 +97,8 @@ Recent decisions affecting current work:
 - [Phase 09]: fetchedAt stored once at session start, sent with every rate call for staleness detection
 - [Phase 09]: Grammar cards without exercises show pattern title and immediate rating (no reveal step)
 - [Phase 11]: Collocations SRS state filter deferred to Phase 10 (collocationId not yet on srs_cards)
+- [Phase 10]: No CEFR filter for collocation SRS cards -- all collocations get cards since curated by AI extraction
+- [Phase 10]: Check-then-insert dedup for collocation SRS cards (follows Phase 7 convention)
 
 ### Pending Todos
 
@@ -115,6 +118,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-10T13:06:28.440Z
-Stopped at: Completed 11-02-PLAN.md
+Last session: 2026-03-10T15:31:13Z
+Stopped at: Completed 10-01-PLAN.md
 Resume file: None
