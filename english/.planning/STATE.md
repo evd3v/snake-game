@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: active
-stopped_at: Completed 06-01-PLAN.md
-last_updated: "2026-03-10T04:58:27Z"
-last_activity: 2026-03-10 — Completed 06-01 word senses schema and migration
+stopped_at: Completed 06-02-PLAN.md
+last_updated: "2026-03-10T05:10:30Z"
+last_activity: 2026-03-10 — Completed 06-02 consumer updates for word_senses
 progress:
   total_phases: 4
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 2
-  percent: 67
+  completed_plans: 3
+  percent: 100
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-10)
 ## Current Position
 
 Phase: 6 of 9 (Data Model Evolution)
-Plan: 2 of 3 in current phase
+Plan: 3 of 3 in current phase
 Status: active
-Last activity: 2026-03-10 — Completed 06-01 word senses schema and migration
+Last activity: 2026-03-10 — Completed 06-02 consumer updates for word_senses
 
-Progress: [██████░░░░] 67%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -56,6 +56,7 @@ Progress: [██████░░░░] 67%
 *Updated after each plan completion*
 | Phase 06 P00 | 1min | 1 tasks | 1 files |
 | Phase 06 P01 | 4min | 2 tasks | 8 files |
+| Phase 06 P02 | 9min | 2 tasks | 17 files |
 
 ## Accumulated Context
 
@@ -73,6 +74,8 @@ Recent decisions affecting current work:
 - [Phase 06-01]: word_senses uses composite unique on (word_id, part_of_speech) -- not on lemma+POS
 - [Phase 06-01]: Existing words migrated with POS 'unknown' -- actual POS set on re-encounter
 - [Phase 06-01]: familiarityEnum kept in words.ts, column moved to word_senses
+- [Phase 06-02]: SRS card endpoint renamed from /words/:wordId/srs-card to /word-senses/:wordSenseId/srs-card
+- [Phase 06-02]: PATCH /words/:id/familiarity kept for compat but updates word_senses
 
 ### Pending Todos
 
@@ -92,6 +95,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-10T04:58:27Z
-Stopped at: Completed 06-01-PLAN.md
+Last session: 2026-03-10T05:10:30Z
+Stopped at: Completed 06-02-PLAN.md
 Resume file: None
