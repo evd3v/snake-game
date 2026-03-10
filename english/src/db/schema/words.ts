@@ -10,9 +10,7 @@ export const familiarityEnum = pgEnum('familiarity', [
 export const words = pgTable('words', {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   lemma: text().notNull().unique(),
-  translation: text(),
   cefrLevel: text('cefr_level'),
-  familiarity: familiarityEnum().default('never_seen'),
   thematicCluster: text('thematic_cluster'),
   wordFamilyId: integer('word_family_id'),
   createdAt: timestamp('created_at').defaultNow().notNull(),

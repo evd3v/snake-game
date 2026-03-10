@@ -5,6 +5,7 @@ import { collocations, sentenceCollocations } from './schema/collocations.ts';
 import { grammarPatterns, sentenceGrammarPatterns } from './schema/grammar-patterns.ts';
 import { wordFamilies } from './schema/word-families.ts';
 import { srsCards } from './schema/srs-cards.ts';
+import { wordSenses } from './schema/word-senses.ts';
 
 export const sentencesRelations = relations(sentences, ({ many }) => ({
   sentenceWords: many(sentenceWords),
@@ -18,7 +19,7 @@ export const wordsRelations = relations(words, ({ one, many }) => ({
     references: [wordFamilies.id],
   }),
   sentenceWords: many(sentenceWords),
-  srsCards: many(srsCards),
+  wordSenses: many(wordSenses),
 }));
 
 export const collocationsRelations = relations(collocations, ({ many }) => ({
@@ -34,10 +35,18 @@ export const wordFamiliesRelations = relations(wordFamilies, ({ many }) => ({
   words: many(words),
 }));
 
-export const srsCardsRelations = relations(srsCards, ({ one }) => ({
+export const wordSensesRelations = relations(wordSenses, ({ one, many }) => ({
   word: one(words, {
-    fields: [srsCards.wordId],
+    fields: [wordSenses.wordId],
     references: [words.id],
+  }),
+  srsCards: many(srsCards),
+}));
+
+export const srsCardsRelations = relations(srsCards, ({ one }) => ({
+  wordSense: one(wordSenses, {
+    fields: [srsCards.wordSenseId],
+    references: [wordSenses.id],
   }),
   grammarPattern: one(grammarPatterns, {
     fields: [srsCards.grammarPatternId],

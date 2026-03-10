@@ -3,6 +3,7 @@ export { familiarityEnum, words, sentenceWords } from './words.ts';
 export { collocationTypeEnum, collocations, sentenceCollocations } from './collocations.ts';
 export { grammarPatterns, sentenceGrammarPatterns } from './grammar-patterns.ts';
 export { wordFamilies } from './word-families.ts';
+export { wordSenses } from './word-senses.ts';
 export { cardTypeEnum, cardStateEnum, srsCards } from './srs-cards.ts';
 export { grammarExercises } from './grammar-exercises.ts';
 export { reviewLogs } from './review-logs.ts';
