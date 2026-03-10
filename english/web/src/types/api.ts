@@ -26,3 +26,74 @@ export interface ClusterStats {
   learning: number
   known: number
 }
+
+// Vocabulary page types
+
+export interface VocabSense {
+  id: number
+  partOfSpeech: string
+  translation: string | null
+  familiarity: string
+}
+
+export interface VocabWord {
+  id: number
+  lemma: string
+  cefrLevel: string | null
+  thematicCluster: string | null
+  createdAt: string
+  senses: VocabSense[]
+  srsState: string | null
+  hasCard: boolean
+}
+
+export interface VocabularyListResponse {
+  items: VocabWord[]
+  total: number
+  page: number
+  limit: number
+}
+
+export interface VocabFilters {
+  search: string
+  familiarity: string
+  cefrLevel: string
+  cluster: string
+  srsState: string
+  sortBy: string
+  sortOrder: string
+}
+
+export interface WordDetailSense {
+  id: number
+  partOfSpeech: string
+  translation: string | null
+  familiarity: string
+  srsCard: { id: number; state: string; due: string; reps: number } | null
+}
+
+export interface WordCollocation {
+  id: number
+  text: string
+  translation: string | null
+  type: string
+  cefrLevel: string | null
+}
+
+export interface WordFamilyMember {
+  id: number
+  lemma: string
+  cefrLevel: string | null
+}
+
+export interface WordDetailResponse {
+  id: number
+  lemma: string
+  cefrLevel: string | null
+  thematicCluster: string | null
+  createdAt: string
+  senses: WordDetailSense[]
+  collocations: WordCollocation[]
+  wordFamily: WordFamilyMember[]
+  sentences: Array<{ id: number; text: string }>
+}
