@@ -5,6 +5,7 @@ import type { Database } from '../db/index.ts';
 import {
   sentences,
   words,
+  wordSenses,
   sentenceWords,
   collocations,
   sentenceCollocations,
@@ -65,11 +66,11 @@ export async function storeAnalysisResults(
     const vocab = analysis.vocabulary[i];
     const normalizedLemma = normalizeLemma(vocab.lemma, vocab.partOfSpeech);
 
+    // Step 1: Upsert word (lemma-level, no translation/familiarity)
     const [upsertedWord] = await db
       .insert(words)
       .values({
         lemma: normalizedLemma,
-        translation: vocab.translation,
         cefrLevel: vocab.cefrLevel,
         thematicCluster: vocab.thematicCluster,
       })
@@ -80,6 +81,19 @@ export async function storeAnalysisResults(
         },
       })
       .returning({ id: words.id });
+
+    // Step 2: Upsert word sense (POS-level, with translation)
+    await db
+      .insert(wordSenses)
+      .values({
+        wordId: upsertedWord.id,
+        partOfSpeech: vocab.partOfSpeech,
+        translation: vocab.translation,
+      })
+      .onConflictDoUpdate({
+        target: [wordSenses.wordId, wordSenses.partOfSpeech],
+        set: { translation: vocab.translation },
+      });
 
     insertedWordsMap.set(normalizedLemma, upsertedWord.id);
     wordsInserted++;
