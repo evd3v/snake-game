@@ -74,12 +74,12 @@ Requirements for UX Polish & Web Features milestone. Each maps to roadmap phases
 
 ### Web Review
 
-- [ ] **WREV-01**: Пользователь видит и проходит vocab карточки с контекстом предложения
-- [ ] **WREV-02**: Пользователь видит и проходит grammar cloze упражнения
-- [ ] **WREV-03**: Пользователь оценивает карточку кнопками Again/Hard/Good/Easy (+ клавиши 1-4)
+- [x] **WREV-01**: Пользователь видит и проходит vocab карточки с контекстом предложения
+- [x] **WREV-02**: Пользователь видит и проходит grammar cloze упражнения
+- [x] **WREV-03**: Пользователь оценивает карточку кнопками Again/Hard/Good/Easy (+ клавиши 1-4)
 - [ ] **WREV-04**: Пользователь видит прогресс-бар во время сессии
 - [ ] **WREV-05**: Пользователь видит summary после завершения сессии (сколько Again/Hard/Good/Easy)
-- [ ] **WREV-06**: Web и Telegram review не конфликтуют (staleness guard)
+- [x] **WREV-06**: Web и Telegram review не конфликтуют (staleness guard)
 
 ### Telegram UX
 
@@ -186,12 +186,12 @@ Deferred to future release.
 | VOCPG-08 | Phase 8 | Complete |
 | COLL-01 | Phase 8 | Complete |
 | COLL-02 | Phase 8 | Complete |
-| WREV-01 | Phase 9 | Pending |
-| WREV-02 | Phase 9 | Pending |
-| WREV-03 | Phase 9 | Pending |
+| WREV-01 | Phase 9 | Complete |
+| WREV-02 | Phase 9 | Complete |
+| WREV-03 | Phase 9 | Complete |
 | WREV-04 | Phase 9 | Pending |
 | WREV-05 | Phase 9 | Pending |
-| WREV-06 | Phase 9 | Pending |
+| WREV-06 | Phase 9 | Complete |
 
 **Coverage:**
 - v1.1 requirements: 21 total
