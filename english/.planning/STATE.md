@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: active
-stopped_at: Completed 06-00-PLAN.md
-last_updated: "2026-03-10T04:55:53.698Z"
-last_activity: 2026-03-10 — Completed 06-00 word senses test stubs
+stopped_at: Completed 06-01-PLAN.md
+last_updated: "2026-03-10T04:58:27Z"
+last_activity: 2026-03-10 — Completed 06-01 word senses schema and migration
 progress:
   total_phases: 4
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
-  percent: 33
+  completed_plans: 2
+  percent: 67
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-10)
 ## Current Position
 
 Phase: 6 of 9 (Data Model Evolution)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: active
-Last activity: 2026-03-10 — Completed 06-00 word senses test stubs
+Last activity: 2026-03-10 — Completed 06-01 word senses schema and migration
 
-Progress: [███░░░░░░░] 33%
+Progress: [██████░░░░] 67%
 
 ## Performance Metrics
 
@@ -55,6 +55,7 @@ Progress: [███░░░░░░░] 33%
 
 *Updated after each plan completion*
 | Phase 06 P00 | 1min | 1 tasks | 1 files |
+| Phase 06 P01 | 4min | 2 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -69,6 +70,9 @@ Recent decisions affecting current work:
 - [v1.0 carry-forward]: Upsert words on lemma conflict updates thematicCluster (AI may refine on re-encounter)
 - [v1.0 carry-forward]: Adverb lemmatization strips -ly suffix before adjective lookup
 - [Phase 06]: Followed existing test pattern with buildTestApp/cleanupTestApp helpers for word senses stubs
+- [Phase 06-01]: word_senses uses composite unique on (word_id, part_of_speech) -- not on lemma+POS
+- [Phase 06-01]: Existing words migrated with POS 'unknown' -- actual POS set on re-encounter
+- [Phase 06-01]: familiarityEnum kept in words.ts, column moved to word_senses
 
 ### Pending Todos
 
@@ -88,6 +92,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-10T04:55:52.725Z
-Stopped at: Completed 06-00-PLAN.md
+Last session: 2026-03-10T04:58:27Z
+Stopped at: Completed 06-01-PLAN.md
 Resume file: None

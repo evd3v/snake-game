@@ -38,7 +38,7 @@
   2. Each word sense has its own SRS card -- reviewing "run (verb)" does not affect "run (noun)"
   3. All existing words have been migrated to the new schema with a sense derived from their current POS/translation
   4. The analysis pipeline continues to work after migration -- submitting a sentence produces correct word entries
-**Plans:** 3 plans
+**Plans:** 2/3 plans executed
 
 Plans:
 - [ ] 06-00-PLAN.md -- Wave 0: test stubs for word senses (Nyquist prerequisite)
@@ -86,7 +86,7 @@ Note: Phase 9 depends on Phase 6 (not Phase 8), so Phases 8 and 9 could potentia
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
-| 6. Data Model Evolution | v1.1 | 0/3 | Planning complete | - |
+| 6. Data Model Evolution | 2/3 | In Progress|  | - |
 | 7. Service Updates & Telegram Auto-Add | v1.1 | 0/? | Not started | - |
 | 8. Vocabulary Page & Collocations UI | v1.1 | 0/? | Not started | - |
 | 9. Web SRS Review | v1.1 | 0/? | Not started | - |

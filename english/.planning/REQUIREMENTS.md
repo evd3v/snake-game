@@ -59,7 +59,7 @@ Requirements for UX Polish & Web Features milestone. Each maps to roadmap phases
 
 - [x] **DATA-01**: Слова хранятся с привязкой к POS через таблицу word_senses — одна lemma может иметь несколько значений с разными переводами
 - [x] **DATA-02**: SRS-карточки привязаны к word_sense (не к word), каждое значение учится отдельно
-- [ ] **DATA-03**: Миграция существующих данных — существующие слова получают sense на основе имеющегося POS/translation
+- [x] **DATA-03**: Миграция существующих данных — существующие слова получают sense на основе имеющегося POS/translation
 
 ### Vocabulary Page
 
@@ -173,7 +173,7 @@ Deferred to future release.
 |-------------|-------|--------|
 | DATA-01 | Phase 6 | Complete |
 | DATA-02 | Phase 6 | Complete |
-| DATA-03 | Phase 6 | Pending |
+| DATA-03 | Phase 6 | Complete |
 | TG-01 | Phase 7 | Pending |
 | TG-02 | Phase 7 | Pending |
 | VOCPG-01 | Phase 8 | Pending |
