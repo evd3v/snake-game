@@ -60,6 +60,7 @@ describe('toFsrsCard / toDbState mapping', () => {
       reps: 0,
       lapses: 0,
       lastReview: null,
+      collocationId: null,
       createdAt: new Date(),
     };
 

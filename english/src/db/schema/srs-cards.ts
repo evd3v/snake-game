@@ -1,9 +1,11 @@
 import { pgTable, integer, text, timestamp, real, pgEnum } from 'drizzle-orm/pg-core';
 import { wordSenses } from './word-senses.ts';
+import { collocations } from './collocations.ts';
 
 export const cardTypeEnum = pgEnum('card_type', [
   'vocabulary',
   'grammar',
+  'collocation',
 ]);
 
 export const cardStateEnum = pgEnum('card_state', [
@@ -18,6 +20,7 @@ export const srsCards = pgTable('srs_cards', {
   cardType: cardTypeEnum('card_type').notNull(),
   wordSenseId: integer('word_sense_id').references(() => wordSenses.id),
   grammarPatternId: integer('grammar_pattern_id'),
+  collocationId: integer('collocation_id').references(() => collocations.id),
   state: cardStateEnum().default('new'),
   due: timestamp().defaultNow().notNull(),
   stability: real().default(0),

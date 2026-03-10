@@ -24,6 +24,7 @@ export const wordsRelations = relations(words, ({ one, many }) => ({
 
 export const collocationsRelations = relations(collocations, ({ many }) => ({
   sentenceCollocations: many(sentenceCollocations),
+  srsCards: many(srsCards),
 }));
 
 export const grammarPatternsRelations = relations(grammarPatterns, ({ many }) => ({
@@ -51,6 +52,10 @@ export const srsCardsRelations = relations(srsCards, ({ one }) => ({
   grammarPattern: one(grammarPatterns, {
     fields: [srsCards.grammarPatternId],
     references: [grammarPatterns.id],
+  }),
+  collocation: one(collocations, {
+    fields: [srsCards.collocationId],
+    references: [collocations.id],
   }),
 }));
 

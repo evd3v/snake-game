@@ -20,7 +20,7 @@ const stateNumberToString: Record<number, string> = {
   3: 'relearning',
 };
 
-export type CardType = 'vocabulary' | 'grammar';
+export type CardType = 'vocabulary' | 'grammar' | 'collocation';
 export type CardState = 'new' | 'learning' | 'review' | 'relearning';
 
 export function toFsrsCard(row: typeof srsCards.$inferSelect): Card {
@@ -44,7 +44,7 @@ export function toDbState(fsrsState: number): CardState {
 export async function createSrsCard(
   db: Database,
   cardType: CardType,
-  opts: { wordSenseId?: number; grammarPatternId?: number },
+  opts: { wordSenseId?: number; grammarPatternId?: number; collocationId?: number },
 ) {
   const emptyCard = createEmptyCard();
 
@@ -54,6 +54,7 @@ export async function createSrsCard(
       cardType,
       wordSenseId: opts.wordSenseId ?? null,
       grammarPatternId: opts.grammarPatternId ?? null,
+      collocationId: opts.collocationId ?? null,
       state: 'new',
       due: emptyCard.due,
       stability: emptyCard.stability,
