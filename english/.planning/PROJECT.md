@@ -28,7 +28,16 @@
 
 ### Active
 
-(All v1.0 requirements validated)
+## Current Milestone: v1.1 UX Polish & Web Features
+
+**Goal:** Довести веб-приложение до полноценного рабочего инструмента — vocabulary management, review в вебе, collocations видимость, авто-добавление слов в Telegram, поддержка множественных переводов/POS.
+
+**Target features:**
+- Страница /vocabulary с полным списком слов, фильтрами и управлением
+- SRS review flow в веб-приложении (карточки, грамматические упражнения)
+- Collocations отображение в UI (веб + уже добавлено в Telegram в quick-1)
+- Telegram: автоматическое добавление новых слов без ручного выбора familiarity
+- Множественные переводы и POS для одного слова (word как глагол и существительное)
 
 ### Out of Scope
 
@@ -62,4 +71,4 @@
 | Батч-генерация упражнений | Не ждать ИИ при каждом повторении, экономия токенов и времени | ✓ Phase 4 |
 
 ---
-*Last updated: 2026-03-09 after Phase 4 (all v1.0 requirements validated)*
+*Last updated: 2026-03-10 after milestone v1.1 started*

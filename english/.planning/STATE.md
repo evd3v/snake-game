@@ -1,36 +1,36 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: completed
-stopped_at: Completed quick-1 plan
-last_updated: "2026-03-09T18:31:59.629Z"
-last_activity: 2026-03-09 - Completed quick task 1: Fix sentence analysis flow
+milestone: v1.1
+milestone_name: UX Polish & Web Features
+status: active
+stopped_at: Milestone v1.1 started
+last_updated: "2026-03-10"
+last_activity: 2026-03-10 — Milestone v1.1 started
 progress:
-  total_phases: 5
-  completed_phases: 5
-  total_plans: 13
-  completed_plans: 13
-  percent: 100
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-03-09)
+See: .planning/PROJECT.md (updated 2026-03-10)
 
 **Core value:** User inputs a real sentence from a book and gets full analysis (translation, grammar, vocabulary, CEFR), with extracted items feeding into spaced repetition -- all in one flow.
-**Current focus:** v1.0 milestone complete — all 5 phases finished
+**Current focus:** v1.1 UX Polish & Web Features — vocabulary page, web review, collocations UI, Telegram auto-add, multiple POS/translations
 
 ## Current Position
 
-Phase: 5 of 5 (Web Application and Dashboard)
-Plan: 3 of 3 in current phase (05-03 complete)
-Status: Complete
-Last activity: 2026-03-09 -- Plan 05-03 executed
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-03-10 — Milestone v1.1 started
 
-Progress: [██████████] 100%
+Progress: [░░░░░░░░░░] 0%
 
 ## Performance Metrics
 
