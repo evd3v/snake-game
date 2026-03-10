@@ -1,9 +1,9 @@
 # Requirements: English Learning App
 
 **Defined:** 2026-03-09
-**Core Value:** User inputs a real sentence from a book and gets full analysis (translation, grammar, vocabulary, CEFR), with extracted items feeding into spaced repetition — all in one flow.
+**Core Value:** Пользователь вводит реальное предложение из книги и получает полный разбор, а извлечённые единицы попадают в систему интервального повторения — всё в одном потоке.
 
-## v1 Requirements
+## v1.0 Requirements (Validated)
 
 ### Sentence Analysis
 
@@ -51,7 +51,49 @@
 - [x] **INFRA-05**: Docker Compose deployment configuration
 - [x] **INFRA-06**: Async AI processing (queue-based, non-blocking)
 
+## v1.1 Requirements
+
+Requirements for UX Polish & Web Features milestone. Each maps to roadmap phases.
+
+### Data Model
+
+- [ ] **DATA-01**: Слова хранятся с привязкой к POS через таблицу word_senses — одна lemma может иметь несколько значений с разными переводами
+- [ ] **DATA-02**: SRS-карточки привязаны к word_sense (не к word), каждое значение учится отдельно
+- [ ] **DATA-03**: Миграция существующих данных — существующие слова получают sense на основе имеющегося POS/translation
+
+### Vocabulary Page
+
+- [ ] **VOCPG-01**: Пользователь видит полный список слов с поиском по lemma
+- [ ] **VOCPG-02**: Пользователь может фильтровать слова по familiarity, SRS state, CEFR уровню и тематическому кластеру
+- [ ] **VOCPG-03**: Пользователь может сортировать слова по алфавиту, дате добавления, CEFR уровню
+- [ ] **VOCPG-04**: Пользователь видит collocations связанные с каждым словом
+- [ ] **VOCPG-05**: Пользователь видит word family (однокоренные слова) для каждого слова
+- [ ] **VOCPG-06**: Пользователь может группировать слова по тематическим кластерам
+- [ ] **VOCPG-07**: Пользователь может пометить слово как "знаю" — оно исчезает из очереди повторения
+- [ ] **VOCPG-08**: Пользователь может сбросить статус слова ("забыл") — оно возвращается в очередь
+
+### Web Review
+
+- [ ] **WREV-01**: Пользователь видит и проходит vocab карточки с контекстом предложения
+- [ ] **WREV-02**: Пользователь видит и проходит grammar cloze упражнения
+- [ ] **WREV-03**: Пользователь оценивает карточку кнопками Again/Hard/Good/Easy (+ клавиши 1-4)
+- [ ] **WREV-04**: Пользователь видит прогресс-бар во время сессии
+- [ ] **WREV-05**: Пользователь видит summary после завершения сессии (сколько Again/Hard/Good/Easy)
+- [ ] **WREV-06**: Web и Telegram review не конфликтуют (staleness guard)
+
+### Telegram UX
+
+- [ ] **TG-01**: Все новые слова автоматически добавляются с SRS-карточками при анализе предложения
+- [ ] **TG-02**: Уже известные слова (есть SRS-карточка) не дублируются
+
+### Collocations
+
+- [ ] **COLL-01**: Collocations отображаются в веб-UI при анализе предложения
+- [ ] **COLL-02**: Collocations видны на странице vocabulary для каждого слова
+
 ## v2 Requirements
+
+Deferred to future release.
 
 ### Advanced Analysis
 
@@ -63,6 +105,9 @@
 
 - **REV-01**: Multiple exercise types (translation, sentence building, matching)
 - **REV-02**: Adaptive difficulty based on user performance trends
+- **MSENSE-01**: Одно значение слова может иметь несколько вариантов перевода с контекстом
+- **ADVREV-01**: Spaced repetition для collocations как отдельных единиц
+- **ADVREV-02**: Настраиваемые параметры FSRS через UI
 
 ### Social / Export
 
@@ -79,8 +124,14 @@
 | Book tracking / progress per book | Adds complexity, not core to learning flow |
 | Real-time chat with AI | Structured analysis is more effective than freeform chat |
 | Gamification (badges, XP) | Streak + heatmap is enough motivation for personal use |
+| Card template editor | Один пользователь, фиксированные типы карточек |
+| Deck/tag организация | Тематические кластеры от AI заменяют ручную организацию |
+| Bulk import/export | Данные входят только через sentence analysis |
+| Collocation SRS cards | Показывать как контекст, не как отдельные карточки |
 
 ## Traceability
+
+### v1.0 (Complete)
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
@@ -116,11 +167,37 @@
 | INFRA-05 | Phase 1 | Complete |
 | INFRA-06 | Phase 1 | Complete |
 
+### v1.1 (Pending)
+
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| DATA-01 | — | Pending |
+| DATA-02 | — | Pending |
+| DATA-03 | — | Pending |
+| VOCPG-01 | — | Pending |
+| VOCPG-02 | — | Pending |
+| VOCPG-03 | — | Pending |
+| VOCPG-04 | — | Pending |
+| VOCPG-05 | — | Pending |
+| VOCPG-06 | — | Pending |
+| VOCPG-07 | — | Pending |
+| VOCPG-08 | — | Pending |
+| WREV-01 | — | Pending |
+| WREV-02 | — | Pending |
+| WREV-03 | — | Pending |
+| WREV-04 | — | Pending |
+| WREV-05 | — | Pending |
+| WREV-06 | — | Pending |
+| TG-01 | — | Pending |
+| TG-02 | — | Pending |
+| COLL-01 | — | Pending |
+| COLL-02 | — | Pending |
+
 **Coverage:**
-- v1 requirements: 31 total
-- Mapped to phases: 31
-- Unmapped: 0
+- v1.1 requirements: 21 total
+- Mapped to phases: 0
+- Unmapped: 21 ⚠️
 
 ---
 *Requirements defined: 2026-03-09*
-*Last updated: 2026-03-09 after roadmap creation*
+*Last updated: 2026-03-10 after v1.1 milestone requirements*
