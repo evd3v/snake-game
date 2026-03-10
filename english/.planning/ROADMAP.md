@@ -69,7 +69,11 @@ Plans:
   3. User can view word detail showing associated collocations and word family members
   4. User can mark a word as "known" (removing it from review queue) or reset it to "forgotten" (returning it to queue)
   5. Collocations are displayed on the sentence analysis result page and on the vocabulary word detail page
-**Plans**: TBD
+**Plans:** 2 plans
+
+Plans:
+- [ ] 08-01-PLAN.md -- Vocabulary API backend (list with pagination/filter/sort, word detail, mark-known/reset)
+- [ ] 08-02-PLAN.md -- Frontend vocabulary page (Vue components, Pinia store, collocations UI)
 
 ### Phase 9: Web SRS Review
 **Goal**: Users can complete full review sessions in the browser with the same quality as Telegram review
@@ -92,5 +96,5 @@ Note: Phase 9 depends on Phase 6 (not Phase 8), so Phases 8 and 9 could potentia
 |-------|-----------|----------------|--------|-----------|
 | 6. Data Model Evolution | 3/3 | Complete   | 2026-03-10 | - |
 | 7. Service Updates & Telegram Auto-Add | v1.1 | 0/2 | Not started | - |
-| 8. Vocabulary Page & Collocations UI | v1.1 | 0/? | Not started | - |
+| 8. Vocabulary Page & Collocations UI | v1.1 | 0/2 | Not started | - |
 | 9. Web SRS Review | v1.1 | 0/? | Not started | - |
