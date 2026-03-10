@@ -103,7 +103,11 @@ Plans:
   1. When a sentence is analyzed, collocations automatically get SRS cards (new cardType='collocation')
   2. Collocation cards appear in /review — front shows collocation text + context sentence, back shows translation + type (collocation/phrasal_verb/idiom)
   3. Grammar cards in /review show pattern description and an example sentence from user's texts on the back side
-**Plans**: TBD
+**Plans:** 2 plans
+
+Plans:
+- [ ] 10-01-PLAN.md -- Schema migration + collocation SRS card auto-creation in analysis pipeline
+- [ ] 10-02-PLAN.md -- Review route enrichment, frontend/bot updates, dashboard fix, collocations SRS filtering
 
 ### Phase 11: Grammar & Collocations Browse Pages
 **Goal**: Users can browse, search, and filter all grammar patterns and collocations they've encountered
@@ -131,5 +135,5 @@ Note: Phase 9 depends on Phase 6 (not Phase 8), so Phases 8 and 9 could potentia
 | 7. Service Updates & Telegram Auto-Add | v1.1 | 0/2 | Not started | - |
 | 8. Vocabulary Page & Collocations UI | v1.1 | 0/2 | Not started | - |
 | 9. Web SRS Review | v1.1 | Complete    | 2026-03-10 | - |
-| 10. Collocation SRS & Review Enhancement | v1.1 | 0/? | Not started | - |
+| 10. Collocation SRS & Review Enhancement | v1.1 | 0/2 | Not started | - |
 | 11. Grammar & Collocations Browse Pages | 2/2 | Complete    | 2026-03-10 | - |
