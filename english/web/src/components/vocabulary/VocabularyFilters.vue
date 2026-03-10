@@ -66,7 +66,7 @@ watch(
       <select :value="store.filters.familiarity" class="filter-select" @change="onFamiliarityChange">
         <option value="">All familiarity</option>
         <option value="never_seen">Never seen</option>
-        <option value="seen_but_unsure">Seen but unsure</option>
+        <option value="seen_unsure">Seen but unsure</option>
         <option value="understand_in_context">Understand in context</option>
       </select>
 
@@ -98,8 +98,8 @@ watch(
       <label class="sort-label">Sort:</label>
       <select :value="store.filters.sortBy" class="filter-select" @change="onSortByChange">
         <option value="lemma">Alphabetical</option>
-        <option value="createdAt">Date added</option>
-        <option value="cefrLevel">CEFR level</option>
+        <option value="date">Date added</option>
+        <option value="cefr">CEFR level</option>
       </select>
       <button class="sort-order-btn" @click="toggleSortOrder">
         {{ store.filters.sortOrder === 'asc' ? 'A-Z' : 'Z-A' }}
