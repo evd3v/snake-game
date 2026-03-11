@@ -4,8 +4,8 @@ milestone: v1.0
 milestone_name: milestone
 status: completed
 stopped_at: Completed 10-02-PLAN.md
-last_updated: "2026-03-10T15:52:13.693Z"
-last_activity: 2026-03-10 — Completed quick task 2: Deploy server, notifications, auth
+last_updated: "2026-03-11T09:07:13Z"
+last_activity: 2026-03-11 — Completed quick task 3: Improve word reviews with definitions, word-choice exercises, daily notifications
 progress:
   total_phases: 6
   completed_phases: 6
@@ -28,7 +28,7 @@ See: .planning/PROJECT.md (updated 2026-03-10)
 Phase: 10 (Collocation SRS Review Enhancement)
 Plan: 2 of 2 in current phase
 Status: phase-complete
-Last activity: 2026-03-10 — Completed quick task 2: Deploy server, notifications, auth
+Last activity: 2026-03-11 — Completed quick task 3: Improve word reviews with definitions, word-choice exercises, daily notifications
 
 Progress: [██████████] 100%
 
@@ -111,6 +111,7 @@ None yet.
 |---|-------------|------|--------|-----------|
 | 1 | Fix sentence analysis flow - full message with translation, collocations, grammar, known/new markers | 2026-03-09 | 28cb7e0 | [1-fix-sentence-analysis-flow-missing-trans](./quick/1-fix-sentence-analysis-flow-missing-trans/) |
 | 2 | Deploy server config, bot auth middleware, hourly review notifications | 2026-03-10 | 4186eb6 | [2-deploy-server-notifications-auth](./quick/2-deploy-server-notifications-auth/) |
+| 3 | Word definitions on cards, word-choice exercises, daily 21:00 notifications | 2026-03-11 | b9c3ab3 | [3-improve-word-reviews-with-definitions-fi](./quick/3-improve-word-reviews-with-definitions-fi/) |
 
 ### Blockers/Concerns
 
@@ -120,6 +121,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-10T18:12:00Z
-Stopped at: Completed quick-2 (deploy server, auth, notifications)
+Last session: 2026-03-11T09:07:13Z
+Stopped at: Completed quick-3 (definitions, word-choice exercises, daily notifications)
 Resume file: None
