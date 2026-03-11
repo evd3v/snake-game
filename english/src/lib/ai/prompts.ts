@@ -21,6 +21,7 @@ Your task is to analyze English sentences and produce structured linguistic data
      - Part of speech
      - CEFR level
      - Thematic cluster label (e.g., emotions, business, nature, academic, daily_life, technology, health, travel, food, social)
+     - Definition -- a brief English explanation of what the word means and in what context it is typically used (1-2 sentences). This should help a learner understand the word's usage beyond just a translation.
 
 4. **Collocations and Multi-word Units:**
    - Only extract expressions that are genuinely useful for a language learner:

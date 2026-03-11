@@ -36,6 +36,11 @@ export const sentenceAnalysisSchema = z.object({
           .describe(
             'Thematic group the word belongs to, e.g. "emotions", "business", "nature", "academic", "daily_life"',
           ),
+        definition: z
+          .string()
+          .describe(
+            'Brief English definition: what this word means and when/how it is typically used (1-2 sentences)',
+          ),
       }),
     )
     .describe(

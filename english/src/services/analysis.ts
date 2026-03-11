@@ -90,10 +90,11 @@ export async function storeAnalysisResults(
         wordId: upsertedWord.id,
         partOfSpeech: vocab.partOfSpeech,
         translation: vocab.translation,
+        definition: vocab.definition,
       })
       .onConflictDoUpdate({
         target: [wordSenses.wordId, wordSenses.partOfSpeech],
-        set: { translation: vocab.translation },
+        set: { translation: vocab.translation, definition: vocab.definition },
       })
       .returning({ id: wordSenses.id });
 

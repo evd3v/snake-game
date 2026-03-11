@@ -21,56 +21,65 @@ const reviewSessions = new Map<number, ReviewSession>();
 export function formatCardFront(card: DueCard): string {
   if (card.cardType === 'vocabulary' && card.word) {
     const lemma = escapeHtml(card.word.lemma);
-    const cefr = card.word.cefrLevel ? ` (${escapeHtml(card.word.cefrLevel)})` : '';
+    const pos = card.word.partOfSpeech ? ` · ${escapeHtml(card.word.partOfSpeech)}` : '';
+    const cefr = card.word.cefrLevel ? ` · ${escapeHtml(card.word.cefrLevel)}` : '';
     const sentence = card.sentence ? `\n\n<i>"${escapeHtml(card.sentence)}"</i>` : '';
-    return `<b>${lemma}</b>${cefr}${sentence}`;
+    return `📚 <b>${lemma}</b>${pos}${cefr}${sentence}`;
   }
 
   if (card.cardType === 'grammar') {
     if (card.exercise) {
-      return `Fill in the blank:\n\n${escapeHtml(card.exercise.sentence)}`;
+      const hint = card.exercise.hint ? `\n\n💡 <i>${escapeHtml(card.exercise.hint)}</i>` : '';
+      return `📖 Fill in the blank:\n\n${escapeHtml(card.exercise.sentence)}${hint}`;
     }
     const patternName = card.pattern ? escapeHtml(card.pattern.pattern) : 'Grammar';
-    return `<b>${patternName}</b>\n\nNo exercises available`;
+    const desc = card.pattern?.description ? `\n${escapeHtml(card.pattern.description)}` : '';
+    const example = card.exampleSentence ? `\n\n<i>"${escapeHtml(card.exampleSentence)}"</i>` : '';
+    return `📖 <b>${patternName}</b>${desc}${example}\n\n<i>Rate based on your knowledge of this pattern</i>`;
   }
 
   if (card.cardType === 'collocation' && card.collocation) {
     const text = escapeHtml(card.collocation.text);
-    const type = escapeHtml(card.collocation.type.replace('_', ' '));
-    const cefr = card.collocation.cefrLevel ? ` (${escapeHtml(card.collocation.cefrLevel)})` : '';
+    const type = escapeHtml(card.collocation.type.replace(/_/g, ' '));
+    const cefr = card.collocation.cefrLevel ? ` · ${escapeHtml(card.collocation.cefrLevel)}` : '';
     const sentence = card.sentence ? `\n\n<i>"${escapeHtml(card.sentence)}"</i>` : '';
-    return `<b>${text}</b> [${type}]${cefr}${sentence}`;
+    return `🔗 <b>${text}</b> · ${type}${cefr}${sentence}`;
   }
 
   return 'Unknown card type';
 }
 
-export function formatCardReveal(card: DueCard): string {
-  const front = formatCardFront(card);
+export function isAutoRevealCard(card: DueCard): boolean {
+  return card.cardType === 'grammar' && !card.exercise;
+}
 
+export function formatCardReveal(card: DueCard): string {
   if (card.cardType === 'vocabulary' && card.word) {
+    const front = formatCardFront(card);
     const translation = card.word.translation ? escapeHtml(card.word.translation) : '—';
-    return `${front}\n\nTranslation: <b>${translation}</b>`;
+    const definition = card.word.definition ? `\n\n📖 <i>${escapeHtml(card.word.definition)}</i>` : '';
+    return `${front}\n\n✅ <b>${translation}</b>${definition}`;
   }
 
   if (card.cardType === 'grammar') {
-    let result = front;
     if (card.exercise) {
+      const front = formatCardFront(card);
       const answer = escapeHtml(card.exercise.answer);
-      const hint = card.exercise.hint ? `\nHint: <i>${escapeHtml(card.exercise.hint)}</i>` : '';
-      result = `${front}\n\nAnswer: <b>${answer}</b>${hint}`;
+      const desc = card.pattern?.description ? `\n\n${escapeHtml(card.pattern.description)}` : '';
+      const example = card.exampleSentence ? `\n<i>"${escapeHtml(card.exampleSentence)}"</i>` : '';
+      return `${front}\n\n✅ <b>${answer}</b>${desc}${example}`;
     }
-    const desc = card.pattern?.description ? `\n\n${escapeHtml(card.pattern.description)}` : '';
-    const example = card.exampleSentence ? `\n<i>"${escapeHtml(card.exampleSentence)}"</i>` : '';
-    return `${result}${desc}${example}`;
+    // No exercise — front already contains all info
+    return formatCardFront(card);
   }
 
   if (card.cardType === 'collocation' && card.collocation) {
-    const translation = card.collocation.translation ? escapeHtml(card.collocation.translation) : '---';
-    return `${front}\n\nTranslation: <b>${translation}</b>`;
+    const front = formatCardFront(card);
+    const translation = card.collocation.translation ? escapeHtml(card.collocation.translation) : '—';
+    return `${front}\n\n✅ <b>${translation}</b>`;
   }
 
-  return front;
+  return formatCardFront(card);
 }
 
 export function formatSessionSummary(stats: ReviewStats): string {
@@ -78,7 +87,11 @@ export function formatSessionSummary(stats: ReviewStats): string {
   const hard = stats.ratings[2] ?? 0;
   const good = stats.ratings[3] ?? 0;
   const easy = stats.ratings[4] ?? 0;
-  return `Review complete! ${stats.total} cards reviewed.\nAgain: ${again} | Hard: ${hard} | Good: ${good} | Easy: ${easy}`;
+  return `🎉 <b>Review complete!</b>\n\n${stats.total} cards reviewed\n\n🔴 Again: ${again}\n🟠 Hard: ${hard}\n🟢 Good: ${good}\n🔵 Easy: ${easy}`;
+}
+
+function formatProgress(current: number, total: number): string {
+  return `[${current + 1}/${total}] `;
 }
 
 export function registerReviewHandlers(bot: Bot): void {
@@ -111,10 +124,14 @@ export function registerReviewHandlers(bot: Bot): void {
       };
       reviewSessions.set(chatId, session);
 
-      const text = formatCardFront(cards[0]);
+      const card = cards[0];
+      const text = formatProgress(0, cards.length) + formatCardFront(card);
+      const keyboard = isAutoRevealCard(card)
+        ? buildRatingKeyboard(card.cardId)
+        : buildRevealKeyboard(card.cardId);
       await ctx.reply(text, {
         parse_mode: 'HTML',
-        reply_markup: buildRevealKeyboard(cards[0].cardId),
+        reply_markup: keyboard,
       });
     } catch (error) {
       console.error('Failed to start review:', error);
@@ -139,7 +156,7 @@ export function registerReviewHandlers(bot: Bot): void {
     const card = session.cards[session.currentIndex];
     session.revealed = true;
 
-    const text = formatCardReveal(card);
+    const text = formatProgress(session.currentIndex, session.cards.length) + formatCardReveal(card);
     await ctx.editMessageText(text, {
       parse_mode: 'HTML',
       reply_markup: buildRatingKeyboard(card.cardId),
@@ -181,15 +198,18 @@ export function registerReviewHandlers(bot: Bot): void {
 
     if (session.currentIndex < session.cards.length) {
       const nextCard = session.cards[session.currentIndex];
-      const text = formatCardFront(nextCard);
+      const text = formatProgress(session.currentIndex, session.cards.length) + formatCardFront(nextCard);
+      const keyboard = isAutoRevealCard(nextCard)
+        ? buildRatingKeyboard(nextCard.cardId)
+        : buildRevealKeyboard(nextCard.cardId);
       await ctx.editMessageText(text, {
         parse_mode: 'HTML',
-        reply_markup: buildRevealKeyboard(nextCard.cardId),
+        reply_markup: keyboard,
       });
     } else {
       // Session complete
       const summary = formatSessionSummary(session.stats);
-      await ctx.editMessageText(summary);
+      await ctx.editMessageText(summary, { parse_mode: 'HTML' });
       reviewSessions.delete(chatId);
     }
 
@@ -212,7 +232,7 @@ export function registerReviewHandlers(bot: Bot): void {
 
     if (session.stats.total > 0) {
       const summary = formatSessionSummary(session.stats);
-      await ctx.editMessageText(summary);
+      await ctx.editMessageText(summary, { parse_mode: 'HTML' });
     } else {
       await ctx.editMessageText('Session ended.');
     }

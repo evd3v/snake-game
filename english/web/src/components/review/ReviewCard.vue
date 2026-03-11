@@ -37,6 +37,7 @@ const cefrColors: Record<string, string> = {
         <div class="divider" />
         <div class="card-back">
           <p class="translation">{{ card.word?.translation || '---' }}</p>
+          <p v-if="card.word?.definition" class="definition">{{ card.word.definition }}</p>
         </div>
       </template>
 
@@ -156,6 +157,14 @@ const cefrColors: Record<string, string> = {
   font-size: 22px;
   font-weight: 600;
   color: #1e293b;
+}
+
+.definition {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 8px;
+  line-height: 1.5;
+  font-style: italic;
 }
 
 .reveal-hint {

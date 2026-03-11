@@ -6,6 +6,7 @@ export const wordSenses = pgTable('word_senses', {
   wordId: integer('word_id').notNull().references(() => words.id),
   partOfSpeech: text('part_of_speech').notNull(),
   translation: text(),
+  definition: text(),
   familiarity: familiarityEnum().default('never_seen'),
   createdAt: timestamp('created_at').defaultNow().notNull(),
 }, (t) => [

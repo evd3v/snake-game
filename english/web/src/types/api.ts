@@ -109,6 +109,7 @@ export interface DueCard {
   word?: {
     lemma: string
     translation: string | null
+    definition?: string | null
     cefrLevel: string | null
     partOfSpeech: string | null
   }

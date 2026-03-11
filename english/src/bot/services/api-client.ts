@@ -96,7 +96,7 @@ export interface DueCard {
   cardType: 'vocabulary' | 'grammar' | 'collocation';
   state: string;
   due: string;
-  word?: { lemma: string; translation: string | null; cefrLevel: string | null; partOfSpeech: string | null };
+  word?: { lemma: string; translation: string | null; definition?: string | null; cefrLevel: string | null; partOfSpeech: string | null };
   sentence?: string;
   pattern?: { pattern: string; description: string };
   exercise?: { id: number; sentence: string; answer: string; hint: string | null; difficultyLevel: number };

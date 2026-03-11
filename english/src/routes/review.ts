@@ -32,6 +32,7 @@ const reviewRoute: FastifyPluginAsync = async (fastify) => {
               .select({
                 lemma: words.lemma,
                 translation: wordSenses.translation,
+                definition: wordSenses.definition,
                 cefrLevel: words.cefrLevel,
                 partOfSpeech: wordSenses.partOfSpeech,
                 sentenceText: sentences.text,
@@ -47,7 +48,7 @@ const reviewRoute: FastifyPluginAsync = async (fastify) => {
             return {
               ...base,
               word: wordData
-                ? { lemma: wordData.lemma, translation: wordData.translation, cefrLevel: wordData.cefrLevel, partOfSpeech: wordData.partOfSpeech }
+                ? { lemma: wordData.lemma, translation: wordData.translation, definition: wordData.definition, cefrLevel: wordData.cefrLevel, partOfSpeech: wordData.partOfSpeech }
                 : undefined,
               sentence: wordData?.sentenceText ?? undefined,
             };
