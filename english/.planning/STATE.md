@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: EPUB Reader & LingQ-style Learning
-status: in-progress
-stopped_at: "Completed 12-01-PLAN.md"
-last_updated: "2026-03-15T06:37:11Z"
+status: executing
+stopped_at: Completed 12-02-PLAN.md
+last_updated: "2026-03-15T06:41:01.718Z"
 last_activity: 2026-03-15 — Completed 12-01 EPUB Data Foundation backend
 progress:
   total_phases: 3
-  completed_phases: 0
-  total_plans: 1
-  completed_plans: 1
+  completed_phases: 1
+  total_plans: 2
+  completed_plans: 2
   percent: 33
 ---
 
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-03-15)
 
 ## Current Position
 
-Phase: 12 of 14 (EPUB Data Foundation)
-Plan: 1 of 1 complete (Phase 12)
-Status: In progress
-Last activity: 2026-03-15 — Completed 12-01 EPUB Data Foundation backend
+Phase: 12 of 14 (EPUB Data Foundation) -- COMPLETE
+Plan: 2 of 2 complete (Phase 12)
+Status: Phase 12 complete
+Last activity: 2026-03-15 — Completed 12-02 Library View frontend
 
-Progress: [███░░░░░░░] 33%
+Progress: [███████░░░] 67%
 
 ## Performance Metrics
 
@@ -50,10 +50,10 @@ Progress: [███░░░░░░░] 33%
 | 10 | 2 | 8min | 4min |
 | 11 | 2 | 6min | 3min |
 
-| 12 | 1 | 4min | 4min |
+| 12 | 2 | 5min | 2.5min |
 
 **Recent Trend:**
-- Last 5 plans: P11-01 (3min), P11-02 (3min), P10-01 (3min), P10-02 (5min), P12-01 (4min)
+- Last 5 plans: P11-02 (3min), P10-01 (3min), P10-02 (5min), P12-01 (4min), P12-02 (1min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -71,6 +71,7 @@ Recent decisions affecting current work:
 - [12-01]: Used createRequire for epub2 CJS import in ESM project
 - [12-01]: Synchronous EPUB processing (no queue) -- parsing is fast, no AI calls
 - [12-01]: Pre-computed page numbers on sentences (groups of 6, merge short final pages)
+- [Phase 12]: Styled label as upload button with hidden file input for clean UX
 
 ### Pending Todos
 
@@ -85,6 +86,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-15
-Stopped at: Completed 12-01-PLAN.md
+Last session: 2026-03-15T06:41:01.716Z
+Stopped at: Completed 12-02-PLAN.md
 Resume file: None
