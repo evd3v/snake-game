@@ -1,36 +1,36 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: completed
-stopped_at: Completed 10-02-PLAN.md
-last_updated: "2026-03-11T09:07:13Z"
-last_activity: 2026-03-11 — Completed quick task 3: Improve word reviews with definitions, word-choice exercises, daily notifications
+milestone: v2.0
+milestone_name: EPUB Reader & LingQ-style Learning
+status: not-started
+stopped_at: null
+last_updated: "2026-03-15T00:00:00Z"
+last_activity: 2026-03-15 — Milestone v2.0 started
 progress:
-  total_phases: 6
-  completed_phases: 6
-  total_plans: 13
-  completed_plans: 13
-  percent: 100
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-03-10)
+See: .planning/PROJECT.md (updated 2026-03-15)
 
-**Core value:** User inputs a real sentence from a book and gets full analysis (translation, grammar, vocabulary, CEFR), with extracted items feeding into spaced repetition -- all in one flow.
-**Current focus:** Phase 10 - Collocation SRS Review Enhancement
+**Core value:** User reads a real book in EPUB reader, gets AI analysis of each sentence (translation, grammar, vocabulary, collocations), with extracted items feeding into spaced repetition -- learning through reading in context.
+**Current focus:** Defining requirements
 
 ## Current Position
 
-Phase: 10 (Collocation SRS Review Enhancement)
-Plan: 2 of 2 in current phase
-Status: phase-complete
-Last activity: 2026-03-11 — Completed quick task 3: Improve word reviews with definitions, word-choice exercises, daily notifications
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-03-15 — Milestone v2.0 started
 
-Progress: [██████████] 100%
+Progress: [░░░░░░░░░░] 0%
 
 ## Performance Metrics
 
