@@ -20,6 +20,28 @@ export async function apiPost<T>(path: string, body?: unknown): Promise<T> {
   return response.json() as Promise<T>
 }
 
+export async function apiUpload<T>(path: string, file: File): Promise<T> {
+  const formData = new FormData()
+  formData.append('file', file)
+  const response = await fetch(`${BASE_URL}${path}`, {
+    method: 'POST',
+    body: formData,
+  })
+  if (!response.ok) {
+    throw new Error(`UPLOAD ${path} failed: ${response.status} ${response.statusText}`)
+  }
+  return response.json() as Promise<T>
+}
+
+export async function apiDelete(path: string): Promise<void> {
+  const response = await fetch(`${BASE_URL}${path}`, {
+    method: 'DELETE',
+  })
+  if (!response.ok) {
+    throw new Error(`DELETE ${path} failed: ${response.status} ${response.statusText}`)
+  }
+}
+
 export async function apiPatch<T>(path: string, body: unknown): Promise<T> {
   const response = await fetch(`${BASE_URL}${path}`, {
     method: 'PATCH',
