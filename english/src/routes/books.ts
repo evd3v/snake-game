@@ -1,9 +1,10 @@
 import type { FastifyPluginAsync } from 'fastify';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { eq, desc } from 'drizzle-orm';
-import { books, bookChapters, bookSentences } from '../db/schema/books.ts';
+import { eq, desc, and, asc, sql } from 'drizzle-orm';
+import { books, bookChapters, bookSentences, readingPositions } from '../db/schema/books.ts';
 import { parseEpub } from '../services/epub-parser.ts';
+import { highlightSentences } from '../services/word-highlighter.ts';
 
 const PAGE_SIZE = 6;
 const UPLOAD_DIR = process.env.UPLOAD_DIR || './uploads';
@@ -152,6 +153,88 @@ const booksRoute: FastifyPluginAsync = async (fastify) => {
 
     return reply.status(204).send();
   });
+
+  // GET /books/:id/page/:pageNum
+  fastify.get<{ Params: { id: string; pageNum: string } }>(
+    '/books/:id/page/:pageNum',
+    async (request, reply) => {
+      const bookId = Number(request.params.id);
+      const pageNumber = Number(request.params.pageNum);
+
+      // Check book exists
+      const [book] = await fastify.db
+        .select({ id: books.id, totalPages: books.totalPages })
+        .from(books)
+        .where(eq(books.id, bookId));
+
+      if (!book) {
+        return reply.notFound('Book not found');
+      }
+
+      // Get sentences for this page
+      const sentences = await fastify.db
+        .select({
+          id: bookSentences.id,
+          text: bookSentences.text,
+        })
+        .from(bookSentences)
+        .where(
+          and(
+            eq(bookSentences.bookId, bookId),
+            eq(bookSentences.pageNumber, pageNumber),
+          ),
+        )
+        .orderBy(asc(bookSentences.orderInChapter));
+
+      // Get highlights for sentences (batch query)
+      let sentencesWithHighlights: Array<{ id: number; text: string; highlights: unknown[] }> = [];
+
+      if (sentences.length > 0) {
+        const highlightMap = await highlightSentences(fastify.db, sentences);
+        sentencesWithHighlights = sentences.map(s => ({
+          id: s.id,
+          text: s.text,
+          highlights: highlightMap.get(s.id) || [],
+        }));
+      }
+
+      // Get saved reading position
+      const [position] = await fastify.db
+        .select({ pageNumber: readingPositions.pageNumber })
+        .from(readingPositions)
+        .where(eq(readingPositions.bookId, bookId));
+
+      return {
+        bookId,
+        pageNumber,
+        totalPages: book.totalPages,
+        savedPosition: position?.pageNumber ?? null,
+        sentences: sentencesWithHighlights,
+      };
+    },
+  );
+
+  // PUT /books/:id/position
+  fastify.put<{ Params: { id: string }; Body: { pageNumber: number } }>(
+    '/books/:id/position',
+    async (request) => {
+      const bookId = Number(request.params.id);
+      const { pageNumber } = request.body;
+
+      await fastify.db
+        .insert(readingPositions)
+        .values({ bookId, pageNumber })
+        .onConflictDoUpdate({
+          target: readingPositions.bookId,
+          set: {
+            pageNumber,
+            updatedAt: sql`now()`,
+          },
+        });
+
+      return { ok: true };
+    },
+  );
 };
 
 export default booksRoute;
