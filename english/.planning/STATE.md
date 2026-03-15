@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: EPUB Reader & LingQ-style Learning
-status: in_progress
-stopped_at: Completed 14-01-PLAN.md
-last_updated: "2026-03-15T07:32:42Z"
-last_activity: 2026-03-15 — Completed 14-01 Analysis Learning Flow Backend
+status: complete
+stopped_at: Completed 14-02-PLAN.md
+last_updated: "2026-03-15T07:37:27Z"
+last_activity: 2026-03-15 — Completed 14-02 Reader Analysis UI
 progress:
   total_phases: 3
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 6
-  completed_plans: 5
-  percent: 83
+  completed_plans: 6
+  percent: 100
 ---
 
 # Project State
@@ -26,16 +26,16 @@ See: .planning/PROJECT.md (updated 2026-03-15)
 ## Current Position
 
 Phase: 14 of 14 (Analysis Learning Flow)
-Plan: 1 of 2 complete (Phase 14)
-Status: In progress
-Last activity: 2026-03-15 — Completed 14-01 Analysis Learning Flow Backend
+Plan: 2 of 2 complete (Phase 14)
+Status: Complete
+Last activity: 2026-03-15 — Completed 14-02 Reader Analysis UI
 
-Progress: [████████░░] 83%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 31 (v1.0 + v1.1 + v2.0)
+- Total plans completed: 32 (v1.0 + v1.1 + v2.0)
 - Average duration: 3.5min
 - Total execution time: ~1.7 hours
 
@@ -52,10 +52,10 @@ Progress: [████████░░] 83%
 
 | 12 | 2 | 5min | 2.5min |
 | 13 | 2 | 4min | 2min |
-| 14 | 1 | 3min | 3min |
+| 14 | 2 | 6min | 3min |
 
 **Recent Trend:**
-- Last 5 plans: P12-01 (4min), P12-02 (1min), P13-01 (3min), P13-02 (1min), P14-01 (3min)
+- Last 5 plans: P12-02 (1min), P13-01 (3min), P13-02 (1min), P14-01 (3min), P14-02 (3min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -79,6 +79,8 @@ Recent decisions affecting current work:
 - [Phase 13]: CSS custom properties for dark/light theming with .dark class toggle
 - [14-01]: Raw SQL for getFilteredAnalysis following word-highlighter batch pattern
 - [14-01]: autoCreateSrsCards default true preserves backward compatibility
+- [14-02]: Local highlight updates on learn/know instead of re-fetching page data
+- [14-02]: Promise-based page report dismiss to block navigation until acknowledged
 
 ### Pending Todos
 
@@ -93,6 +95,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-15T07:32:42Z
-Stopped at: Completed 14-01-PLAN.md
+Last session: 2026-03-15T07:37:27Z
+Stopped at: Completed 14-02-PLAN.md
 Resume file: None

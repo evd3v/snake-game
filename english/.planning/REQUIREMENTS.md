@@ -133,7 +133,7 @@ Requirements for EPUB Reader & LingQ-style Learning milestone.
 
 ### Page Flow
 
-- [ ] **FLOW-01**: При перелистывании показывается мини-отчёт: сколько новых слов добавлено в "учить", сколько отмечено "знаю", грамматических паттернов
+- [x] **FLOW-01**: При перелистывании показывается мини-отчёт: сколько новых слов добавлено в "учить", сколько отмечено "знаю", грамматических паттернов
 - [x] **FLOW-02**: Фильтрация A1/A2 убрана — все слова показываются в модалке, пользователь решает сам через "учить"/"знаю"
 
 ## Future Requirements
@@ -266,7 +266,7 @@ Deferred to future release.
 | ANAL-02 | Phase 14 | Complete |
 | ANAL-03 | Phase 14 | Complete |
 | ANAL-04 | Phase 14 | Complete |
-| FLOW-01 | Phase 14 | Pending |
+| FLOW-01 | Phase 14 | Complete |
 | FLOW-02 | Phase 14 | Complete |
 
 **Coverage:**
