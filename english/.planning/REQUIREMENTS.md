@@ -107,10 +107,10 @@ Requirements for EPUB Reader & LingQ-style Learning milestone.
 
 ### EPUB Management
 
-- [ ] **EPUB-01**: Пользователь может загрузить EPUB файл через веб-интерфейс
-- [ ] **EPUB-02**: Система парсит EPUB на главы, страницы (5-7 предложений) и отдельные предложения, хранит в БД
-- [ ] **EPUB-03**: Пользователь видит библиотеку загруженных книг и может переключаться между ними
-- [ ] **EPUB-04**: Пользователь может удалить книгу и все её данные из системы
+- [x] **EPUB-01**: Пользователь может загрузить EPUB файл через веб-интерфейс
+- [x] **EPUB-02**: Система парсит EPUB на главы, страницы (5-7 предложений) и отдельные предложения, хранит в БД
+- [x] **EPUB-03**: Пользователь видит библиотеку загруженных книг и может переключаться между ними
+- [x] **EPUB-04**: Пользователь может удалить книгу и все её данные из системы
 
 ### Reader UI
 
@@ -252,10 +252,10 @@ Deferred to future release.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| EPUB-01 | Phase 12 | Pending |
-| EPUB-02 | Phase 12 | Pending |
-| EPUB-03 | Phase 12 | Pending |
-| EPUB-04 | Phase 12 | Pending |
+| EPUB-01 | Phase 12 | Complete |
+| EPUB-02 | Phase 12 | Complete |
+| EPUB-03 | Phase 12 | Complete |
+| EPUB-04 | Phase 12 | Complete |
 | READ-01 | Phase 13 | Pending |
 | READ-02 | Phase 13 | Pending |
 | READ-03 | Phase 13 | Pending |
