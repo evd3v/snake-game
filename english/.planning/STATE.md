@@ -2,9 +2,9 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: EPUB Reader & LingQ-style Learning
-status: complete
+status: completed
 stopped_at: Completed 14-02-PLAN.md
-last_updated: "2026-03-15T07:37:27Z"
+last_updated: "2026-03-15T07:41:27.706Z"
 last_activity: 2026-03-15 — Completed 14-02 Reader Analysis UI
 progress:
   total_phases: 3

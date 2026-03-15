@@ -97,4 +97,4 @@ Phases execute in order: 12 -> 13 -> 14
 |-------|-----------|----------------|--------|-----------|
 | 12. EPUB Data Foundation | 2/2 | Complete    | 2026-03-15 | - |
 | 13. Reader & Word Highlighting | 2/2 | Complete    | 2026-03-15 | - |
-| 14. Analysis & Learning Flow | 2/2 | Complete   | 2026-03-15 | - |
+| 14. Analysis & Learning Flow | 2/2 | Complete    | 2026-03-15 | - |
