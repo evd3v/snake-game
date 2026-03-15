@@ -50,11 +50,11 @@
   2. The system splits the book into chapters and pages of 5-7 sentences, with each sentence individually addressable
   3. User can see all uploaded books with title and cover image, and switch between them
   4. User can delete a book, removing all its associated data (chapters, sentences, reading position)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 12-01: TBD
-- [ ] 12-02: TBD
+- [ ] 12-01-PLAN.md — Backend: schema, EPUB parser, multipart plugin, book CRUD API, tests
+- [ ] 12-02-PLAN.md — Frontend: library view with upload, book list, delete
 
 ### Phase 13: Reader & Word Highlighting
 **Goal**: Users can read a book page-by-page with words colored by familiarity status, resume where they left off, and switch between light and dark themes
@@ -95,6 +95,6 @@ Phases execute in order: 12 -> 13 -> 14
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
-| 12. EPUB Data Foundation | v2.0 | 0/? | Not started | - |
+| 12. EPUB Data Foundation | v2.0 | 0/2 | Planning | - |
 | 13. Reader & Word Highlighting | v2.0 | 0/? | Not started | - |
 | 14. Analysis & Learning Flow | v2.0 | 0/? | Not started | - |
