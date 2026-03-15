@@ -1,7 +1,7 @@
 # Requirements: English Learning App
 
 **Defined:** 2026-03-09
-**Core Value:** Пользователь вводит реальное предложение из книги и получает полный разбор, а извлечённые единицы попадают в систему интервального повторения — всё в одном потоке.
+**Core Value:** Пользователь читает реальную книгу в EPUB-читалке, получает AI-разбор каждого предложения, а извлечённые единицы попадают в систему интервального повторения — обучение через чтение в контексте.
 
 ## v1.0 Requirements (Validated)
 
@@ -51,9 +51,7 @@
 - [x] **INFRA-05**: Docker Compose deployment configuration
 - [x] **INFRA-06**: Async AI processing (queue-based, non-blocking)
 
-## v1.1 Requirements
-
-Requirements for UX Polish & Web Features milestone. Each maps to roadmap phases.
+## v1.1 Requirements (Validated)
 
 ### Data Model
 
@@ -93,9 +91,9 @@ Requirements for UX Polish & Web Features milestone. Each maps to roadmap phases
 
 ### Collocation SRS & Review Enhancement
 
-- [x] **CSRS-01**: Collocations автоматически получают SRS-карточки при анализе предложения (аналогично grammar)
+- [x] **CSRS-01**: Collocations автоматически получают SRS-карточки при анализе предложения
 - [x] **CSRS-02**: Collocation карточки появляются в review: лицо — коллокация + контекстное предложение, оборот — перевод + тип
-- [x] **CSRS-03**: При review grammar карточки показывается описание паттерна и оригинальное предложение-пример на обороте
+- [x] **CSRS-03**: При review grammar карточки показывается описание паттерна и оригинальное предложение-пример
 
 ### Grammar & Collocations Browse Pages
 
@@ -103,9 +101,51 @@ Requirements for UX Polish & Web Features milestone. Each maps to roadmap phases
 - [x] **BROWSE-02**: Страница /collocations — список всех collocations с CEFR, типом, переводом, примерами предложений
 - [x] **BROWSE-03**: Фильтрация и поиск на обеих страницах (по CEFR, типу, тексту)
 
-## v2 Requirements
+## v2.0 Requirements
+
+Requirements for EPUB Reader & LingQ-style Learning milestone.
+
+### EPUB Management
+
+- [ ] **EPUB-01**: Пользователь может загрузить EPUB файл через веб-интерфейс
+- [ ] **EPUB-02**: Система парсит EPUB на главы, страницы (5-7 предложений) и отдельные предложения, хранит в БД
+- [ ] **EPUB-03**: Пользователь видит библиотеку загруженных книг и может переключаться между ними
+- [ ] **EPUB-04**: Пользователь может удалить книгу и все её данные из системы
+
+### Reader UI
+
+- [ ] **READ-01**: Пользователь видит страницу из 5-7 предложений с возможностью перелистывания
+- [ ] **READ-02**: Система запоминает позицию чтения — при повторном открытии продолжает с того же места
+- [ ] **READ-03**: Пользователь может включить ночную (тёмную) тему
+- [ ] **READ-04**: Кнопка "далее" неактивна пока не открыл каждое предложение на странице
+
+### Sentence Analysis
+
+- [ ] **ANAL-01**: Клик на предложение открывает модалку с AI-анализом (перевод, слова с POS, грамматика, коллокации)
+- [ ] **ANAL-02**: Повторный клик на уже проанализированное предложение подгружает результат из БД без AI-запроса
+- [ ] **ANAL-03**: В модалке показаны только НОВЫЕ слова (отсутствующие в словаре или с новым POS) с кнопками "учить"/"знаю"
+- [ ] **ANAL-04**: Коллокации и грамматические конструкции также показаны с кнопками "учить"/"знаю"
+
+### Word Highlighting
+
+- [ ] **HIGH-01**: Слова в тексте читалки подсвечены по статусу: синее (новое), жёлтое (учу), без цвета (знаю)
+- [ ] **HIGH-02**: Подсветка обновляется после закрытия модалки анализа (слова меняют статус)
+
+### Page Flow
+
+- [ ] **FLOW-01**: При перелистывании показывается мини-отчёт: сколько новых слов добавлено в "учить", сколько отмечено "знаю", грамматических паттернов
+- [ ] **FLOW-02**: Фильтрация A1/A2 убрана — все слова показываются в модалке, пользователь решает сам через "учить"/"знаю"
+
+## Future Requirements
 
 Deferred to future release.
+
+### Advanced Reader
+
+- **ADVRD-01**: Оглавление / навигация по главам
+- **ADVRD-02**: Настройка размера и типа шрифта
+- **ADVRD-03**: Клавиатурные сочетания для десктопа
+- **ADVRD-04**: Подсветка коллокаций в тексте (multi-token spans)
 
 ### Advanced Analysis
 
@@ -120,10 +160,10 @@ Deferred to future release.
 - **MSENSE-01**: Одно значение слова может иметь несколько вариантов перевода с контекстом
 - **ADVREV-02**: Настраиваемые параметры FSRS через UI
 
-### Social / Export
+### Per-Book Stats
 
-- **EXP-01**: Export vocabulary to Anki deck
-- **EXP-02**: Share progress statistics
+- **BSTAT-01**: Статистика по книге (% прочитано, слов изучено)
+- **BSTAT-02**: Сравнение словарного запаса между книгами
 
 ## Out of Scope
 
@@ -132,13 +172,11 @@ Deferred to future release.
 | Native mobile app | Web + Telegram bot is sufficient for personal use |
 | Audio / pronunciation | Focus is on reading comprehension and grammar |
 | Multiple users / auth | Personal tool, single user |
-| Book tracking / progress per book | Adds complexity, not core to learning flow |
 | Real-time chat with AI | Structured analysis is more effective than freeform chat |
 | Gamification (badges, XP) | Streak + heatmap is enough motivation for personal use |
 | Card template editor | Один пользователь, фиксированные типы карточек |
-| Deck/tag организация | Тематические кластеры от AI заменяют ручную организацию |
-| Bulk import/export | Данные входят только через sentence analysis |
-| ~~Collocation SRS cards~~ | Moved to v1.1 (CSRS-01, CSRS-02) |
+| Bulk import/export | Данные входят через sentence analysis и EPUB reader |
+| Client-side EPUB rendering (epub.js) | Несовместим с per-sentence interaction и per-word highlighting |
 
 ## Traceability
 
@@ -178,7 +216,7 @@ Deferred to future release.
 | INFRA-05 | Phase 1 | Complete |
 | INFRA-06 | Phase 1 | Complete |
 
-### v1.1 (Active)
+### v1.1 (Complete)
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
@@ -203,19 +241,39 @@ Deferred to future release.
 | WREV-04 | Phase 9 | Complete |
 | WREV-05 | Phase 9 | Complete |
 | WREV-06 | Phase 9 | Complete |
+| CSRS-01 | Phase 10 | Complete |
+| CSRS-02 | Phase 10 | Complete |
+| CSRS-03 | Phase 10 | Complete |
+| BROWSE-01 | Phase 11 | Complete |
+| BROWSE-02 | Phase 11 | Complete |
+| BROWSE-03 | Phase 11 | Complete |
 
-| CSRS-01 | Phase 10 | Not started |
-| CSRS-02 | Phase 10 | Not started |
-| CSRS-03 | Phase 10 | Not started |
-| BROWSE-01 | Phase 11 | Not started |
-| BROWSE-02 | Phase 11 | Not started |
-| BROWSE-03 | Phase 11 | Not started |
+### v2.0 (Active)
+
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| EPUB-01 | — | Pending |
+| EPUB-02 | — | Pending |
+| EPUB-03 | — | Pending |
+| EPUB-04 | — | Pending |
+| READ-01 | — | Pending |
+| READ-02 | — | Pending |
+| READ-03 | — | Pending |
+| READ-04 | — | Pending |
+| ANAL-01 | — | Pending |
+| ANAL-02 | — | Pending |
+| ANAL-03 | — | Pending |
+| ANAL-04 | — | Pending |
+| HIGH-01 | — | Pending |
+| HIGH-02 | — | Pending |
+| FLOW-01 | — | Pending |
+| FLOW-02 | — | Pending |
 
 **Coverage:**
-- v1.1 requirements: 27 total
-- Mapped to phases: 27/27
-- Unmapped: 0
+- v2.0 requirements: 16 total
+- Mapped to phases: 0
+- Unmapped: 16 ⚠️
 
 ---
 *Requirements defined: 2026-03-09*
-*Last updated: 2026-03-10 after v1.1 roadmap creation*
+*Last updated: 2026-03-15 after v2.0 milestone requirements*
