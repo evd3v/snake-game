@@ -2,9 +2,14 @@ import type { FastifyPluginAsync } from 'fastify';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { eq, desc, and, asc, sql } from 'drizzle-orm';
+import { createEmptyCard } from 'ts-fsrs';
 import { books, bookChapters, bookSentences, readingPositions } from '../db/schema/books.ts';
+import { wordSenses } from '../db/schema/word-senses.ts';
+import { srsCards } from '../db/schema/srs-cards.ts';
+import { grammarPatterns } from '../db/schema/grammar-patterns.ts';
 import { parseEpub } from '../services/epub-parser.ts';
 import { highlightSentences } from '../services/word-highlighter.ts';
+import { getFilteredAnalysis } from '../services/reader-analysis.ts';
 
 const PAGE_SIZE = 6;
 const UPLOAD_DIR = process.env.UPLOAD_DIR || './uploads';
@@ -232,6 +237,250 @@ const booksRoute: FastifyPluginAsync = async (fastify) => {
           },
         });
 
+      return { ok: true };
+    },
+  );
+  // POST /books/sentences/:bookSentenceId/analyze
+  fastify.post<{ Params: { bookSentenceId: string } }>(
+    '/books/sentences/:bookSentenceId/analyze',
+    async (request, reply) => {
+      const bookSentenceId = Number(request.params.bookSentenceId);
+
+      const [bookSentence] = await fastify.db
+        .select({
+          id: bookSentences.id,
+          text: bookSentences.text,
+          sentenceId: bookSentences.sentenceId,
+        })
+        .from(bookSentences)
+        .where(eq(bookSentences.id, bookSentenceId));
+
+      if (!bookSentence) {
+        return reply.notFound('Book sentence not found');
+      }
+
+      // Cached: sentence_id already set
+      if (bookSentence.sentenceId) {
+        const result = await getFilteredAnalysis(fastify.db, bookSentence.sentenceId);
+        return reply.status(200).send({ status: 'completed', result });
+      }
+
+      // Uncached: queue analysis job
+      const job = await fastify.analysisQueue.add('sentence-analysis', {
+        text: bookSentence.text,
+        bookSentenceId,
+      });
+
+      return reply.status(202).send({ status: 'queued', jobId: job.id });
+    },
+  );
+
+  // GET /books/sentences/:bookSentenceId/analyze/status/:jobId
+  fastify.get<{ Params: { bookSentenceId: string; jobId: string } }>(
+    '/books/sentences/:bookSentenceId/analyze/status/:jobId',
+    async (request, reply) => {
+      const bookSentenceId = Number(request.params.bookSentenceId);
+      const { jobId } = request.params;
+
+      const job = await fastify.analysisQueue.getJob(jobId);
+      if (!job) {
+        return reply.notFound('Job not found');
+      }
+
+      const state = await job.getState();
+
+      if (state === 'completed') {
+        // Re-read book_sentence to get the linked sentence_id
+        const [bookSentence] = await fastify.db
+          .select({ sentenceId: bookSentences.sentenceId })
+          .from(bookSentences)
+          .where(eq(bookSentences.id, bookSentenceId));
+
+        if (bookSentence?.sentenceId) {
+          const result = await getFilteredAnalysis(fastify.db, bookSentence.sentenceId);
+          return { status: 'completed', result };
+        }
+
+        // Fallback: return raw job result if sentence_id not linked yet
+        return { status: 'completed', result: job.returnvalue };
+      }
+
+      if (state === 'failed') {
+        return { status: 'failed', error: job.failedReason };
+      }
+
+      return { status: state };
+    },
+  );
+
+  // POST /reader/words/:senseId/learn
+  fastify.post<{ Params: { senseId: string } }>(
+    '/reader/words/:senseId/learn',
+    async (request) => {
+      const senseId = Number(request.params.senseId);
+
+      // Update familiarity to seen_unsure
+      await fastify.db
+        .update(wordSenses)
+        .set({ familiarity: 'seen_unsure' })
+        .where(eq(wordSenses.id, senseId));
+
+      // Check if SRS card already exists
+      const [existingCard] = await fastify.db
+        .select({ id: srsCards.id })
+        .from(srsCards)
+        .where(
+          and(
+            eq(srsCards.cardType, 'vocabulary'),
+            eq(srsCards.wordSenseId, senseId),
+          ),
+        )
+        .limit(1);
+
+      if (!existingCard) {
+        const emptyCard = createEmptyCard();
+        await fastify.db.insert(srsCards).values({
+          cardType: 'vocabulary',
+          wordSenseId: senseId,
+          state: 'new',
+          due: emptyCard.due,
+          stability: emptyCard.stability,
+          difficulty: emptyCard.difficulty,
+          elapsedDays: emptyCard.elapsed_days,
+          scheduledDays: emptyCard.scheduled_days,
+          reps: emptyCard.reps,
+          lapses: emptyCard.lapses,
+        });
+      }
+
+      return { ok: true, status: 'learning' };
+    },
+  );
+
+  // POST /reader/words/:senseId/know
+  fastify.post<{ Params: { senseId: string } }>(
+    '/reader/words/:senseId/know',
+    async (request) => {
+      const senseId = Number(request.params.senseId);
+
+      await fastify.db
+        .update(wordSenses)
+        .set({ familiarity: 'understand_in_context' })
+        .where(eq(wordSenses.id, senseId));
+
+      return { ok: true, status: 'known' };
+    },
+  );
+
+  // POST /reader/collocations/:collocationId/learn
+  fastify.post<{ Params: { collocationId: string } }>(
+    '/reader/collocations/:collocationId/learn',
+    async (request) => {
+      const collocationId = Number(request.params.collocationId);
+
+      const [existingCard] = await fastify.db
+        .select({ id: srsCards.id })
+        .from(srsCards)
+        .where(
+          and(
+            eq(srsCards.cardType, 'collocation'),
+            eq(srsCards.collocationId, collocationId),
+          ),
+        )
+        .limit(1);
+
+      if (!existingCard) {
+        const emptyCard = createEmptyCard();
+        await fastify.db.insert(srsCards).values({
+          cardType: 'collocation',
+          collocationId,
+          state: 'new',
+          due: emptyCard.due,
+          stability: emptyCard.stability,
+          difficulty: emptyCard.difficulty,
+          elapsedDays: emptyCard.elapsed_days,
+          scheduledDays: emptyCard.scheduled_days,
+          reps: emptyCard.reps,
+          lapses: emptyCard.lapses,
+        });
+      }
+
+      return { ok: true };
+    },
+  );
+
+  // POST /reader/collocations/:collocationId/know
+  fastify.post<{ Params: { collocationId: string } }>(
+    '/reader/collocations/:collocationId/know',
+    async () => {
+      return { ok: true };
+    },
+  );
+
+  // POST /reader/grammar/:grammarPatternId/learn
+  fastify.post<{ Params: { grammarPatternId: string } }>(
+    '/reader/grammar/:grammarPatternId/learn',
+    async (request) => {
+      const grammarPatternId = Number(request.params.grammarPatternId);
+
+      const [existingCard] = await fastify.db
+        .select({ id: srsCards.id })
+        .from(srsCards)
+        .where(
+          and(
+            eq(srsCards.cardType, 'grammar'),
+            eq(srsCards.grammarPatternId, grammarPatternId),
+          ),
+        )
+        .limit(1);
+
+      let newSrsCard = null;
+      if (!existingCard) {
+        const emptyCard = createEmptyCard();
+        const [inserted] = await fastify.db.insert(srsCards).values({
+          cardType: 'grammar',
+          grammarPatternId,
+          state: 'new',
+          due: emptyCard.due,
+          stability: emptyCard.stability,
+          difficulty: emptyCard.difficulty,
+          elapsedDays: emptyCard.elapsed_days,
+          scheduledDays: emptyCard.scheduled_days,
+          reps: emptyCard.reps,
+          lapses: emptyCard.lapses,
+        }).returning();
+        newSrsCard = inserted;
+      }
+
+      // Queue exercise generation for newly created SRS cards
+      if (newSrsCard) {
+        try {
+          const [gp] = await fastify.db
+            .select({ pattern: grammarPatterns.pattern, description: grammarPatterns.description })
+            .from(grammarPatterns)
+            .where(eq(grammarPatterns.id, grammarPatternId));
+
+          if (gp) {
+            await fastify.analysisQueue.add('generate-exercises', {
+              grammarPatternId,
+              pattern: gp.pattern,
+              description: gp.description ?? '',
+              count: 6,
+            });
+          }
+        } catch {
+          /* exercise generation is best-effort */
+        }
+      }
+
+      return { ok: true };
+    },
+  );
+
+  // POST /reader/grammar/:grammarPatternId/know
+  fastify.post<{ Params: { grammarPatternId: string } }>(
+    '/reader/grammar/:grammarPatternId/know',
+    async () => {
       return { ok: true };
     },
   );
