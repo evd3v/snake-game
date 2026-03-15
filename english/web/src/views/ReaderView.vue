@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { apiGet, apiPut } from '@/api/client'
+import { apiGet, apiPost, apiPut } from '@/api/client'
+import AnalysisModal from '@/components/reader/AnalysisModal.vue'
+import PageReport from '@/components/reader/PageReport.vue'
 
 interface Highlight {
   word: string
   offset: number
   length: number
   status: 'new' | 'learning' | 'known' | null
+  lemma?: string
+  senseId?: number
 }
 
 interface Sentence {
@@ -24,6 +28,29 @@ interface PageResponse {
   sentences: Sentence[]
 }
 
+interface ReaderAnalysisResult {
+  translation: string
+  cefrLevel: string
+  newWords: Array<{ senseId: number; lemma: string; partOfSpeech: string; translation: string; definition: string; cefrLevel: string }>
+  newCollocations: Array<{ collocationId: number; text: string; translation: string; type: string; cefrLevel: string }>
+  newGrammarPatterns: Array<{ grammarPatternId: number; pattern: string; description: string; cefrLevel: string }>
+  existingWordsCount: number
+  existingCollocationsCount: number
+  existingGrammarPatternsCount: number
+}
+
+interface AnalyzeResponse {
+  status: 'completed' | 'queued'
+  result?: ReaderAnalysisResult
+  jobId?: string
+}
+
+interface StatusResponse {
+  status: 'completed' | 'failed' | 'waiting' | 'active'
+  result?: ReaderAnalysisResult
+  error?: string
+}
+
 const route = useRoute()
 const bookId = Number(route.params.bookId)
 
@@ -32,6 +59,18 @@ const pageData = ref<PageResponse | null>(null)
 const openedSentences = ref(new Set<number>())
 const darkTheme = ref(localStorage.getItem('reader-theme') === 'dark')
 const loading = ref(false)
+
+// Analysis modal state
+const analyzingId = ref<number | null>(null)
+const modalVisible = ref(false)
+const modalLoading = ref(false)
+const modalResult = ref<ReaderAnalysisResult | null>(null)
+const modalSentenceText = ref('')
+const modalError = ref(false)
+
+// Page report state
+const pageStats = ref({ wordsLearned: 0, wordsKnown: 0, grammarPatternsFound: 0, collocationsLearned: 0 })
+const showReport = ref(false)
 
 const allSentencesOpened = computed(() => {
   if (!pageData.value) return false
@@ -53,15 +92,156 @@ async function loadPage(page: number) {
   }
 }
 
-function openSentence(id: number) {
+async function openSentence(id: number) {
   openedSentences.value.add(id)
-  // Trigger reactivity
   openedSentences.value = new Set(openedSentences.value)
+
+  // Prevent double-tap
+  if (analyzingId.value === id) return
+
+  const sentence = pageData.value?.sentences.find(s => s.id === id)
+  if (!sentence) return
+
+  modalSentenceText.value = sentence.text
+  analyzingId.value = id
+  modalVisible.value = true
+  modalLoading.value = true
+  modalResult.value = null
+  modalError.value = false
+
+  try {
+    const response = await apiPost<AnalyzeResponse>(`/books/sentences/${id}/analyze`)
+
+    if (response.status === 'completed' && response.result) {
+      modalResult.value = response.result
+      modalLoading.value = false
+    } else if (response.status === 'queued' && response.jobId) {
+      await pollForResult(id, response.jobId)
+    }
+  } catch {
+    modalLoading.value = false
+    modalError.value = true
+  } finally {
+    analyzingId.value = null
+  }
 }
 
-function goNext() {
-  if (allSentencesOpened.value && pageData.value && currentPage.value < pageData.value.totalPages - 1) {
-    loadPage(currentPage.value + 1)
+async function pollForResult(sentenceId: number, jobId: string) {
+  const maxAttempts = 40 // 60 seconds max
+  for (let i = 0; i < maxAttempts; i++) {
+    await new Promise(r => setTimeout(r, 1500))
+
+    // If modal was closed, stop polling
+    if (!modalVisible.value) return
+
+    try {
+      const status = await apiGet<StatusResponse>(`/books/sentences/${sentenceId}/analyze/status/${jobId}`)
+
+      if (status.status === 'completed' && status.result) {
+        modalResult.value = status.result
+        modalLoading.value = false
+        return
+      }
+
+      if (status.status === 'failed') {
+        modalLoading.value = false
+        modalError.value = true
+        return
+      }
+    } catch {
+      modalLoading.value = false
+      modalError.value = true
+      return
+    }
+  }
+
+  // Timeout
+  modalLoading.value = false
+  modalError.value = true
+}
+
+function typeToUrlSegment(type: 'word' | 'collocation' | 'grammar'): string {
+  if (type === 'word') return 'words'
+  if (type === 'collocation') return 'collocations'
+  return 'grammar'
+}
+
+async function handleLearn(type: 'word' | 'collocation' | 'grammar', id: number) {
+  const segment = typeToUrlSegment(type)
+  try {
+    await apiPost(`/reader/${segment}/${id}/learn`)
+  } catch {
+    // Silently fail -- button already shows status
+  }
+
+  if (type === 'word') {
+    pageStats.value.wordsLearned++
+    updateHighlightStatus(id, 'learning')
+  } else if (type === 'collocation') {
+    pageStats.value.collocationsLearned++
+  } else {
+    pageStats.value.grammarPatternsFound++
+  }
+}
+
+async function handleKnow(type: 'word' | 'collocation' | 'grammar', id: number) {
+  const segment = typeToUrlSegment(type)
+  try {
+    await apiPost(`/reader/${segment}/${id}/know`)
+  } catch {
+    // Silently fail
+  }
+
+  if (type === 'word') {
+    pageStats.value.wordsKnown++
+    updateHighlightStatus(id, 'known')
+  }
+}
+
+function updateHighlightStatus(senseId: number, status: 'learning' | 'known') {
+  if (!pageData.value) return
+  for (const sentence of pageData.value.sentences) {
+    for (const h of sentence.highlights) {
+      if (h.senseId === senseId) {
+        h.status = status === 'known' ? null : status
+      }
+    }
+  }
+}
+
+function closeModal() {
+  modalVisible.value = false
+  modalResult.value = null
+  modalError.value = false
+  analyzingId.value = null
+}
+
+let reportResolve: (() => void) | null = null
+
+async function goNext() {
+  if (!allSentencesOpened.value || !pageData.value || currentPage.value >= pageData.value.totalPages - 1) return
+
+  const hasStats = pageStats.value.wordsLearned > 0 ||
+    pageStats.value.wordsKnown > 0 ||
+    pageStats.value.grammarPatternsFound > 0 ||
+    pageStats.value.collocationsLearned > 0
+
+  if (hasStats) {
+    showReport.value = true
+    await new Promise<void>(resolve => {
+      reportResolve = resolve
+    })
+    pageStats.value = { wordsLearned: 0, wordsKnown: 0, grammarPatternsFound: 0, collocationsLearned: 0 }
+    showReport.value = false
+  }
+
+  loadPage(currentPage.value + 1)
+}
+
+function handleReportDismiss() {
+  if (reportResolve) {
+    reportResolve()
+    reportResolve = null
   }
 }
 
@@ -144,6 +324,22 @@ onMounted(async () => {
         Next
       </button>
     </footer>
+
+    <AnalysisModal
+      :visible="modalVisible"
+      :loading="modalLoading"
+      :result="modalResult"
+      :sentence-text="modalSentenceText"
+      @close="closeModal"
+      @learn="handleLearn"
+      @know="handleKnow"
+    />
+
+    <PageReport
+      :visible="showReport"
+      :stats="pageStats"
+      @dismiss="handleReportDismiss"
+    />
   </div>
 </template>
 
