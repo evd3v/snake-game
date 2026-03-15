@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: EPUB Reader & LingQ-style Learning
-status: in_progress
-stopped_at: Completed 13-01-PLAN.md
-last_updated: "2026-03-15T07:02:12Z"
+status: executing
+stopped_at: Completed 13-02-PLAN.md
+last_updated: "2026-03-15T07:06:34.184Z"
 last_activity: 2026-03-15 — Completed 13-01 Reader Backend API
 progress:
   total_phases: 3
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 4
-  completed_plans: 3
+  completed_plans: 4
   percent: 78
 ---
 
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-03-15)
 
 ## Current Position
 
-Phase: 13 of 14 (Reader Word Highlighting)
-Plan: 1 of 2 complete (Phase 13)
-Status: In progress
-Last activity: 2026-03-15 — Completed 13-01 Reader Backend API
+Phase: 13 of 14 (Reader Word Highlighting) -- COMPLETE
+Plan: 2 of 2 complete (Phase 13)
+Status: Phase 13 complete
+Last activity: 2026-03-15 — Completed 13-02 Reader Frontend UI
 
-Progress: [████████░░] 78%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -51,10 +51,10 @@ Progress: [████████░░] 78%
 | 11 | 2 | 6min | 3min |
 
 | 12 | 2 | 5min | 2.5min |
-| 13 | 1 | 3min | 3min |
+| 13 | 2 | 4min | 2min |
 
 **Recent Trend:**
-- Last 5 plans: P10-01 (3min), P10-02 (5min), P12-01 (4min), P12-02 (1min), P13-01 (3min)
+- Last 5 plans: P10-02 (5min), P12-01 (4min), P12-02 (1min), P13-01 (3min), P13-02 (1min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -75,6 +75,7 @@ Recent decisions affecting current work:
 - [Phase 12]: Styled label as upload button with hidden file input for clean UX
 - [13-01]: Raw SQL batch query for vocabulary lookup (words + word_senses + srs_cards JOIN)
 - [13-01]: Status priority: learning > new > known -- most actionable status wins for multi-sense words
+- [Phase 13]: CSS custom properties for dark/light theming with .dark class toggle
 
 ### Pending Todos
 
@@ -89,6 +90,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-15T07:02:12Z
-Stopped at: Completed 13-01-PLAN.md
+Last session: 2026-03-15T07:06:34.182Z
+Stopped at: Completed 13-02-PLAN.md
 Resume file: None

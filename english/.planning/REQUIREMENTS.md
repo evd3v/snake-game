@@ -116,8 +116,8 @@ Requirements for EPUB Reader & LingQ-style Learning milestone.
 
 - [x] **READ-01**: Пользователь видит страницу из 5-7 предложений с возможностью перелистывания
 - [x] **READ-02**: Система запоминает позицию чтения — при повторном открытии продолжает с того же места
-- [ ] **READ-03**: Пользователь может включить ночную (тёмную) тему
-- [ ] **READ-04**: Кнопка "далее" неактивна пока не открыл каждое предложение на странице
+- [x] **READ-03**: Пользователь может включить ночную (тёмную) тему
+- [x] **READ-04**: Кнопка "далее" неактивна пока не открыл каждое предложение на странице
 
 ### Sentence Analysis
 
@@ -258,8 +258,8 @@ Deferred to future release.
 | EPUB-04 | Phase 12 | Complete |
 | READ-01 | Phase 13 | Complete |
 | READ-02 | Phase 13 | Complete |
-| READ-03 | Phase 13 | Pending |
-| READ-04 | Phase 13 | Pending |
+| READ-03 | Phase 13 | Complete |
+| READ-04 | Phase 13 | Complete |
 | HIGH-01 | Phase 13 | Complete |
 | HIGH-02 | Phase 13 | Complete |
 | ANAL-01 | Phase 14 | Pending |

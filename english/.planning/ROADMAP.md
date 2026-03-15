@@ -36,7 +36,7 @@
 **Milestone Goal:** Users read real EPUB books in the browser with per-sentence AI analysis, word status highlighting, and explicit learn/know decisions feeding into the existing SRS system.
 
 - [x] **Phase 12: EPUB Data Foundation** - Upload, parse, and store EPUB books as structured sentence data in PostgreSQL (completed 2026-03-15)
-- [ ] **Phase 13: Reader & Word Highlighting** - Paginated reader UI with word status colors, position persistence, and dark theme
+- [x] **Phase 13: Reader & Word Highlighting** - Paginated reader UI with word status colors, position persistence, and dark theme (completed 2026-03-15)
 - [ ] **Phase 14: Analysis & Learning Flow** - Sentence analysis modal with learn/know actions, mandatory analysis enforcement, page completion reports
 
 ## Phase Details
@@ -96,5 +96,5 @@ Phases execute in order: 12 -> 13 -> 14
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 12. EPUB Data Foundation | 2/2 | Complete    | 2026-03-15 | - |
-| 13. Reader & Word Highlighting | 1/2 | In Progress|  | - |
+| 13. Reader & Word Highlighting | 2/2 | Complete   | 2026-03-15 | - |
 | 14. Analysis & Learning Flow | v2.0 | 0/? | Not started | - |
