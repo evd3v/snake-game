@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: EPUB Reader & LingQ-style Learning
-status: completed
-stopped_at: Completed 12-02-PLAN.md
-last_updated: "2026-03-15T06:43:41.425Z"
-last_activity: 2026-03-15 — Completed 12-02 Library View frontend
+status: in_progress
+stopped_at: Completed 13-01-PLAN.md
+last_updated: "2026-03-15T07:02:12Z"
+last_activity: 2026-03-15 — Completed 13-01 Reader Backend API
 progress:
   total_phases: 3
   completed_phases: 1
-  total_plans: 2
-  completed_plans: 2
-  percent: 67
+  total_plans: 4
+  completed_plans: 3
+  percent: 78
 ---
 
 # Project State
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-15)
 
 **Core value:** User reads a real book in EPUB reader, gets AI analysis of each sentence (translation, grammar, vocabulary, collocations), with extracted items feeding into spaced repetition -- learning through reading in context.
-**Current focus:** Phase 12 - EPUB Data Foundation
+**Current focus:** Phase 13 - Reader Word Highlighting
 
 ## Current Position
 
-Phase: 12 of 14 (EPUB Data Foundation) -- COMPLETE
-Plan: 2 of 2 complete (Phase 12)
-Status: Phase 12 complete
-Last activity: 2026-03-15 — Completed 12-02 Library View frontend
+Phase: 13 of 14 (Reader Word Highlighting)
+Plan: 1 of 2 complete (Phase 13)
+Status: In progress
+Last activity: 2026-03-15 — Completed 13-01 Reader Backend API
 
-Progress: [███████░░░] 67%
+Progress: [████████░░] 78%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 29 (v1.0 + v1.1 + v2.0)
+- Total plans completed: 30 (v1.0 + v1.1 + v2.0)
 - Average duration: 3.5min
-- Total execution time: ~1.6 hours
+- Total execution time: ~1.7 hours
 
 **By Phase (v1.1):**
 
@@ -51,9 +51,10 @@ Progress: [███████░░░] 67%
 | 11 | 2 | 6min | 3min |
 
 | 12 | 2 | 5min | 2.5min |
+| 13 | 1 | 3min | 3min |
 
 **Recent Trend:**
-- Last 5 plans: P11-02 (3min), P10-01 (3min), P10-02 (5min), P12-01 (4min), P12-02 (1min)
+- Last 5 plans: P10-01 (3min), P10-02 (5min), P12-01 (4min), P12-02 (1min), P13-01 (3min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -72,6 +73,8 @@ Recent decisions affecting current work:
 - [12-01]: Synchronous EPUB processing (no queue) -- parsing is fast, no AI calls
 - [12-01]: Pre-computed page numbers on sentences (groups of 6, merge short final pages)
 - [Phase 12]: Styled label as upload button with hidden file input for clean UX
+- [13-01]: Raw SQL batch query for vocabulary lookup (words + word_senses + srs_cards JOIN)
+- [13-01]: Status priority: learning > new > known -- most actionable status wins for multi-sense words
 
 ### Pending Todos
 
@@ -86,6 +89,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-15T06:41:01.716Z
-Stopped at: Completed 12-02-PLAN.md
+Last session: 2026-03-15T07:02:12Z
+Stopped at: Completed 13-01-PLAN.md
 Resume file: None

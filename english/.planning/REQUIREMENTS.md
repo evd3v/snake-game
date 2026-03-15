@@ -114,8 +114,8 @@ Requirements for EPUB Reader & LingQ-style Learning milestone.
 
 ### Reader UI
 
-- [ ] **READ-01**: Пользователь видит страницу из 5-7 предложений с возможностью перелистывания
-- [ ] **READ-02**: Система запоминает позицию чтения — при повторном открытии продолжает с того же места
+- [x] **READ-01**: Пользователь видит страницу из 5-7 предложений с возможностью перелистывания
+- [x] **READ-02**: Система запоминает позицию чтения — при повторном открытии продолжает с того же места
 - [ ] **READ-03**: Пользователь может включить ночную (тёмную) тему
 - [ ] **READ-04**: Кнопка "далее" неактивна пока не открыл каждое предложение на странице
 
@@ -128,8 +128,8 @@ Requirements for EPUB Reader & LingQ-style Learning milestone.
 
 ### Word Highlighting
 
-- [ ] **HIGH-01**: Слова в тексте читалки подсвечены по статусу: синее (новое), жёлтое (учу), без цвета (знаю)
-- [ ] **HIGH-02**: Подсветка обновляется после закрытия модалки анализа (слова меняют статус)
+- [x] **HIGH-01**: Слова в тексте читалки подсвечены по статусу: синее (новое), жёлтое (учу), без цвета (знаю)
+- [x] **HIGH-02**: Подсветка обновляется после закрытия модалки анализа (слова меняют статус)
 
 ### Page Flow
 
@@ -256,12 +256,12 @@ Deferred to future release.
 | EPUB-02 | Phase 12 | Complete |
 | EPUB-03 | Phase 12 | Complete |
 | EPUB-04 | Phase 12 | Complete |
-| READ-01 | Phase 13 | Pending |
-| READ-02 | Phase 13 | Pending |
+| READ-01 | Phase 13 | Complete |
+| READ-02 | Phase 13 | Complete |
 | READ-03 | Phase 13 | Pending |
 | READ-04 | Phase 13 | Pending |
-| HIGH-01 | Phase 13 | Pending |
-| HIGH-02 | Phase 13 | Pending |
+| HIGH-01 | Phase 13 | Complete |
+| HIGH-02 | Phase 13 | Complete |
 | ANAL-01 | Phase 14 | Pending |
 | ANAL-02 | Phase 14 | Pending |
 | ANAL-03 | Phase 14 | Pending |
