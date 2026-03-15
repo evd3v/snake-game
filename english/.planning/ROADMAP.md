@@ -95,6 +95,6 @@ Phases execute in order: 12 -> 13 -> 14
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
-| 12. EPUB Data Foundation | 2/2 | Complete   | 2026-03-15 | - |
+| 12. EPUB Data Foundation | 2/2 | Complete    | 2026-03-15 | - |
 | 13. Reader & Word Highlighting | v2.0 | 0/? | Not started | - |
 | 14. Analysis & Learning Flow | v2.0 | 0/? | Not started | - |
