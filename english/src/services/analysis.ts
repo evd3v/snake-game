@@ -35,17 +35,24 @@ function getExerciseQueue(): Queue {
   return exerciseQueue;
 }
 
+interface StoreOptions {
+  autoCreateSrsCards?: boolean;
+}
+
 export async function storeAnalysisResults(
   db: Database,
   text: string,
   sourceBook: string | undefined,
   analysis: SentenceAnalysis,
+  options: StoreOptions = {},
 ): Promise<{
   sentenceId: number;
   wordsInserted: number;
   collocationsInserted: number;
   grammarPatternsInserted: number;
 }> {
+  const { autoCreateSrsCards = true } = options;
+
   // a. Insert sentence
   const [insertedSentence] = await db
     .insert(sentences)
@@ -99,7 +106,7 @@ export async function storeAnalysisResults(
       .returning({ id: wordSenses.id });
 
     // Step 3: Auto-create vocabulary SRS card for CEFR >= B1 (idempotent)
-    if (shouldAutoAddWord(vocab.cefrLevel)) {
+    if (autoCreateSrsCards && shouldAutoAddWord(vocab.cefrLevel)) {
       const [existingVocabCard] = await db
         .select({ id: srsCards.id })
         .from(srsCards)
@@ -173,31 +180,33 @@ export async function storeAnalysisResults(
       .onConflictDoNothing();
 
     // Auto-create SRS card for collocation (idempotent - check first)
-    const [existingCollocationCard] = await db
-      .select({ id: srsCards.id })
-      .from(srsCards)
-      .where(
-        and(
-          eq(srsCards.cardType, 'collocation'),
-          eq(srsCards.collocationId, upsertedCollocation.id),
-        ),
-      )
-      .limit(1);
+    if (autoCreateSrsCards) {
+      const [existingCollocationCard] = await db
+        .select({ id: srsCards.id })
+        .from(srsCards)
+        .where(
+          and(
+            eq(srsCards.cardType, 'collocation'),
+            eq(srsCards.collocationId, upsertedCollocation.id),
+          ),
+        )
+        .limit(1);
 
-    if (!existingCollocationCard) {
-      const emptyCard = createEmptyCard();
-      await db.insert(srsCards).values({
-        cardType: 'collocation',
-        collocationId: upsertedCollocation.id,
-        state: 'new',
-        due: emptyCard.due,
-        stability: emptyCard.stability,
-        difficulty: emptyCard.difficulty,
-        elapsedDays: emptyCard.elapsed_days,
-        scheduledDays: emptyCard.scheduled_days,
-        reps: emptyCard.reps,
-        lapses: emptyCard.lapses,
-      });
+      if (!existingCollocationCard) {
+        const emptyCard = createEmptyCard();
+        await db.insert(srsCards).values({
+          cardType: 'collocation',
+          collocationId: upsertedCollocation.id,
+          state: 'new',
+          due: emptyCard.due,
+          stability: emptyCard.stability,
+          difficulty: emptyCard.difficulty,
+          elapsedDays: emptyCard.elapsed_days,
+          scheduledDays: emptyCard.scheduled_days,
+          reps: emptyCard.reps,
+          lapses: emptyCard.lapses,
+        });
+      }
     }
   }
 
@@ -231,36 +240,38 @@ export async function storeAnalysisResults(
       .onConflictDoNothing();
 
     // Auto-create SRS card for grammar pattern (idempotent - check first)
-    const [existingCard] = await db
-      .select({ id: srsCards.id })
-      .from(srsCards)
-      .where(
-        and(
-          eq(srsCards.cardType, 'grammar'),
-          eq(srsCards.grammarPatternId, upsertedPattern.id),
-        ),
-      )
-      .limit(1);
-
     let newSrsCard = null;
-    if (!existingCard) {
-      const emptyCard = createEmptyCard();
-      const [inserted] = await db
-        .insert(srsCards)
-        .values({
-          cardType: 'grammar',
-          grammarPatternId: upsertedPattern.id,
-          state: 'new',
-          due: emptyCard.due,
-          stability: emptyCard.stability,
-          difficulty: emptyCard.difficulty,
-          elapsedDays: emptyCard.elapsed_days,
-          scheduledDays: emptyCard.scheduled_days,
-          reps: emptyCard.reps,
-          lapses: emptyCard.lapses,
-        })
-        .returning();
-      newSrsCard = inserted;
+    if (autoCreateSrsCards) {
+      const [existingCard] = await db
+        .select({ id: srsCards.id })
+        .from(srsCards)
+        .where(
+          and(
+            eq(srsCards.cardType, 'grammar'),
+            eq(srsCards.grammarPatternId, upsertedPattern.id),
+          ),
+        )
+        .limit(1);
+
+      if (!existingCard) {
+        const emptyCard = createEmptyCard();
+        const [inserted] = await db
+          .insert(srsCards)
+          .values({
+            cardType: 'grammar',
+            grammarPatternId: upsertedPattern.id,
+            state: 'new',
+            due: emptyCard.due,
+            stability: emptyCard.stability,
+            difficulty: emptyCard.difficulty,
+            elapsedDays: emptyCard.elapsed_days,
+            scheduledDays: emptyCard.scheduled_days,
+            reps: emptyCard.reps,
+            lapses: emptyCard.lapses,
+          })
+          .returning();
+        newSrsCard = inserted;
+      }
     }
 
     // Queue exercise generation only for newly created SRS cards

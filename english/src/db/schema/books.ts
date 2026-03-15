@@ -1,4 +1,5 @@
 import { pgTable, integer, text, timestamp, unique } from 'drizzle-orm/pg-core';
+import { sentences } from './sentences.ts';
 
 export const books = pgTable('books', {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -25,6 +26,7 @@ export const bookSentences = pgTable('book_sentences', {
   text: text().notNull(),
   orderInChapter: integer('order_in_chapter').notNull(),
   pageNumber: integer('page_number').notNull(),
+  sentenceId: integer('sentence_id').references(() => sentences.id),
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });
 
