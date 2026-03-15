@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: EPUB Reader & LingQ-style Learning
-status: completed
-stopped_at: Completed 13-02-PLAN.md
-last_updated: "2026-03-15T07:09:23.520Z"
-last_activity: 2026-03-15 — Completed 13-02 Reader Frontend UI
+status: in_progress
+stopped_at: Completed 14-01-PLAN.md
+last_updated: "2026-03-15T07:32:42Z"
+last_activity: 2026-03-15 — Completed 14-01 Analysis Learning Flow Backend
 progress:
   total_phases: 3
   completed_phases: 2
-  total_plans: 4
-  completed_plans: 4
-  percent: 100
+  total_plans: 6
+  completed_plans: 5
+  percent: 83
 ---
 
 # Project State
@@ -21,21 +21,21 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-15)
 
 **Core value:** User reads a real book in EPUB reader, gets AI analysis of each sentence (translation, grammar, vocabulary, collocations), with extracted items feeding into spaced repetition -- learning through reading in context.
-**Current focus:** Phase 13 - Reader Word Highlighting
+**Current focus:** Phase 14 - Analysis Learning Flow
 
 ## Current Position
 
-Phase: 13 of 14 (Reader Word Highlighting) -- COMPLETE
-Plan: 2 of 2 complete (Phase 13)
-Status: Phase 13 complete
-Last activity: 2026-03-15 — Completed 13-02 Reader Frontend UI
+Phase: 14 of 14 (Analysis Learning Flow)
+Plan: 1 of 2 complete (Phase 14)
+Status: In progress
+Last activity: 2026-03-15 — Completed 14-01 Analysis Learning Flow Backend
 
-Progress: [██████████] 100%
+Progress: [████████░░] 83%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 30 (v1.0 + v1.1 + v2.0)
+- Total plans completed: 31 (v1.0 + v1.1 + v2.0)
 - Average duration: 3.5min
 - Total execution time: ~1.7 hours
 
@@ -52,9 +52,10 @@ Progress: [██████████] 100%
 
 | 12 | 2 | 5min | 2.5min |
 | 13 | 2 | 4min | 2min |
+| 14 | 1 | 3min | 3min |
 
 **Recent Trend:**
-- Last 5 plans: P10-02 (5min), P12-01 (4min), P12-02 (1min), P13-01 (3min), P13-02 (1min)
+- Last 5 plans: P12-01 (4min), P12-02 (1min), P13-01 (3min), P13-02 (1min), P14-01 (3min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -76,6 +77,8 @@ Recent decisions affecting current work:
 - [13-01]: Raw SQL batch query for vocabulary lookup (words + word_senses + srs_cards JOIN)
 - [13-01]: Status priority: learning > new > known -- most actionable status wins for multi-sense words
 - [Phase 13]: CSS custom properties for dark/light theming with .dark class toggle
+- [14-01]: Raw SQL for getFilteredAnalysis following word-highlighter batch pattern
+- [14-01]: autoCreateSrsCards default true preserves backward compatibility
 
 ### Pending Todos
 
@@ -90,6 +93,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-15T07:06:34.182Z
-Stopped at: Completed 13-02-PLAN.md
+Last session: 2026-03-15T07:32:42Z
+Stopped at: Completed 14-01-PLAN.md
 Resume file: None
