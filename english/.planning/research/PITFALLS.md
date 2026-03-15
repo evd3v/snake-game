@@ -1,201 +1,263 @@
-# Domain Pitfalls: v1.1 Feature Addition
+# Domain Pitfalls
 
-**Domain:** Adding vocabulary management UI, web SRS review, multiple POS/translations, Telegram auto-add, and collocations visibility to existing language learning app
-**Researched:** 2026-03-10
-**Scope:** Pitfalls specific to ADDING these features to the existing codebase (not general app pitfalls)
+**Domain:** EPUB reader with LingQ-style word tracking added to existing English learning app
+**Researched:** 2026-03-15
+**Scope:** Pitfalls specific to ADDING EPUB reader and LingQ-style word tracking to the existing codebase with AI analysis pipeline, word_senses with POS, SRS via FSRS, vocabulary management, and Telegram bot
 
 ## Critical Pitfalls
 
-Mistakes that cause data corruption, rewrites, or major regressions.
+Mistakes that cause rewrites or major issues.
 
-### Pitfall 1: Unique Lemma Constraint Blocks Multiple POS
+### Pitfall 1: Lemma Mismatch Between Reader Tokenization and Existing `word_senses`
 
-**What goes wrong:** The `words` table has `UNIQUE("lemma")` (line 83 of genesis migration). The word "run" as a noun and "run" as a verb cannot coexist. Adding multi-POS support requires changing this fundamental constraint, which ripples through every piece of code that touches words.
+**What goes wrong:** The reader highlights a word in text (e.g., "wouldn't"), but the tokenizer splits it into "would" + "n't" or keeps it as one token. The AI analysis returns lemma "would" with POS "verb", but `wink-lemmatizer` normalizes differently, or the AI returns a different lemma form than what already exists in the `words` table. Result: duplicate entries, words not recognized as known, status not reflected in reader highlights.
 
-**Why it happens:** The original schema assumed one word = one lemma. This is baked into:
-- `analysis.ts`: `onConflictDoUpdate({ target: words.lemma })` -- upsert assumes lemma is the identity
-- `sentence_words`: composite PK `(sentence_id, word_id)` -- if a word appears as both noun and verb in one sentence, the same `word_id` is used
-- `srs_cards.wordId`: references the unified word row. Splitting a word into senses means deciding which SRS card belongs to which sense
-- `normalizeLemma()`: collapses adverbs to adjective form (`normalizeLemma('quickly', 'adverb')` returns `'quick'`), so the adverb "quick" collides with the adjective "quick"
+**Why it happens:** The existing system receives clean sentences from Telegram where the AI decides what words to extract. In the reader, you need a second path: display-time tokenization to match surface forms in EPUB HTML against stored lemmas. These are two fundamentally different operations that must agree.
 
 **Consequences:**
-- Naive migration (add `pos` column, change unique to `(lemma, pos)`) without backfilling `pos` on existing rows creates a `(lemma, NULL)` uniqueness that still collapses senses
-- Existing `srs_cards` linked by `wordId` become ambiguous if word rows are split
-- The `onConflictDoUpdate` target must change from `words.lemma` to `[words.lemma, words.pos]`, or all upserts break
-- Existing data where "run" has only one row with translation "бежать" loses the noun meaning "забег" permanently
+- User marks "run" as known via Telegram, but "running" in the reader shows as unknown because the display-side tokenizer doesn't lemmatize to the same form
+- Contractions like "I'd", "they've", "won't" either get skipped entirely or create ghost word entries
+- Hyphenated compounds ("well-known", "up-to-date") create multiple word entries or none
+- The word highlight system becomes untrustworthy, killing the core value proposition
 
 **Prevention:**
-1. Add `pos` column as nullable, backfill existing words using stored `partOfSpeech` from AI analysis (re-extract from sentence_words contexts if needed)
-2. Change unique constraint to `(lemma, pos)` only AFTER backfill is complete
-3. Fix `normalizeLemma()` to preserve adverbs as distinct lemmas -- stop collapsing to adjective root
-4. Update `onConflictDoUpdate` target to composite key
-5. Keep existing `srs_cards` linked to existing word IDs -- do NOT split/delete existing word rows. Only create new rows for genuinely new POS encounters going forward
-6. For translations: use a `word_translations` table or jsonb array rather than overwriting the single text field
+- Build a single `matchSurfaceFormToLemma(token: string): string[]` function that returns candidate lemmas for any surface form, reusing `normalizeLemma` from `src/lib/lemmatizer.ts`
+- Handle contractions explicitly with a lookup table: "won't" -> ["will", "not"], "I'd" -> ["I", "would"/"had"], "they've" -> ["they", "have"]
+- For display highlighting, match against ALL word senses for a lemma, not just one POS
+- Write extensive unit tests with edge cases before building the reader UI
+- Phase: Must be solved in the EPUB parsing/tokenization phase, before any UI work
 
-**Detection:** Insert a sentence containing "run" as a verb when "run" as a noun already exists. If it silently overwrites the translation, the bug is present.
+**Detection:** Create a test suite with 50+ real sentences from target books. Run tokenizer output against existing word DB. Any lemma that exists in DB but fails to match a surface form is a bug.
 
-**Phase to address:** FIRST -- before any UI work. Schema migration must be the foundation.
+### Pitfall 2: EPUB HTML Structure Variance Destroying Sentence Boundaries
 
----
+**What goes wrong:** EPUBs contain wildly inconsistent HTML. Some wrap each paragraph in `<p>`, others use `<div>`, some use `<br/>` for line breaks within dialogue. Poetry uses `<span>` per line. Dialogue splits across multiple `<p>` tags with speech marks spanning elements. Sentence splitter receives either too much text (entire chapter as one blob) or too little (half-sentences from split `<p>` tags).
 
-### Pitfall 2: SRS State Conflict Between Web and Telegram Reviews
-
-**What goes wrong:** Both Telegram bot and web app call the same `rateCard()` on the same `srs_cards` rows. The Telegram bot pre-fetches 20 cards into an in-memory `reviewSessions` Map at session start. If the user then reviews some of those cards on the web, the Telegram session holds stale card state. Rating the card again in Telegram calls `rateCard()` which reads current DB state -- but the Telegram UI still shows a card that was already reviewed, leading to a double-review.
-
-**Why it happens:** `reviewSessions` in `bot/handlers/review.ts` is `new Map<number, ReviewSession>()` -- purely in-memory, populated once at `/review` command. There is no staleness check. The `rateCard()` function in `services/srs.ts` always reads current DB state before computing FSRS, so the scheduling math is correct, but the user reviews a card they already reviewed, which wastes time and distorts the review log.
+**Why it happens:** EPUB is a container format, not a content format. Publishers use different tools (InDesign, Calibre, Sigil, hand-crafted) producing radically different internal HTML. EPUB 2 uses XHTML 1.1, EPUB 3 uses HTML5. There is no standard for how text content maps to HTML elements.
 
 **Consequences:**
-- `review_logs` accumulates duplicate reviews (same card rated twice in quick succession)
-- User reviews 10 cards on web, starts Telegram `/review`, gets shown the same 10 cards they just did (they're no longer "due" in DB but the Telegram session has a cached list)
-- FSRS stability gets boosted by double-reviewing, making intervals too long
+- Sentences split mid-clause: `"I said, "` becomes one sentence, `"hello."` becomes another
+- Entire paragraphs treated as single sentences, overwhelming the AI analysis
+- Dialogue attribution breaks: `"Run!" he shouted.` may be 1 or 2 sentences depending on parser
+- Poetry/verse formatted as prose or each line as a separate sentence
+- Footnote markers and superscripts injected mid-sentence
 
 **Prevention:**
-1. Add a `source` column to `review_logs` (`'web' | 'telegram'`) for debugging
-2. Web review: fetch one card at a time (stateless). After rating, fetch the next due card from API. No client-side batch caching
-3. Telegram: keep the batch approach (fine for chat UI) but add a guard in the rate handler -- before calling `rateCard()`, re-check if `srs_cards.lastReview` is newer than session start time. If yes, skip with "Already reviewed" message and advance to next card
-4. Alternative: share a "last fetched at" timestamp, pass it to `rateCard()` as an optimistic lock
+- Parse EPUB HTML to extract text content at the paragraph level, then re-segment with a proper sentence splitter (NOT by HTML structure alone)
+- Use a robust sentence boundary detection library. `wink-nlp` (same ecosystem as existing `wink-lemmatizer`) has good English sentence segmentation
+- Pre-process: strip footnote markers, handle `<br/>` within `<p>` as soft breaks not sentence boundaries
+- Handle dialogue explicitly: quotes followed by attribution ("said X") should stay as one unit
+- Store the mapping from sentences back to EPUB content positions (character offsets within chapter) for highlighting
+- Phase: Core parsing phase -- get this wrong and everything downstream breaks
 
-**Detection:** Start `/review` in Telegram, rate 2 cards on web, then try to rate those same cards in Telegram. If Telegram lets you rate them without skipping, the bug is present.
+**Detection:** Parse 5 different EPUBs from different sources (Gutenberg, commercial, Calibre-converted, self-published). Compare sentence count and spot-check 20 random sentences from each. If more than 5% are visibly wrong splits, the splitter needs tuning.
 
-**Phase to address:** Web review implementation phase.
+### Pitfall 3: AI Analysis Cost Explosion with Eager Per-Sentence Processing
 
----
+**What goes wrong:** A typical novel has 5,000-10,000 sentences. The existing system processes one sentence at a time via Telegram at maybe 5-20 per day. With a book reader, the user can "flip through" pages rapidly. If every sentence triggers an AI call, reading one book costs $50-200+ in API calls and takes hours of processing time.
 
-### Pitfall 3: Removing Familiarity Flow Floods Review Queue
-
-**What goes wrong:** Currently, SRS cards are created only when user manually selects words and sets familiarity in Telegram. The v1.1 plan calls for "auto-add words without manual familiarity selection." If every word from every analyzed sentence automatically gets an SRS card, the review queue explodes with common words the user already knows (articles are skipped, but words like "go", "make", "time" at A1 level will flood in).
-
-**Why it happens:** The current flow is a deliberate filter: user picks which words matter -> sets familiarity -> SRS card created. Auto-add removes this filter entirely.
+**Why it happens:** The existing `analyze-sentence` pipeline is designed for on-demand single-sentence analysis. It was never designed for batch processing thousands of sentences. The natural impulse is to reuse it as-is for every sentence.
 
 **Consequences:**
-- User enters 10 sentences, gets 50+ new SRS cards including basic words they know perfectly
-- Review sessions become tedious, filled with "Easy" taps on known words
-- The `familiarity` column becomes dead weight (all new words are `never_seen` forever since no one sets it)
-- Vocabulary page filters by familiarity become misleading (old words have it, new ones don't)
+- API rate limits hit within minutes of starting a book (OpenAI: 500-10,000 RPM depending on tier)
+- Cost per book becomes prohibitive -- reading 10 books/month at $100/book is $1,000/month
+- User waits 2-5 seconds per sentence for analysis, destroying the reading flow
+- Server overwhelmed if processing is done eagerly on page load
 
 **Prevention:**
-1. Auto-add with CEFR filtering: only create SRS cards for words at or above user's current level. User is B1-B2, so auto-create cards for B2+ words. A1-B1 words get added to vocabulary but NOT to SRS
-2. Add a "known words" mechanism: let user mark words as "known" (no more reviews). Provide a one-time bulk-mark for common words (top 3000 frequency list)
-3. Replace `familiarity` enum with SRS-derived status: if word has SRS card -> its `state` (new/learning/review) IS the familiarity. If word has no SRS card -> it's either "known" or "not tracked"
-4. Keep backward compatibility: existing words with `familiarity` set retain their values for display, but new code reads SRS card state instead
+- Analyze on-demand when user taps a sentence, NOT eagerly for entire book/chapter
+- Cache analysis results in DB keyed by normalized sentence text hash -- same sentence reuses existing analysis
+- Use OpenAI Batch API (50% cost reduction, 24hr turnaround) for optional pre-processing of upcoming chapters
+- Implement a processing queue with concurrency limits (existing BullMQ infrastructure supports this)
+- Consider lighter pre-processing: tokenize words client-side and match against existing word DB without AI. Only call AI when user actually taps a sentence for full analysis
+- Word highlighting does NOT require AI -- it only requires matching surface forms to known lemmas in the DB
+- Phase: Architecture decision in the first phase. Do NOT build eager processing and "optimize later"
 
-**Detection:** Enable auto-add, enter 5 sentences from a simple text. Count new SRS cards created. If >30, the filtering is insufficient.
+**Detection:** Before building, calculate: average sentence count per chapter x API cost per call x chapters per book. If total exceeds $5/book, the architecture needs revision.
 
-**Phase to address:** Auto-add implementation, BEFORE vocabulary page (so the page never depends on stale familiarity data).
+### Pitfall 4: Word Status Conflict Between Reader and Telegram Flows
 
----
+**What goes wrong:** User marks "serendipity" as `never_seen` via reader flow, but it already has a word_sense with `understand_in_context` familiarity from a Telegram sentence analyzed months ago. Or: user marks word as "know" in reader, but the SRS card is due for review. The two systems have contradictory views of word knowledge.
+
+**Why it happens:** The existing system has two status dimensions that are only loosely connected:
+1. `word_senses.familiarity` enum: `never_seen`, `seen_unsure`, `understand_in_context`
+2. `srs_cards.state` enum: `new`, `learning`, `review`, `relearning`
+
+The reader introduces a third dimension: LingQ-style word status (new/recognized/familiar/learned/known, typically shown as blue/yellow/green/white highlighting). These three systems can disagree.
+
+**Consequences:**
+- Word shows as "new" (blue) in reader but user has reviewed it 20 times via SRS
+- User marks word "known" in reader but SRS keeps scheduling reviews for it
+- Familiarity set via Telegram doesn't reflect in reader highlights
+- User loses trust in the system's understanding of their knowledge
+
+**Prevention:**
+- Do NOT introduce a third status dimension. Map reader word states directly to the existing `word_senses.familiarity`:
+  - Reader "new/blue" = no word_sense exists for this lemma, or familiarity is `never_seen`
+  - Reader "learning/yellow" = familiarity is `seen_unsure` (has SRS card in `new`/`learning` state)
+  - Reader "known/white" = familiarity is `understand_in_context` (SRS card graduated or no card needed)
+- When user taps "know" in reader, update BOTH `word_senses.familiarity` AND suspend/graduate the SRS card
+- When SRS review changes card state, the reader highlight should reflect it on next page load
+- Single source of truth: `word_senses.familiarity` drives highlight color, period
+- Phase: Design the status mapping BEFORE building the reader UI. Document it as a specification.
+
+**Detection:** Write integration tests: create a word via Telegram flow, verify it appears correctly highlighted in reader. Mark word in reader, verify SRS card state updates. Review word in SRS, verify reader highlight changes.
 
 ## Moderate Pitfalls
 
-### Pitfall 4: Vocabulary Page N+1 Query Performance
+### Pitfall 5: Mobile Browser Touch Event Conflicts
 
-**What goes wrong:** The current API has no endpoint for "all words with their metadata." The existing `/sentences/:sentenceId/words` fetches words per sentence. A vocabulary page showing all words with SRS status, sentence contexts, collocations, CEFR level, and thematic clusters needs joins across 5+ tables. A naive implementation: fetch words -> loop to fetch SRS status -> loop to fetch sentences -> loop to fetch collocations.
-
-**Prevention:**
-- Build a dedicated `/vocabulary` endpoint with a single paginated query using LEFT JOINs for SRS card state, sentence count, and latest sentence text
-- Use cursor-based pagination (by `words.id` or `words.createdAt`) since words are continuously added -- offset pagination drifts as new words are inserted
-- Add index on `sentence_words(word_id)` for reverse lookup (currently only used in the `sentence_id` direction)
-- Consider a materialized/cached aggregate: sentence count per word, last review date, next due date
-
-**Detection:** Load vocabulary page with 500+ words. If page load takes >500ms, the query needs optimization.
-
----
-
-### Pitfall 5: Duplicate SRS Cards From Missing Unique Constraint
-
-**What goes wrong:** `srs_cards` has NO unique constraint on `(card_type, word_id)`. The `createSrsCard()` function uses `onConflictDoNothing()` but there's no conflict to detect -- the insert always succeeds. If auto-add calls `createSrsCard()` every time a known word appears in a new sentence, duplicate SRS cards accumulate.
-
-**Why it happens:** The grammar card path in `analysis.ts` (line 159-168) does a manual check-then-insert pattern. But `createSrsCard()` in `srs.ts` relies on `onConflictDoNothing()` which has no conflict target defined on the schema.
+**What goes wrong:** The reader needs to support: (a) tapping a word to see its status/meaning, (b) tapping a sentence to trigger analysis modal, (c) swiping/tapping to turn pages, (d) long-press to select text. These gestures conflict with each other and with browser default behaviors (text selection, scroll bounce, back navigation).
 
 **Prevention:**
-1. Add partial unique indexes in PostgreSQL:
-   ```sql
-   CREATE UNIQUE INDEX srs_cards_vocabulary_word_idx ON srs_cards(word_id) WHERE card_type = 'vocabulary' AND word_id IS NOT NULL;
-   CREATE UNIQUE INDEX srs_cards_grammar_pattern_idx ON srs_cards(grammar_pattern_id) WHERE card_type = 'grammar' AND grammar_pattern_id IS NOT NULL;
-   ```
-2. Update `createSrsCard()` to use `onConflictDoNothing()` with explicit conflict target after adding the index
-3. Run a deduplication query on existing data before adding the constraint
+- Define clear gesture zones: word tap vs. sentence tap vs. page navigation
+- Use a debounced approach: short tap on word = word popup, tap on sentence area (outside word) = full analysis, edge tap or swipe = page turn
+- Disable browser text selection via CSS `user-select: none` on reader content
+- Prevent iOS Safari bounce scroll with `overscroll-behavior: none`
+- Test on actual mobile devices (iOS Safari + Android Chrome) early, not just desktop
+- Phase: Reader UI phase -- build a gesture prototype BEFORE implementing content rendering
 
-**Detection:** `SELECT word_id, COUNT(*) FROM srs_cards WHERE card_type = 'vocabulary' GROUP BY word_id HAVING COUNT(*) > 1` -- any results mean duplicates exist.
+### Pitfall 6: EPUB Resource Path Resolution and CSS Interference
 
----
-
-### Pitfall 6: Collocations Cannot Be Linked to Individual Words
-
-**What goes wrong:** Collocations are linked to sentences via `sentence_collocations`, but there's no link between a collocation and the words it contains. Showing "collocations containing this word" on the vocabulary page requires text matching (`WHERE text LIKE '%run%'`) which is unreliable ("running" won't match, "overrun" falsely matches).
+**What goes wrong:** EPUB internal paths for CSS, images, and fonts use relative references that break when content is extracted and rendered in a custom web view. Publisher CSS overrides reader styles -- font sizes, colors, margins all change. Some EPUBs include aggressive CSS resets.
 
 **Prevention:**
-- Add a `collocation_words` junction table: `(collocation_id, word_id)`
-- Populate during `storeAnalysisResults()` by matching collocation component words against inserted word IDs
-- Enables: "show all collocations containing word X" on vocabulary detail and "which words does this collocation relate to" on collocation display
+- Parse the EPUB OPF manifest to build a complete resource map
+- Strip publisher CSS entirely -- this is a language learning reader, not a faithful renderer. Apply own consistent styles
+- Convert image references to blob URLs or serve via API endpoint if images are needed
+- If preserving some publisher formatting (italics, bold), whitelist only inline styles, not linked stylesheets
+- Phase: EPUB parsing phase -- handle alongside HTML extraction
 
----
+### Pitfall 7: Sentence Deduplication and Source Tracking
 
-### Pitfall 7: Web Review Loses State on Page Refresh
-
-**What goes wrong:** If web review mimics Telegram's batch approach (fetch 20 cards, iterate client-side), a page refresh loses the session. User rates 10 cards, refreshes, gets 10 new cards. Session stats (Again: 2, Good: 8) are lost.
-
-**Prevention:**
-- Make web review stateless: fetch next due card -> display -> user rates -> POST rating -> fetch next card. No client-side session
-- Compute session stats from `review_logs WHERE reviewed_at > session_start_time` rather than tracking client-side
-- Or: store session_id in URL/localStorage, compute stats server-side from review_logs grouped by session
-
----
-
-### Pitfall 8: Multiple Translations Overwrite Each Other
-
-**What goes wrong:** `words.translation` is a single `text` field. When "run" appears as "бежать" in one sentence and "управлять" in another, the current `onConflictDoUpdate` does NOT update translation (only updates `thematicCluster`). So the first translation wins and all subsequent context-dependent meanings are silently lost.
+**What goes wrong:** Common short sentences appear in every book: "He nodded.", "She smiled.", "Yes.", "Thank you." The existing `sentences` table stores each input as a unique row with `sourceBook`. If the same sentence appears in a new book, should it create a new row (duplicating analysis) or reuse the existing one (losing per-book context)?
 
 **Prevention:**
-- Option A (recommended): Add `word_translations` table with `(id, word_id, translation, source_sentence_id, created_at)`. Keep `words.translation` as "primary" for display
-- Option B (simpler): Change `words.translation` to jsonb array. Loses sentence-context linkage but simpler schema
-- Either way: update `storeAnalysisResults()` to append translations rather than ignore-or-overwrite
+- Separate sentence analysis results from sentence occurrences. Analysis (translation, vocabulary, grammar) should be cached and shared. Occurrence (which book, which position) should be per-book
+- Add a `book_sentences` junction table: `(book_id, sentence_id, chapter_index, sentence_index)` linking to reusable `sentences` rows
+- For lookup: hash normalized sentence text, check if analysis exists, reuse if so
+- Phase: Database schema extension phase -- design before implementing reader
 
----
+### Pitfall 8: Sentence Splitter Edge Cases in Literary English
+
+**What goes wrong:** Literary text has patterns that break naive sentence splitters:
+- Dialogue with ellipsis: `"I thought... maybe we could..."` -- is this 1 or 3 sentences?
+- Abbreviations: `Dr. Smith arrived at 3 p.m. on Tuesday.` -- 1 sentence, not 3
+- Quoted speech spanning paragraphs: opening quote without closing in same paragraph
+- Em-dashes used as sentence breaks: `She ran--he followed--they escaped.`
+- ALL CAPS titles/headers mixed into chapter content
+
+**Prevention:**
+- Use a rule-based splitter with known abbreviation lists, NOT just regex on `.!?`
+- `wink-nlp` handles most English abbreviations and dialogue correctly out of the box
+- Add post-processing: merge sentences under 3 words with adjacent sentences (likely false splits)
+- Treat ellipsis (`...`) as continuation, not boundary, unless followed by a capital letter after whitespace
+- Pre-strip chapter titles/headers before sentence splitting (detect via HTML heading tags `<h1>`-`<h6>`)
+- Phase: EPUB parsing phase -- test with real literary EPUBs before building UI
+
+### Pitfall 9: Reading Position Persistence Fragility
+
+**What goes wrong:** User reads to page 47, closes browser, comes back -- app shows page 1. Or worse: book is re-parsed with slightly different sentence segmentation, and the saved position now points to the wrong location.
+
+**Prevention:**
+- Store reading position as (chapter_index, sentence_index) which is stable across font size changes and screen rotations
+- Do NOT store position as pixel offset or percentage -- these change with viewport
+- Save position on every page turn (debounced write to API), not just on explicit "bookmark"
+- On position restore, validate that the stored position is still valid (chapter exists, sentence index in range), fall back to nearest valid position
+- Sentence segmentation must be deterministic -- same EPUB always produces the same sentence list. Do NOT re-parse on each read, store parsed results
+- Phase: Reader UI phase -- implement from the start, not as an afterthought
+
+### Pitfall 10: Proper Noun Flooding the Word Highlights
+
+**What goes wrong:** Literary text is full of character names, place names, brand names. "Dumbledore", "Hogwarts", "Gryffindor" -- the existing AI prompt filters proper nouns for vocabulary extraction, but in reader mode where ALL words get highlighted by status, every proper noun shows as "new" (blue) and clutters the display with noise.
+
+**Prevention:**
+- The existing prompt correctly skips proper nouns for AI vocabulary extraction -- keep this
+- For display highlighting: detect proper nouns client-side (capitalized words not at sentence start, words not in the word DB) and show them in neutral style, not "new word" blue
+- Allow user to tap a proper noun and mark it as "ignore" (never highlight again)
+- Store ignored words in a lightweight blocklist table (separate from word_senses)
+- Pre-populate blocklist with common proper noun patterns (names ending in common suffixes, place names)
+- Phase: Word highlighting phase -- needs its own "ignored words" concept distinct from vocabulary tracking
+
+### Pitfall 11: epub.js Performance with Large Chapters on Mobile
+
+**What goes wrong:** Books with large chapters (400+ paragraphs) cause extreme lag in epub.js, with nearly 1 second delay per action. Tab inactivity on Chrome causes the epub.js instance to become unresponsive until a forced re-render. Continuous scroll mode (natural for mobile) is less performant than paginated mode.
+
+**Prevention:**
+- Do NOT use epub.js for rendering. The app uses a custom "5-7 sentences per page" model which is fundamentally different from epub.js's page-based rendering. Parse EPUB server-side, send sentence data via API, render with Vue components
+- Server-side parsing: extract chapters into sentence arrays during upload, store in DB. Reader fetches one page (5-7 sentences) at a time via API
+- This avoids the entire epub.js performance problem and gives full control over sentence-level interaction
+- Phase: Architecture decision -- choose server-side parsing over client-side epub.js in the first phase
 
 ## Minor Pitfalls
 
-### Pitfall 9: In-Memory Selection State Leaks
+### Pitfall 12: EPUB File Size and Memory on Upload
 
-**What goes wrong:** `selectionStates` in `bot/handlers/vocabulary.ts` is an in-memory Map. If user starts word selection but never finishes (closes Telegram), state persists in memory forever. Over months of uptime, this accumulates.
+**What goes wrong:** Large EPUBs (50MB+ with images) cause upload timeouts or memory issues during server-side parsing. Some image-heavy books (graphic novels, textbooks with illustrations) are poor fits for this text-focused reader.
 
-**Prevention:** Add TTL cleanup (delete entries older than 30 minutes). Low priority for single-user but prevents memory growth in long-running process.
+**Prevention:**
+- Set a maximum file size limit (e.g., 50MB) with clear error message
+- Parse chapters lazily -- extract text content chapter by chapter, not entire book into memory
+- Strip and discard images during text extraction (this is a language learning reader, not a graphic reader)
+- Phase: EPUB upload/parsing phase
 
----
+### Pitfall 13: Re-analysis When AI Prompt Changes
 
-### Pitfall 10: Exercise Exhaustion for Frequently-Reviewed Grammar
+**What goes wrong:** The prompt in `src/lib/ai/prompts.ts` is heavily tuned and will continue to evolve. When the prompt changes, previously cached analyses have different quality (old analyses missing definitions, or using old CEFR filtering). No way to know which analyses are stale.
 
-**What goes wrong:** Grammar exercises have a `used` boolean. Once all 6 pre-generated exercises for a pattern are used, the review card shows "No exercises available" (visible in `bot/handlers/review.ts` line 33). With web review adding more review sessions, exercises will exhaust faster.
+**Prevention:**
+- Add a `prompt_version` integer to cached sentence analyses
+- When prompt version changes, mark old analyses as potentially stale but do NOT auto-reprocess (too expensive)
+- Allow user to manually re-analyze a sentence (tap and hold, "re-analyze" option in the modal)
+- Phase: Caching architecture phase -- add version tracking from the start
 
-**Prevention:** Track exercise exhaustion and trigger re-generation when unused count drops below 2. Or: reset `used` flag on all exercises when they're all consumed (allow re-use after a full cycle).
+### Pitfall 14: wink-lemmatizer Limitations for Reader-Side Matching
+
+**What goes wrong:** The existing `wink-lemmatizer` is dictionary-based and only handles noun, verb, adjective. It cannot do POS disambiguation without context. For reader-side matching where you have a surface form but no POS tag, lemmatization becomes ambiguous ("left" could be "leave" verb or "left" adjective).
+
+**Prevention:**
+- For reader-side matching, generate ALL possible lemmas for a surface form (try all POS categories via `normalizeLemma`) and check if ANY match exists in the DB
+- Accept that some matches will be imperfect -- this is acceptable if the fallback is "show as unknown" rather than "crash" or "show wrong status"
+- Consider `compromise` npm library for lightweight POS tagging of reader text to disambiguate before lemmatization
+- Phase: Word matching phase -- build the multi-POS lookup from the start
+
+### Pitfall 15: Page Model Mismatch with Variable Sentence Lengths
+
+**What goes wrong:** The spec says "5-7 sentences per page." But one sentence might be 3 words ("He left.") and another might be 80 words (a complex literary sentence). Pages vary wildly in visual length -- some fill half the screen, others require scrolling on mobile.
+
+**Prevention:**
+- Use character/word count as the primary pagination metric, not sentence count. Target ~150-200 words per page
+- Keep the minimum at 3 sentences and maximum at 10, but let word count be the primary driver
+- Calculate page boundaries during parsing and store them, so pagination is consistent across sessions
+- Phase: EPUB parsing/pagination phase
 
 ## Phase-Specific Warnings
 
 | Phase Topic | Likely Pitfall | Mitigation |
 |-------------|---------------|------------|
-| Schema migration (POS, translations) | Pitfall 1: unique constraint migration corrupts word-SRS links | Additive migration: new column -> backfill -> constraint change. Never delete/split existing rows |
-| Auto-add words in Telegram | Pitfall 3: queue floods with known words; Pitfall 5: duplicate SRS cards | Add unique index on srs_cards FIRST. Implement CEFR-based filtering before enabling auto-add |
-| Vocabulary page UI | Pitfall 4: N+1 queries; Pitfall 6: collocations not linkable to words | Build paginated API with proper JOINs. Add collocation_words junction table in schema migration |
-| Web SRS review | Pitfall 2: state conflict with Telegram; Pitfall 7: refresh loses session | Stateless fetch-rate-fetch pattern. Add staleness guard to rateCard() |
-| Collocations display | Pitfall 6: no word-collocation linkage | Add junction table in schema phase, populate during analysis |
-| Remove familiarity flow | Pitfall 3: orphaned data, inconsistent vocabulary page | Migrate UI to use SRS card state before removing manual flow |
-
-## Recommended Phase Ordering Based on Pitfalls
-
-1. **Schema migration first** -- POS column, unique indexes on srs_cards, collocation_words table, word_translations table. Every other feature depends on correct schema
-2. **Auto-add + familiarity deprecation** -- after schema is stable, before vocabulary UI, so the UI never depends on stale familiarity data
-3. **Vocabulary page** -- needs schema + auto-add working to display real data with proper filters
-4. **Web review** -- independent of vocabulary page, but needs the concurrency guard on rateCard()
-5. **Collocations UI** -- last, since it needs junction table from step 1 and vocabulary page infrastructure from step 3
+| EPUB parsing and sentence splitting | HTML structure variance (#2), sentence splitter edge cases (#8), pagination (#15) | Test with 5+ EPUBs from different sources before building UI |
+| Word tokenization and matching | Lemma mismatch (#1), proper nouns (#10), wink-lemmatizer limits (#14) | Build and test matching layer in isolation with extensive unit tests |
+| Database schema extension | Sentence dedup (#7), status conflicts (#4), prompt versioning (#13) | Design schema changes before code; map reader states to existing familiarity enum |
+| AI analysis integration | Cost explosion (#3) | Calculate cost-per-book before building; implement on-demand analysis, not eager |
+| Reader UI (mobile) | Touch conflicts (#5), reading position (#9), epub.js perf (#11) | Use server-side parsing + Vue rendering, not epub.js. Gesture prototype first |
+| Reader UI (word highlighting) | Status conflicts (#4), proper nouns (#10) | Single source of truth in word_senses.familiarity; separate "ignore" list for proper nouns |
+| Architecture | epub.js vs server-side parsing (#11), eager vs on-demand analysis (#3) | Decide server-side parsing + on-demand AI before writing any code |
 
 ## Sources
 
-- Direct codebase analysis: `src/db/schema/words.ts` -- unique lemma constraint
-- Direct codebase analysis: `src/services/analysis.ts` -- onConflictDoUpdate targets, word upsert logic, grammar SRS card creation pattern
-- Direct codebase analysis: `src/services/srs.ts` -- createSrsCard() onConflictDoNothing without schema constraint, rateCard() reads current state
-- Direct codebase analysis: `src/bot/handlers/vocabulary.ts` -- in-memory selection state, familiarity flow coupling
-- Direct codebase analysis: `src/bot/handlers/review.ts` -- in-memory review sessions, no staleness check
-- Direct codebase analysis: `src/lib/lemmatizer.ts` -- adverb-to-adjective collapsing in normalizeLemma()
-- Direct codebase analysis: `drizzle/0000_true_genesis.sql` -- schema constraints, no unique index on srs_cards
-- ts-fsrs: FSRS scheduling depends on accurate card state; double-reviewing distorts stability (HIGH confidence)
-- PostgreSQL partial unique indexes: standard feature for nullable column uniqueness (HIGH confidence)
+- [epub.js large chapter lag (GitHub issue #714)](https://github.com/futurepress/epub.js/issues/714)
+- [epub.js tab inactivity lag (GitHub issue #913)](https://github.com/futurepress/epub.js/issues/913)
+- [Edge Cases in Splitting Text into Words and Sentences](https://gist.github.com/b936168921d3468d88bb27d2016044c9)
+- [NLP: Splitting Text into Sentences](https://towardsdatascience.com/nlp-splitting-text-into-sentences-7bbce222ef17/)
+- [How to Split Sentences (Grammarly Engineering)](https://www.grammarly.com/blog/engineering/how-to-split-sentences/)
+- [OpenAI Batch API documentation](https://developers.openai.com/api/docs/guides/batch/)
+- [Claude Rate Limits documentation](https://platform.claude.com/docs/en/api/rate-limits)
+- [AI Batch Processing: OpenAI, Claude, and Gemini (2025)](https://adhavpavan.medium.com/ai-batch-processing-openai-claude-and-gemini-2025-94107c024a10)
+- [compromise NLP library](https://github.com/spencermountain/compromise)
+- [NLTK tokenizer contraction splitting (GitHub issue #401)](https://github.com/nltk/nltk/issues/401)
+- Existing codebase: `src/lib/lemmatizer.ts` (normalizeLemma with POS-specific lemmatization, adverb-to-adjective collapsing)
+- Existing codebase: `src/services/analysis.ts` (storeAnalysisResults upsert logic, SRS card creation)
+- Existing codebase: `src/db/schema/word-senses.ts` (unique on wordId+partOfSpeech, familiarity enum)
+- Existing codebase: `src/db/schema/srs-cards.ts` (card states, word_sense reference)
+- Existing codebase: `src/db/schema/sentences.ts` (sourceBook field, no book-level linking)
+- Existing codebase: `src/lib/ai/prompts.ts` (proper noun filtering, B1+ vocabulary extraction)
