@@ -29,6 +29,8 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     command: ["npx", "tsx", "src/main.ts"]
+    ports:
+      - "127.0.0.1:3101:3000"
     environment:
       DATABASE_URL: postgres://english:${POSTGRES_PASSWORD:-english}@postgres:5432/english
       REDIS_URL: redis://redis:6379
@@ -36,6 +38,9 @@ services:
       AI_MODEL: ${AI_MODEL}
       OPENAI_API_KEY: ${OPENAI_API_KEY}
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      UPLOAD_DIR: /app/uploads
+    volumes:
+      - uploads:/app/uploads
     depends_on:
       postgres:
         condition: service_healthy
@@ -76,20 +81,6 @@ services:
       app:
         condition: service_started
 
-  caddy:
-    image: caddy:2-alpine
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
-    depends_on:
-      - app
-
 volumes:
   pgdata:
-  caddy_data:
-  caddy_config:
+  uploads:

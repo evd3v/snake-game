@@ -7,3 +7,4 @@ export { wordSenses } from './word-senses.ts';
 export { cardTypeEnum, cardStateEnum, srsCards } from './srs-cards.ts';
 export { grammarExercises } from './grammar-exercises.ts';
 export { reviewLogs } from './review-logs.ts';
+export { books, bookChapters, bookSentences, readingPositions } from './books.ts';
