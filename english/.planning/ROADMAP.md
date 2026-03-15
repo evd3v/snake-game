@@ -82,11 +82,11 @@ Plans:
   3. The modal shows only NEW words/collocations (not already in vocabulary) with "learn" and "know" buttons; pressing "learn" creates an SRS card, "know" marks familiarity without SRS
   4. Word highlighting in the reader text updates immediately after closing the analysis modal
   5. When turning to the next page, a mini-report shows counts of words added to "learn", marked "know", and grammar patterns found on the completed page
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 14-01: TBD
-- [ ] 14-02: TBD
+- [ ] 14-01-PLAN.md — Backend: migration, autoCreateSrsCards option, analyze/learn/know endpoints, filtering service
+- [ ] 14-02-PLAN.md — Frontend: AnalysisModal with learn/know buttons, PageReport overlay, ReaderView integration
 
 ## Progress
 
@@ -97,4 +97,4 @@ Phases execute in order: 12 -> 13 -> 14
 |-------|-----------|----------------|--------|-----------|
 | 12. EPUB Data Foundation | 2/2 | Complete    | 2026-03-15 | - |
 | 13. Reader & Word Highlighting | 2/2 | Complete    | 2026-03-15 | - |
-| 14. Analysis & Learning Flow | v2.0 | 0/? | Not started | - |
+| 14. Analysis & Learning Flow | v2.0 | 0/2 | Not started | - |
