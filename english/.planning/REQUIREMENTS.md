@@ -252,28 +252,28 @@ Deferred to future release.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| EPUB-01 | — | Pending |
-| EPUB-02 | — | Pending |
-| EPUB-03 | — | Pending |
-| EPUB-04 | — | Pending |
-| READ-01 | — | Pending |
-| READ-02 | — | Pending |
-| READ-03 | — | Pending |
-| READ-04 | — | Pending |
-| ANAL-01 | — | Pending |
-| ANAL-02 | — | Pending |
-| ANAL-03 | — | Pending |
-| ANAL-04 | — | Pending |
-| HIGH-01 | — | Pending |
-| HIGH-02 | — | Pending |
-| FLOW-01 | — | Pending |
-| FLOW-02 | — | Pending |
+| EPUB-01 | Phase 12 | Pending |
+| EPUB-02 | Phase 12 | Pending |
+| EPUB-03 | Phase 12 | Pending |
+| EPUB-04 | Phase 12 | Pending |
+| READ-01 | Phase 13 | Pending |
+| READ-02 | Phase 13 | Pending |
+| READ-03 | Phase 13 | Pending |
+| READ-04 | Phase 13 | Pending |
+| HIGH-01 | Phase 13 | Pending |
+| HIGH-02 | Phase 13 | Pending |
+| ANAL-01 | Phase 14 | Pending |
+| ANAL-02 | Phase 14 | Pending |
+| ANAL-03 | Phase 14 | Pending |
+| ANAL-04 | Phase 14 | Pending |
+| FLOW-01 | Phase 14 | Pending |
+| FLOW-02 | Phase 14 | Pending |
 
 **Coverage:**
 - v2.0 requirements: 16 total
-- Mapped to phases: 0
-- Unmapped: 16 ⚠️
+- Mapped to phases: 16
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-09*
-*Last updated: 2026-03-15 after v2.0 milestone requirements*
+*Last updated: 2026-03-15 after v2.0 roadmap created*
