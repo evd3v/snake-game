@@ -66,11 +66,11 @@ Plans:
   3. Words in the text are colored by status: blue (new/unknown), yellow (learning), no highlight (known) -- based on existing vocabulary data
   4. User can switch to dark/night theme for comfortable reading
   5. The "next page" button is disabled until user has opened every sentence on the current page
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 13-01: TBD
-- [ ] 13-02: TBD
+- [ ] 13-01-PLAN.md — Backend: word highlighter service, page data + position API endpoints, tests
+- [ ] 13-02-PLAN.md — Frontend: ReaderView with word highlighting, dark theme, sentence gate, position persistence
 
 ### Phase 14: Analysis & Learning Flow
 **Goal**: Users tap sentences to get AI analysis and explicitly decide which words to learn, completing the LingQ-style read-and-learn loop
@@ -96,5 +96,5 @@ Phases execute in order: 12 -> 13 -> 14
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 12. EPUB Data Foundation | 2/2 | Complete    | 2026-03-15 | - |
-| 13. Reader & Word Highlighting | v2.0 | 0/? | Not started | - |
+| 13. Reader & Word Highlighting | v2.0 | 0/2 | Planning complete | - |
 | 14. Analysis & Learning Flow | v2.0 | 0/? | Not started | - |
