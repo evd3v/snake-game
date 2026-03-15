@@ -86,23 +86,25 @@ onMounted(fetchBooks)
 
     <div v-else class="book-grid">
       <div v-for="book in books" :key="book.id" class="book-card">
-        <div class="book-cover">
-          <img
-            v-if="book.coverBase64"
-            :src="book.coverBase64"
-            :alt="book.title"
-            class="cover-image"
-          />
-          <div v-else class="cover-placeholder">
-            <span class="placeholder-letter">{{ book.title.charAt(0).toUpperCase() }}</span>
+        <router-link :to="`/read/${book.id}`" class="book-link">
+          <div class="book-cover">
+            <img
+              v-if="book.coverBase64"
+              :src="book.coverBase64"
+              :alt="book.title"
+              class="cover-image"
+            />
+            <div v-else class="cover-placeholder">
+              <span class="placeholder-letter">{{ book.title.charAt(0).toUpperCase() }}</span>
+            </div>
           </div>
-        </div>
-        <div class="book-info">
-          <h3 class="book-title">{{ book.title }}</h3>
-          <p v-if="book.author" class="book-author">{{ book.author }}</p>
-          <p class="book-pages">{{ book.totalPages }} pages</p>
-        </div>
-        <button class="delete-btn" title="Delete book" @click="deleteBook(book)">
+          <div class="book-info">
+            <h3 class="book-title">{{ book.title }}</h3>
+            <p v-if="book.author" class="book-author">{{ book.author }}</p>
+            <p class="book-pages">{{ book.totalPages }} pages</p>
+          </div>
+        </router-link>
+        <button class="delete-btn" title="Delete book" @click.stop="deleteBook(book)">
           &times;
         </button>
       </div>
@@ -243,6 +245,14 @@ onMounted(fetchBooks)
 
 .book-card:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.book-link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  flex: 1;
 }
 
 .book-cover {
