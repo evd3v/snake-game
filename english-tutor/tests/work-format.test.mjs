@@ -35,16 +35,22 @@ test('formatReview: спойлер и шкала', () => {
 });
 
 test('formatNeedTest и formatStatus и formatDecision', () => {
-  assert.match(formatNeedTest({ card, prompt: 'P', wanted_type: 'cloze' }), /\[НУЖЕН ТЕСТ\][\s\S]*tutor\.mjs test 5/);
+  assert.match(formatNeedTest({ card, prompt: 'P', wanted_type: 'cloze' }), /\[\[НУЖЕН ТЕСТ\]|\[НУЖЕН ТЕСТ\][\s\S]*tutor\.mjs test 5/);
   const s = { all: { total: 3800, learned: 10, learning: 40, known: 500, queued: 3200, shown: 2, due_today: 7 }, word: { total: 2975, learned: 8, learning: 30, known: 400, queued: 2500, shown: 1, due_today: 5 }, pv: { total: 150, learned: 1, learning: 5, known: 50, queued: 90, shown: 1, due_today: 1 }, expr: { total: 675, learned: 1, learning: 5, known: 50, queued: 610, shown: 0, due_today: 1 }, streak: 3 };
-  const t = formatStatus({ ...s, basic: { total: 3568, known: 900, learning: 20, learned: 0, queued: 2600, shown: 0, suspended: 0, due_today: 0 } });
-  assert.match(t, /\*\*Английский\*\* · учу 40 · выучил 10 · ждёт сегодня 7/);
-  assert.match(t, /[▓░]{12} 600 из 3800 разобрано/);
-  assert.match(t, /слова B2-C1 — учу 30 · выучил 8 · знал 400 · осталось 2500/);
-  assert.match(t, /\*\*Бытовой слой\*\*/);
-  assert.match(t, /знаю 900 · учу 20 · проверить 2600/);
-  assert.match(t, /_серия 3 дней подряд_/);
+  const t = formatStatus({ ...s, basic: { total: 3484, known: 2383, learning: 20, learned: 0, queued: 1050, shown: 0, suspended: 0, due_today: 0 } });
+  assert.match(t, /^\*\*Английский\*\*$/m);
+  assert.match(t, /^Учу сейчас: \*\*40\*\*$/m);
+  assert.match(t, /^Выучено: \*\*10\*\* _\(повтор реже, чем раз в 3 недели\)_$/m);
+  assert.match(t, /^Ждёт повторения сегодня: \*\*7\*\*$/m);
+  assert.match(t, /[▓░]{12} разобрано 600 из 3800 \(16%\)/);
+  assert.match(t, /^слова B2-C1 — 2500$/m);
+  assert.match(t, /^фразовые глаголы — 90$/m);
+  assert.match(t, /^бытовые слова — 1050 _\(пачками, кнопка «Аудит»\)_$/m);
+  assert.match(t, /^Отмечено знакомыми: 2883$/m, '500 из основной очереди плюс 2383 бытовых');
+  assert.match(t, /_серия: 3 дней подряд_/);
   assert.match(t, /\[\[BUTTONS: Дальше \| Повторение \/\/ Аудит\]\]$/);
+  const noBasic = formatStatus(s);
+  assert.ok(!/бытовые слова/.test(noBasic));
   assert.match(formatDecision('learn', { status: s }), /В повторении/);
   assert.match(formatDecision('known', { status: s }), /знакомое.*3 месяца/);
 });

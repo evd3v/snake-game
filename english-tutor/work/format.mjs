@@ -82,21 +82,24 @@ export function formatStatus(s) {
     learning: acc.learning + s[k].learning, learned: acc.learned + s[k].learned, known: acc.known + s[k].known
   }), { total: 0, queued: 0, learning: 0, learned: 0, known: 0 });
   const passed = main.total - main.queued;
-  const line = (label, c) => `${label} — учу ${c.learning} · выучил ${c.learned} · знал ${c.known} · осталось ${c.queued}`;
+  const percent = main.total ? Math.round((passed / main.total) * 100) : 0;
+  const known = main.known + (s.basic?.known || 0);
   const out = [
-    `**Английский** · учу ${s.all.learning} · выучил ${s.all.learned} · ждёт сегодня ${s.all.due_today}`,
+    '**Английский**',
     '',
-    `${bar(passed, main.total)} ${passed} из ${main.total} разобрано`,
+    `Учу сейчас: **${s.all.learning}**`,
+    `Выучено: **${s.all.learned}** _(повтор реже, чем раз в 3 недели)_`,
+    `Ждёт повторения сегодня: **${s.all.due_today}**`,
     '',
-    '**Основная очередь**',
-    line('слова B2-C1', s.word),
-    line('фразовые', s.pv),
-    line('выражения', s.expr)
+    `${bar(passed, main.total)} разобрано ${passed} из ${main.total} (${percent}%)`,
+    '',
+    '**Осталось разобрать**',
+    `слова B2-C1 — ${s.word.queued}`,
+    `фразовые глаголы — ${s.pv.queued}`,
+    `выражения — ${s.expr.queued}`
   ];
-  if (s.basic && s.basic.total) {
-    out.push('', '**Бытовой слой** (A1-B1 и повседневное)', `знаю ${s.basic.known} · учу ${s.basic.learning} · проверить ${s.basic.queued}`);
-  }
-  out.push('', `_серия ${s.streak} ${s.streak === 1 ? 'день' : 'дней'} подряд_`);
+  if (s.basic && s.basic.total) out.push(`бытовые слова — ${s.basic.queued} _(пачками, кнопка «Аудит»)_`);
+  out.push('', `Отмечено знакомыми: ${known}`, `_серия: ${s.streak} ${s.streak === 1 ? 'день' : 'дней'} подряд_`);
   out.push('[[BUTTONS: Дальше | Повторение // Аудит]]');
   return out.join('\n');
 }
