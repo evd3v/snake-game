@@ -29,3 +29,11 @@ test('renderTestPrompt подставляет тип, заголовок и ис
   assert.match(renderTestPrompt(card, 'context', []), /Уже было:\n\(ничего\)/);
   assert.ok(!p.includes('{{'));
 });
+
+test('renderExplainPrompt: близнец попадает в промпт только знакомый', () => {
+  const p1 = renderExplainPrompt(card, { known: ['respect'], unknown: [], twin_known: 'surpass' });
+  assert.match(p1, /Близнец по переводу, которого ученик уже знает: surpass/);
+  const p2 = renderExplainPrompt(card, { known: [], unknown: ['surpass'], twin_known: null });
+  assert.match(p2, /Близнец по переводу, которого ученик уже знает: нет/);
+  assert.match(p2, /Секцию пиши ТОЛЬКО если/);
+});

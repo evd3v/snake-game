@@ -138,7 +138,9 @@ test('lookupCard: существующее слово становится те�
   assert.equal(guessKind('in terms of'), 'expr');
   assert.equal(guessKind('give up'), 'pv');
   const ctx = learnerContext(db, { source: { family: ['respect', 'inspect', 'prospect'], twin: 'go on' } });
-  assert.deepEqual(ctx, { known: ['respect'], unknown: ['inspect', 'prospect', 'go on'] });
+  assert.deepEqual(ctx.known, ['respect']);
+  assert.deepEqual(ctx.unknown, ['inspect', 'prospect', 'go on']);
+  assert.equal(ctx.twin_known, null, 'близнец не выучен, противопоставлять нечему');
   assert.throws(() => lookupCard(db, '   '), /нужно слово/);
 });
 
@@ -206,4 +208,19 @@ test('undecidedCard: самое старое нерешённое, с учёто
   decide(db, b.id, 'known');
   assert.equal(undecidedCard(db, {}), null);
   assert.throws(() => undecidedCard(db, { stream: 'нет' }), /stream/);
+});
+
+test('learnerContext: twin_known только для знакомого близнеца', async () => {
+  const { learnerContext, isKnownWord, decide: dec } = await import('../src/queue.mjs');
+  const db = fresh();
+  const card = { source: { family: ['respect', 'go on'], twin: 'Respect' } };
+  assert.deepEqual(learnerContext(db, card), { known: [], unknown: ['respect', 'go on'], twin_known: null });
+  const respectId = db.prepare(`SELECT id FROM cards WHERE headword = 'respect'`).get().id;
+  dec(db, respectId, 'learn');
+  assert.equal(isKnownWord(db, 'Respect'), true, 'регистр не важен');
+  assert.equal(isKnownWord(db, 'нет такого'), false);
+  const ctx = learnerContext(db, card);
+  assert.deepEqual(ctx.known, ['respect']);
+  assert.equal(ctx.twin_known, 'respect');
+  assert.equal(learnerContext(db, { source: {} }).twin_known, null);
 });

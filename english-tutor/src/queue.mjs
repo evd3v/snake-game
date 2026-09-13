@@ -201,16 +201,24 @@ export function lookupCard(db, text, now = nowIso()) {
   return { card: getCard(db, row.id), created, previous_status };
 }
 
-// Что ученик уже знает из семьи и близнецов карточки: known = статусы learning/known, unknown = остальные из списка.
+export function isKnownWord(db, headword) {
+  const r = db.prepare(`SELECT status FROM cards WHERE headword = ?
+    ORDER BY CASE status WHEN 'known' THEN 0 WHEN 'learning' THEN 1 ELSE 2 END LIMIT 1`).get(normalizeHeadword(headword));
+  return Boolean(r && (r.status === 'known' || r.status === 'learning'));
+}
+
+// Что ученик уже знает из семьи и близнецов карточки: known = статусы learning/known, unknown = остальные.
+// twin_known заполняется, только если близнец по переводу уже в словаре: противопоставлять новое слово
+// другому НЕизвестному нельзя, иначе вместо одной единицы учатся две размытые.
 export function learnerContext(db, card) {
   const related = [...new Set([...(card.source?.family || []), card.source?.twin].filter(Boolean).map((h) => normalizeHeadword(h)))];
   const known = [];
   const unknown = [];
   for (const h of related) {
-    const r = db.prepare('SELECT status FROM cards WHERE headword = ? ORDER BY CASE status WHEN \'known\' THEN 0 WHEN \'learning\' THEN 1 ELSE 2 END LIMIT 1').get(h);
-    if (r && (r.status === 'known' || r.status === 'learning')) known.push(h); else unknown.push(h);
+    if (isKnownWord(db, h)) known.push(h); else unknown.push(h);
   }
-  return { known, unknown };
+  const twin = card.source?.twin ? normalizeHeadword(card.source.twin) : null;
+  return { known, unknown, twin_known: twin && isKnownWord(db, twin) ? twin : null };
 }
 
 const AUDIT_LIMIT = 25;
