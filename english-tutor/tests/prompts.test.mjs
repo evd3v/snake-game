@@ -1,0 +1,28 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { renderExplainPrompt, renderTestPrompt, kindLabel } from '../src/prompts.mjs';
+
+const card = { id: 1, kind: 'word', headword: 'inspect', pos: 'verb', level: 'B2', source: { definition: 'look closely', examples: ['x'], root: 'spect', family: ['respect'] } };
+
+test('kindLabel', () => {
+  assert.equal(kindLabel('word'), 'слово');
+  assert.equal(kindLabel('pv'), 'фразовый глагол');
+  assert.equal(kindLabel('expr'), 'выражение');
+});
+
+test('renderExplainPrompt подставляет поля и данные', () => {
+  const p = renderExplainPrompt(card);
+  assert.match(p, /\*\*inspect\*\* \(verb, B2\)/);
+  assert.match(p, /Данные \(слово\)/);
+  assert.match(p, /"root": "spect"/);
+  assert.ok(!p.includes('{{'));
+});
+
+test('renderTestPrompt подставляет тип, заголовок и историю', () => {
+  const p = renderTestPrompt(card, 'cloze', ['One old sentence here.']);
+  assert.match(p, /"type": "cloze"/);
+  assert.match(p, /«inspect»/);
+  assert.match(p, /Уже было:\n- One old sentence here\./);
+  assert.match(renderTestPrompt(card, 'context', []), /Уже было:\n\(ничего\)/);
+  assert.ok(!p.includes('{{'));
+});
