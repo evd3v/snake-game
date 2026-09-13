@@ -1,0 +1,32 @@
+import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { openDb } from '../src/db.mjs';
+
+export function seed(db, queue) {
+  const insert = db.prepare(`INSERT INTO cards (kind, headword, pos, level, source_json, group_key, group_label, order_index)
+    VALUES (@kind, @headword, @pos, @level, @source_json, @group_key, @group_label, @order_index)
+    ON CONFLICT(kind, headword, pos) DO NOTHING`);
+  let inserted = 0;
+  let skipped = 0;
+  db.exec('BEGIN');
+  try {
+    queue.forEach((item, order_index) => {
+      const r = insert.run({
+        kind: item.kind, headword: item.headword, pos: item.pos || '', level: item.level || '',
+        source_json: JSON.stringify(item.source), group_key: item.group_key, group_label: item.group_label, order_index
+      });
+      if (r.changes) inserted++; else skipped++;
+    });
+    db.exec('COMMIT');
+  } catch (e) {
+    db.exec('ROLLBACK');
+    throw e;
+  }
+  return { inserted, skipped };
+}
+
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  const db = openDb(process.env.DB_PATH || 'data-db/tutor.sqlite');
+  const queue = JSON.parse(fs.readFileSync(new URL('../data/queue.json', import.meta.url), 'utf8'));
+  console.log(seed(db, queue));
+}
