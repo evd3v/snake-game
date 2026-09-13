@@ -11,6 +11,9 @@ export function openDb(file = process.env.DB_PATH || ':memory:') {
   db.exec('PRAGMA foreign_keys = ON;');
   if (file !== ':memory:') db.exec('PRAGMA journal_mode = WAL;');
   db.exec(fs.readFileSync(path.join(here, 'schema.sql'), 'utf8'));
+  // миграция 13.09.2026: «знаю» кладёт карточку в повторение зрелой, отметка хранится в known_at
+  const cols = db.prepare('PRAGMA table_info(cards)').all().map((c) => c.name);
+  if (!cols.includes('known_at')) db.exec('ALTER TABLE cards ADD COLUMN known_at TEXT');
   return db;
 }
 

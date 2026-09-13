@@ -36,7 +36,7 @@ test('formatNeedTest и formatStatus и formatDecision', () => {
   assert.match(t, /ждёт сегодня 7/);
   assert.match(t, /серия 3/);
   assert.match(formatDecision('learn', { status: s }), /В повторении/);
-  assert.match(formatDecision('known', { status: s }), /знал/);
+  assert.match(formatDecision('known', { status: s }), /знакомое.*3 месяца/);
 });
 
 test('parseGrade', () => {

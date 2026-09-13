@@ -34,8 +34,8 @@ export function formatReview(body) {
 
 export function lookupNote(body) {
   if (body.created) return '_Этого слова не было в списках, добавил своей карточкой._';
+  if (body.previous_status === 'learning' && body.card?.known_at) return '_Ты отмечал это слово как знакомое._';
   if (body.previous_status === 'learning') return '_Это слово уже в повторении._';
-  if (body.previous_status === 'known') return '_Ты отмечал это слово как известное._';
   return '';
 }
 
@@ -64,7 +64,7 @@ export function formatStatus(s) {
 export function formatDecision(decision, r) {
   const a = r.status.all;
   if (decision === 'learn') return `В повторении. Учу ${a.learning}, выучено ${a.learned}, ждёт сегодня ${a.due_today}.`;
-  if (decision === 'known') return `Записал как «знал». Всего таких ${a.known}.`;
+  if (decision === 'known') return `Записал как знакомое: в повторение придёт через 3 месяца. Таких ${a.known}.`;
   return 'Обсуждаем. Скажи «ок», когда станет понятно.';
 }
 

@@ -76,7 +76,7 @@ async function learnDecide(decision) {
   if (!learnCard) return;
   const r = await post(`/api/cards/${learnCard.id}/${decision}`);
   $('#learn-card').hidden = true;
-  $('#learn-message').textContent = decision === 'learn' ? `В повторении. Учу: ${r.status.all.learning}, выучено: ${r.status.all.learned}` : 'Отмечено как известное';
+  $('#learn-message').textContent = decision === 'learn' ? `В повторении. Учу: ${r.status.all.learning}, выучено: ${r.status.all.learned}` : 'Записано как знакомое, повтор через 3 месяца';
   learnCard = null;
 }
 $('#learn-learn').addEventListener('click', () => learnDecide('learn'));
@@ -122,7 +122,7 @@ async function loadList() {
   const p = new URLSearchParams({ status: $('#list-status').value, kind: $('#list-kind').value, q: $('#list-q').value });
   const { items } = await api(`/api/cards?${p}`);
   $('#list-table').innerHTML = '<tr><th>слово</th><th>поток</th><th>статус</th><th>срок</th></tr>' + items.map((c) =>
-    `<tr class="clickable" data-id="${c.id}"><td>${c.headword}</td><td>${KIND[c.kind]}</td><td>${STATUS[c.status]}</td><td>${c.fsrs_due ? c.fsrs_due.slice(0, 10) : ''}</td></tr>`).join('');
+    `<tr class="clickable" data-id="${c.id}"><td>${c.headword}</td><td>${KIND[c.kind]}</td><td>${c.known_at ? 'знал' : STATUS[c.status]}</td><td>${c.fsrs_due ? c.fsrs_due.slice(0, 10) : ''}</td></tr>`).join('');
 }
 $('#list-go').addEventListener('click', loadList);
 $('#list-table').addEventListener('click', (e) => { const tr = e.target.closest('tr[data-id]'); if (tr) openCard(Number(tr.dataset.id)); });

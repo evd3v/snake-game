@@ -90,15 +90,12 @@ export function buildApp({ db, env, logger = false }) {
   app.post('/api/cards/known-bulk', async (req) => {
     const ids = Array.isArray(req.body?.ids) ? req.body.ids.map(Number).filter(Number.isInteger) : [];
     if (!ids.length) throw httpError(400, 'ids пуст');
-    const stmt = db.prepare(`UPDATE cards SET status = 'known', decided_at = ? WHERE id = ? AND status IN ('queued', 'shown', 'discussing')`);
     let updated = 0;
-    db.exec('BEGIN');
-    try {
-      for (const id of ids) updated += stmt.run(nowIso(), id).changes;
-      db.exec('COMMIT');
-    } catch (e) {
-      db.exec('ROLLBACK');
-      throw e;
+    for (const id of ids) {
+      const card = getCard(db, id);
+      if (!card || !['queued', 'shown', 'discussing'].includes(card.status)) continue;
+      decide(db, id, 'known');
+      updated++;
     }
     return { updated };
   });

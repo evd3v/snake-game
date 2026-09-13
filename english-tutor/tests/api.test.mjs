@@ -65,8 +65,10 @@ test('known-bulk, cards list и details, notes, suspend', async () => {
   const ids = list.map((c) => c.id);
   const kb = await a.inject({ method: 'POST', url: '/api/cards/known-bulk', headers: auth, payload: { ids } });
   assert.equal(kb.json().updated, 2);
-  const after = (await a.inject({ method: 'GET', url: '/api/cards?status=known', headers: auth })).json().items;
-  assert.equal(after.length, 2);
+  const st = (await a.inject({ method: 'GET', url: '/api/status', headers: auth })).json();
+  assert.equal(st.all.known, 2);
+  const after = (await a.inject({ method: 'GET', url: '/api/cards?status=learning', headers: auth })).json().items;
+  assert.equal(after.filter((c) => c.known_at).length, 2);
   const note = await a.inject({ method: 'POST', url: `/api/cards/${ids[0]}/notes`, headers: auth, payload: { text: 'in- внутрь' } });
   assert.equal(note.statusCode, 200);
   const det = (await a.inject({ method: 'GET', url: `/api/cards/${ids[0]}`, headers: auth })).json();

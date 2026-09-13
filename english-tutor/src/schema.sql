@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS cards (
   fsrs_learning_steps INTEGER NOT NULL DEFAULT 0,
   fsrs_state INTEGER NOT NULL DEFAULT 0,
   fsrs_last_review TEXT,
+  known_at TEXT,
   UNIQUE (kind, headword, pos)
 );
 CREATE INDEX IF NOT EXISTS cards_status_order ON cards(status, order_index);

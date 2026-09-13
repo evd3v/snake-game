@@ -55,7 +55,11 @@ export async function run(argv, env, io = { call }) {
       return formatNext({ card: r.card, explanation_md: r.card.explanation_md, queued_left });
     }
     case 'learn': case 'known': case 'discuss': {
-      const r = await c('POST', `/api/cards/${rest[0] || 'pending'}/${cmd}`);
+      let id = rest[0] || 'pending';
+      if (rest.length && !/^\d+$/.test(rest[0]) && rest[0] !== 'pending') {
+        id = (await c('POST', '/api/cards/lookup', { text: rest.join(' ') })).card.id;
+      }
+      const r = await c('POST', `/api/cards/${id}/${cmd}`);
       return formatDecision(cmd, r);
     }
     case 'note': {

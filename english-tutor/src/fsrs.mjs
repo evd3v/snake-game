@@ -48,3 +48,20 @@ export function applyRating(row, rating, now = new Date()) {
 export function isMature(row) {
   return row.fsrs_state === State.Review && row.fsrs_scheduled_days >= MATURE_DAYS;
 }
+
+// «Знаю»: карточка сразу в финальной стадии, повтор через KNOWN_DAYS дней.
+export const KNOWN_DAYS = 90;
+export function matureFsrsFields(now = new Date(), days = KNOWN_DAYS) {
+  return {
+    fsrs_due: new Date(now.getTime() + days * 86400e3).toISOString(),
+    fsrs_stability: days,
+    fsrs_difficulty: 4,
+    fsrs_elapsed_days: 0,
+    fsrs_scheduled_days: days,
+    fsrs_reps: 1,
+    fsrs_lapses: 0,
+    fsrs_learning_steps: 0,
+    fsrs_state: State.Review,
+    fsrs_last_review: now.toISOString()
+  };
+}

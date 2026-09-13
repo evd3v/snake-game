@@ -1,5 +1,5 @@
 import { nowIso, getSetting, setSetting, httpError } from './db.mjs';
-import { emptyFsrsFields, isMature } from './fsrs.mjs';
+import { emptyFsrsFields, matureFsrsFields, isMature } from './fsrs.mjs';
 import { normalizeHeadword } from './normalize.mjs';
 
 export const KINDS = ['word', 'pv', 'expr'];
@@ -42,10 +42,15 @@ export function resolveId(db, id) {
 }
 
 const ALLOWED = {
-  learn: ['shown', 'discussing', 'queued', 'known', 'suspended'],
-  known: ['shown', 'discussing', 'queued', 'learning', 'suspended'],
+  learn: ['shown', 'discussing', 'queued', 'known', 'suspended', 'learning'],
+  known: ['shown', 'discussing', 'queued', 'learning', 'suspended', 'known'],
   discuss: ['shown', 'discussing']
 };
+
+const FSRS_UPDATE = `fsrs_due = @fsrs_due, fsrs_stability = @fsrs_stability, fsrs_difficulty = @fsrs_difficulty,
+      fsrs_elapsed_days = @fsrs_elapsed_days, fsrs_scheduled_days = @fsrs_scheduled_days, fsrs_reps = @fsrs_reps,
+      fsrs_lapses = @fsrs_lapses, fsrs_learning_steps = @fsrs_learning_steps, fsrs_state = @fsrs_state,
+      fsrs_last_review = @fsrs_last_review`;
 
 export function decide(db, id, decision, now = nowIso()) {
   const card = getCard(db, id);
@@ -53,14 +58,14 @@ export function decide(db, id, decision, now = nowIso()) {
   if (!ALLOWED[decision]) throw httpError(400, 'неизвестное решение');
   if (!ALLOWED[decision].includes(card.status)) throw httpError(409, `нельзя ${decision} из статуса ${card.status}`);
   if (decision === 'learn') {
+    // «ок» по карточке, которая уже учится, прогресс не сбрасывает; «знал» превращается в обычную новую
+    if (card.status === 'learning' && !card.known_at) return card;
     const f = emptyFsrsFields(new Date(now));
-    db.prepare(`UPDATE cards SET status = 'learning', decided_at = @now,
-      fsrs_due = @fsrs_due, fsrs_stability = @fsrs_stability, fsrs_difficulty = @fsrs_difficulty,
-      fsrs_elapsed_days = @fsrs_elapsed_days, fsrs_scheduled_days = @fsrs_scheduled_days, fsrs_reps = @fsrs_reps,
-      fsrs_lapses = @fsrs_lapses, fsrs_learning_steps = @fsrs_learning_steps, fsrs_state = @fsrs_state,
-      fsrs_last_review = @fsrs_last_review WHERE id = @id`).run({ ...f, now, id: card.id });
+    db.prepare(`UPDATE cards SET status = 'learning', decided_at = @now, known_at = NULL, ${FSRS_UPDATE} WHERE id = @id`).run({ ...f, now, id: card.id });
   } else if (decision === 'known') {
-    db.prepare(`UPDATE cards SET status = 'known', decided_at = ? WHERE id = ?`).run(now, card.id);
+    // «знаю»: в повторение сразу зрелой, чтобы слово всё же всплыло через KNOWN_DAYS дней
+    const f = matureFsrsFields(new Date(now));
+    db.prepare(`UPDATE cards SET status = 'learning', decided_at = @now, known_at = @now, ${FSRS_UPDATE} WHERE id = @id`).run({ ...f, now, id: card.id });
   } else {
     db.prepare(`UPDATE cards SET status = 'discussing' WHERE id = ?`).run(card.id);
   }
@@ -107,7 +112,7 @@ export function listCards(db, { status = null, kind = null, q = null, limit = 20
   if (status) { where.push('status = @status'); params.status = status; }
   if (kind) { where.push('kind = @kind'); params.kind = kind; }
   if (q) { where.push('headword LIKE @q'); params.q = `%${String(q).toLowerCase()}%`; }
-  const sql = `SELECT id, kind, headword, pos, level, status, group_label, fsrs_due, fsrs_scheduled_days, fsrs_state, order_index
+  const sql = `SELECT id, kind, headword, pos, level, status, group_label, fsrs_due, fsrs_scheduled_days, fsrs_state, known_at, order_index
     FROM cards ${where.length ? 'WHERE ' + where.join(' AND ') : ''} ORDER BY order_index LIMIT @limit OFFSET @offset`;
   return db.prepare(sql).all({ ...params, limit: Number(limit) || 200, offset: Number(offset) || 0 });
 }
@@ -130,7 +135,7 @@ export function streakDays(db, now = new Date()) {
 }
 
 export function status(db, now = new Date()) {
-  const rows = db.prepare('SELECT kind, status, fsrs_state, fsrs_scheduled_days, fsrs_due FROM cards').all();
+  const rows = db.prepare('SELECT kind, status, fsrs_state, fsrs_scheduled_days, fsrs_due, known_at FROM cards').all();
   const today = localDay(now);
   const mk = () => ({ total: 0, queued: 0, shown: 0, learning: 0, learned: 0, known: 0, suspended: 0, due_today: 0 });
   const by = { word: mk(), pv: mk(), expr: mk(), all: mk() };
@@ -142,7 +147,7 @@ export function status(db, now = new Date()) {
       else if (r.status === 'known') b.known++;
       else if (r.status === 'suspended') b.suspended++;
       else if (r.status === 'learning') {
-        if (isMature(r)) b.learned++; else b.learning++;
+        if (isMature(r)) { if (r.known_at) b.known++; else b.learned++; } else b.learning++;
         if (r.fsrs_due && localDay(r.fsrs_due) <= today) b.due_today++;
       }
     }

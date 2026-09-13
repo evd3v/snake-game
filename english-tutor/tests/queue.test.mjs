@@ -41,8 +41,17 @@ test('decide learn: FSRS new, pending очищается; known; discuss', () =>
   const c2 = nextCard(db);
   assert.equal(decide(db, c2.id, 'discuss').status, 'discussing');
   assert.equal(pendingCard(db).id, c2.id, 'discuss не снимает pending');
-  assert.equal(decide(db, c2.id, 'known').status, 'known');
+  const known = decide(db, c2.id, 'known', '2026-09-13T10:00:00.000Z');
+  assert.equal(known.status, 'learning');
+  assert.equal(known.known_at, '2026-09-13T10:00:00.000Z');
+  assert.equal(known.fsrs_state, 2);
+  assert.equal(known.fsrs_scheduled_days, 90);
+  assert.equal(known.fsrs_due, '2026-12-12T10:00:00.000Z');
   assert.throws(() => decide(db, c2.id, 'discuss'), /нельзя/);
+  const relearn = decide(db, c2.id, 'learn', '2026-09-14T10:00:00.000Z');
+  assert.equal(relearn.known_at, null, '«ок» по знакомому слову делает его обычной новой карточкой');
+  assert.equal(relearn.fsrs_state, 0);
+  assert.equal(decide(db, c2.id, 'learn', '2026-09-15T10:00:00.000Z').fsrs_due, '2026-09-14T10:00:00.000Z', 'повторный «ок» прогресс не трогает');
   assert.throws(() => decide(db, 999, 'learn'), /не найдена/);
 });
 
@@ -61,14 +70,16 @@ test('status считает по потокам и сумме, due_today, learne
   decide(db, c.id, 'learn', '2026-09-13T10:00:00.000Z');
   db.prepare(`UPDATE cards SET fsrs_state = 2, fsrs_scheduled_days = 30, fsrs_due = '2027-01-01T00:00:00.000Z' WHERE headword = 'respect'`).run();
   db.prepare(`UPDATE cards SET status = 'learning' WHERE headword = 'respect'`).run();
+  decide(db, nextCard(db, { kind: 'pv' }).id, 'known', '2026-09-13T10:00:00.000Z');
   const s = status(db, new Date('2026-09-13T12:00:00.000Z'));
   assert.equal(s.all.total, 4);
   assert.equal(s.all.learning, 1);
   assert.equal(s.all.learned, 1);
-  assert.equal(s.all.queued, 2);
+  assert.equal(s.all.known, 1);
+  assert.equal(s.all.queued, 1);
   assert.equal(s.all.due_today, 1);
   assert.equal(s.word.total, 2);
-  assert.equal(s.pv.queued, 1);
+  assert.equal(s.pv.known, 1);
   assert.equal(s.streak, 0);
   assert.equal(s.pending, null);
 });
@@ -121,8 +132,8 @@ test('lookupCard: существующее слово становится те�
   assert.deepEqual(r2.card.source, { origin: 'adhoc' });
   decide(db, r1.card.id, 'known');
   const r3 = lookupCard(db, 'respect');
-  assert.equal(r3.previous_status, 'known');
-  assert.equal(r3.card.status, 'known');
+  assert.equal(r3.previous_status, 'learning');
+  assert.ok(r3.card.known_at);
   assert.equal(guessKind('bleak'), 'word');
   assert.equal(guessKind('in terms of'), 'expr');
   assert.equal(guessKind('give up'), 'pv');
