@@ -30,7 +30,6 @@ CREATE TABLE IF NOT EXISTS cards (
   UNIQUE (kind, headword, pos)
 );
 CREATE INDEX IF NOT EXISTS cards_status_order ON cards(status, order_index);
-CREATE INDEX IF NOT EXISTS cards_stream ON cards(stream, status, order_index);
 CREATE INDEX IF NOT EXISTS cards_due ON cards(status, fsrs_due);
 
 CREATE TABLE IF NOT EXISTS tests (
