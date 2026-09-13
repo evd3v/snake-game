@@ -18,7 +18,10 @@ function loadEnv() {
 async function call(env, method, p, body) {
   const r = await fetch(`${env.API_URL.replace(/\/$/, '')}${p}`, {
     method,
-    headers: { authorization: `Bearer ${env.API_TOKEN}`, 'content-type': 'application/json' },
+    // content-type ставим только когда есть тело: Fastify отбивает пустое тело с json-заголовком
+    headers: body
+      ? { authorization: `Bearer ${env.API_TOKEN}`, 'content-type': 'application/json' }
+      : { authorization: `Bearer ${env.API_TOKEN}` },
     body: body ? JSON.stringify(body) : undefined
   });
   const json = await r.json().catch(() => ({}));

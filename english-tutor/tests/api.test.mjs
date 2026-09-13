@@ -150,3 +150,21 @@ test('next возвращает нерешённое слово, пока не �
   assert.ok(['go on', 'respect'].includes(after.card.headword), 'решённое слово больше не возвращается, идёт другое нерешённое');
   assert.equal(after.repeat, true);
 });
+
+test('пустое тело с json-заголовком принимается, битый json даёт 400', async () => {
+  const { a } = await app();
+  const n = (await a.inject({ method: 'GET', url: '/api/next', headers: auth })).json();
+  const learn = await a.inject({
+    method: 'POST', url: `/api/cards/${n.card.id}/learn`,
+    headers: { ...auth, 'content-type': 'application/json' }, payload: ''
+  });
+  assert.equal(learn.statusCode, 200, 'кнопка шлёт POST без тела');
+  assert.equal(learn.json().card.status, 'learning');
+  const broken = await a.inject({
+    method: 'POST', url: '/api/cards/lookup',
+    headers: { ...auth, 'content-type': 'application/json' }, payload: '{не json'
+  });
+  assert.equal(broken.statusCode, 400);
+  const ok = await a.inject({ method: 'POST', url: '/api/cards/lookup', headers: auth, payload: { text: 'surpass' } });
+  assert.equal(ok.statusCode, 200, 'обычный json по-прежнему разбирается');
+});

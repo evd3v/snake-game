@@ -16,6 +16,16 @@ const SESSION_DAYS = 30;
 
 export function buildApp({ db, env, logger = false }) {
   const app = Fastify({ logger });
+  // Пустое тело с заголовком application/json не ошибка: у решений по карточке
+  // (learn, known, suspend) полезной нагрузки нет, а Fastify по умолчанию отвечал 400.
+  app.addContentTypeParser('application/json', { parseAs: 'string' }, (req, body, done) => {
+    if (!body || !String(body).trim()) return done(null, {});
+    try {
+      done(null, JSON.parse(String(body)));
+    } catch {
+      done(httpError(400, 'тело запроса не JSON'));
+    }
+  });
   app.register(fastifyCookie);
   app.register(fastifyStatic, { root: path.join(here, '..', 'public'), prefix: '/' });
 
