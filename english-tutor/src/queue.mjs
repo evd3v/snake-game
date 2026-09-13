@@ -1,0 +1,150 @@
+import { nowIso, getSetting, setSetting, httpError } from './db.mjs';
+import { emptyFsrsFields, isMature } from './fsrs.mjs';
+
+export const KINDS = ['word', 'pv', 'expr'];
+
+export function hydrate(row) {
+  if (!row) return null;
+  const { source_json, ...rest } = row;
+  return { ...rest, source: JSON.parse(source_json) };
+}
+
+export function getCard(db, id) {
+  return hydrate(db.prepare('SELECT * FROM cards WHERE id = ?').get(Number(id)));
+}
+
+export function nextCard(db, { kind = null, now = nowIso() } = {}) {
+  if (kind && !KINDS.includes(kind)) throw httpError(400, 'kind должен быть word, pv или expr');
+  const row = kind
+    ? db.prepare(`SELECT id FROM cards WHERE status = 'queued' AND kind = ? ORDER BY order_index LIMIT 1`).get(kind)
+    : db.prepare(`SELECT id FROM cards WHERE status = 'queued' ORDER BY order_index LIMIT 1`).get();
+  if (!row) return null;
+  db.prepare(`UPDATE cards SET status = 'shown', shown_at = ? WHERE id = ?`).run(now, row.id);
+  setSetting(db, 'pending_card_id', String(row.id));
+  return getCard(db, row.id);
+}
+
+export function pendingCard(db) {
+  const id = getSetting(db, 'pending_card_id');
+  return id ? getCard(db, Number(id)) : null;
+}
+
+export function resolveId(db, id) {
+  if (id === undefined || id === null || id === '' || id === 'pending' || id === 'current') {
+    const p = pendingCard(db);
+    if (!p) throw httpError(404, 'нет текущего элемента: сначала /next');
+    return p.id;
+  }
+  const n = Number(id);
+  if (!Number.isInteger(n)) throw httpError(400, 'id должен быть числом');
+  return n;
+}
+
+const ALLOWED = {
+  learn: ['shown', 'discussing', 'queued', 'known', 'suspended'],
+  known: ['shown', 'discussing', 'queued', 'learning', 'suspended'],
+  discuss: ['shown', 'discussing']
+};
+
+export function decide(db, id, decision, now = nowIso()) {
+  const card = getCard(db, id);
+  if (!card) throw httpError(404, 'карточка не найдена');
+  if (!ALLOWED[decision]) throw httpError(400, 'неизвестное решение');
+  if (!ALLOWED[decision].includes(card.status)) throw httpError(409, `нельзя ${decision} из статуса ${card.status}`);
+  if (decision === 'learn') {
+    const f = emptyFsrsFields(new Date(now));
+    db.prepare(`UPDATE cards SET status = 'learning', decided_at = @now,
+      fsrs_due = @fsrs_due, fsrs_stability = @fsrs_stability, fsrs_difficulty = @fsrs_difficulty,
+      fsrs_elapsed_days = @fsrs_elapsed_days, fsrs_scheduled_days = @fsrs_scheduled_days, fsrs_reps = @fsrs_reps,
+      fsrs_lapses = @fsrs_lapses, fsrs_learning_steps = @fsrs_learning_steps, fsrs_state = @fsrs_state,
+      fsrs_last_review = @fsrs_last_review WHERE id = @id`).run({ ...f, now, id: card.id });
+  } else if (decision === 'known') {
+    db.prepare(`UPDATE cards SET status = 'known', decided_at = ? WHERE id = ?`).run(now, card.id);
+  } else {
+    db.prepare(`UPDATE cards SET status = 'discussing' WHERE id = ?`).run(card.id);
+  }
+  if (decision !== 'discuss' && getSetting(db, 'pending_card_id') === String(card.id)) setSetting(db, 'pending_card_id', '');
+  return getCard(db, card.id);
+}
+
+export function suspend(db, id) {
+  const card = getCard(db, id);
+  if (!card) throw httpError(404, 'карточка не найдена');
+  db.prepare(`UPDATE cards SET status = 'suspended' WHERE id = ?`).run(card.id);
+  return getCard(db, card.id);
+}
+
+export function setExplanation(db, id, md) {
+  const card = getCard(db, id);
+  if (!card) throw httpError(404, 'карточка не найдена');
+  const text = String(md || '').trim();
+  if (text.length < 20) throw httpError(422, 'разбор слишком короткий');
+  db.prepare('UPDATE cards SET explanation_md = ? WHERE id = ?').run(text, card.id);
+  return getCard(db, card.id);
+}
+
+export function addNote(db, id, text, now = nowIso()) {
+  const card = getCard(db, id);
+  if (!card) throw httpError(404, 'карточка не найдена');
+  const t = String(text || '').trim();
+  if (!t) throw httpError(422, 'пустая заметка');
+  const r = db.prepare('INSERT INTO notes(card_id, ts, text) VALUES (?, ?, ?)').run(card.id, now, t);
+  return db.prepare('SELECT * FROM notes WHERE id = ?').get(Number(r.lastInsertRowid));
+}
+
+export function cardDetails(db, id) {
+  const card = getCard(db, id);
+  if (!card) throw httpError(404, 'карточка не найдена');
+  const notes = db.prepare('SELECT * FROM notes WHERE card_id = ? ORDER BY id').all(card.id);
+  const history = db.prepare('SELECT ts, rating, test_type, sentence, answer, scheduled_days FROM review_log WHERE card_id = ? ORDER BY id').all(card.id);
+  return { card, notes, history };
+}
+
+export function listCards(db, { status = null, kind = null, q = null, limit = 200, offset = 0 } = {}) {
+  const where = [];
+  const params = {};
+  if (status) { where.push('status = @status'); params.status = status; }
+  if (kind) { where.push('kind = @kind'); params.kind = kind; }
+  if (q) { where.push('headword LIKE @q'); params.q = `%${String(q).toLowerCase()}%`; }
+  const sql = `SELECT id, kind, headword, pos, level, status, group_label, fsrs_due, fsrs_scheduled_days, fsrs_state, order_index
+    FROM cards ${where.length ? 'WHERE ' + where.join(' AND ') : ''} ORDER BY order_index LIMIT @limit OFFSET @offset`;
+  return db.prepare(sql).all({ ...params, limit: Number(limit) || 200, offset: Number(offset) || 0 });
+}
+
+export function localDay(date) {
+  return new Date(date).toLocaleDateString('en-CA', { timeZone: process.env.TZ || 'Europe/Moscow' });
+}
+
+export function streakDays(db, now = new Date()) {
+  const days = new Set(db.prepare('SELECT ts FROM review_log').all().map((r) => localDay(r.ts)));
+  if (!days.size) return 0;
+  let cursor = new Date(now);
+  if (!days.has(localDay(cursor))) cursor = new Date(cursor.getTime() - 86400e3);
+  let streak = 0;
+  while (days.has(localDay(cursor))) {
+    streak++;
+    cursor = new Date(cursor.getTime() - 86400e3);
+  }
+  return streak;
+}
+
+export function status(db, now = new Date()) {
+  const rows = db.prepare('SELECT kind, status, fsrs_state, fsrs_scheduled_days, fsrs_due FROM cards').all();
+  const today = localDay(now);
+  const mk = () => ({ total: 0, queued: 0, shown: 0, learning: 0, learned: 0, known: 0, suspended: 0, due_today: 0 });
+  const by = { word: mk(), pv: mk(), expr: mk(), all: mk() };
+  for (const r of rows) {
+    for (const b of [by[r.kind], by.all]) {
+      b.total++;
+      if (r.status === 'queued') b.queued++;
+      else if (r.status === 'shown' || r.status === 'discussing') b.shown++;
+      else if (r.status === 'known') b.known++;
+      else if (r.status === 'suspended') b.suspended++;
+      else if (r.status === 'learning') {
+        if (isMature(r)) b.learned++; else b.learning++;
+        if (r.fsrs_due && localDay(r.fsrs_due) <= today) b.due_today++;
+      }
+    }
+  }
+  return { ...by, streak: streakDays(db, now), pending: pendingCard(db) };
+}
