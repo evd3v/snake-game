@@ -96,10 +96,20 @@ function exprStream(expr) {
 
 // Бытовой слой идёт отдельным потоком в конце: он не мешает основной очереди,
 // проверяется пачками и сортируется по частоте живой речи (сначала самое ходовое).
+// Слова Oxford уровней A1-A2 (the, you, carrot, towel) ученику уровня B1-B2 проверять
+// незачем: они сеются сразу как знакомые и в аудит не попадают. Всё остальное
+// (B1, тематические) идёт в аудит пачками.
+export const PREKNOWN_LEVELS = ['A1', 'A2'];
+export const PREKNOWN_RANK = 2000;
+export const isPreknown = (b) =>
+  (b.origin === 'oxford' && PREKNOWN_LEVELS.includes(String(b.level || '').toUpperCase())) ||
+  (Number(b.freq_rank) > 0 && Number(b.freq_rank) <= PREKNOWN_RANK);
+
 export function basicStream(basic) {
   return [...basic]
     .sort((a, b) => (a.freq_rank || 99999) - (b.freq_rank || 99999) || a.headword.localeCompare(b.headword))
     .map((b) => ({
+      preknown: isPreknown(b),
       kind: 'word', headword: b.headword, pos: b.pos || '', level: b.level || '',
       group_key: b.topic ? `тема ${b.topic}` : `уровень ${b.level || '?'}`,
       group_label: b.topic ? `тема: ${b.topic}` : `Oxford ${b.level || ''}`.trim(),

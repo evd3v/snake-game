@@ -1,29 +1,32 @@
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { openDb } from '../src/db.mjs';
+import { openDb, nowIso } from '../src/db.mjs';
 
 export function seed(db, queue) {
-  const insert = db.prepare(`INSERT INTO cards (kind, headword, pos, level, source_json, group_key, group_label, order_index, stream, topic, freq_rank)
-    VALUES (@kind, @headword, @pos, @level, @source_json, @group_key, @group_label, @order_index, @stream, @topic, @freq_rank)
+  const insert = db.prepare(`INSERT INTO cards (kind, headword, pos, level, source_json, group_key, group_label, order_index, stream, topic, freq_rank, status, decided_at)
+    VALUES (@kind, @headword, @pos, @level, @source_json, @group_key, @group_label, @order_index, @stream, @topic, @freq_rank, @status, @decided_at)
     ON CONFLICT(kind, headword, pos) DO NOTHING`);
+  const seededAt = nowIso();
   let inserted = 0;
   let skipped = 0;
+  let preknown = 0;
   db.exec('BEGIN');
   try {
     queue.forEach((item, order_index) => {
       const r = insert.run({
         kind: item.kind, headword: item.headword, pos: item.pos || '', level: item.level || '',
         source_json: JSON.stringify(item.source), group_key: item.group_key, group_label: item.group_label, order_index,
-        stream: item.stream || 'main', topic: item.topic ?? null, freq_rank: item.freq_rank ?? null
+        stream: item.stream || 'main', topic: item.topic ?? null, freq_rank: item.freq_rank ?? null,
+        status: item.preknown ? 'known' : 'queued', decided_at: item.preknown ? seededAt : null
       });
-      if (r.changes) inserted++; else skipped++;
+      if (r.changes) { inserted++; if (item.preknown) preknown++; } else skipped++;
     });
     db.exec('COMMIT');
   } catch (e) {
     db.exec('ROLLBACK');
     throw e;
   }
-  return { inserted, skipped };
+  return { inserted, skipped, preknown };
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

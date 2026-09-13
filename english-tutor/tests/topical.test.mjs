@@ -50,3 +50,19 @@ test('buildBasic: Oxford A1-B1 плюс тематические, без дуб�
   assert.equal(basic[1].ru, 'чайник');
   assert.equal(basic[1].topic, 'кухня и посуда');
 });
+
+test('isPreknown: Oxford A1-A2 да, B1 и тематические нет', async () => {
+  const { isPreknown, basicStream } = await import('../scripts/build-queue.mjs');
+  assert.equal(isPreknown({ origin: 'oxford', level: 'A1' }), true);
+  assert.equal(isPreknown({ origin: 'oxford', level: 'A2' }), true);
+  assert.equal(isPreknown({ origin: 'oxford', level: 'B1', freq_rank: 9000 }), false);
+  assert.equal(isPreknown({ origin: 'oxford', level: 'B1', freq_rank: 800 }), true, 'верх частотного списка ученик знает и так');
+  assert.equal(isPreknown({ origin: 'topical', level: 'A2-B1', freq_rank: 10166 }), false);
+  const items = basicStream([
+    { headword: 'mushroom', origin: 'topical', level: 'A2-B1', freq_rank: 10166, topic: 'еда', ru: 'гриб' },
+    { headword: 'you', origin: 'oxford', level: 'A1', freq_rank: 1 }
+  ]);
+  assert.deepEqual(items.map((i) => [i.headword, i.preknown, i.stream]), [['you', true, 'basic'], ['mushroom', false, 'basic']]);
+  assert.equal(items[1].group_label, 'тема: еда');
+  assert.equal(items[1].source.ru, 'гриб');
+});

@@ -1,0 +1,3714 @@
+{
+ "кухня и посуда": [
+  {
+   "headword": "stove",
+   "pos": "noun",
+   "ru": "плита",
+   "freq_rank": 6601,
+   "topic": "кухня и посуда"
+  },
+  {
+   "headword": "kettle",
+   "pos": "noun",
+   "ru": "чайник",
+   "freq_rank": 8337,
+   "topic": "кухня и посуда"
+  },
+  {
+   "headword": "lid",
+   "pos": "noun",
+   "ru": "крышка",
+   "freq_rank": 7168,
+   "topic": "кухня и посуда"
+  },
+  {
+   "headword": "mug",
+   "pos": "noun",
+   "ru": "кружка",
+   "freq_rank": 6296,
+   "topic": "кухня и посуда"
+  },
+  {
+   "headword": "microwave",
+   "pos": "noun",
+   "ru": "микроволновка",
+   "freq_rank": 8440,
+   "topic": "кухня и посуда"
+  },
+  {
+   "headword": "freezer",
+   "pos": "noun",
+   "ru": "морозилка",
+   "freq_rank": 7317,
+   "topic": "кухня и посуда"
+  },
+  {
+   "headword": "drawer",
+   "pos": "noun",
+   "ru": "ящик",
+   "freq_rank": 4496,
+   "topic": "кухня и посуда"
+  },
+  {
+   "headword": "sponge",
+   "pos": "noun",
+   "ru": "губка",
+   "freq_rank": 8956,
+   "topic": "кухня и посуда"
+  },
+  {
+   "headword": "jar",
+   "pos": "noun",
+   "ru": "банка",
+   "freq_rank": 5737,
+   "topic": "кухня и посуда"
+  },
+  {
+   "headword": "napkin",
+   "pos": "noun",
+   "ru": "салфетка",
+   "freq_rank": 10793,
+   "topic": "кухня и посуда"
+  },
+  {
+   "headword": "tray",
+   "pos": "noun",
+   "ru": "поднос",
+   "freq_rank": 6882,
+   "topic": "кухня и посуда"
+  },
+  {
+   "headword": "peel",
+   "pos": "verb",
+   "ru": "чистить",
+   "freq_rank": 7249,
+   "topic": "кухня и посуда"
+  },
+  {
+   "headword": "rinse",
+   "pos": "verb",
+   "ru": "ополаскивать",
+   "freq_rank": 13951,
+   "topic": "кухня и посуда"
+  },
+  {
+   "headword": "apron",
+   "pos": "noun",
+   "ru": "фартук",
+   "freq_rank": 10063,
+   "topic": "кухня и посуда"
+  }
+ ],
+ "еда и продукты": [
+  {
+   "headword": "garlic",
+   "pos": "noun",
+   "ru": "чеснок",
+   "freq_rank": 7206,
+   "topic": "еда и продукты"
+  },
+  {
+   "headword": "mushroom",
+   "pos": "noun",
+   "ru": "гриб",
+   "freq_rank": 10166,
+   "topic": "еда и продукты"
+  },
+  {
+   "headword": "snack",
+   "pos": "noun",
+   "ru": "перекус",
+   "freq_rank": 5432,
+   "topic": "еда и продукты"
+  },
+  {
+   "headword": "salty",
+   "pos": "adjective",
+   "ru": "солёный",
+   "freq_rank": 9459,
+   "topic": "еда и продукты"
+  },
+  {
+   "headword": "sour",
+   "pos": "adjective",
+   "ru": "кислый",
+   "freq_rank": 6560,
+   "topic": "еда и продукты"
+  },
+  {
+   "headword": "tasty",
+   "pos": "adjective",
+   "ru": "вкусный",
+   "freq_rank": 5523,
+   "topic": "еда и продукты"
+  },
+  {
+   "headword": "ripe",
+   "pos": "adjective",
+   "ru": "спелый",
+   "freq_rank": 8766,
+   "topic": "еда и продукты"
+  },
+  {
+   "headword": "stale",
+   "pos": "adjective",
+   "ru": "чёрствый",
+   "freq_rank": 12719,
+   "topic": "еда и продукты"
+  },
+  {
+   "headword": "crispy",
+   "pos": "adjective",
+   "ru": "хрустящий",
+   "freq_rank": 13659,
+   "topic": "еда и продукты"
+  },
+  {
+   "headword": "sausage",
+   "pos": "noun",
+   "ru": "сосиска",
+   "freq_rank": 5163,
+   "topic": "еда и продукты"
+  },
+  {
+   "headword": "cucumber",
+   "pos": "noun",
+   "ru": "огурец",
+   "freq_rank": 12880,
+   "topic": "еда и продукты"
+  },
+  {
+   "headword": "dough",
+   "pos": "noun",
+   "ru": "тесто",
+   "freq_rank": 4533,
+   "topic": "еда и продукты"
+  },
+  {
+   "headword": "loaf",
+   "pos": "noun",
+   "ru": "буханка",
+   "freq_rank": 10178,
+   "topic": "еда и продукты"
+  },
+  {
+   "headword": "crumb",
+   "pos": "noun",
+   "ru": "крошка",
+   "freq_rank": 18947,
+   "topic": "еда и продукты"
+  },
+  {
+   "headword": "grate",
+   "pos": "verb",
+   "ru": "тереть",
+   "freq_rank": 21050,
+   "topic": "еда и продукты"
+  },
+  {
+   "headword": "chew",
+   "pos": "verb",
+   "ru": "жевать",
+   "freq_rank": 5833,
+   "topic": "еда и продукты"
+  }
+ ],
+ "овощи, фрукты, грибы и ягоды": [
+  {
+   "headword": "berry",
+   "pos": "noun",
+   "ru": "ягода",
+   "freq_rank": 9228,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "grape",
+   "pos": "noun",
+   "ru": "виноградина",
+   "freq_rank": 10765,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "pear",
+   "pos": "noun",
+   "ru": "груша",
+   "freq_rank": 13343,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "cherry",
+   "pos": "noun",
+   "ru": "вишня",
+   "freq_rank": 4436,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "strawberry",
+   "pos": "noun",
+   "ru": "клубника",
+   "freq_rank": 7907,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "cabbage",
+   "pos": "noun",
+   "ru": "капуста",
+   "freq_rank": 8742,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "corn",
+   "pos": "noun",
+   "ru": "кукуруза",
+   "freq_rank": 3823,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "pea",
+   "pos": "noun",
+   "ru": "горошина",
+   "freq_rank": 10941,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "watermelon",
+   "pos": "noun",
+   "ru": "арбуз",
+   "freq_rank": 12382,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "peach",
+   "pos": "noun",
+   "ru": "персик",
+   "freq_rank": 7269,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "plum",
+   "pos": "noun",
+   "ru": "слива",
+   "freq_rank": 10182,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "pineapple",
+   "pos": "noun",
+   "ru": "ананас",
+   "freq_rank": 10422,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "lettuce",
+   "pos": "noun",
+   "ru": "салат",
+   "freq_rank": 11029,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "beet",
+   "pos": "noun",
+   "ru": "свёкла",
+   "freq_rank": 23615,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "pumpkin",
+   "pos": "noun",
+   "ru": "тыква",
+   "freq_rank": 6640,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "raspberry",
+   "pos": "noun",
+   "ru": "малина",
+   "freq_rank": 11364,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "blueberry",
+   "pos": "noun",
+   "ru": "черника",
+   "freq_rank": 14978,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "zucchini",
+   "pos": "noun",
+   "ru": "кабачок",
+   "freq_rank": 22794,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "eggplant",
+   "pos": "noun",
+   "ru": "баклажан",
+   "freq_rank": 18888,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "dill",
+   "pos": "noun",
+   "ru": "укроп",
+   "freq_rank": 22188,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "parsley",
+   "pos": "noun",
+   "ru": "петрушка",
+   "freq_rank": 20942,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "juicy",
+   "pos": "adjective",
+   "ru": "сочный",
+   "freq_rank": 8415,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  },
+  {
+   "headword": "rotten",
+   "pos": "adjective",
+   "ru": "гнилой",
+   "freq_rank": 3366,
+   "topic": "овощи, фрукты, грибы и ягоды"
+  }
+ ],
+ "приготовление еды": [
+  {
+   "headword": "sprinkle",
+   "pos": "verb",
+   "ru": "посыпать",
+   "freq_rank": 17020,
+   "topic": "приготовление еды"
+  },
+  {
+   "headword": "roast",
+   "pos": "verb",
+   "ru": "запекать",
+   "freq_rank": 5355,
+   "topic": "приготовление еды"
+  },
+  {
+   "headword": "greasy",
+   "pos": "adjective",
+   "ru": "жирный",
+   "freq_rank": 10510,
+   "topic": "приготовление еды"
+  },
+  {
+   "headword": "bland",
+   "pos": "adjective",
+   "ru": "пресный",
+   "freq_rank": 16355,
+   "topic": "приготовление еды"
+  }
+ ],
+ "дом и мебель": [
+  {
+   "headword": "couch",
+   "pos": "noun",
+   "ru": "диван",
+   "freq_rank": 2823,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "pillow",
+   "pos": "noun",
+   "ru": "подушка",
+   "freq_rank": 4501,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "closet",
+   "pos": "noun",
+   "ru": "шкаф",
+   "freq_rank": 2833,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "messy",
+   "pos": "adjective",
+   "ru": "неубранный",
+   "freq_rank": 5849,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "cozy",
+   "pos": "adjective",
+   "ru": "уютный",
+   "freq_rank": 7942,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "armchair",
+   "pos": "noun",
+   "ru": "кресло",
+   "freq_rank": 21052,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "bulb",
+   "pos": "noun",
+   "ru": "лампочка",
+   "freq_rank": 9612,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "socket",
+   "pos": "noun",
+   "ru": "розетка",
+   "freq_rank": 16714,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "dusty",
+   "pos": "adjective",
+   "ru": "пыльный",
+   "freq_rank": 7867,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "mattress",
+   "pos": "noun",
+   "ru": "матрас",
+   "freq_rank": 7050,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "hanger",
+   "pos": "noun",
+   "ru": "вешалка",
+   "freq_rank": 20020,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "rug",
+   "pos": "noun",
+   "ru": "коврик",
+   "freq_rank": 6739,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "stool",
+   "pos": "noun",
+   "ru": "табурет",
+   "freq_rank": 9376,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "bucket",
+   "pos": "noun",
+   "ru": "ведро",
+   "freq_rank": 4057,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "broom",
+   "pos": "noun",
+   "ru": "веник",
+   "freq_rank": 8488,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "tile",
+   "pos": "noun",
+   "ru": "плитка",
+   "freq_rank": 13256,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "scrub",
+   "pos": "verb",
+   "ru": "оттирать",
+   "freq_rank": 7847,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "cramped",
+   "pos": "adjective",
+   "ru": "тесный",
+   "freq_rank": 15703,
+   "topic": "дом и мебель"
+  },
+  {
+   "headword": "spacious",
+   "pos": "adjective",
+   "ru": "просторный",
+   "freq_rank": 19866,
+   "topic": "дом и мебель"
+  }
+ ],
+ "ванная и гигиена": [
+  {
+   "headword": "toothbrush",
+   "pos": "noun",
+   "ru": "зубная щётка",
+   "freq_rank": 8650,
+   "topic": "ванная и гигиена"
+  },
+  {
+   "headword": "toothpaste",
+   "pos": "noun",
+   "ru": "зубная паста",
+   "freq_rank": 11792,
+   "topic": "ванная и гигиена"
+  },
+  {
+   "headword": "shampoo",
+   "pos": "noun",
+   "ru": "шампунь",
+   "freq_rank": 9421,
+   "topic": "ванная и гигиена"
+  },
+  {
+   "headword": "comb",
+   "pos": "noun",
+   "ru": "расчёска",
+   "freq_rank": 7723,
+   "topic": "ванная и гигиена"
+  },
+  {
+   "headword": "flush",
+   "pos": "verb",
+   "ru": "смывать",
+   "freq_rank": 6090,
+   "topic": "ванная и гигиена"
+  },
+  {
+   "headword": "bathtub",
+   "pos": "noun",
+   "ru": "ванна",
+   "freq_rank": 8285,
+   "topic": "ванная и гигиена"
+  },
+  {
+   "headword": "razor",
+   "pos": "noun",
+   "ru": "бритва",
+   "freq_rank": 6672,
+   "topic": "ванная и гигиена"
+  },
+  {
+   "headword": "shave",
+   "pos": "verb",
+   "ru": "бриться",
+   "freq_rank": 4679,
+   "topic": "ванная и гигиена"
+  },
+  {
+   "headword": "sweat",
+   "pos": "verb",
+   "ru": "потеть",
+   "freq_rank": 2975,
+   "topic": "ванная и гигиена"
+  },
+  {
+   "headword": "deodorant",
+   "pos": "noun",
+   "ru": "дезодорант",
+   "freq_rank": 17473,
+   "topic": "ванная и гигиена"
+  },
+  {
+   "headword": "slipper",
+   "pos": "noun",
+   "ru": "тапок",
+   "freq_rank": 16549,
+   "topic": "ванная и гигиена"
+  },
+  {
+   "headword": "bathrobe",
+   "pos": "noun",
+   "ru": "халат",
+   "freq_rank": 21191,
+   "topic": "ванная и гигиена"
+  },
+  {
+   "headword": "drip",
+   "pos": "verb",
+   "ru": "капать",
+   "freq_rank": 9617,
+   "topic": "ванная и гигиена"
+  },
+  {
+   "headword": "splash",
+   "pos": "verb",
+   "ru": "брызгать",
+   "freq_rank": 7886,
+   "topic": "ванная и гигиена"
+  },
+  {
+   "headword": "slippery",
+   "pos": "adjective",
+   "ru": "скользкий",
+   "freq_rank": 8323,
+   "topic": "ванная и гигиена"
+  },
+  {
+   "headword": "damp",
+   "pos": "adjective",
+   "ru": "влажный",
+   "freq_rank": 10048,
+   "topic": "ванная и гигиена"
+  },
+  {
+   "headword": "scissors",
+   "pos": "noun",
+   "ru": "ножницы",
+   "freq_rank": 6218,
+   "topic": "ванная и гигиена"
+  },
+  {
+   "headword": "floss",
+   "pos": "noun",
+   "ru": "зубная нить",
+   "freq_rank": 16240,
+   "topic": "ванная и гигиена"
+  }
+ ],
+ "уборка и бытовая техника": [
+  {
+   "headword": "mop",
+   "pos": "noun",
+   "ru": "швабра",
+   "freq_rank": 9342,
+   "topic": "уборка и бытовая техника"
+  },
+  {
+   "headword": "rag",
+   "pos": "noun",
+   "ru": "тряпка",
+   "freq_rank": 8258,
+   "topic": "уборка и бытовая техника"
+  },
+  {
+   "headword": "laundry",
+   "pos": "noun",
+   "ru": "стирка",
+   "freq_rank": 3401,
+   "topic": "уборка и бытовая техника"
+  },
+  {
+   "headword": "detergent",
+   "pos": "noun",
+   "ru": "порошок",
+   "freq_rank": 20529,
+   "topic": "уборка и бытовая техника"
+  },
+  {
+   "headword": "stain",
+   "pos": "noun",
+   "ru": "пятно",
+   "freq_rank": 6893,
+   "topic": "уборка и бытовая техника"
+  },
+  {
+   "headword": "trash",
+   "pos": "noun",
+   "ru": "мусор",
+   "freq_rank": 2586,
+   "topic": "уборка и бытовая техника"
+  },
+  {
+   "headword": "clog",
+   "pos": "verb",
+   "ru": "засорять",
+   "freq_rank": 24794,
+   "topic": "уборка и бытовая техника"
+  },
+  {
+   "headword": "dishwasher",
+   "pos": "noun",
+   "ru": "посудомойка",
+   "freq_rank": 13278,
+   "topic": "уборка и бытовая техника"
+  },
+  {
+   "headword": "toaster",
+   "pos": "noun",
+   "ru": "тостер",
+   "freq_rank": 12071,
+   "topic": "уборка и бытовая техника"
+  },
+  {
+   "headword": "blender",
+   "pos": "noun",
+   "ru": "блендер",
+   "freq_rank": 15275,
+   "topic": "уборка и бытовая техника"
+  },
+  {
+   "headword": "dryer",
+   "pos": "noun",
+   "ru": "сушилка",
+   "freq_rank": 10202,
+   "topic": "уборка и бытовая техника"
+  },
+  {
+   "headword": "heater",
+   "pos": "noun",
+   "ru": "обогреватель",
+   "freq_rank": 11708,
+   "topic": "уборка и бытовая техника"
+  },
+  {
+   "headword": "cord",
+   "pos": "noun",
+   "ru": "шнур",
+   "freq_rank": 6464,
+   "topic": "уборка и бытовая техника"
+  },
+  {
+   "headword": "stink",
+   "pos": "verb",
+   "ru": "вонять",
+   "freq_rank": 4556,
+   "topic": "уборка и бытовая техника"
+  },
+  {
+   "headword": "bleach",
+   "pos": "noun",
+   "ru": "отбеливатель",
+   "freq_rank": 12907,
+   "topic": "уборка и бытовая техника"
+  },
+  {
+   "headword": "polish",
+   "pos": "verb",
+   "ru": "натирать",
+   "freq_rank": 4077,
+   "topic": "уборка и бытовая техника"
+  }
+ ],
+ "ремонт и инструменты": [
+  {
+   "headword": "hammer",
+   "pos": "noun",
+   "ru": "молоток",
+   "freq_rank": 3508,
+   "topic": "ремонт и инструменты"
+  },
+  {
+   "headword": "screwdriver",
+   "pos": "noun",
+   "ru": "отвёртка",
+   "freq_rank": 11931,
+   "topic": "ремонт и инструменты"
+  },
+  {
+   "headword": "drill",
+   "pos": "noun",
+   "ru": "дрель",
+   "freq_rank": 3672,
+   "topic": "ремонт и инструменты"
+  },
+  {
+   "headword": "saw",
+   "pos": "noun",
+   "ru": "пила",
+   "freq_rank": 270,
+   "topic": "ремонт и инструменты"
+  },
+  {
+   "headword": "glue",
+   "pos": "noun",
+   "ru": "клей",
+   "freq_rank": 6171,
+   "topic": "ремонт и инструменты"
+  },
+  {
+   "headword": "bolt",
+   "pos": "noun",
+   "ru": "болт",
+   "freq_rank": 6610,
+   "topic": "ремонт и инструменты"
+  },
+  {
+   "headword": "knob",
+   "pos": "noun",
+   "ru": "круглая ручка",
+   "freq_rank": 11249,
+   "topic": "ремонт и инструменты"
+  },
+  {
+   "headword": "squeak",
+   "pos": "verb",
+   "ru": "скрипеть",
+   "freq_rank": 12872,
+   "topic": "ремонт и инструменты"
+  },
+  {
+   "headword": "stuck",
+   "pos": "adjective",
+   "ru": "застрявший",
+   "freq_rank": 1081,
+   "topic": "ремонт и инструменты"
+  },
+  {
+   "headword": "blunt",
+   "pos": "adjective",
+   "ru": "тупой",
+   "freq_rank": 6871,
+   "topic": "ремонт и инструменты"
+  },
+  {
+   "headword": "rusty",
+   "pos": "adjective",
+   "ru": "ржавый",
+   "freq_rank": 4826,
+   "topic": "ремонт и инструменты"
+  }
+ ],
+ "одежда и обувь": [
+  {
+   "headword": "shorts",
+   "pos": "noun",
+   "ru": "шорты",
+   "freq_rank": 6073,
+   "topic": "одежда и обувь"
+  },
+  {
+   "headword": "scarf",
+   "pos": "noun",
+   "ru": "шарф",
+   "freq_rank": 6367,
+   "topic": "одежда и обувь"
+  },
+  {
+   "headword": "zipper",
+   "pos": "noun",
+   "ru": "молния",
+   "freq_rank": 11047,
+   "topic": "одежда и обувь"
+  },
+  {
+   "headword": "hood",
+   "pos": "noun",
+   "ru": "капюшон",
+   "freq_rank": 3544,
+   "topic": "одежда и обувь"
+  },
+  {
+   "headword": "collar",
+   "pos": "noun",
+   "ru": "воротник",
+   "freq_rank": 4821,
+   "topic": "одежда и обувь"
+  },
+  {
+   "headword": "lace",
+   "pos": "noun",
+   "ru": "шнурок",
+   "freq_rank": 9655,
+   "topic": "одежда и обувь"
+  },
+  {
+   "headword": "pajamas",
+   "pos": "noun",
+   "ru": "пижама",
+   "freq_rank": 8818,
+   "topic": "одежда и обувь"
+  },
+  {
+   "headword": "hoodie",
+   "pos": "noun",
+   "ru": "толстовка",
+   "freq_rank": 17228,
+   "topic": "одежда и обувь"
+  },
+  {
+   "headword": "sew",
+   "pos": "verb",
+   "ru": "шить",
+   "freq_rank": 8251,
+   "topic": "одежда и обувь"
+  }
+ ],
+ "детали одежды и швейное": [
+  {
+   "headword": "sleeve",
+   "pos": "noun",
+   "ru": "рукав",
+   "freq_rank": 7374,
+   "topic": "детали одежды и швейное"
+  },
+  {
+   "headword": "wrinkled",
+   "pos": "adjective",
+   "ru": "мятый",
+   "freq_rank": 17269,
+   "topic": "детали одежды и швейное"
+  },
+  {
+   "headword": "seam",
+   "pos": "noun",
+   "ru": "шов",
+   "freq_rank": 23662,
+   "topic": "детали одежды и швейное"
+  },
+  {
+   "headword": "stitch",
+   "pos": "noun",
+   "ru": "стежок",
+   "freq_rank": 8362,
+   "topic": "детали одежды и швейное"
+  },
+  {
+   "headword": "hem",
+   "pos": "noun",
+   "ru": "подол",
+   "freq_rank": 19466,
+   "topic": "детали одежды и швейное"
+  },
+  {
+   "headword": "cuff",
+   "pos": "noun",
+   "ru": "манжета",
+   "freq_rank": 8868,
+   "topic": "детали одежды и швейное"
+  },
+  {
+   "headword": "strap",
+   "pos": "noun",
+   "ru": "лямка",
+   "freq_rank": 8579,
+   "topic": "детали одежды и швейное"
+  },
+  {
+   "headword": "waist",
+   "pos": "noun",
+   "ru": "талия",
+   "freq_rank": 7038,
+   "topic": "детали одежды и швейное"
+  },
+  {
+   "headword": "knit",
+   "pos": "verb",
+   "ru": "вязать",
+   "freq_rank": 14695,
+   "topic": "детали одежды и швейное"
+  },
+  {
+   "headword": "baggy",
+   "pos": "adjective",
+   "ru": "мешковатый",
+   "freq_rank": 24108,
+   "topic": "детали одежды и швейное"
+  },
+  {
+   "headword": "ripped",
+   "pos": "adjective",
+   "ru": "рваный",
+   "freq_rank": 3595,
+   "topic": "детали одежды и швейное"
+  },
+  {
+   "headword": "itchy",
+   "pos": "adjective",
+   "ru": "колючий",
+   "freq_rank": 10382,
+   "topic": "детали одежды и швейное"
+  },
+  {
+   "headword": "elastic",
+   "pos": "noun",
+   "ru": "резинка",
+   "freq_rank": 18995,
+   "topic": "детали одежды и швейное"
+  }
+ ],
+ "тело человека": [
+  {
+   "headword": "chin",
+   "pos": "noun",
+   "ru": "подбородок",
+   "freq_rank": 3984,
+   "topic": "тело человека"
+  },
+  {
+   "headword": "forehead",
+   "pos": "noun",
+   "ru": "лоб",
+   "freq_rank": 5699,
+   "topic": "тело человека"
+  },
+  {
+   "headword": "belly",
+   "pos": "noun",
+   "ru": "живот",
+   "freq_rank": 3406,
+   "topic": "тело человека"
+  },
+  {
+   "headword": "eyebrow",
+   "pos": "noun",
+   "ru": "бровь",
+   "freq_rank": 17277,
+   "topic": "тело человека"
+  },
+  {
+   "headword": "beard",
+   "pos": "noun",
+   "ru": "борода",
+   "freq_rank": 3849,
+   "topic": "тело человека"
+  },
+  {
+   "headword": "cough",
+   "pos": "verb",
+   "ru": "кашлять",
+   "freq_rank": 5629,
+   "topic": "тело человека"
+  },
+  {
+   "headword": "sneeze",
+   "pos": "verb",
+   "ru": "чихать",
+   "freq_rank": 12308,
+   "topic": "тело человека"
+  },
+  {
+   "headword": "yawn",
+   "pos": "verb",
+   "ru": "зевать",
+   "freq_rank": 19605,
+   "topic": "тело человека"
+  },
+  {
+   "headword": "blink",
+   "pos": "verb",
+   "ru": "моргать",
+   "freq_rank": 7486,
+   "topic": "тело человека"
+  },
+  {
+   "headword": "hug",
+   "pos": "verb",
+   "ru": "обнимать",
+   "freq_rank": 2567,
+   "topic": "тело человека"
+  },
+  {
+   "headword": "bruise",
+   "pos": "noun",
+   "ru": "синяк",
+   "freq_rank": 10705,
+   "topic": "тело человека"
+  },
+  {
+   "headword": "scar",
+   "pos": "noun",
+   "ru": "шрам",
+   "freq_rank": 4802,
+   "topic": "тело человека"
+  },
+  {
+   "headword": "sore",
+   "pos": "adjective",
+   "ru": "болит",
+   "freq_rank": 4440,
+   "topic": "тело человека"
+  },
+  {
+   "headword": "dizzy",
+   "pos": "adjective",
+   "ru": "кружится голова",
+   "freq_rank": 5383,
+   "topic": "тело человека"
+  },
+  {
+   "headword": "numb",
+   "pos": "adjective",
+   "ru": "онемевший",
+   "freq_rank": 8731,
+   "topic": "тело человека"
+  },
+  {
+   "headword": "bald",
+   "pos": "adjective",
+   "ru": "лысый",
+   "freq_rank": 5263,
+   "topic": "тело человека"
+  },
+  {
+   "headword": "limp",
+   "pos": "verb",
+   "ru": "хромать",
+   "freq_rank": 9707,
+   "topic": "тело человека"
+  }
+ ],
+ "лицо и голова": [
+  {
+   "headword": "jaw",
+   "pos": "noun",
+   "ru": "челюсть",
+   "freq_rank": 6740,
+   "topic": "лицо и голова"
+  },
+  {
+   "headword": "frown",
+   "pos": "verb",
+   "ru": "хмуриться",
+   "freq_rank": 14730,
+   "topic": "лицо и голова"
+  },
+  {
+   "headword": "wink",
+   "pos": "verb",
+   "ru": "подмигнуть",
+   "freq_rank": 9549,
+   "topic": "лицо и голова"
+  },
+  {
+   "headword": "blush",
+   "pos": "verb",
+   "ru": "краснеть",
+   "freq_rank": 11845,
+   "topic": "лицо и голова"
+  },
+  {
+   "headword": "snore",
+   "pos": "verb",
+   "ru": "храпеть",
+   "freq_rank": 15076,
+   "topic": "лицо и голова"
+  },
+  {
+   "headword": "haircut",
+   "pos": "noun",
+   "ru": "стрижка",
+   "freq_rank": 6132,
+   "topic": "лицо и голова"
+  },
+  {
+   "headword": "ponytail",
+   "pos": "noun",
+   "ru": "хвост",
+   "freq_rank": 19224,
+   "topic": "лицо и голова"
+  },
+  {
+   "headword": "braid",
+   "pos": "noun",
+   "ru": "коса",
+   "freq_rank": 19291,
+   "topic": "лицо и голова"
+  },
+  {
+   "headword": "mustache",
+   "pos": "noun",
+   "ru": "усы",
+   "freq_rank": 7240,
+   "topic": "лицо и голова"
+  },
+  {
+   "headword": "gum",
+   "pos": "noun",
+   "ru": "десна",
+   "freq_rank": 4741,
+   "topic": "лицо и голова"
+  },
+  {
+   "headword": "swollen",
+   "pos": "adjective",
+   "ru": "опухший",
+   "freq_rank": 9404,
+   "topic": "лицо и голова"
+  },
+  {
+   "headword": "stuffy",
+   "pos": "adjective",
+   "ru": "заложенный",
+   "freq_rank": 12689,
+   "topic": "лицо и голова"
+  },
+  {
+   "headword": "pimple",
+   "pos": "noun",
+   "ru": "прыщ",
+   "freq_rank": 21949,
+   "topic": "лицо и голова"
+  },
+  {
+   "headword": "mole",
+   "pos": "noun",
+   "ru": "родинка",
+   "freq_rank": 5338,
+   "topic": "лицо и голова"
+  }
+ ],
+ "болезни, симптомы и аптека": [
+  {
+   "headword": "pharmacy",
+   "pos": "noun",
+   "ru": "аптека",
+   "freq_rank": 8679,
+   "topic": "болезни, симптомы и аптека"
+  },
+  {
+   "headword": "ache",
+   "pos": "verb",
+   "ru": "ныть",
+   "freq_rank": 9830,
+   "topic": "болезни, симптомы и аптека"
+  },
+  {
+   "headword": "bandage",
+   "pos": "noun",
+   "ru": "бинт",
+   "freq_rank": 10338,
+   "topic": "болезни, симптомы и аптека"
+  },
+  {
+   "headword": "thermometer",
+   "pos": "noun",
+   "ru": "градусник",
+   "freq_rank": 16481,
+   "topic": "болезни, симптомы и аптека"
+  },
+  {
+   "headword": "spray",
+   "pos": "noun",
+   "ru": "спрей",
+   "freq_rank": 5147,
+   "topic": "болезни, симптомы и аптека"
+  },
+  {
+   "headword": "allergy",
+   "pos": "noun",
+   "ru": "аллергия",
+   "freq_rank": 12659,
+   "topic": "болезни, симптомы и аптека"
+  },
+  {
+   "headword": "rash",
+   "pos": "noun",
+   "ru": "сыпь",
+   "freq_rank": 6068,
+   "topic": "болезни, симптомы и аптека"
+  },
+  {
+   "headword": "vomit",
+   "pos": "verb",
+   "ru": "рвать",
+   "freq_rank": 7405,
+   "topic": "болезни, симптомы и аптека"
+  },
+  {
+   "headword": "runny",
+   "pos": "adjective",
+   "ru": "сопливый",
+   "freq_rank": 23274,
+   "topic": "болезни, симптомы и аптека"
+  },
+  {
+   "headword": "heartburn",
+   "pos": "noun",
+   "ru": "изжога",
+   "freq_rank": 22467,
+   "topic": "болезни, симптомы и аптека"
+  },
+  {
+   "headword": "sprain",
+   "pos": "verb",
+   "ru": "подвернуть",
+   "freq_rank": 22376,
+   "topic": "болезни, симптомы и аптека"
+  },
+  {
+   "headword": "blister",
+   "pos": "noun",
+   "ru": "мозоль",
+   "freq_rank": 24680,
+   "topic": "болезни, симптомы и аптека"
+  }
+ ],
+ "сон и утро": [
+  {
+   "headword": "awake",
+   "pos": "adjective",
+   "ru": "проснувшийся",
+   "freq_rank": 2182,
+   "topic": "сон и утро"
+  },
+  {
+   "headword": "nap",
+   "pos": "noun",
+   "ru": "дрёма",
+   "freq_rank": 4505,
+   "topic": "сон и утро"
+  },
+  {
+   "headword": "sleepy",
+   "pos": "adjective",
+   "ru": "сонный",
+   "freq_rank": 5419,
+   "topic": "сон и утро"
+  },
+  {
+   "headword": "bedtime",
+   "pos": "noun",
+   "ru": "отбой",
+   "freq_rank": 7668,
+   "topic": "сон и утро"
+  },
+  {
+   "headword": "exhausted",
+   "pos": "adjective",
+   "ru": "вымотанный",
+   "freq_rank": 3666,
+   "topic": "сон и утро"
+  },
+  {
+   "headword": "snooze",
+   "pos": "verb",
+   "ru": "додремать",
+   "freq_rank": 21395,
+   "topic": "сон и утро"
+  },
+  {
+   "headword": "toast",
+   "pos": "noun",
+   "ru": "тост",
+   "freq_rank": 2352,
+   "topic": "сон и утро"
+  },
+  {
+   "headword": "cereal",
+   "pos": "noun",
+   "ru": "хлопья",
+   "freq_rank": 8190,
+   "topic": "сон и утро"
+  },
+  {
+   "headword": "sunrise",
+   "pos": "noun",
+   "ru": "восход",
+   "freq_rank": 7265,
+   "topic": "сон и утро"
+  },
+  {
+   "headword": "blinds",
+   "pos": "noun",
+   "ru": "жалюзи",
+   "freq_rank": 13009,
+   "topic": "сон и утро"
+  },
+  {
+   "headword": "nightstand",
+   "pos": "noun",
+   "ru": "тумбочка",
+   "freq_rank": 24359,
+   "topic": "сон и утро"
+  },
+  {
+   "headword": "tuck",
+   "pos": "verb",
+   "ru": "укрывать",
+   "freq_rank": 6717,
+   "topic": "сон и утро"
+  },
+  {
+   "headword": "restless",
+   "pos": "adjective",
+   "ru": "беспокойный",
+   "freq_rank": 7162,
+   "topic": "сон и утро"
+  }
+ ],
+ "семья и родственники": [
+  {
+   "headword": "nephew",
+   "pos": "noun",
+   "ru": "племянник",
+   "freq_rank": 3215,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "niece",
+   "pos": "noun",
+   "ru": "племянница",
+   "freq_rank": 4270,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "grandchild",
+   "pos": "noun",
+   "ru": "внук",
+   "freq_rank": 12695,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "toddler",
+   "pos": "noun",
+   "ru": "малыш",
+   "freq_rank": 18652,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "grown-up",
+   "pos": "noun",
+   "ru": "взрослый",
+   "freq_rank": 8016,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "babysit",
+   "pos": "verb",
+   "ru": "сидеть с детьми",
+   "freq_rank": 11754,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "scold",
+   "pos": "verb",
+   "ru": "ругать",
+   "freq_rank": 10225,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "naughty",
+   "pos": "adjective",
+   "ru": "непослушный",
+   "freq_rank": 3809,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "stubborn",
+   "pos": "adjective",
+   "ru": "упрямый",
+   "freq_rank": 3573,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "tease",
+   "pos": "verb",
+   "ru": "дразнить",
+   "freq_rank": 6948,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "nag",
+   "pos": "verb",
+   "ru": "пилить",
+   "freq_rank": 11467,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "whine",
+   "pos": "verb",
+   "ru": "ныть",
+   "freq_rank": 13915,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "giggle",
+   "pos": "verb",
+   "ru": "хихикать",
+   "freq_rank": 12694,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "cuddle",
+   "pos": "verb",
+   "ru": "обниматься",
+   "freq_rank": 11793,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "nickname",
+   "pos": "noun",
+   "ru": "прозвище",
+   "freq_rank": 5966,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "chore",
+   "pos": "noun",
+   "ru": "домашнее дело",
+   "freq_rank": 20256,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "newborn",
+   "pos": "noun",
+   "ru": "новорождённый",
+   "freq_rank": 11934,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "diaper",
+   "pos": "noun",
+   "ru": "подгузник",
+   "freq_rank": 9496,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "stroller",
+   "pos": "noun",
+   "ru": "коляска",
+   "freq_rank": 20336,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "crib",
+   "pos": "noun",
+   "ru": "детская кроватка",
+   "freq_rank": 9109,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "stepmother",
+   "pos": "noun",
+   "ru": "мачеха",
+   "freq_rank": 11469,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "in-law",
+   "pos": "noun",
+   "ru": "родня супруга",
+   "freq_rank": 24315,
+   "topic": "семья и родственники"
+  },
+  {
+   "headword": "jealous",
+   "pos": "adjective",
+   "ru": "ревнивый",
+   "freq_rank": 1607,
+   "topic": "семья и родственники"
+  }
+ ],
+ "дети и уход": [
+  {
+   "headword": "playground",
+   "pos": "noun",
+   "ru": "площадка",
+   "freq_rank": 8250,
+   "topic": "дети и уход"
+  },
+  {
+   "headword": "doll",
+   "pos": "noun",
+   "ru": "кукла",
+   "freq_rank": 2700,
+   "topic": "дети и уход"
+  },
+  {
+   "headword": "bathe",
+   "pos": "verb",
+   "ru": "купать",
+   "freq_rank": 9474,
+   "topic": "дети и уход"
+  },
+  {
+   "headword": "nanny",
+   "pos": "noun",
+   "ru": "няня",
+   "freq_rank": 4475,
+   "topic": "дети и уход"
+  },
+  {
+   "headword": "kindergarten",
+   "pos": "noun",
+   "ru": "детсад",
+   "freq_rank": 9034,
+   "topic": "дети и уход"
+  },
+  {
+   "headword": "daycare",
+   "pos": "noun",
+   "ru": "ясли",
+   "freq_rank": 19263,
+   "topic": "дети и уход"
+  },
+  {
+   "headword": "potty",
+   "pos": "noun",
+   "ru": "горшок",
+   "freq_rank": 14983,
+   "topic": "дети и уход"
+  },
+  {
+   "headword": "rattle",
+   "pos": "noun",
+   "ru": "погремушка",
+   "freq_rank": 9789,
+   "topic": "дети и уход"
+  },
+  {
+   "headword": "lullaby",
+   "pos": "noun",
+   "ru": "колыбельная",
+   "freq_rank": 13177,
+   "topic": "дети и уход"
+  },
+  {
+   "headword": "tantrum",
+   "pos": "noun",
+   "ru": "истерика",
+   "freq_rank": 19525,
+   "topic": "дети и уход"
+  },
+  {
+   "headword": "cranky",
+   "pos": "adjective",
+   "ru": "капризный",
+   "freq_rank": 11774,
+   "topic": "дети и уход"
+  },
+  {
+   "headword": "clingy",
+   "pos": "adjective",
+   "ru": "липнущий",
+   "freq_rank": 23349,
+   "topic": "дети и уход"
+  },
+  {
+   "headword": "fuss",
+   "pos": "verb",
+   "ru": "капризничать",
+   "freq_rank": 4804,
+   "topic": "дети и уход"
+  },
+  {
+   "headword": "burp",
+   "pos": "verb",
+   "ru": "срыгивать",
+   "freq_rank": 17636,
+   "topic": "дети и уход"
+  },
+  {
+   "headword": "drool",
+   "pos": "verb",
+   "ru": "пускать слюни",
+   "freq_rank": 16041,
+   "topic": "дети и уход"
+  }
+ ],
+ "город и улица": [
+  {
+   "headword": "sidewalk",
+   "pos": "noun",
+   "ru": "тротуар",
+   "freq_rank": 9538,
+   "topic": "город и улица"
+  },
+  {
+   "headword": "neighborhood",
+   "pos": "noun",
+   "ru": "район",
+   "freq_rank": 2163,
+   "topic": "город и улица"
+  },
+  {
+   "headword": "stairs",
+   "pos": "noun",
+   "ru": "лестница",
+   "freq_rank": 2463,
+   "topic": "город и улица"
+  },
+  {
+   "headword": "elevator",
+   "pos": "noun",
+   "ru": "лифт",
+   "freq_rank": 2518,
+   "topic": "город и улица"
+  },
+  {
+   "headword": "subway",
+   "pos": "noun",
+   "ru": "метро",
+   "freq_rank": 5171,
+   "topic": "город и улица"
+  },
+  {
+   "headword": "curb",
+   "pos": "noun",
+   "ru": "бордюр",
+   "freq_rank": 9981,
+   "topic": "город и улица"
+  },
+  {
+   "headword": "puddle",
+   "pos": "noun",
+   "ru": "лужа",
+   "freq_rank": 12759,
+   "topic": "город и улица"
+  },
+  {
+   "headword": "bakery",
+   "pos": "noun",
+   "ru": "пекарня",
+   "freq_rank": 8663,
+   "topic": "город и улица"
+  },
+  {
+   "headword": "pedestrian",
+   "pos": "noun",
+   "ru": "пешеход",
+   "freq_rank": 18679,
+   "topic": "город и улица"
+  },
+  {
+   "headword": "alley",
+   "pos": "noun",
+   "ru": "переулок",
+   "freq_rank": 3724,
+   "topic": "город и улица"
+  },
+  {
+   "headword": "commute",
+   "pos": "verb",
+   "ru": "ездить на работу",
+   "freq_rank": 17973,
+   "topic": "город и улица"
+  },
+  {
+   "headword": "shortcut",
+   "pos": "noun",
+   "ru": "короткий путь",
+   "freq_rank": 9684,
+   "topic": "город и улица"
+  },
+  {
+   "headword": "detour",
+   "pos": "noun",
+   "ru": "объезд",
+   "freq_rank": 11315,
+   "topic": "город и улица"
+  },
+  {
+   "headword": "honk",
+   "pos": "verb",
+   "ru": "сигналить",
+   "freq_rank": 11516,
+   "topic": "город и улица"
+  }
+ ],
+ "магазины и покупки": [
+  {
+   "headword": "cart",
+   "pos": "noun",
+   "ru": "тележка",
+   "freq_rank": 4504,
+   "topic": "магазины и покупки"
+  },
+  {
+   "headword": "cashier",
+   "pos": "noun",
+   "ru": "кассир",
+   "freq_rank": 11037,
+   "topic": "магазины и покупки"
+  },
+  {
+   "headword": "checkout",
+   "pos": "noun",
+   "ru": "касса",
+   "freq_rank": 21844,
+   "topic": "магазины и покупки"
+  },
+  {
+   "headword": "aisle",
+   "pos": "noun",
+   "ru": "проход, ряд",
+   "freq_rank": 7445,
+   "topic": "магазины и покупки"
+  },
+  {
+   "headword": "groceries",
+   "pos": "noun",
+   "ru": "продукты",
+   "freq_rank": 8471,
+   "topic": "магазины и покупки"
+  },
+  {
+   "headword": "refund",
+   "pos": "noun",
+   "ru": "возврат денег",
+   "freq_rank": 12458,
+   "topic": "магазины и покупки"
+  },
+  {
+   "headword": "wallet",
+   "pos": "noun",
+   "ru": "кошелёк",
+   "freq_rank": 2925,
+   "topic": "магазины и покупки"
+  },
+  {
+   "headword": "coupon",
+   "pos": "noun",
+   "ru": "купон",
+   "freq_rank": 15072,
+   "topic": "магазины и покупки"
+  }
+ ],
+ "деньги и оплата": [
+  {
+   "headword": "broke",
+   "pos": "adjective",
+   "ru": "без денег",
+   "freq_rank": 805,
+   "topic": "деньги и оплата"
+  },
+  {
+   "headword": "pricey",
+   "pos": "adjective",
+   "ru": "дороговатый",
+   "freq_rank": 21746,
+   "topic": "деньги и оплата"
+  }
+ ],
+ "транспорт и дорога": [
+  {
+   "headword": "seatbelt",
+   "pos": "noun",
+   "ru": "ремень безопасности",
+   "freq_rank": 16974,
+   "topic": "транспорт и дорога"
+  },
+  {
+   "headword": "tire",
+   "pos": "noun",
+   "ru": "шина",
+   "freq_rank": 4411,
+   "topic": "транспорт и дорога"
+  },
+  {
+   "headword": "brake",
+   "pos": "verb",
+   "ru": "тормозить",
+   "freq_rank": 6347,
+   "topic": "транспорт и дорога"
+  },
+  {
+   "headword": "trunk",
+   "pos": "noun",
+   "ru": "багажник",
+   "freq_rank": 3313,
+   "topic": "транспорт и дорога"
+  },
+  {
+   "headword": "luggage",
+   "pos": "noun",
+   "ru": "багаж",
+   "freq_rank": 4518,
+   "topic": "транспорт и дорога"
+  },
+  {
+   "headword": "windshield",
+   "pos": "noun",
+   "ru": "лобовое стекло",
+   "freq_rank": 12085,
+   "topic": "транспорт и дорога"
+  },
+  {
+   "headword": "bumper",
+   "pos": "noun",
+   "ru": "бампер",
+   "freq_rank": 10399,
+   "topic": "транспорт и дорога"
+  },
+  {
+   "headword": "dashboard",
+   "pos": "noun",
+   "ru": "приборная панель",
+   "freq_rank": 21484,
+   "topic": "транспорт и дорога"
+  },
+  {
+   "headword": "tow",
+   "pos": "verb",
+   "ru": "буксировать",
+   "freq_rank": 8283,
+   "topic": "транспорт и дорога"
+  },
+  {
+   "headword": "overtake",
+   "pos": "verb",
+   "ru": "обгонять",
+   "freq_rank": 18849,
+   "topic": "транспорт и дорога"
+  },
+  {
+   "headword": "roundabout",
+   "pos": "noun",
+   "ru": "круговое движение",
+   "freq_rank": 21272,
+   "topic": "транспорт и дорога"
+  }
+ ],
+ "машина и её части": [
+  {
+   "headword": "pedal",
+   "pos": "noun",
+   "ru": "педаль",
+   "freq_rank": 11197,
+   "topic": "машина и её части"
+  },
+  {
+   "headword": "backseat",
+   "pos": "noun",
+   "ru": "заднее сиденье",
+   "freq_rank": 12742,
+   "topic": "машина и её части"
+  },
+  {
+   "headword": "buckle",
+   "pos": "verb",
+   "ru": "пристёгивать",
+   "freq_rank": 9096,
+   "topic": "машина и её части"
+  },
+  {
+   "headword": "dent",
+   "pos": "noun",
+   "ru": "вмятина",
+   "freq_rank": 10661,
+   "topic": "машина и её части"
+  },
+  {
+   "headword": "rust",
+   "pos": "noun",
+   "ru": "ржавчина",
+   "freq_rank": 12106,
+   "topic": "машина и её части"
+  },
+  {
+   "headword": "mileage",
+   "pos": "noun",
+   "ru": "пробег",
+   "freq_rank": 18403,
+   "topic": "машина и её части"
+  },
+  {
+   "headword": "clutch",
+   "pos": "noun",
+   "ru": "сцепление",
+   "freq_rank": 10561,
+   "topic": "машина и её части"
+  },
+  {
+   "headword": "ignition",
+   "pos": "noun",
+   "ru": "зажигание",
+   "freq_rank": 10270,
+   "topic": "машина и её части"
+  },
+  {
+   "headword": "exhaust",
+   "pos": "noun",
+   "ru": "выхлоп",
+   "freq_rank": 12317,
+   "topic": "машина и её части"
+  },
+  {
+   "headword": "radiator",
+   "pos": "noun",
+   "ru": "радиатор",
+   "freq_rank": 14429,
+   "topic": "машина и её части"
+  },
+  {
+   "headword": "fender",
+   "pos": "noun",
+   "ru": "крыло",
+   "freq_rank": 16609,
+   "topic": "машина и её части"
+  },
+  {
+   "headword": "jack",
+   "pos": "noun",
+   "ru": "домкрат",
+   "freq_rank": 614,
+   "topic": "машина и её части"
+  }
+ ],
+ "погода и осадки": [
+  {
+   "headword": "sunny",
+   "pos": "adjective",
+   "ru": "солнечный",
+   "freq_rank": 4350,
+   "topic": "погода и осадки"
+  },
+  {
+   "headword": "cloudy",
+   "pos": "adjective",
+   "ru": "облачный",
+   "freq_rank": 13207,
+   "topic": "погода и осадки"
+  },
+  {
+   "headword": "windy",
+   "pos": "adjective",
+   "ru": "ветреный",
+   "freq_rank": 11257,
+   "topic": "погода и осадки"
+  },
+  {
+   "headword": "fog",
+   "pos": "noun",
+   "ru": "туман",
+   "freq_rank": 5705,
+   "topic": "погода и осадки"
+  },
+  {
+   "headword": "freezing",
+   "pos": "adjective",
+   "ru": "ледяной",
+   "freq_rank": 4018,
+   "topic": "погода и осадки"
+  },
+  {
+   "headword": "chilly",
+   "pos": "adjective",
+   "ru": "зябкий",
+   "freq_rank": 8801,
+   "topic": "погода и осадки"
+  },
+  {
+   "headword": "thunder",
+   "pos": "noun",
+   "ru": "гром",
+   "freq_rank": 2570,
+   "topic": "погода и осадки"
+  },
+  {
+   "headword": "lightning",
+   "pos": "noun",
+   "ru": "молния",
+   "freq_rank": 3656,
+   "topic": "погода и осадки"
+  },
+  {
+   "headword": "breeze",
+   "pos": "noun",
+   "ru": "ветерок",
+   "freq_rank": 5230,
+   "topic": "погода и осадки"
+  },
+  {
+   "headword": "humid",
+   "pos": "adjective",
+   "ru": "влажный",
+   "freq_rank": 21359,
+   "topic": "погода и осадки"
+  },
+  {
+   "headword": "frost",
+   "pos": "noun",
+   "ru": "мороз",
+   "freq_rank": 6851,
+   "topic": "погода и осадки"
+  },
+  {
+   "headword": "raincoat",
+   "pos": "noun",
+   "ru": "дождевик",
+   "freq_rank": 16416,
+   "topic": "погода и осадки"
+  },
+  {
+   "headword": "sleet",
+   "pos": "noun",
+   "ru": "мокрый снег",
+   "freq_rank": 16645,
+   "topic": "погода и осадки"
+  },
+  {
+   "headword": "slush",
+   "pos": "noun",
+   "ru": "слякоть",
+   "freq_rank": 24521,
+   "topic": "погода и осадки"
+  }
+ ],
+ "природа и рельеф": [
+  {
+   "headword": "hike",
+   "pos": "noun",
+   "ru": "поход",
+   "freq_rank": 7225,
+   "topic": "природа и рельеф"
+  },
+  {
+   "headword": "muddy",
+   "pos": "adjective",
+   "ru": "грязный",
+   "freq_rank": 10798,
+   "topic": "природа и рельеф"
+  },
+  {
+   "headword": "pine",
+   "pos": "noun",
+   "ru": "сосна",
+   "freq_rank": 6695,
+   "topic": "природа и рельеф"
+  },
+  {
+   "headword": "bark",
+   "pos": "noun",
+   "ru": "кора",
+   "freq_rank": 6685,
+   "topic": "природа и рельеф"
+  },
+  {
+   "headword": "twig",
+   "pos": "noun",
+   "ru": "прутик",
+   "freq_rank": 15751,
+   "topic": "природа и рельеф"
+  },
+  {
+   "headword": "moss",
+   "pos": "noun",
+   "ru": "мох",
+   "freq_rank": 8839,
+   "topic": "природа и рельеф"
+  },
+  {
+   "headword": "pebble",
+   "pos": "noun",
+   "ru": "галька",
+   "freq_rank": 18627,
+   "topic": "природа и рельеф"
+  },
+  {
+   "headword": "waterfall",
+   "pos": "noun",
+   "ru": "водопад",
+   "freq_rank": 12081,
+   "topic": "природа и рельеф"
+  },
+  {
+   "headword": "swamp",
+   "pos": "noun",
+   "ru": "болото",
+   "freq_rank": 5873,
+   "topic": "природа и рельеф"
+  }
+ ],
+ "деревья, цветы и растения": [
+  {
+   "headword": "thorn",
+   "pos": "noun",
+   "ru": "шип",
+   "freq_rank": 10430,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "bloom",
+   "pos": "verb",
+   "ru": "цвести",
+   "freq_rank": 6106,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "oak",
+   "pos": "noun",
+   "ru": "дуб",
+   "freq_rank": 6142,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "birch",
+   "pos": "noun",
+   "ru": "берёза",
+   "freq_rank": 16134,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "maple",
+   "pos": "noun",
+   "ru": "клён",
+   "freq_rank": 11897,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "willow",
+   "pos": "noun",
+   "ru": "ива",
+   "freq_rank": 8511,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "daisy",
+   "pos": "noun",
+   "ru": "ромашка",
+   "freq_rank": 4298,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "tulip",
+   "pos": "noun",
+   "ru": "тюльпан",
+   "freq_rank": 17376,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "sunflower",
+   "pos": "noun",
+   "ru": "подсолнух",
+   "freq_rank": 20017,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "bouquet",
+   "pos": "noun",
+   "ru": "букет",
+   "freq_rank": 9607,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "vase",
+   "pos": "noun",
+   "ru": "ваза",
+   "freq_rank": 8498,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "bud",
+   "pos": "noun",
+   "ru": "бутон",
+   "freq_rank": 2963,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "blossom",
+   "pos": "noun",
+   "ru": "цветение",
+   "freq_rank": 7833,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "sprout",
+   "pos": "verb",
+   "ru": "прорастать",
+   "freq_rank": 18305,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "acorn",
+   "pos": "noun",
+   "ru": "жёлудь",
+   "freq_rank": 23807,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "vine",
+   "pos": "noun",
+   "ru": "лоза",
+   "freq_rank": 12147,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "ivy",
+   "pos": "noun",
+   "ru": "плющ",
+   "freq_rank": 5742,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "fern",
+   "pos": "noun",
+   "ru": "папоротник",
+   "freq_rank": 14727,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "hedge",
+   "pos": "noun",
+   "ru": "живая изгородь",
+   "freq_rank": 12418,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "mow",
+   "pos": "verb",
+   "ru": "косить",
+   "freq_rank": 15284,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "rake",
+   "pos": "noun",
+   "ru": "грабли",
+   "freq_rank": 14051,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "prune",
+   "pos": "verb",
+   "ru": "обрезать",
+   "freq_rank": 19465,
+   "topic": "деревья, цветы и растения"
+  },
+  {
+   "headword": "wilt",
+   "pos": "verb",
+   "ru": "вянуть",
+   "freq_rank": 13863,
+   "topic": "деревья, цветы и растения"
+  }
+ ],
+ "животные домашние": [
+  {
+   "headword": "puppy",
+   "pos": "noun",
+   "ru": "щенок",
+   "freq_rank": 4618,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "kitten",
+   "pos": "noun",
+   "ru": "котёнок",
+   "freq_rank": 8455,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "paw",
+   "pos": "noun",
+   "ru": "лапа",
+   "freq_rank": 10879,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "leash",
+   "pos": "noun",
+   "ru": "поводок",
+   "freq_rank": 9562,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "lick",
+   "pos": "verb",
+   "ru": "лизать",
+   "freq_rank": 5158,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "meow",
+   "pos": "verb",
+   "ru": "мяукать",
+   "freq_rank": 9083,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "wag",
+   "pos": "verb",
+   "ru": "вилять",
+   "freq_rank": 23320,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "vet",
+   "pos": "noun",
+   "ru": "ветеринар",
+   "freq_rank": 6490,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "fetch",
+   "pos": "verb",
+   "ru": "приносить",
+   "freq_rank": 3280,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "cage",
+   "pos": "noun",
+   "ru": "клетка",
+   "freq_rank": 3238,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "claw",
+   "pos": "noun",
+   "ru": "коготь",
+   "freq_rank": 7964,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "fluffy",
+   "pos": "adjective",
+   "ru": "пушистый",
+   "freq_rank": 11548,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "stray",
+   "pos": "adjective",
+   "ru": "бездомный",
+   "freq_rank": 7594,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "hamster",
+   "pos": "noun",
+   "ru": "хомяк",
+   "freq_rank": 13146,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "rabbit",
+   "pos": "noun",
+   "ru": "кролик",
+   "freq_rank": 3082,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "parrot",
+   "pos": "noun",
+   "ru": "попугай",
+   "freq_rank": 7656,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "goat",
+   "pos": "noun",
+   "ru": "коза",
+   "freq_rank": 3783,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "duck",
+   "pos": "noun",
+   "ru": "утка",
+   "freq_rank": 2631,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "barn",
+   "pos": "noun",
+   "ru": "сарай",
+   "freq_rank": 4092,
+   "topic": "животные домашние"
+  },
+  {
+   "headword": "hay",
+   "pos": "noun",
+   "ru": "сено",
+   "freq_rank": 7012,
+   "topic": "животные домашние"
+  }
+ ],
+ "животные дикие и птицы": [
+  {
+   "headword": "wolf",
+   "pos": "noun",
+   "ru": "волк",
+   "freq_rank": 2361,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "fox",
+   "pos": "noun",
+   "ru": "лиса",
+   "freq_rank": 3013,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "deer",
+   "pos": "noun",
+   "ru": "олень",
+   "freq_rank": 5064,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "squirrel",
+   "pos": "noun",
+   "ru": "белка",
+   "freq_rank": 7609,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "mosquito",
+   "pos": "noun",
+   "ru": "комар",
+   "freq_rank": 10819,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "butterfly",
+   "pos": "noun",
+   "ru": "бабочка",
+   "freq_rank": 5548,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "owl",
+   "pos": "noun",
+   "ru": "сова",
+   "freq_rank": 6938,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "pigeon",
+   "pos": "noun",
+   "ru": "голубь",
+   "freq_rank": 6699,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "crow",
+   "pos": "noun",
+   "ru": "ворона",
+   "freq_rank": 6298,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "sparrow",
+   "pos": "noun",
+   "ru": "воробей",
+   "freq_rank": 11225,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "eagle",
+   "pos": "noun",
+   "ru": "орёл",
+   "freq_rank": 4085,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "hedgehog",
+   "pos": "noun",
+   "ru": "ёж",
+   "freq_rank": 13165,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "beak",
+   "pos": "noun",
+   "ru": "клюв",
+   "freq_rank": 12775,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "sting",
+   "pos": "verb",
+   "ru": "жалить",
+   "freq_rank": 6306,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "flock",
+   "pos": "noun",
+   "ru": "стая",
+   "freq_rank": 8331,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "herd",
+   "pos": "noun",
+   "ru": "стадо",
+   "freq_rank": 6217,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "ant",
+   "pos": "noun",
+   "ru": "муравей",
+   "freq_rank": 7491,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "wasp",
+   "pos": "noun",
+   "ru": "оса",
+   "freq_rank": 15525,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "growl",
+   "pos": "verb",
+   "ru": "рычать",
+   "freq_rank": 12601,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "howl",
+   "pos": "verb",
+   "ru": "выть",
+   "freq_rank": 12027,
+   "topic": "животные дикие и птицы"
+  },
+  {
+   "headword": "chirp",
+   "pos": "verb",
+   "ru": "чирикать",
+   "freq_rank": 19295,
+   "topic": "животные дикие и птицы"
+  }
+ ],
+ "насекомые и рыбы": [
+  {
+   "headword": "beetle",
+   "pos": "noun",
+   "ru": "жук",
+   "freq_rank": 9392,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "shark",
+   "pos": "noun",
+   "ru": "акула",
+   "freq_rank": 3643,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "whale",
+   "pos": "noun",
+   "ru": "кит",
+   "freq_rank": 4930,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "crab",
+   "pos": "noun",
+   "ru": "краб",
+   "freq_rank": 6055,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "shrimp",
+   "pos": "noun",
+   "ru": "креветка",
+   "freq_rank": 5669,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "honey",
+   "pos": "noun",
+   "ru": "мёд",
+   "freq_rank": 513,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "cockroach",
+   "pos": "noun",
+   "ru": "таракан",
+   "freq_rank": 11575,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "moth",
+   "pos": "noun",
+   "ru": "моль",
+   "freq_rank": 11821,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "snail",
+   "pos": "noun",
+   "ru": "улитка",
+   "freq_rank": 13754,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "caterpillar",
+   "pos": "noun",
+   "ru": "гусеница",
+   "freq_rank": 15323,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "buzz",
+   "pos": "verb",
+   "ru": "жужжать",
+   "freq_rank": 3980,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "hive",
+   "pos": "noun",
+   "ru": "улей",
+   "freq_rank": 12192,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "swarm",
+   "pos": "noun",
+   "ru": "рой",
+   "freq_rank": 14884,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "itch",
+   "pos": "verb",
+   "ru": "чесаться",
+   "freq_rank": 10595,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "flea",
+   "pos": "noun",
+   "ru": "блоха",
+   "freq_rank": 11144,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "tick",
+   "pos": "noun",
+   "ru": "клещ",
+   "freq_rank": 6506,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "grasshopper",
+   "pos": "noun",
+   "ru": "кузнечик",
+   "freq_rank": 16896,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "dragonfly",
+   "pos": "noun",
+   "ru": "стрекоза",
+   "freq_rank": 22165,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "jellyfish",
+   "pos": "noun",
+   "ru": "медуза",
+   "freq_rank": 14541,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "squid",
+   "pos": "noun",
+   "ru": "кальмар",
+   "freq_rank": 10164,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "octopus",
+   "pos": "noun",
+   "ru": "осьминог",
+   "freq_rank": 9874,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "salmon",
+   "pos": "noun",
+   "ru": "лосось",
+   "freq_rank": 6204,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "herring",
+   "pos": "noun",
+   "ru": "селёдка",
+   "freq_rank": 13835,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "trout",
+   "pos": "noun",
+   "ru": "форель",
+   "freq_rank": 10304,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "tuna",
+   "pos": "noun",
+   "ru": "тунец",
+   "freq_rank": 6716,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "fin",
+   "pos": "noun",
+   "ru": "плавник",
+   "freq_rank": 8878,
+   "topic": "насекомые и рыбы"
+  },
+  {
+   "headword": "bait",
+   "pos": "noun",
+   "ru": "наживка",
+   "freq_rank": 4576,
+   "topic": "насекомые и рыбы"
+  }
+ ],
+ "сад и огород": [
+  {
+   "headword": "hose",
+   "pos": "noun",
+   "ru": "шланг",
+   "freq_rank": 7183,
+   "topic": "сад и огород"
+  },
+  {
+   "headword": "shovel",
+   "pos": "noun",
+   "ru": "лопата",
+   "freq_rank": 7326,
+   "topic": "сад и огород"
+  },
+  {
+   "headword": "wheelbarrow",
+   "pos": "noun",
+   "ru": "тачка",
+   "freq_rank": 24331,
+   "topic": "сад и огород"
+  },
+  {
+   "headword": "sow",
+   "pos": "verb",
+   "ru": "сеять",
+   "freq_rank": 11307,
+   "topic": "сад и огород"
+  },
+  {
+   "headword": "trim",
+   "pos": "verb",
+   "ru": "подстригать",
+   "freq_rank": 9790,
+   "topic": "сад и огород"
+  },
+  {
+   "headword": "fertilizer",
+   "pos": "noun",
+   "ru": "удобрение",
+   "freq_rank": 14993,
+   "topic": "сад и огород"
+  }
+ ],
+ "работа в офисе": [
+  {
+   "headword": "coworker",
+   "pos": "noun",
+   "ru": "коллега",
+   "freq_rank": 22882,
+   "topic": "работа в офисе"
+  },
+  {
+   "headword": "folder",
+   "pos": "noun",
+   "ru": "папка",
+   "freq_rank": 12882,
+   "topic": "работа в офисе"
+  },
+  {
+   "headword": "overtime",
+   "pos": "noun",
+   "ru": "переработка",
+   "freq_rank": 7425,
+   "topic": "работа в офисе"
+  },
+  {
+   "headword": "paperwork",
+   "pos": "noun",
+   "ru": "бумаги",
+   "freq_rank": 4002,
+   "topic": "работа в офисе"
+  },
+  {
+   "headword": "stapler",
+   "pos": "noun",
+   "ru": "степлер",
+   "freq_rank": 23108,
+   "topic": "работа в офисе"
+  }
+ ],
+ "учёба и школа": [
+  {
+   "headword": "backpack",
+   "pos": "noun",
+   "ru": "рюкзак",
+   "freq_rank": 7444,
+   "topic": "учёба и школа"
+  },
+  {
+   "headword": "classmate",
+   "pos": "noun",
+   "ru": "одноклассник",
+   "freq_rank": 11391,
+   "topic": "учёба и школа"
+  },
+  {
+   "headword": "eraser",
+   "pos": "noun",
+   "ru": "ластик",
+   "freq_rank": 24221,
+   "topic": "учёба и школа"
+  },
+  {
+   "headword": "ruler",
+   "pos": "noun",
+   "ru": "линейка",
+   "freq_rank": 7848,
+   "topic": "учёба и школа"
+  },
+  {
+   "headword": "chalk",
+   "pos": "noun",
+   "ru": "мел",
+   "freq_rank": 9629,
+   "topic": "учёба и школа"
+  },
+  {
+   "headword": "locker",
+   "pos": "noun",
+   "ru": "шкафчик",
+   "freq_rank": 3815,
+   "topic": "учёба и школа"
+  },
+  {
+   "headword": "cafeteria",
+   "pos": "noun",
+   "ru": "столовая",
+   "freq_rank": 8341,
+   "topic": "учёба и школа"
+  },
+  {
+   "headword": "timetable",
+   "pos": "noun",
+   "ru": "расписание",
+   "freq_rank": 17413,
+   "topic": "учёба и школа"
+  },
+  {
+   "headword": "handwriting",
+   "pos": "noun",
+   "ru": "почерк",
+   "freq_rank": 7232,
+   "topic": "учёба и школа"
+  },
+  {
+   "headword": "quiz",
+   "pos": "noun",
+   "ru": "тест",
+   "freq_rank": 8791,
+   "topic": "учёба и школа"
+  },
+  {
+   "headword": "memorize",
+   "pos": "verb",
+   "ru": "заучивать",
+   "freq_rank": 12053,
+   "topic": "учёба и школа"
+  },
+  {
+   "headword": "retake",
+   "pos": "verb",
+   "ru": "пересдавать",
+   "freq_rank": 23330,
+   "topic": "учёба и школа"
+  }
+ ],
+ "документы и бюрократия": [],
+ "спорт и движения тела": [
+  {
+   "headword": "clap",
+   "pos": "verb",
+   "ru": "хлопать",
+   "freq_rank": 7239,
+   "topic": "спорт и движения тела"
+  },
+  {
+   "headword": "fist",
+   "pos": "noun",
+   "ru": "кулак",
+   "freq_rank": 4909,
+   "topic": "спорт и движения тела"
+  },
+  {
+   "headword": "sneakers",
+   "pos": "noun",
+   "ru": "кроссовки",
+   "freq_rank": 11060,
+   "topic": "спорт и движения тела"
+  },
+  {
+   "headword": "squat",
+   "pos": "verb",
+   "ru": "приседать",
+   "freq_rank": 10252,
+   "topic": "спорт и движения тела"
+  },
+  {
+   "headword": "jog",
+   "pos": "verb",
+   "ru": "бегать трусцой",
+   "freq_rank": 11494,
+   "topic": "спорт и движения тела"
+  }
+ ],
+ "отдых, отпуск и отель": [
+  {
+   "headword": "suitcase",
+   "pos": "noun",
+   "ru": "чемодан",
+   "freq_rank": 4208,
+   "topic": "отдых, отпуск и отель"
+  },
+  {
+   "headword": "sunscreen",
+   "pos": "noun",
+   "ru": "солнцезащитный крем",
+   "freq_rank": 21041,
+   "topic": "отдых, отпуск и отель"
+  },
+  {
+   "headword": "tan",
+   "pos": "verb",
+   "ru": "загорать",
+   "freq_rank": 5540,
+   "topic": "отдых, отпуск и отель"
+  },
+  {
+   "headword": "sunglasses",
+   "pos": "noun",
+   "ru": "солнечные очки",
+   "freq_rank": 8985,
+   "topic": "отдых, отпуск и отель"
+  },
+  {
+   "headword": "swimsuit",
+   "pos": "noun",
+   "ru": "купальник",
+   "freq_rank": 15905,
+   "topic": "отдых, отпуск и отель"
+  },
+  {
+   "headword": "balcony",
+   "pos": "noun",
+   "ru": "балкон",
+   "freq_rank": 6016,
+   "topic": "отдых, отпуск и отель"
+  },
+  {
+   "headword": "maid",
+   "pos": "noun",
+   "ru": "горничная",
+   "freq_rank": 2719,
+   "topic": "отдых, отпуск и отель"
+  },
+  {
+   "headword": "buffet",
+   "pos": "noun",
+   "ru": "шведский стол",
+   "freq_rank": 9591,
+   "topic": "отдых, отпуск и отель"
+  },
+  {
+   "headword": "souvenir",
+   "pos": "noun",
+   "ru": "сувенир",
+   "freq_rank": 8361,
+   "topic": "отдых, отпуск и отель"
+  }
+ ],
+ "кафе и ресторан": [
+  {
+   "headword": "straw",
+   "pos": "noun",
+   "ru": "трубочка",
+   "freq_rank": 6162,
+   "topic": "кафе и ресторан"
+  },
+  {
+   "headword": "dessert",
+   "pos": "noun",
+   "ru": "десерт",
+   "freq_rank": 4023,
+   "topic": "кафе и ресторан"
+  },
+  {
+   "headword": "starter",
+   "pos": "noun",
+   "ru": "закуска",
+   "freq_rank": 12287,
+   "topic": "кафе и ресторан"
+  },
+  {
+   "headword": "sip",
+   "pos": "verb",
+   "ru": "отпивать",
+   "freq_rank": 7120,
+   "topic": "кафе и ресторан"
+  },
+  {
+   "headword": "filling",
+   "pos": "adjective",
+   "ru": "сытный",
+   "freq_rank": 4946,
+   "topic": "кафе и ресторан"
+  },
+  {
+   "headword": "leftovers",
+   "pos": "noun",
+   "ru": "остатки",
+   "freq_rank": 11433,
+   "topic": "кафе и ресторан"
+  },
+  {
+   "headword": "refill",
+   "pos": "noun",
+   "ru": "добавка",
+   "freq_rank": 12306,
+   "topic": "кафе и ресторан"
+  }
+ ],
+ "праздники и подарки": [
+  {
+   "headword": "candy",
+   "pos": "noun",
+   "ru": "конфета",
+   "freq_rank": 2274,
+   "topic": "праздники и подарки"
+  },
+  {
+   "headword": "ribbon",
+   "pos": "noun",
+   "ru": "лента",
+   "freq_rank": 9087,
+   "topic": "праздники и подарки"
+  },
+  {
+   "headword": "festive",
+   "pos": "adjective",
+   "ru": "праздничный",
+   "freq_rank": 14252,
+   "topic": "праздники и подарки"
+  },
+  {
+   "headword": "champagne",
+   "pos": "noun",
+   "ru": "шампанское",
+   "freq_rank": 2338,
+   "topic": "праздники и подарки"
+  },
+  {
+   "headword": "eve",
+   "pos": "noun",
+   "ru": "канун",
+   "freq_rank": 2386,
+   "topic": "праздники и подарки"
+  },
+  {
+   "headword": "garland",
+   "pos": "noun",
+   "ru": "гирлянда",
+   "freq_rank": 11879,
+   "topic": "праздники и подарки"
+  },
+  {
+   "headword": "ornament",
+   "pos": "noun",
+   "ru": "ёлочная игрушка",
+   "freq_rank": 18288,
+   "topic": "праздники и подарки"
+  },
+  {
+   "headword": "wreath",
+   "pos": "noun",
+   "ru": "венок",
+   "freq_rank": 19535,
+   "topic": "праздники и подарки"
+  },
+  {
+   "headword": "turkey",
+   "pos": "noun",
+   "ru": "индейка",
+   "freq_rank": 3152,
+   "topic": "праздники и подарки"
+  },
+  {
+   "headword": "stocking",
+   "pos": "noun",
+   "ru": "рождественский носок",
+   "freq_rank": 13949,
+   "topic": "праздники и подарки"
+  },
+  {
+   "headword": "confetti",
+   "pos": "noun",
+   "ru": "конфетти",
+   "freq_rank": 22108,
+   "topic": "праздники и подарки"
+  }
+ ],
+ "эмоции и мимика": [
+  {
+   "headword": "sob",
+   "pos": "verb",
+   "ru": "рыдать",
+   "freq_rank": 14700,
+   "topic": "эмоции и мимика"
+  },
+  {
+   "headword": "grumpy",
+   "pos": "adjective",
+   "ru": "ворчливый",
+   "freq_rank": 10494,
+   "topic": "эмоции и мимика"
+  },
+  {
+   "headword": "pout",
+   "pos": "verb",
+   "ru": "надувать губы",
+   "freq_rank": 23905,
+   "topic": "эмоции и мимика"
+  }
+ ],
+ "жесты и движения рук": [
+  {
+   "headword": "pat",
+   "pos": "verb",
+   "ru": "похлопать",
+   "freq_rank": 3492,
+   "topic": "жесты и движения рук"
+  },
+  {
+   "headword": "handshake",
+   "pos": "noun",
+   "ru": "рукопожатие",
+   "freq_rank": 12033,
+   "topic": "жесты и движения рук"
+  },
+  {
+   "headword": "pinch",
+   "pos": "verb",
+   "ru": "щипать",
+   "freq_rank": 7075,
+   "topic": "жесты и движения рук"
+  },
+  {
+   "headword": "poke",
+   "pos": "verb",
+   "ru": "тыкать",
+   "freq_rank": 7479,
+   "topic": "жесты и движения рук"
+  },
+  {
+   "headword": "tickle",
+   "pos": "verb",
+   "ru": "щекотать",
+   "freq_rank": 8849,
+   "topic": "жесты и движения рук"
+  },
+  {
+   "headword": "nudge",
+   "pos": "verb",
+   "ru": "подтолкнуть",
+   "freq_rank": 18904,
+   "topic": "жесты и движения рук"
+  }
+ ],
+ "звуки и шумы": [
+  {
+   "headword": "bang",
+   "pos": "noun",
+   "ru": "грохот",
+   "freq_rank": 2117,
+   "topic": "звуки и шумы"
+  },
+  {
+   "headword": "beep",
+   "pos": "noun",
+   "ru": "писк",
+   "freq_rank": 3271,
+   "topic": "звуки и шумы"
+  },
+  {
+   "headword": "whistle",
+   "pos": "verb",
+   "ru": "свистеть",
+   "freq_rank": 2760,
+   "topic": "звуки и шумы"
+  },
+  {
+   "headword": "creak",
+   "pos": "verb",
+   "ru": "скрипеть",
+   "freq_rank": 18580,
+   "topic": "звуки и шумы"
+  },
+  {
+   "headword": "crunch",
+   "pos": "verb",
+   "ru": "хрустеть",
+   "freq_rank": 9603,
+   "topic": "звуки и шумы"
+  },
+  {
+   "headword": "rustle",
+   "pos": "verb",
+   "ru": "шелестеть",
+   "freq_rank": 18670,
+   "topic": "звуки и шумы"
+  },
+  {
+   "headword": "hum",
+   "pos": "verb",
+   "ru": "гудеть",
+   "freq_rank": 8145,
+   "topic": "звуки и шумы"
+  },
+  {
+   "headword": "siren",
+   "pos": "noun",
+   "ru": "сирена",
+   "freq_rank": 2840,
+   "topic": "звуки и шумы"
+  },
+  {
+   "headword": "hiss",
+   "pos": "verb",
+   "ru": "шипеть",
+   "freq_rank": 17327,
+   "topic": "звуки и шумы"
+  },
+  {
+   "headword": "roar",
+   "pos": "noun",
+   "ru": "рёв",
+   "freq_rank": 7467,
+   "topic": "звуки и шумы"
+  },
+  {
+   "headword": "mumble",
+   "pos": "verb",
+   "ru": "бормотать",
+   "freq_rank": 24088,
+   "topic": "звуки и шумы"
+  },
+  {
+   "headword": "thud",
+   "pos": "noun",
+   "ru": "глухой удар",
+   "freq_rank": 5503,
+   "topic": "звуки и шумы"
+  },
+  {
+   "headword": "aloud",
+   "pos": "adverb",
+   "ru": "вслух",
+   "freq_rank": 13197,
+   "topic": "звуки и шумы"
+  }
+ ],
+ "свет, цвет и оттенки": [
+  {
+   "headword": "sunlight",
+   "pos": "noun",
+   "ru": "солнечный свет",
+   "freq_rank": 7045,
+   "topic": "свет, цвет и оттенки"
+  },
+  {
+   "headword": "dim",
+   "pos": "adjective",
+   "ru": "тусклый",
+   "freq_rank": 10068,
+   "topic": "свет, цвет и оттенки"
+  },
+  {
+   "headword": "glow",
+   "pos": "verb",
+   "ru": "светиться",
+   "freq_rank": 7170,
+   "topic": "свет, цвет и оттенки"
+  },
+  {
+   "headword": "sparkle",
+   "pos": "verb",
+   "ru": "сверкать",
+   "freq_rank": 12016,
+   "topic": "свет, цвет и оттенки"
+  },
+  {
+   "headword": "torch",
+   "pos": "noun",
+   "ru": "фонарик",
+   "freq_rank": 5907,
+   "topic": "свет, цвет и оттенки"
+  },
+  {
+   "headword": "daylight",
+   "pos": "noun",
+   "ru": "дневной свет",
+   "freq_rank": 5208,
+   "topic": "свет, цвет и оттенки"
+  },
+  {
+   "headword": "dusk",
+   "pos": "noun",
+   "ru": "сумерки",
+   "freq_rank": 12253,
+   "topic": "свет, цвет и оттенки"
+  },
+  {
+   "headword": "dye",
+   "pos": "verb",
+   "ru": "красить",
+   "freq_rank": 10039,
+   "topic": "свет, цвет и оттенки"
+  },
+  {
+   "headword": "stripe",
+   "pos": "noun",
+   "ru": "полоска",
+   "freq_rank": 20031,
+   "topic": "свет, цвет и оттенки"
+  },
+  {
+   "headword": "navy",
+   "pos": "adjective",
+   "ru": "тёмно-синий",
+   "freq_rank": 2812,
+   "topic": "свет, цвет и оттенки"
+  },
+  {
+   "headword": "beige",
+   "pos": "adjective",
+   "ru": "бежевый",
+   "freq_rank": 17571,
+   "topic": "свет, цвет и оттенки"
+  },
+  {
+   "headword": "blond",
+   "pos": "adjective",
+   "ru": "светловолосый",
+   "freq_rank": 6200,
+   "topic": "свет, цвет и оттенки"
+  },
+  {
+   "headword": "ginger",
+   "pos": "adjective",
+   "ru": "рыжий",
+   "freq_rank": 4905,
+   "topic": "свет, цвет и оттенки"
+  }
+ ],
+ "материалы и текстуры": [
+  {
+   "headword": "wrinkle",
+   "pos": "noun",
+   "ru": "складка",
+   "freq_rank": 17926,
+   "topic": "материалы и текстуры"
+  },
+  {
+   "headword": "cardboard",
+   "pos": "noun",
+   "ru": "картон",
+   "freq_rank": 11605,
+   "topic": "материалы и текстуры"
+  },
+  {
+   "headword": "clay",
+   "pos": "noun",
+   "ru": "глина",
+   "freq_rank": 3346,
+   "topic": "материалы и текстуры"
+  },
+  {
+   "headword": "wax",
+   "pos": "noun",
+   "ru": "воск",
+   "freq_rank": 6213,
+   "topic": "материалы и текстуры"
+  },
+  {
+   "headword": "foam",
+   "pos": "noun",
+   "ru": "пена",
+   "freq_rank": 8326,
+   "topic": "материалы и текстуры"
+  },
+  {
+   "headword": "velvet",
+   "pos": "noun",
+   "ru": "бархат",
+   "freq_rank": 9478,
+   "topic": "материалы и текстуры"
+  }
+ ],
+ "формы, размеры и количество": [],
+ "время и распорядок дня": [
+  {
+   "headword": "timer",
+   "pos": "noun",
+   "ru": "таймер",
+   "freq_rank": 8098,
+   "topic": "время и распорядок дня"
+  },
+  {
+   "headword": "unwind",
+   "pos": "verb",
+   "ru": "расслабляться",
+   "freq_rank": 18349,
+   "topic": "время и распорядок дня"
+  }
+ ],
+ "телефон и техника": [
+  {
+   "headword": "charger",
+   "pos": "noun",
+   "ru": "зарядка",
+   "freq_rank": 15131,
+   "topic": "телефон и техника"
+  },
+  {
+   "headword": "headphones",
+   "pos": "noun",
+   "ru": "наушники",
+   "freq_rank": 12043,
+   "topic": "телефон и техника"
+  },
+  {
+   "headword": "restart",
+   "pos": "verb",
+   "ru": "перезагружать",
+   "freq_rank": 18004,
+   "topic": "телефон и техника"
+  },
+  {
+   "headword": "notification",
+   "pos": "noun",
+   "ru": "уведомление",
+   "freq_rank": 21290,
+   "topic": "телефон и техника"
+  },
+  {
+   "headword": "brightness",
+   "pos": "noun",
+   "ru": "яркость",
+   "freq_rank": 20879,
+   "topic": "телефон и техника"
+  },
+  {
+   "headword": "mute",
+   "pos": "verb",
+   "ru": "выключить звук",
+   "freq_rank": 8693,
+   "topic": "телефон и техника"
+  },
+  {
+   "headword": "swipe",
+   "pos": "verb",
+   "ru": "смахивать",
+   "freq_rank": 15102,
+   "topic": "телефон и техника"
+  },
+  {
+   "headword": "scroll",
+   "pos": "verb",
+   "ru": "листать",
+   "freq_rank": 10960,
+   "topic": "телефон и техника"
+  },
+  {
+   "headword": "unplug",
+   "pos": "verb",
+   "ru": "выдернуть из розетки",
+   "freq_rank": 20855,
+   "topic": "телефон и техника"
+  },
+  {
+   "headword": "flashlight",
+   "pos": "noun",
+   "ru": "фонарик",
+   "freq_rank": 8859,
+   "topic": "телефон и техника"
+  },
+  {
+   "headword": "wireless",
+   "pos": "adjective",
+   "ru": "беспроводной",
+   "freq_rank": 10590,
+   "topic": "телефон и техника"
+  },
+  {
+   "headword": "blurry",
+   "pos": "adjective",
+   "ru": "размытый",
+   "freq_rank": 16113,
+   "topic": "телефон и техника"
+  }
+ ],
+ "почта, доставка и упаковка": [
+  {
+   "headword": "parcel",
+   "pos": "noun",
+   "ru": "посылка",
+   "freq_rank": 10959,
+   "topic": "почта, доставка и упаковка"
+  },
+  {
+   "headword": "mailbox",
+   "pos": "noun",
+   "ru": "почтовый ящик",
+   "freq_rank": 10257,
+   "topic": "почта, доставка и упаковка"
+  },
+  {
+   "headword": "postman",
+   "pos": "noun",
+   "ru": "почтальон",
+   "freq_rank": 11567,
+   "topic": "почта, доставка и упаковка"
+  },
+  {
+   "headword": "courier",
+   "pos": "noun",
+   "ru": "курьер",
+   "freq_rank": 8823,
+   "topic": "почта, доставка и упаковка"
+  },
+  {
+   "headword": "unpack",
+   "pos": "verb",
+   "ru": "распаковать",
+   "freq_rank": 12162,
+   "topic": "почта, доставка и упаковка"
+  },
+  {
+   "headword": "sticker",
+   "pos": "noun",
+   "ru": "наклейка",
+   "freq_rank": 12474,
+   "topic": "почта, доставка и упаковка"
+  },
+  {
+   "headword": "postcard",
+   "pos": "noun",
+   "ru": "открытка",
+   "freq_rank": 9313,
+   "topic": "почта, доставка и упаковка"
+  },
+  {
+   "headword": "doorstep",
+   "pos": "noun",
+   "ru": "порог",
+   "freq_rank": 8881,
+   "topic": "почта, доставка и упаковка"
+  },
+  {
+   "headword": "sender",
+   "pos": "noun",
+   "ru": "отправитель",
+   "freq_rank": 21622,
+   "topic": "почта, доставка и упаковка"
+  },
+  {
+   "headword": "customs",
+   "pos": "noun",
+   "ru": "таможня",
+   "freq_rank": 5664,
+   "topic": "почта, доставка и упаковка"
+  }
+ ]
+}
