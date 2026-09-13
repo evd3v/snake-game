@@ -1,0 +1,39 @@
+Appendix: The PHRASE List
+Integrated        
+List 
+Rank
+Phrase
+Frequency
+(per 100 million)
+Spoken general
+Written general
+Written academic
+Example
+107
+HAVE TO
+83092
+* * *
+* * 
+* 
+I exercise because I have to.
+415
+SUCH AS
+30857
+* 
+* * *
+* * *
+We have questions, such as how it happened.
+1201
+IN TERMS OF
+9800
+* 
+* * 
+* * *
+In terms of cost, it is fine.
+2475
+OUT OF (‘DUE TO’)
+5000
+* 
+* * 
+* 
+He did it out of kindness.

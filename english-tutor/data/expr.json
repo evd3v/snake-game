@@ -1,0 +1,8576 @@
+[
+ {
+  "headword": "have to",
+  "source": "phrase",
+  "rank": 107,
+  "band": 1,
+  "level": null,
+  "frequency": 83092,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "I exercise because I have to."
+ },
+ {
+  "headword": "there is/are",
+  "source": "phrase",
+  "rank": 165,
+  "band": 1,
+  "level": null,
+  "frequency": 59833,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "There are some problems."
+ },
+ {
+  "headword": "such as",
+  "source": "phrase",
+  "rank": 415,
+  "band": 1,
+  "level": null,
+  "frequency": 30857,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "We have questions, such as how it happened."
+ },
+ {
+  "headword": "going to (future)",
+  "source": "phrase",
+  "rank": 463,
+  "band": 1,
+  "level": null,
+  "frequency": 28259,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "I’m going to think about it."
+ },
+ {
+  "headword": "of course",
+  "source": "phrase",
+  "rank": 483,
+  "band": 1,
+  "level": null,
+  "frequency": 26966,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "He said he’d come of course."
+ },
+ {
+  "headword": "a few",
+  "source": "phrase",
+  "rank": 489,
+  "band": 1,
+  "level": null,
+  "frequency": 26451,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "After a few drinks, she started to dance."
+ },
+ {
+  "headword": "at least",
+  "source": "phrase",
+  "rank": 518,
+  "band": 1,
+  "level": null,
+  "frequency": 25034,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 2
+  },
+  "example": "Well, you could email me at least."
+ },
+ {
+  "headword": "such a(n)",
+  "source": "phrase",
+  "rank": 551,
+  "band": 1,
+  "level": null,
+  "frequency": 23894,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "She had such a strange sense of humor."
+ },
+ {
+  "headword": "i mean",
+  "source": "phrase",
+  "rank": 556,
+  "band": 1,
+  "level": null,
+  "frequency": 23616,
+  "genre": {
+   "spoken": 3,
+   "written": 0,
+   "academic": 0
+  },
+  "example": "It’s fine, but, I mean, is it worth the price?"
+ },
+ {
+  "headword": "a lot",
+  "source": "phrase",
+  "rank": 598,
+  "band": 1,
+  "level": null,
+  "frequency": 22332,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "They go camping a lot in the summer."
+ },
+ {
+  "headword": "rather than",
+  "source": "phrase",
+  "rank": 631,
+  "band": 1,
+  "level": null,
+  "frequency": 21085,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Children, rather than adults, tend to learn quickly."
+ },
+ {
+  "headword": "so that",
+  "source": "phrase",
+  "rank": 635,
+  "band": 1,
+  "level": null,
+  "frequency": 20966,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "Park it so that the wheels are curbed."
+ },
+ {
+  "headword": "a little",
+  "source": "phrase",
+  "rank": 655,
+  "band": 1,
+  "level": null,
+  "frequency": 20296,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "I like to work out a little before dinner."
+ },
+ {
+  "headword": "a bit (of)",
+  "source": "phrase",
+  "rank": 674,
+  "band": 1,
+  "level": null,
+  "frequency": 19618,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "There was a bit of drama today at the office."
+ },
+ {
+  "headword": "as well as",
+  "source": "phrase",
+  "rank": 717,
+  "band": 1,
+  "level": null,
+  "frequency": 18041,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "She jogs as well as swims."
+ },
+ {
+  "headword": "in fact",
+  "source": "phrase",
+  "rank": 803,
+  "band": 1,
+  "level": null,
+  "frequency": 15983,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "The researchers tried several approaches, in fact."
+ },
+ {
+  "headword": "(be) likely to",
+  "source": "phrase",
+  "rank": 807,
+  "band": 1,
+  "level": null,
+  "frequency": 15854,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "To be honest, I’m likely to forget."
+ },
+ {
+  "headword": "go on",
+  "source": "phrase",
+  "rank": 825,
+  "band": 1,
+  "level": null,
+  "frequency": 15610,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "He went on for a while before stopping for lunch."
+ },
+ {
+  "headword": "is to",
+  "source": "phrase",
+  "rank": 845,
+  "band": 1,
+  "level": null,
+  "frequency": 15232,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "Obama is to address the media this afternoon."
+ },
+ {
+  "headword": "a number of",
+  "source": "phrase",
+  "rank": 854,
+  "band": 1,
+  "level": null,
+  "frequency": 15090,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "A number of concerns were raised."
+ },
+ {
+  "headword": "at all",
+  "source": "phrase",
+  "rank": 879,
+  "band": 1,
+  "level": null,
+  "frequency": 14650,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "Do you have any kids at all?"
+ },
+ {
+  "headword": "as if",
+  "source": "phrase",
+  "rank": 888,
+  "band": 1,
+  "level": null,
+  "frequency": 14470,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "They walked together as if no time had passed."
+ },
+ {
+  "headword": "used to (past)",
+  "source": "phrase",
+  "rank": 892,
+  "band": 1,
+  "level": null,
+  "frequency": 14411,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "It used to snow much more often."
+ },
+ {
+  "headword": "was to",
+  "source": "phrase",
+  "rank": 894,
+  "band": 1,
+  "level": null,
+  "frequency": 14366,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "The message was to be transmitted worldwide."
+ },
+ {
+  "headword": "not only",
+  "source": "phrase",
+  "rank": 908,
+  "band": 1,
+  "level": null,
+  "frequency": 14110,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Not only was it cheap, it was delicious."
+ },
+ {
+  "headword": "those who",
+  "source": "phrase",
+  "rank": 913,
+  "band": 1,
+  "level": null,
+  "frequency": 13951,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "He would defend those who had no voice."
+ },
+ {
+  "headword": "deal with",
+  "source": "phrase",
+  "rank": 934,
+  "band": 1,
+  "level": null,
+  "frequency": 13634,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "The police had several issues to deal with."
+ },
+ {
+  "headword": "lead to ('cause')",
+  "source": "phrase",
+  "rank": 939,
+  "band": 1,
+  "level": null,
+  "frequency": 13555,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "Excessive smoking can lead to heart disease."
+ },
+ {
+  "headword": "sort of",
+  "source": "phrase",
+  "rank": 951,
+  "band": 1,
+  "level": null,
+  "frequency": 13361,
+  "genre": {
+   "spoken": 3,
+   "written": 0,
+   "academic": 0
+  },
+  "example": "It’s sort of why I’m here."
+ },
+ {
+  "headword": "the following",
+  "source": "phrase",
+  "rank": 974,
+  "band": 1,
+  "level": null,
+  "frequency": 12963,
+  "genre": {
+   "spoken": 0,
+   "written": 1,
+   "academic": 3
+  },
+  "example": "He made the following remarks."
+ },
+ {
+  "headword": "in order to",
+  "source": "phrase",
+  "rank": 984,
+  "band": 1,
+  "level": null,
+  "frequency": 12762,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "We shared a room in order to reduce costs"
+ },
+ {
+  "headword": "have got (+np)",
+  "source": "phrase",
+  "rank": 988,
+  "band": 1,
+  "level": null,
+  "frequency": 12734,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "I don’t know what he has got planned."
+ },
+ {
+  "headword": "have got to",
+  "source": "phrase",
+  "rank": 1033,
+  "band": 2,
+  "level": null,
+  "frequency": 12270,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "You have got to try this salad."
+ },
+ {
+  "headword": "set up",
+  "source": "phrase",
+  "rank": 1079,
+  "band": 2,
+  "level": null,
+  "frequency": 11560,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "The whole thing was set up beforehand."
+ },
+ {
+  "headword": "as to",
+  "source": "phrase",
+  "rank": 1082,
+  "band": 2,
+  "level": null,
+  "frequency": 11535,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "There was some confusion as to its whereabouts."
+ },
+ {
+  "headword": "as well",
+  "source": "phrase",
+  "rank": 1083,
+  "band": 2,
+  "level": null,
+  "frequency": 11519,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "I like it as well."
+ },
+ {
+  "headword": "based on",
+  "source": "phrase",
+  "rank": 1088,
+  "band": 2,
+  "level": null,
+  "frequency": 11440,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Based on the reports, it seems it was an accident."
+ },
+ {
+  "headword": "carry out",
+  "source": "phrase",
+  "rank": 1146,
+  "band": 2,
+  "level": null,
+  "frequency": 10753,
+  "genre": {
+   "spoken": 1,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "It was not as easy to carry out without funding."
+ },
+ {
+  "headword": "take place",
+  "source": "phrase",
+  "rank": 1169,
+  "band": 2,
+  "level": null,
+  "frequency": 10556,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "No one was sure exactly why it took place there."
+ },
+ {
+  "headword": "tend to",
+  "source": "phrase",
+  "rank": 1175,
+  "band": 2,
+  "level": null,
+  "frequency": 10504,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "I tend to think it’s actually a political matter."
+ },
+ {
+  "headword": "due to",
+  "source": "phrase",
+  "rank": 1183,
+  "band": 2,
+  "level": null,
+  "frequency": 10454,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Many people believe it is due to global warming."
+ },
+ {
+  "headword": "fail to",
+  "source": "phrase",
+  "rank": 1204,
+  "band": 2,
+  "level": null,
+  "frequency": 10263,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "I fail to see the humor in all this."
+ },
+ {
+  "headword": "each other",
+  "source": "phrase",
+  "rank": 1209,
+  "band": 2,
+  "level": null,
+  "frequency": 10160,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "The good thing is that they still have each other."
+ },
+ {
+  "headword": "in terms of",
+  "source": "phrase",
+  "rank": 1234,
+  "band": 2,
+  "level": null,
+  "frequency": 9881,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "What is your limit, in terms of price?"
+ },
+ {
+  "headword": "no one",
+  "source": "phrase",
+  "rank": 1262,
+  "band": 2,
+  "level": null,
+  "frequency": 9597,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "I will speak to no one about this."
+ },
+ {
+  "headword": "pick up",
+  "source": "phrase",
+  "rank": 1299,
+  "band": 2,
+  "level": null,
+  "frequency": 9252,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "She dropped by to pick up her friend."
+ },
+ {
+  "headword": "up to (maximum)",
+  "source": "phrase",
+  "rank": 1352,
+  "band": 2,
+  "level": null,
+  "frequency": 8733,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Up to twenty people may be interviewed for the job."
+ },
+ {
+  "headword": "a single (‘any’)",
+  "source": "phrase",
+  "rank": 1356,
+  "band": 2,
+  "level": null,
+  "frequency": 8710,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "Not a single idea emerged from the meeting."
+ },
+ {
+  "headword": "no longer",
+  "source": "phrase",
+  "rank": 1371,
+  "band": 2,
+  "level": null,
+  "frequency": 8556,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "Fortunately, it is no longer a concern now."
+ },
+ {
+  "headword": "look for",
+  "source": "phrase",
+  "rank": 1387,
+  "band": 2,
+  "level": null,
+  "frequency": 8377,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "Bargains can be found if you know what to look for."
+ },
+ {
+  "headword": "last night",
+  "source": "phrase",
+  "rank": 1427,
+  "band": 2,
+  "level": null,
+  "frequency": 7992,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "What did he say last night?"
+ },
+ {
+  "headword": "as a result",
+  "source": "phrase",
+  "rank": 1438,
+  "band": 2,
+  "level": null,
+  "frequency": 7939,
+  "genre": {
+   "spoken": 1,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "He was tired and as a result not very aware."
+ },
+ {
+  "headword": "in addition (to)",
+  "source": "phrase",
+  "rank": 1453,
+  "band": 2,
+  "level": null,
+  "frequency": 7822,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The house was well located in addition."
+ },
+ {
+  "headword": "work on",
+  "source": "phrase",
+  "rank": 1487,
+  "band": 2,
+  "level": null,
+  "frequency": 7600,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "That kid needs to work on his attitude."
+ },
+ {
+  "headword": "think about",
+  "source": "phrase",
+  "rank": 1517,
+  "band": 2,
+  "level": null,
+  "frequency": 7243,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "I’m thinking about changing careers."
+ },
+ {
+  "headword": "for instance",
+  "source": "phrase",
+  "rank": 1529,
+  "band": 2,
+  "level": null,
+  "frequency": 7138,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "That holds true for even the governor for instance."
+ },
+ {
+  "headword": "too much",
+  "source": "phrase",
+  "rank": 1530,
+  "band": 2,
+  "level": null,
+  "frequency": 7123,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "I don’t worry about it too much."
+ },
+ {
+  "headword": "you see",
+  "source": "phrase",
+  "rank": 1532,
+  "band": 2,
+  "level": null,
+  "frequency": 7102,
+  "genre": {
+   "spoken": 3,
+   "written": 0,
+   "academic": 0
+  },
+  "example": "And the problem you see is with awareness-raising."
+ },
+ {
+  "headword": "in particular",
+  "source": "phrase",
+  "rank": 1533,
+  "band": 2,
+  "level": null,
+  "frequency": 7092,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "There’s nothing in particular wrong with it."
+ },
+ {
+  "headword": "a couple of",
+  "source": "phrase",
+  "rank": 1542,
+  "band": 2,
+  "level": null,
+  "frequency": 7007,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "They need a couple of minutes still."
+ },
+ {
+  "headword": "instead of",
+  "source": "phrase",
+  "rank": 1556,
+  "band": 2,
+  "level": null,
+  "frequency": 6907,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "He can go instead of me."
+ },
+ {
+  "headword": "come back",
+  "source": "phrase",
+  "rank": 1573,
+  "band": 2,
+  "level": null,
+  "frequency": 6772,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "But we can come back to that later."
+ },
+ {
+  "headword": "look like",
+  "source": "phrase",
+  "rank": 1591,
+  "band": 2,
+  "level": null,
+  "frequency": 6595,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "It’s not what it looks like."
+ },
+ {
+  "headword": "find out",
+  "source": "phrase",
+  "rank": 1605,
+  "band": 2,
+  "level": null,
+  "frequency": 6499,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "How did you find out?"
+ },
+ {
+  "headword": "point out",
+  "source": "phrase",
+  "rank": 1638,
+  "band": 2,
+  "level": null,
+  "frequency": 6325,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "She pointed out that it was getting late."
+ },
+ {
+  "headword": "apart from",
+  "source": "phrase",
+  "rank": 1647,
+  "band": 2,
+  "level": null,
+  "frequency": 6287,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Are there any others, apart from him?"
+ },
+ {
+  "headword": "call for",
+  "source": "phrase",
+  "rank": 1657,
+  "band": 2,
+  "level": null,
+  "frequency": 6243,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "Hard times call for tough measures."
+ },
+ {
+  "headword": "manage to",
+  "source": "phrase",
+  "rank": 1661,
+  "band": 2,
+  "level": null,
+  "frequency": 6234,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "Did you manage to get in touch at all?"
+ },
+ {
+  "headword": "or two",
+  "source": "phrase",
+  "rank": 1667,
+  "band": 2,
+  "level": null,
+  "frequency": 6192,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "He had a thing or two to drink, then left."
+ },
+ {
+  "headword": "a further (‘another’)",
+  "source": "phrase",
+  "rank": 1681,
+  "band": 2,
+  "level": null,
+  "frequency": 6121,
+  "genre": {
+   "spoken": 1,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "It’s a further reason to reconsider the project."
+ },
+ {
+  "headword": "come out",
+  "source": "phrase",
+  "rank": 1696,
+  "band": 2,
+  "level": null,
+  "frequency": 6031,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It’s supposed to come out on Friday."
+ },
+ {
+  "headword": "be expected to",
+  "source": "phrase",
+  "rank": 1713,
+  "band": 2,
+  "level": null,
+  "frequency": 5964,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "They can’t be expected to just sit there and wait."
+ },
+ {
+  "headword": "seek to",
+  "source": "phrase",
+  "rank": 1716,
+  "band": 2,
+  "level": null,
+  "frequency": 5937,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The new board sought to find alternative solutions."
+ },
+ {
+  "headword": "go through",
+  "source": "phrase",
+  "rank": 1733,
+  "band": 2,
+  "level": null,
+  "frequency": 5857,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "You can’t imagine what I’m going through."
+ },
+ {
+  "headword": "long term",
+  "source": "phrase",
+  "rank": 1740,
+  "band": 2,
+  "level": null,
+  "frequency": 5831,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It seems to work, but what of the long term effects?"
+ },
+ {
+  "headword": "result in",
+  "source": "phrase",
+  "rank": 1759,
+  "band": 2,
+  "level": null,
+  "frequency": 5763,
+  "genre": {
+   "spoken": 1,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "Excessive criticism resulted in feelings of animosity."
+ },
+ {
+  "headword": "that is (rephrasing)",
+  "source": "phrase",
+  "rank": 1764,
+  "band": 2,
+  "level": null,
+  "frequency": 5737,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It’s yours, as long as you pay that is."
+ },
+ {
+  "headword": "even though",
+  "source": "phrase",
+  "rank": 1778,
+  "band": 2,
+  "level": null,
+  "frequency": 5664,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "I can’t even though it looks easy enough."
+ },
+ {
+  "headword": "a range of",
+  "source": "phrase",
+  "rank": 1779,
+  "band": 2,
+  "level": null,
+  "frequency": 5651,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Eventually, a range of events changed that."
+ },
+ {
+  "headword": "the latter (anaphor)",
+  "source": "phrase",
+  "rank": 1815,
+  "band": 2,
+  "level": null,
+  "frequency": 5519,
+  "genre": {
+   "spoken": 0,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "The latter may still be a challenge."
+ },
+ {
+  "headword": "make sure",
+  "source": "phrase",
+  "rank": 1818,
+  "band": 2,
+  "level": null,
+  "frequency": 5510,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "I had to make sure before I opened the door."
+ },
+ {
+  "headword": "take over",
+  "source": "phrase",
+  "rank": 1843,
+  "band": 2,
+  "level": null,
+  "frequency": 5394,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "You can’t just let the kids take over."
+ },
+ {
+  "headword": "consist of",
+  "source": "phrase",
+  "rank": 1850,
+  "band": 2,
+  "level": null,
+  "frequency": 5362,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "What does it consist of?"
+ },
+ {
+  "headword": "as soon as",
+  "source": "phrase",
+  "rank": 1861,
+  "band": 2,
+  "level": null,
+  "frequency": 5323,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "As soon as he can he will call you back."
+ },
+ {
+  "headword": "at the time ('when this happened')",
+  "source": "phrase",
+  "rank": 1873,
+  "band": 2,
+  "level": null,
+  "frequency": 5282,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "I was busy at the time."
+ },
+ {
+  "headword": "on the other hand",
+  "source": "phrase",
+  "rank": 1877,
+  "band": 2,
+  "level": null,
+  "frequency": 5267,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "On the other hand, the business did make a profit."
+ },
+ {
+  "headword": "on one's own",
+  "source": "phrase",
+  "rank": 1886,
+  "band": 2,
+  "level": null,
+  "frequency": 5240,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "You did this on your own?"
+ },
+ {
+  "headword": "all right",
+  "source": "phrase",
+  "rank": 1894,
+  "band": 2,
+  "level": null,
+  "frequency": 5230,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "If it’s all right I think I’ll head off to bed."
+ },
+ {
+  "headword": "subject to",
+  "source": "phrase",
+  "rank": 1900,
+  "band": 2,
+  "level": null,
+  "frequency": 5218,
+  "genre": {
+   "spoken": 0,
+   "written": 1,
+   "academic": 3
+  },
+  "example": "All baggage is subject to inspection."
+ },
+ {
+  "headword": "after all (adv.)",
+  "source": "phrase",
+  "rank": 1904,
+  "band": 2,
+  "level": null,
+  "frequency": 5197,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "He is only six years old, after all."
+ },
+ {
+  "headword": "in front of ('before')",
+  "source": "phrase",
+  "rank": 1908,
+  "band": 2,
+  "level": null,
+  "frequency": 5190,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "She did not want to say anything in front of the kids."
+ },
+ {
+  "headword": "to do with",
+  "source": "phrase",
+  "rank": 1910,
+  "band": 2,
+  "level": null,
+  "frequency": 5184,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 1
+  },
+  "example": "I think it has something to do with physics."
+ },
+ {
+  "headword": "go out",
+  "source": "phrase",
+  "rank": 1912,
+  "band": 2,
+  "level": null,
+  "frequency": 5173,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "Brochures went out to prospective buyers."
+ },
+ {
+  "headword": "a good/great deal ('much')",
+  "source": "phrase",
+  "rank": 1920,
+  "band": 2,
+  "level": null,
+  "frequency": 5126,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "She means a great deal to me."
+ },
+ {
+  "headword": "on the way",
+  "source": "phrase",
+  "rank": 1929,
+  "band": 2,
+  "level": null,
+  "frequency": 5085,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "We can stop for lunch on the way."
+ },
+ {
+  "headword": "as long as",
+  "source": "phrase",
+  "rank": 1931,
+  "band": 2,
+  "level": null,
+  "frequency": 5084,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "It makes no difference as long as it’s done."
+ },
+ {
+  "headword": "so far ('until now')",
+  "source": "phrase",
+  "rank": 1951,
+  "band": 2,
+  "level": null,
+  "frequency": 5018,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Any questions so far?"
+ },
+ {
+  "headword": "ought to",
+  "source": "phrase",
+  "rank": 1958,
+  "band": 2,
+  "level": null,
+  "frequency": 5002,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "She hasn’t but she ought to."
+ },
+ {
+  "headword": "at the moment",
+  "source": "phrase",
+  "rank": 1959,
+  "band": 2,
+  "level": null,
+  "frequency": 5001,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "They have a lot going on at the moment."
+ },
+ {
+  "headword": "as though",
+  "source": "phrase",
+  "rank": 1967,
+  "band": 2,
+  "level": null,
+  "frequency": 4988,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "He smiled then, as though remembering a joke."
+ },
+ {
+  "headword": "come to ('evolve to')",
+  "source": "phrase",
+  "rank": 1970,
+  "band": 2,
+  "level": null,
+  "frequency": 4970,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "We came to see it for what it was."
+ },
+ {
+  "headword": "along with",
+  "source": "phrase",
+  "rank": 1974,
+  "band": 2,
+  "level": null,
+  "frequency": 4948,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "Along with his dog, the cat slowly stopped eating."
+ },
+ {
+  "headword": "may well ('could')",
+  "source": "phrase",
+  "rank": 1982,
+  "band": 2,
+  "level": null,
+  "frequency": 4931,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "He hasn’t yet but may well try before long."
+ },
+ {
+  "headword": "get out",
+  "source": "phrase",
+  "rank": 2001,
+  "band": 3,
+  "level": null,
+  "frequency": 4858,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "There was no way to get out of work that Friday."
+ },
+ {
+  "headword": "followed by",
+  "source": "phrase",
+  "rank": 2013,
+  "band": 3,
+  "level": null,
+  "frequency": 4816,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The workshop will be followed by time for questions."
+ },
+ {
+  "headword": "in (the sense) that",
+  "source": "phrase",
+  "rank": 2018,
+  "band": 3,
+  "level": null,
+  "frequency": 4805,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It’s great in that there are so many restaurants."
+ },
+ {
+  "headword": "the case ('true')",
+  "source": "phrase",
+  "rank": 2022,
+  "band": 3,
+  "level": null,
+  "frequency": 4794,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It’s not the case that I don’t love him."
+ },
+ {
+  "headword": "take up",
+  "source": "phrase",
+  "rank": 2038,
+  "band": 3,
+  "level": null,
+  "frequency": 4717,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "I don’t wish to take up more time than is necessary."
+ },
+ {
+  "headword": "account for",
+  "source": "phrase",
+  "rank": 2060,
+  "band": 3,
+  "level": null,
+  "frequency": 4642,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "They’ll need to account for their actions."
+ },
+ {
+  "headword": "set out",
+  "source": "phrase",
+  "rank": 2064,
+  "band": 3,
+  "level": null,
+  "frequency": 4624,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "She accomplished what she set out to do."
+ },
+ {
+  "headword": "as far as",
+  "source": "phrase",
+  "rank": 2067,
+  "band": 3,
+  "level": null,
+  "frequency": 4619,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "What are you thinking, as far as feasibility on this?"
+ },
+ {
+  "headword": "concerned with",
+  "source": "phrase",
+  "rank": 2068,
+  "band": 3,
+  "level": null,
+  "frequency": 4619,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "They spoke on issues concerned with culture."
+ },
+ {
+  "headword": "about to",
+  "source": "phrase",
+  "rank": 2075,
+  "band": 3,
+  "level": null,
+  "frequency": 4600,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "Things were about to change."
+ },
+ {
+  "headword": "supposed to",
+  "source": "phrase",
+  "rank": 2086,
+  "band": 3,
+  "level": null,
+  "frequency": 4586,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 2
+  },
+  "example": "I didn’t go, but I was supposed to."
+ },
+ {
+  "headword": "and so on",
+  "source": "phrase",
+  "rank": 2087,
+  "band": 3,
+  "level": null,
+  "frequency": 4584,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "My parents arrived, then John, his wife, and so on."
+ },
+ {
+  "headword": "come on",
+  "source": "phrase",
+  "rank": 2105,
+  "band": 3,
+  "level": null,
+  "frequency": 4519,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "Come on, think about it!"
+ },
+ {
+  "headword": "take on",
+  "source": "phrase",
+  "rank": 2124,
+  "band": 3,
+  "level": null,
+  "frequency": 4451,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "You’d better think twice before taking on more work."
+ },
+ {
+  "headword": "work out",
+  "source": "phrase",
+  "rank": 2131,
+  "band": 3,
+  "level": null,
+  "frequency": 4432,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 2
+  },
+  "example": "I’m trying to work out what it stands for."
+ },
+ {
+  "headword": "all over ('everywhere')",
+  "source": "phrase",
+  "rank": 2135,
+  "band": 3,
+  "level": null,
+  "frequency": 4420,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "The news was all over the web."
+ },
+ {
+  "headword": "other than",
+  "source": "phrase",
+  "rank": 2149,
+  "band": 3,
+  "level": null,
+  "frequency": 4380,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "No one other than you could have come up with it."
+ },
+ {
+  "headword": "out of (‘in’/’from’)",
+  "source": "phrase",
+  "rank": 2156,
+  "band": 3,
+  "level": null,
+  "frequency": 4361,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "In terms of colour, three out of five were silver."
+ },
+ {
+  "headword": "turn out",
+  "source": "phrase",
+  "rank": 2157,
+  "band": 3,
+  "level": null,
+  "frequency": 4354,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "How did it turn out?"
+ },
+ {
+  "headword": "look after",
+  "source": "phrase",
+  "rank": 2164,
+  "band": 3,
+  "level": null,
+  "frequency": 4332,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "She did more than just look after the finances."
+ },
+ {
+  "headword": "at last",
+  "source": "phrase",
+  "rank": 2173,
+  "band": 3,
+  "level": null,
+  "frequency": 4306,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "At last we met over coffee last week."
+ },
+ {
+  "headword": "a variety of",
+  "source": "phrase",
+  "rank": 2179,
+  "band": 3,
+  "level": null,
+  "frequency": 4283,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "And a variety of issues seemed to stall the process."
+ },
+ {
+  "headword": "at first",
+  "source": "phrase",
+  "rank": 2180,
+  "band": 3,
+  "level": null,
+  "frequency": 4275,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Not at first, but just the other day there was one."
+ },
+ {
+  "headword": "or so",
+  "source": "phrase",
+  "rank": 2216,
+  "band": 3,
+  "level": null,
+  "frequency": 4164,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "A day or so later he called me back on my mobile."
+ },
+ {
+  "headword": "in favour",
+  "source": "phrase",
+  "rank": 2231,
+  "band": 3,
+  "level": null,
+  "frequency": 4073,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "I don’t know about you but I’m in favour."
+ },
+ {
+  "headword": "give up",
+  "source": "phrase",
+  "rank": 2258,
+  "band": 3,
+  "level": null,
+  "frequency": 3997,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "You can’t just give up."
+ },
+ {
+  "headword": "get to ('arrive at')",
+  "source": "phrase",
+  "rank": 2263,
+  "band": 3,
+  "level": null,
+  "frequency": 3979,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "When he got to the end he started to weep."
+ },
+ {
+  "headword": "find oneself",
+  "source": "phrase",
+  "rank": 2280,
+  "band": 3,
+  "level": null,
+  "frequency": 3917,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "I found myself driving home."
+ },
+ {
+  "headword": "get up",
+  "source": "phrase",
+  "rank": 2298,
+  "band": 3,
+  "level": null,
+  "frequency": 3857,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "It was easy getting up but the commute was awful."
+ },
+ {
+  "headword": "carry on",
+  "source": "phrase",
+  "rank": 2345,
+  "band": 3,
+  "level": null,
+  "frequency": 3759,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "He could simply not carry on."
+ },
+ {
+  "headword": "go back",
+  "source": "phrase",
+  "rank": 2361,
+  "band": 3,
+  "level": null,
+  "frequency": 3722,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "If I could I’d go back and do it all over again."
+ },
+ {
+  "headword": "focus on",
+  "source": "phrase",
+  "rank": 2371,
+  "band": 3,
+  "level": null,
+  "frequency": 3703,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "But today I’d like to focus on something different."
+ },
+ {
+  "headword": "at once",
+  "source": "phrase",
+  "rank": 2379,
+  "band": 3,
+  "level": null,
+  "frequency": 3684,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "I did it at once."
+ },
+ {
+  "headword": "it takes",
+  "source": "phrase",
+  "rank": 2384,
+  "band": 3,
+  "level": null,
+  "frequency": 3670,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "No matter what it takes."
+ },
+ {
+  "headword": "get on/off (trans)",
+  "source": "phrase",
+  "rank": 2388,
+  "band": 3,
+  "level": null,
+  "frequency": 3656,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "We waited for hours in the queue to get on."
+ },
+ {
+  "headword": "as a whole",
+  "source": "phrase",
+  "rank": 2404,
+  "band": 3,
+  "level": null,
+  "frequency": 3615,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "As a whole it’s OK."
+ },
+ {
+  "headword": "in practice",
+  "source": "phrase",
+  "rank": 2407,
+  "band": 3,
+  "level": null,
+  "frequency": 3609,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "There was nothing she could do in practice."
+ },
+ {
+  "headword": "by the time",
+  "source": "phrase",
+  "rank": 2408,
+  "band": 3,
+  "level": null,
+  "frequency": 3607,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "By the time dinner started there were none left."
+ },
+ {
+  "headword": "lots of",
+  "source": "phrase",
+  "rank": 2409,
+  "band": 3,
+  "level": null,
+  "frequency": 3605,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "Lots of them do travel during the winter months."
+ },
+ {
+  "headword": "said to be",
+  "source": "phrase",
+  "rank": 2417,
+  "band": 3,
+  "level": null,
+  "frequency": 3586,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "The priest was said to be missing."
+ },
+ {
+  "headword": "in time",
+  "source": "phrase",
+  "rank": 2425,
+  "band": 3,
+  "level": null,
+  "frequency": 3566,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "You will in time."
+ },
+ {
+  "headword": "in turn",
+  "source": "phrase",
+  "rank": 2429,
+  "band": 3,
+  "level": null,
+  "frequency": 3558,
+  "genre": {
+   "spoken": 1,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "The supermarket in turn will donate seven thousand."
+ },
+ {
+  "headword": "once again",
+  "source": "phrase",
+  "rank": 2437,
+  "band": 3,
+  "level": null,
+  "frequency": 3532,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Once again, this was completely unforeseen."
+ },
+ {
+  "headword": "all the time",
+  "source": "phrase",
+  "rank": 2439,
+  "band": 3,
+  "level": null,
+  "frequency": 3527,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "I go there all the time."
+ },
+ {
+  "headword": "on the basis (of)",
+  "source": "phrase",
+  "rank": 2442,
+  "band": 3,
+  "level": null,
+  "frequency": 3515,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "She came on the basis that it would help her."
+ },
+ {
+  "headword": "kind of",
+  "source": "phrase",
+  "rank": 2445,
+  "band": 3,
+  "level": null,
+  "frequency": 3510,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "The windows are kind of fogged up."
+ },
+ {
+  "headword": "get into",
+  "source": "phrase",
+  "rank": 2446,
+  "band": 3,
+  "level": null,
+  "frequency": 3508,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "I really got into what he was talking about."
+ },
+ {
+  "headword": "rely on",
+  "source": "phrase",
+  "rank": 2454,
+  "band": 3,
+  "level": null,
+  "frequency": 3488,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "He has no one else to rely on."
+ },
+ {
+  "headword": "go for",
+  "source": "phrase",
+  "rank": 2483,
+  "band": 3,
+  "level": null,
+  "frequency": 3421,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "I could really go for a hamburger right now."
+ },
+ {
+  "headword": "aim to",
+  "source": "phrase",
+  "rank": 2484,
+  "band": 3,
+  "level": null,
+  "frequency": 3415,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "They aim to complete the project by the spring."
+ },
+ {
+  "headword": "make up (‘comprise’)",
+  "source": "phrase",
+  "rank": 2498,
+  "band": 3,
+  "level": null,
+  "frequency": 3394,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Hispanics make up a large part of the population."
+ },
+ {
+  "headword": "appeal to",
+  "source": "phrase",
+  "rank": 2531,
+  "band": 3,
+  "level": null,
+  "frequency": 3299,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "It appeals to younger learners."
+ },
+ {
+  "headword": "end up",
+  "source": "phrase",
+  "rank": 2536,
+  "band": 3,
+  "level": null,
+  "frequency": 3285,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "We ended up going anyway."
+ },
+ {
+  "headword": "shake one’s head",
+  "source": "phrase",
+  "rank": 2548,
+  "band": 3,
+  "level": null,
+  "frequency": 3250,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "He just shook his head and laughed."
+ },
+ {
+  "headword": "no more than (‘only’)",
+  "source": "phrase",
+  "rank": 2557,
+  "band": 3,
+  "level": null,
+  "frequency": 3226,
+  "genre": {
+   "spoken": 1,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "No more than five of them had auto insurance."
+ },
+ {
+  "headword": "get back",
+  "source": "phrase",
+  "rank": 2575,
+  "band": 3,
+  "level": null,
+  "frequency": 3178,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "What time will we get back?"
+ },
+ {
+  "headword": "what about",
+  "source": "phrase",
+  "rank": 2584,
+  "band": 3,
+  "level": null,
+  "frequency": 3160,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "But what about tomorrow?"
+ },
+ {
+  "headword": "in other words",
+  "source": "phrase",
+  "rank": 2586,
+  "band": 3,
+  "level": null,
+  "frequency": 3159,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The groups are in other words conservative."
+ },
+ {
+  "headword": "as for",
+  "source": "phrase",
+  "rank": 2588,
+  "band": 3,
+  "level": null,
+  "frequency": 3157,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "As for the promotion, there may be other options."
+ },
+ {
+  "headword": "not even",
+  "source": "phrase",
+  "rank": 2599,
+  "band": 3,
+  "level": null,
+  "frequency": 3128,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "No one cared, not even when they saw the photos."
+ },
+ {
+  "headword": "entitled to",
+  "source": "phrase",
+  "rank": 2606,
+  "band": 3,
+  "level": null,
+  "frequency": 3113,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "You’re entitled to your opinion."
+ },
+ {
+  "headword": "prior to",
+  "source": "phrase",
+  "rank": 2608,
+  "band": 3,
+  "level": null,
+  "frequency": 3110,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Prior to the event, the organizers called the band."
+ },
+ {
+  "headword": "choose to",
+  "source": "phrase",
+  "rank": 2616,
+  "band": 3,
+  "level": null,
+  "frequency": 3099,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "You may choose to believe what the papers say."
+ },
+ {
+  "headword": "something like (‘around’)",
+  "source": "phrase",
+  "rank": 2622,
+  "band": 3,
+  "level": null,
+  "frequency": 3092,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "She makes something like five grand a month."
+ },
+ {
+  "headword": "known to",
+  "source": "phrase",
+  "rank": 2624,
+  "band": 3,
+  "level": null,
+  "frequency": 3091,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "He’s known to be like that."
+ },
+ {
+  "headword": "in touch (with)",
+  "source": "phrase",
+  "rank": 2636,
+  "band": 3,
+  "level": null,
+  "frequency": 3060,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "Are you two at all in touch?"
+ },
+ {
+  "headword": "in the end",
+  "source": "phrase",
+  "rank": 2637,
+  "band": 3,
+  "level": null,
+  "frequency": 3050,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "In the end it’s like what they say about horses."
+ },
+ {
+  "headword": "in the way",
+  "source": "phrase",
+  "rank": 2654,
+  "band": 3,
+  "level": null,
+  "frequency": 3013,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "I won’t stand in the way."
+ },
+ {
+  "headword": "care for",
+  "source": "phrase",
+  "rank": 2657,
+  "band": 3,
+  "level": null,
+  "frequency": 3004,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "He doesn’t care for it very much in his tea."
+ },
+ {
+  "headword": "in the event (of)",
+  "source": "phrase",
+  "rank": 2658,
+  "band": 3,
+  "level": null,
+  "frequency": 2998,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "In the event you change your mind, let me know."
+ },
+ {
+  "headword": "they say",
+  "source": "phrase",
+  "rank": 2675,
+  "band": 3,
+  "level": null,
+  "frequency": 2962,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "They say it tastes like chicken."
+ },
+ {
+  "headword": "so called",
+  "source": "phrase",
+  "rank": 2688,
+  "band": 3,
+  "level": null,
+  "frequency": 2944,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Any so called rumors are as easily their fault."
+ },
+ {
+  "headword": "take into account",
+  "source": "phrase",
+  "rank": 2702,
+  "band": 3,
+  "level": null,
+  "frequency": 2921,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "You must also take into account the rush hour."
+ },
+ {
+  "headword": "in respect of",
+  "source": "phrase",
+  "rank": 2709,
+  "band": 3,
+  "level": null,
+  "frequency": 2909,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "There was nothing in respect of drink."
+ },
+ {
+  "headword": "out of ('using')",
+  "source": "phrase",
+  "rank": 2711,
+  "band": 3,
+  "level": null,
+  "frequency": 2907,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "The walls are made out of wood."
+ },
+ {
+  "headword": "at the same time ('conversely')",
+  "source": "phrase",
+  "rank": 2719,
+  "band": 3,
+  "level": null,
+  "frequency": 2892,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "At the same time it may be worth it."
+ },
+ {
+  "headword": "next to",
+  "source": "phrase",
+  "rank": 2724,
+  "band": 3,
+  "level": null,
+  "frequency": 2882,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "Next to his sister, he was the best looking of them."
+ },
+ {
+  "headword": "turn up",
+  "source": "phrase",
+  "rank": 2734,
+  "band": 3,
+  "level": null,
+  "frequency": 2865,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "The money turned up later."
+ },
+ {
+  "headword": "point of view",
+  "source": "phrase",
+  "rank": 2735,
+  "band": 3,
+  "level": null,
+  "frequency": 2864,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "They all had a different point of view."
+ },
+ {
+  "headword": "at present",
+  "source": "phrase",
+  "rank": 2744,
+  "band": 3,
+  "level": null,
+  "frequency": 2847,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "There’s nothing to do at present."
+ },
+ {
+  "headword": "used to (accustomed)",
+  "source": "phrase",
+  "rank": 2752,
+  "band": 3,
+  "level": null,
+  "frequency": 2831,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "It may take a while to get used to."
+ },
+ {
+  "headword": "whether or not",
+  "source": "phrase",
+  "rank": 2759,
+  "band": 3,
+  "level": null,
+  "frequency": 2824,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It depends on whether or not he comes on time."
+ },
+ {
+  "headword": "in place",
+  "source": "phrase",
+  "rank": 2767,
+  "band": 3,
+  "level": null,
+  "frequency": 2805,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "There are systems in place to handle that."
+ },
+ {
+  "headword": "no doubt ('surely')",
+  "source": "phrase",
+  "rank": 2776,
+  "band": 3,
+  "level": null,
+  "frequency": 2791,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "She can and will no doubt improve over time."
+ },
+ {
+  "headword": "full time",
+  "source": "phrase",
+  "rank": 2785,
+  "band": 3,
+  "level": null,
+  "frequency": 2761,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "I’m a full time fan of his music."
+ },
+ {
+  "headword": "sort out",
+  "source": "phrase",
+  "rank": 2817,
+  "band": 3,
+  "level": null,
+  "frequency": 2696,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 2
+  },
+  "example": "They managed to sort out everything on their own."
+ },
+ {
+  "headword": "in a way",
+  "source": "phrase",
+  "rank": 2823,
+  "band": 3,
+  "level": null,
+  "frequency": 2684,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "It’s funny in a way."
+ },
+ {
+  "headword": "or something ('perhaps')",
+  "source": "phrase",
+  "rank": 2826,
+  "band": 3,
+  "level": null,
+  "frequency": 2683,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "The sales clerk seemed distracted or something."
+ },
+ {
+  "headword": "on behalf of",
+  "source": "phrase",
+  "rank": 2827,
+  "band": 3,
+  "level": null,
+  "frequency": 2679,
+  "genre": {
+   "spoken": 0,
+   "written": 1,
+   "academic": 3
+  },
+  "example": "I’d like to apologize on behalf of the committee."
+ },
+ {
+  "headword": "over there",
+  "source": "phrase",
+  "rank": 2828,
+  "band": 3,
+  "level": null,
+  "frequency": 2678,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "He put it way over there."
+ },
+ {
+  "headword": "in spite of",
+  "source": "phrase",
+  "rank": 2829,
+  "band": 3,
+  "level": null,
+  "frequency": 2676,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "In spite of all the work there were few alterations."
+ },
+ {
+  "headword": "that's it",
+  "source": "phrase",
+  "rank": 2831,
+  "band": 3,
+  "level": null,
+  "frequency": 2674,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "That’s it for today, I’m afraid."
+ },
+ {
+  "headword": "in part",
+  "source": "phrase",
+  "rank": 2848,
+  "band": 3,
+  "level": null,
+  "frequency": 2652,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It is in part the reason people come here."
+ },
+ {
+  "headword": "oh no",
+  "source": "phrase",
+  "rank": 2857,
+  "band": 3,
+  "level": null,
+  "frequency": 2642,
+  "genre": {
+   "spoken": 3,
+   "written": 0,
+   "academic": 0
+  },
+  "example": "Oh no not again."
+ },
+ {
+  "headword": "in mind",
+  "source": "phrase",
+  "rank": 2859,
+  "band": 3,
+  "level": null,
+  "frequency": 2638,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "Do you have anything special in mind?"
+ },
+ {
+  "headword": "(with) regard to",
+  "source": "phrase",
+  "rank": 2863,
+  "band": 3,
+  "level": null,
+  "frequency": 2630,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "There was some confusion with regard to payment."
+ },
+ {
+  "headword": "one another",
+  "source": "phrase",
+  "rank": 2868,
+  "band": 3,
+  "level": null,
+  "frequency": 2623,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "They looked at one another for a few minutes."
+ },
+ {
+  "headword": "as follows",
+  "source": "phrase",
+  "rank": 2871,
+  "band": 3,
+  "level": null,
+  "frequency": 2620,
+  "genre": {
+   "spoken": 0,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "The plan is as follows."
+ },
+ {
+  "headword": "the above",
+  "source": "phrase",
+  "rank": 2879,
+  "band": 3,
+  "level": null,
+  "frequency": 2608,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The above only underscores strength of the data."
+ },
+ {
+  "headword": "to date",
+  "source": "phrase",
+  "rank": 2888,
+  "band": 3,
+  "level": null,
+  "frequency": 2600,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "To date there have been over nine instances."
+ },
+ {
+  "headword": "go into",
+  "source": "phrase",
+  "rank": 2892,
+  "band": 3,
+  "level": null,
+  "frequency": 2595,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "I won’t go into what he said."
+ },
+ {
+  "headword": "too many",
+  "source": "phrase",
+  "rank": 2898,
+  "band": 3,
+  "level": null,
+  "frequency": 2587,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "You don’t see too many like that one, I’ll tell you."
+ },
+ {
+  "headword": "in the course of",
+  "source": "phrase",
+  "rank": 2899,
+  "band": 3,
+  "level": null,
+  "frequency": 2585,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "In the course of the discussion the manager left."
+ },
+ {
+  "headword": "more or less",
+  "source": "phrase",
+  "rank": 2903,
+  "band": 3,
+  "level": null,
+  "frequency": 2579,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It’s more or less what we imagined I suppose."
+ },
+ {
+  "headword": "short term",
+  "source": "phrase",
+  "rank": 2906,
+  "band": 3,
+  "level": null,
+  "frequency": 2574,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "There are many short term gains to be had."
+ },
+ {
+  "headword": "aimed at",
+  "source": "phrase",
+  "rank": 2907,
+  "band": 3,
+  "level": null,
+  "frequency": 2573,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The study is aimed at exploring how people use it."
+ },
+ {
+  "headword": "go off",
+  "source": "phrase",
+  "rank": 2919,
+  "band": 3,
+  "level": null,
+  "frequency": 2551,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "She went off without even saying goodbye."
+ },
+ {
+  "headword": "in case",
+  "source": "phrase",
+  "rank": 2926,
+  "band": 3,
+  "level": null,
+  "frequency": 2536,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "In case you’re wondering, this isn’t my natural color."
+ },
+ {
+  "headword": "out there",
+  "source": "phrase",
+  "rank": 2941,
+  "band": 3,
+  "level": null,
+  "frequency": 2513,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "There are simply no jobs out there right now."
+ },
+ {
+  "headword": "led by",
+  "source": "phrase",
+  "rank": 2942,
+  "band": 3,
+  "level": null,
+  "frequency": 2511,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "He was led by his competitive drive above all."
+ },
+ {
+  "headword": "more and more",
+  "source": "phrase",
+  "rank": 2967,
+  "band": 3,
+  "level": null,
+  "frequency": 2468,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "More and more it’s about the customer."
+ },
+ {
+  "headword": "have a look",
+  "source": "phrase",
+  "rank": 2970,
+  "band": 3,
+  "level": null,
+  "frequency": 2464,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "Why don’t you have a look?"
+ },
+ {
+  "headword": "believe in",
+  "source": "phrase",
+  "rank": 2981,
+  "band": 3,
+  "level": null,
+  "frequency": 2450,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "I don’t believe in corporal punishment."
+ },
+ {
+  "headword": "put it ('say')",
+  "source": "phrase",
+  "rank": 2983,
+  "band": 3,
+  "level": null,
+  "frequency": 2449,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "There’s no better way to put it, I think."
+ },
+ {
+  "headword": "these days",
+  "source": "phrase",
+  "rank": 2992,
+  "band": 3,
+  "level": null,
+  "frequency": 2440,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "It’s what these days the media call ‘viral’."
+ },
+ {
+  "headword": "in charge",
+  "source": "phrase",
+  "rank": 2999,
+  "band": 3,
+  "level": null,
+  "frequency": 2432,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "He was able to stay in charge while she was away."
+ },
+ {
+  "headword": "feel like",
+  "source": "phrase",
+  "rank": 3000,
+  "band": 3,
+  "level": null,
+  "frequency": 2431,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "I feel like eating out."
+ },
+ {
+  "headword": "up to (until)",
+  "source": "phrase",
+  "rank": 3016,
+  "band": 4,
+  "level": null,
+  "frequency": 2409,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "I walked up to the window and paused."
+ },
+ {
+  "headword": "heard of",
+  "source": "phrase",
+  "rank": 3022,
+  "band": 4,
+  "level": null,
+  "frequency": 2403,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "Haven’t you ever heard of manners?"
+ },
+ {
+  "headword": "take part in",
+  "source": "phrase",
+  "rank": 3044,
+  "band": 4,
+  "level": null,
+  "frequency": 2374,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It’s something we all wanted to take part in."
+ },
+ {
+  "headword": "in so far as",
+  "source": "phrase",
+  "rank": 3059,
+  "band": 4,
+  "level": null,
+  "frequency": 2344,
+  "genre": {
+   "spoken": 1,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "The plan was fine in so far as time and transport."
+ },
+ {
+  "headword": "part time",
+  "source": "phrase",
+  "rank": 3061,
+  "band": 4,
+  "level": null,
+  "frequency": 2343,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "She can take it on part time."
+ },
+ {
+  "headword": "look forward to",
+  "source": "phrase",
+  "rank": 3067,
+  "band": 4,
+  "level": null,
+  "frequency": 2331,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "It’s something we can all look forward to."
+ },
+ {
+  "headword": "as such",
+  "source": "phrase",
+  "rank": 3094,
+  "band": 4,
+  "level": null,
+  "frequency": 2290,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The film was not a horror as such."
+ },
+ {
+  "headword": "bound to",
+  "source": "phrase",
+  "rank": 3104,
+  "band": 4,
+  "level": null,
+  "frequency": 2278,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It’s bound to be better next time."
+ },
+ {
+  "headword": "turn on",
+  "source": "phrase",
+  "rank": 3113,
+  "band": 4,
+  "level": null,
+  "frequency": 2266,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "It won’t turn on."
+ },
+ {
+  "headword": "set to",
+  "source": "phrase",
+  "rank": 3121,
+  "band": 4,
+  "level": null,
+  "frequency": 2258,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "He’s set to arrive today."
+ },
+ {
+  "headword": "move on",
+  "source": "phrase",
+  "rank": 3134,
+  "band": 4,
+  "level": null,
+  "frequency": 2245,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "I’d like to move on if I may."
+ },
+ {
+  "headword": "in contrast (to)",
+  "source": "phrase",
+  "rank": 3149,
+  "band": 4,
+  "level": null,
+  "frequency": 2229,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The inside was amazing in contrast."
+ },
+ {
+  "headword": "this stage",
+  "source": "phrase",
+  "rank": 3152,
+  "band": 4,
+  "level": null,
+  "frequency": 2223,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "We can’t at this stage."
+ },
+ {
+  "headword": "all but",
+  "source": "phrase",
+  "rank": 3157,
+  "band": 4,
+  "level": null,
+  "frequency": 2214,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "She all but sent him chocolates and flowers."
+ },
+ {
+  "headword": "above all",
+  "source": "phrase",
+  "rank": 3160,
+  "band": 4,
+  "level": null,
+  "frequency": 2212,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It is above all what people care most about."
+ },
+ {
+  "headword": "rid of",
+  "source": "phrase",
+  "rank": 3162,
+  "band": 4,
+  "level": null,
+  "frequency": 2212,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "She was happy to be rid of it."
+ },
+ {
+  "headword": "in any case",
+  "source": "phrase",
+  "rank": 3197,
+  "band": 4,
+  "level": null,
+  "frequency": 2159,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It’s not due till tomorrow in any case."
+ },
+ {
+  "headword": "thanks to",
+  "source": "phrase",
+  "rank": 3199,
+  "band": 4,
+  "level": null,
+  "frequency": 2159,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "And it’s thanks to her research that we know that."
+ },
+ {
+  "headword": "go away",
+  "source": "phrase",
+  "rank": 3205,
+  "band": 4,
+  "level": null,
+  "frequency": 2150,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "The problem won’t just go away."
+ },
+ {
+  "headword": "once more",
+  "source": "phrase",
+  "rank": 3207,
+  "band": 4,
+  "level": null,
+  "frequency": 2146,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "I call on you once more my fellow citizens."
+ },
+ {
+  "headword": "oh well",
+  "source": "phrase",
+  "rank": 3220,
+  "band": 4,
+  "level": null,
+  "frequency": 2129,
+  "genre": {
+   "spoken": 3,
+   "written": 0,
+   "academic": 0
+  },
+  "example": "It was due yesterday? Oh well."
+ },
+ {
+  "headword": "follow up",
+  "source": "phrase",
+  "rank": 3222,
+  "band": 4,
+  "level": null,
+  "frequency": 2128,
+  "genre": {
+   "spoken": 1,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "I’d like to follow up on what that gentleman said."
+ },
+ {
+  "headword": "would say",
+  "source": "phrase",
+  "rank": 3224,
+  "band": 4,
+  "level": null,
+  "frequency": 2128,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "I don’t know, but I would say at least twenty."
+ },
+ {
+  "headword": "found to",
+  "source": "phrase",
+  "rank": 3235,
+  "band": 4,
+  "level": null,
+  "frequency": 2104,
+  "genre": {
+   "spoken": 0,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "It was found to be of little use in battle."
+ },
+ {
+  "headword": "meant to",
+  "source": "phrase",
+  "rank": 3240,
+  "band": 4,
+  "level": null,
+  "frequency": 2098,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "I haven’t seen it but it’s meant to be his best so far."
+ },
+ {
+  "headword": "hang on",
+  "source": "phrase",
+  "rank": 3263,
+  "band": 4,
+  "level": null,
+  "frequency": 2074,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "If you can hang on for just a second."
+ },
+ {
+  "headword": "turn into",
+  "source": "phrase",
+  "rank": 3265,
+  "band": 4,
+  "level": null,
+  "frequency": 2072,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "The idea turned into something amazing."
+ },
+ {
+  "headword": "something about",
+  "source": "phrase",
+  "rank": 3268,
+  "band": 4,
+  "level": null,
+  "frequency": 2071,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "There’s something about her I find interesting."
+ },
+ {
+  "headword": "by now",
+  "source": "phrase",
+  "rank": 3295,
+  "band": 4,
+  "level": null,
+  "frequency": 2044,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "I thought they’d be here by now."
+ },
+ {
+  "headword": "think so",
+  "source": "phrase",
+  "rank": 3308,
+  "band": 4,
+  "level": null,
+  "frequency": 2033,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 1
+  },
+  "example": "Do you think so?"
+ },
+ {
+  "headword": "go ahead",
+  "source": "phrase",
+  "rank": 3320,
+  "band": 4,
+  "level": null,
+  "frequency": 2023,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "Why don’t you go ahead and call him again?"
+ },
+ {
+  "headword": "bring about",
+  "source": "phrase",
+  "rank": 3322,
+  "band": 4,
+  "level": null,
+  "frequency": 2022,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "It was expected that he would bring about change."
+ },
+ {
+  "headword": "had better",
+  "source": "phrase",
+  "rank": 3323,
+  "band": 4,
+  "level": null,
+  "frequency": 2022,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "They had better listen."
+ },
+ {
+  "headword": "in accordance with",
+  "source": "phrase",
+  "rank": 3327,
+  "band": 4,
+  "level": null,
+  "frequency": 2017,
+  "genre": {
+   "spoken": 0,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "The plan was execute in accordance with municipal guidelines."
+ },
+ {
+  "headword": "call on",
+  "source": "phrase",
+  "rank": 3328,
+  "band": 4,
+  "level": null,
+  "frequency": 2016,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "He called on his members of staff for advice."
+ },
+ {
+  "headword": "at times",
+  "source": "phrase",
+  "rank": 3331,
+  "band": 4,
+  "level": null,
+  "frequency": 2014,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It can be slightly frustrating at times."
+ },
+ {
+  "headword": "all the way",
+  "source": "phrase",
+  "rank": 3340,
+  "band": 4,
+  "level": null,
+  "frequency": 2007,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "I’m with you all the way."
+ },
+ {
+  "headword": "in effect",
+  "source": "phrase",
+  "rank": 3349,
+  "band": 4,
+  "level": null,
+  "frequency": 1995,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "In effect it was like being in space."
+ },
+ {
+  "headword": "afford to",
+  "source": "phrase",
+  "rank": 3355,
+  "band": 4,
+  "level": null,
+  "frequency": 1989,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "It’s something you can’t afford to miss."
+ },
+ {
+  "headword": "sight of",
+  "source": "phrase",
+  "rank": 3357,
+  "band": 4,
+  "level": null,
+  "frequency": 1988,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "I can’t stand the sight of it, to tell you the truth."
+ },
+ {
+  "headword": "in advance",
+  "source": "phrase",
+  "rank": 3362,
+  "band": 4,
+  "level": null,
+  "frequency": 1983,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It’s something you should do in advance."
+ },
+ {
+  "headword": "on the part of",
+  "source": "phrase",
+  "rank": 3379,
+  "band": 4,
+  "level": null,
+  "frequency": 1965,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "There are no barriers on the part of the government."
+ },
+ {
+  "headword": "bring up",
+  "source": "phrase",
+  "rank": 3387,
+  "band": 4,
+  "level": null,
+  "frequency": 1958,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 2
+  },
+  "example": "Did you manage to bring up the holiday pay?"
+ },
+ {
+  "headword": "take off",
+  "source": "phrase",
+  "rank": 3388,
+  "band": 4,
+  "level": null,
+  "frequency": 1957,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "I was hungry by the time we took off."
+ },
+ {
+  "headword": "so as to",
+  "source": "phrase",
+  "rank": 3390,
+  "band": 4,
+  "level": null,
+  "frequency": 1954,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "He cluttered his desk so as to appear busy."
+ },
+ {
+  "headword": "take advantage",
+  "source": "phrase",
+  "rank": 3396,
+  "band": 4,
+  "level": null,
+  "frequency": 1949,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Some people just want to take advantage."
+ },
+ {
+  "headword": "short of",
+  "source": "phrase",
+  "rank": 3399,
+  "band": 4,
+  "level": null,
+  "frequency": 1944,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Short of calling the doctor, I don’t know what to do."
+ },
+ {
+  "headword": "over the years",
+  "source": "phrase",
+  "rank": 3402,
+  "band": 4,
+  "level": null,
+  "frequency": 1942,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "She has over the years visited many cities."
+ },
+ {
+  "headword": "switch on",
+  "source": "phrase",
+  "rank": 3406,
+  "band": 4,
+  "level": null,
+  "frequency": 1935,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "It’s plugged in but it won’t switch on."
+ },
+ {
+  "headword": "by no means",
+  "source": "phrase",
+  "rank": 3417,
+  "band": 4,
+  "level": null,
+  "frequency": 1925,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "We have by no means concluded the matter."
+ },
+ {
+  "headword": "could hardly",
+  "source": "phrase",
+  "rank": 3431,
+  "band": 4,
+  "level": null,
+  "frequency": 1911,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "I could hardly wait for the weekend."
+ },
+ {
+  "headword": "come up with",
+  "source": "phrase",
+  "rank": 3446,
+  "band": 4,
+  "level": null,
+  "frequency": 1898,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "Is that the best you could come up with?"
+ },
+ {
+  "headword": "in question",
+  "source": "phrase",
+  "rank": 3448,
+  "band": 4,
+  "level": null,
+  "frequency": 1898,
+  "genre": {
+   "spoken": 0,
+   "written": 1,
+   "academic": 3
+  },
+  "example": "The book in question was published last year."
+ },
+ {
+  "headword": "in the first place",
+  "source": "phrase",
+  "rank": 3450,
+  "band": 4,
+  "level": null,
+  "frequency": 1897,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 2
+  },
+  "example": "He couldn’t see how it got there in the first place."
+ },
+ {
+  "headword": "prove to be",
+  "source": "phrase",
+  "rank": 3456,
+  "band": 4,
+  "level": null,
+  "frequency": 1893,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The bicycle proved to be of immense value."
+ },
+ {
+  "headword": "in common",
+  "source": "phrase",
+  "rank": 3457,
+  "band": 4,
+  "level": null,
+  "frequency": 1890,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "What they have in common is their stamina."
+ },
+ {
+  "headword": "no matter",
+  "source": "phrase",
+  "rank": 3461,
+  "band": 4,
+  "level": null,
+  "frequency": 1888,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "No matter what they say, it’s down to you now."
+ },
+ {
+  "headword": "at this point",
+  "source": "phrase",
+  "rank": 3465,
+  "band": 4,
+  "level": null,
+  "frequency": 1884,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "At this point there’s no telling who might win."
+ },
+ {
+  "headword": "in itself",
+  "source": "phrase",
+  "rank": 3491,
+  "band": 4,
+  "level": null,
+  "frequency": 1855,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The car in itself wasn’t enough incentive."
+ },
+ {
+  "headword": "the former",
+  "source": "phrase",
+  "rank": 3502,
+  "band": 4,
+  "level": null,
+  "frequency": 1842,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The former can actually require much more money."
+ },
+ {
+  "headword": "if only",
+  "source": "phrase",
+  "rank": 3511,
+  "band": 4,
+  "level": null,
+  "frequency": 1830,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "If only I’d known sooner."
+ },
+ {
+  "headword": "yet to",
+  "source": "phrase",
+  "rank": 3525,
+  "band": 4,
+  "level": null,
+  "frequency": 1818,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The package is yet to arrive."
+ },
+ {
+  "headword": "up to (decisions)",
+  "source": "phrase",
+  "rank": 3534,
+  "band": 4,
+  "level": null,
+  "frequency": 1807,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "I’ll leave it up to you if that’s all right."
+ },
+ {
+  "headword": "or whatever",
+  "source": "phrase",
+  "rank": 3536,
+  "band": 4,
+  "level": null,
+  "frequency": 1806,
+  "genre": {
+   "spoken": 3,
+   "written": 0,
+   "academic": 0
+  },
+  "example": "The challenge or whatever is doing it under budget."
+ },
+ {
+  "headword": "hand over",
+  "source": "phrase",
+  "rank": 3548,
+  "band": 4,
+  "level": null,
+  "frequency": 1798,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "The responsibility was expected to be handed over."
+ },
+ {
+  "headword": "in the light of",
+  "source": "phrase",
+  "rank": 3554,
+  "band": 4,
+  "level": null,
+  "frequency": 1789,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "In the light of the results, we delayed the study."
+ },
+ {
+  "headword": "in the same way",
+  "source": "phrase",
+  "rank": 3560,
+  "band": 4,
+  "level": null,
+  "frequency": 1784,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "In the same way, Apple appeals to the young."
+ },
+ {
+  "headword": "that much",
+  "source": "phrase",
+  "rank": 3567,
+  "band": 4,
+  "level": null,
+  "frequency": 1781,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "I don’t go out that much."
+ },
+ {
+  "headword": "the extent to which",
+  "source": "phrase",
+  "rank": 3601,
+  "band": 4,
+  "level": null,
+  "frequency": 1751,
+  "genre": {
+   "spoken": 0,
+   "written": 1,
+   "academic": 3
+  },
+  "example": "The extent to which the preceding can be asserted is largely dependent on what emerges in the study."
+ },
+ {
+  "headword": "for some time",
+  "source": "phrase",
+  "rank": 3632,
+  "band": 4,
+  "level": null,
+  "frequency": 1725,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "He’s actually been studying for some time now."
+ },
+ {
+  "headword": "in return (for)",
+  "source": "phrase",
+  "rank": 3640,
+  "band": 4,
+  "level": null,
+  "frequency": 1720,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "In return I’d like to present you with this gift."
+ },
+ {
+  "headword": "to death",
+  "source": "phrase",
+  "rank": 3650,
+  "band": 4,
+  "level": null,
+  "frequency": 1714,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "The children were bored to death."
+ },
+ {
+  "headword": "on the grounds",
+  "source": "phrase",
+  "rank": 3652,
+  "band": 4,
+  "level": null,
+  "frequency": 1713,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The decision was made on the grounds of safety."
+ },
+ {
+  "headword": "oh dear",
+  "source": "phrase",
+  "rank": 3670,
+  "band": 4,
+  "level": null,
+  "frequency": 1700,
+  "genre": {
+   "spoken": 3,
+   "written": 0,
+   "academic": 0
+  },
+  "example": "He didn’t? Oh dear."
+ },
+ {
+  "headword": "in full",
+  "source": "phrase",
+  "rank": 3672,
+  "band": 4,
+  "level": null,
+  "frequency": 1698,
+  "genre": {
+   "spoken": 0,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "She paid in full."
+ },
+ {
+  "headword": "on board",
+  "source": "phrase",
+  "rank": 3673,
+  "band": 4,
+  "level": null,
+  "frequency": 1698,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "Are you on board with the decision?"
+ },
+ {
+  "headword": "to some extent",
+  "source": "phrase",
+  "rank": 3686,
+  "band": 4,
+  "level": null,
+  "frequency": 1688,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It is to some extent what is considered standard."
+ },
+ {
+  "headword": "some kind of",
+  "source": "phrase",
+  "rank": 3695,
+  "band": 4,
+  "level": null,
+  "frequency": 1678,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "What are you, some kind of genius?"
+ },
+ {
+  "headword": "keep up",
+  "source": "phrase",
+  "rank": 3700,
+  "band": 4,
+  "level": null,
+  "frequency": 1674,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "Keep up if you can."
+ },
+ {
+  "headword": "no idea",
+  "source": "phrase",
+  "rank": 3709,
+  "band": 4,
+  "level": null,
+  "frequency": 1670,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "You have no idea."
+ },
+ {
+  "headword": "greater than",
+  "source": "phrase",
+  "rank": 3712,
+  "band": 4,
+  "level": null,
+  "frequency": 1666,
+  "genre": {
+   "spoken": 1,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "Anything greater than five is fine."
+ },
+ {
+  "headword": "happen to (be)",
+  "source": "phrase",
+  "rank": 3715,
+  "band": 4,
+  "level": null,
+  "frequency": 1664,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "This happens to be my first conference."
+ },
+ {
+  "headword": "held that (‘believed’)",
+  "source": "phrase",
+  "rank": 3718,
+  "band": 4,
+  "level": null,
+  "frequency": 1661,
+  "genre": {
+   "spoken": 0,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "The congress held that it was acceptable."
+ },
+ {
+  "headword": "faced with",
+  "source": "phrase",
+  "rank": 3722,
+  "band": 4,
+  "level": null,
+  "frequency": 1658,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "Faced with defeat, he changed tactics."
+ },
+ {
+  "headword": "do(ing) so",
+  "source": "phrase",
+  "rank": 3733,
+  "band": 4,
+  "level": null,
+  "frequency": 1647,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Unfortunately, doing so also meant facing traffic."
+ },
+ {
+  "headword": "set off",
+  "source": "phrase",
+  "rank": 3738,
+  "band": 4,
+  "level": null,
+  "frequency": 1644,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "We set off at noon."
+ },
+ {
+  "headword": "put forward",
+  "source": "phrase",
+  "rank": 3740,
+  "band": 4,
+  "level": null,
+  "frequency": 1640,
+  "genre": {
+   "spoken": 1,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "The group put forward several other proposals."
+ },
+ {
+  "headword": "from time to time",
+  "source": "phrase",
+  "rank": 3760,
+  "band": 4,
+  "level": null,
+  "frequency": 1627,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "He does come round from time to time."
+ },
+ {
+  "headword": "the means",
+  "source": "phrase",
+  "rank": 3791,
+  "band": 4,
+  "level": null,
+  "frequency": 1626,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "He hasn’t the means to get there."
+ },
+ {
+  "headword": "ever since",
+  "source": "phrase",
+  "rank": 3762,
+  "band": 4,
+  "level": null,
+  "frequency": 1622,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "And they haven’t been the same ever since."
+ },
+ {
+  "headword": "just about",
+  "source": "phrase",
+  "rank": 3763,
+  "band": 4,
+  "level": null,
+  "frequency": 1622,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "Am I finished? Just about."
+ },
+ {
+  "headword": "as opposed to",
+  "source": "phrase",
+  "rank": 3771,
+  "band": 4,
+  "level": null,
+  "frequency": 1615,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Better now, as opposed to what?"
+ },
+ {
+  "headword": "give rise to",
+  "source": "phrase",
+  "rank": 3774,
+  "band": 4,
+  "level": null,
+  "frequency": 1613,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The protests gave rise to new violence."
+ },
+ {
+  "headword": "large scale",
+  "source": "phrase",
+  "rank": 3780,
+  "band": 4,
+  "level": null,
+  "frequency": 1610,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "They were thinking on a large scale."
+ },
+ {
+  "headword": "make sense",
+  "source": "phrase",
+  "rank": 3782,
+  "band": 4,
+  "level": null,
+  "frequency": 1608,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "Doesn’t it make sense to do it that way?"
+ },
+ {
+  "headword": "by means of",
+  "source": "phrase",
+  "rank": 3789,
+  "band": 4,
+  "level": null,
+  "frequency": 1602,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It was possible to achieve by means of coercion."
+ },
+ {
+  "headword": "in short",
+  "source": "phrase",
+  "rank": 3790,
+  "band": 4,
+  "level": null,
+  "frequency": 1602,
+  "genre": {
+   "spoken": 0,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "The employees were in short tired of it."
+ },
+ {
+  "headword": "a bit of a",
+  "source": "phrase",
+  "rank": 3791,
+  "band": 4,
+  "level": null,
+  "frequency": 1599,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "He’s a bit of a film fanatic."
+ },
+ {
+  "headword": "break up",
+  "source": "phrase",
+  "rank": 3796,
+  "band": 4,
+  "level": null,
+  "frequency": 1595,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "They did keep in touch after they broke up."
+ },
+ {
+  "headword": "but then (again)",
+  "source": "phrase",
+  "rank": 3803,
+  "band": 4,
+  "level": null,
+  "frequency": 1589,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "I went over budget, but then I expected I would."
+ },
+ {
+  "headword": "all too",
+  "source": "phrase",
+  "rank": 3830,
+  "band": 4,
+  "level": null,
+  "frequency": 1571,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "Why is this all too familiar?"
+ },
+ {
+  "headword": "put up",
+  "source": "phrase",
+  "rank": 3831,
+  "band": 4,
+  "level": null,
+  "frequency": 1571,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "The authorities put up a sign to notify the public."
+ },
+ {
+  "headword": "good at",
+  "source": "phrase",
+  "rank": 3847,
+  "band": 4,
+  "level": null,
+  "frequency": 1562,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "You need to find something you’re good at."
+ },
+ {
+  "headword": "a long way",
+  "source": "phrase",
+  "rank": 3851,
+  "band": 4,
+  "level": null,
+  "frequency": 1557,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "A little bit of compassion can go a long way."
+ },
+ {
+  "headword": "amount to",
+  "source": "phrase",
+  "rank": 3854,
+  "band": 4,
+  "level": null,
+  "frequency": 1556,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Unfortunately, the player never amounted to much."
+ },
+ {
+  "headword": "for long",
+  "source": "phrase",
+  "rank": 3861,
+  "band": 4,
+  "level": null,
+  "frequency": 1553,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "He did attend university, but not for long."
+ },
+ {
+  "headword": "(be) run by",
+  "source": "phrase",
+  "rank": 3883,
+  "band": 4,
+  "level": null,
+  "frequency": 1540,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "The operation is run by two college students."
+ },
+ {
+  "headword": "some more",
+  "source": "phrase",
+  "rank": 3887,
+  "band": 4,
+  "level": null,
+  "frequency": 1539,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 1
+  },
+  "example": "I’ll have to think some more before deciding."
+ },
+ {
+  "headword": "in the absence of",
+  "source": "phrase",
+  "rank": 3888,
+  "band": 4,
+  "level": null,
+  "frequency": 1538,
+  "genre": {
+   "spoken": 0,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "In the absence of truth, there is only conjecture."
+ },
+ {
+  "headword": "all sorts of",
+  "source": "phrase",
+  "rank": 3895,
+  "band": 4,
+  "level": null,
+  "frequency": 1535,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "We have all sorts of time left."
+ },
+ {
+  "headword": "get on with",
+  "source": "phrase",
+  "rank": 3896,
+  "band": 4,
+  "level": null,
+  "frequency": 1535,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "I need to get on with my work."
+ },
+ {
+  "headword": "no good",
+  "source": "phrase",
+  "rank": 3902,
+  "band": 4,
+  "level": null,
+  "frequency": 1528,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "It’s no good sitting there – you have to type."
+ },
+ {
+  "headword": "yet another",
+  "source": "phrase",
+  "rank": 3939,
+  "band": 4,
+  "level": null,
+  "frequency": 1500,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "That’s yet another day gone by with nothing done."
+ },
+ {
+  "headword": "key to",
+  "source": "phrase",
+  "rank": 3940,
+  "band": 4,
+  "level": null,
+  "frequency": 1499,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Her input was key to the project’s success."
+ },
+ {
+  "headword": "i'm afraid",
+  "source": "phrase",
+  "rank": 3947,
+  "band": 4,
+  "level": null,
+  "frequency": 1495,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "It hasn’t arrived, I’m afraid."
+ },
+ {
+  "headword": "that which",
+  "source": "phrase",
+  "rank": 3955,
+  "band": 4,
+  "level": null,
+  "frequency": 1491,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "You cannot undo that which has already been done."
+ },
+ {
+  "headword": "if so",
+  "source": "phrase",
+  "rank": 3960,
+  "band": 4,
+  "level": null,
+  "frequency": 1488,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "If so, you may want to consider Greece."
+ },
+ {
+  "headword": "right now",
+  "source": "phrase",
+  "rank": 3973,
+  "band": 4,
+  "level": null,
+  "frequency": 1482,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "The best time is right now."
+ },
+ {
+  "headword": "in view of",
+  "source": "phrase",
+  "rank": 3979,
+  "band": 4,
+  "level": null,
+  "frequency": 1477,
+  "genre": {
+   "spoken": 0,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "She reconsidered in view of her children."
+ },
+ {
+  "headword": "in detail",
+  "source": "phrase",
+  "rank": 3984,
+  "band": 4,
+  "level": null,
+  "frequency": 1473,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "I can explain in detail."
+ },
+ {
+  "headword": "reflected in",
+  "source": "phrase",
+  "rank": 3989,
+  "band": 4,
+  "level": null,
+  "frequency": 1471,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The artist’s angst is reflected in her painting."
+ },
+ {
+  "headword": "no such",
+  "source": "phrase",
+  "rank": 3992,
+  "band": 4,
+  "level": null,
+  "frequency": 1470,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "He said no such thing."
+ },
+ {
+  "headword": "nothing but",
+  "source": "phrase",
+  "rank": 4004,
+  "band": 5,
+  "level": null,
+  "frequency": 1466,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "I have nothing but respect for her."
+ },
+ {
+  "headword": "in the face of",
+  "source": "phrase",
+  "rank": 4020,
+  "band": 5,
+  "level": null,
+  "frequency": 1457,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "They quit in the face of the media scrutiny."
+ },
+ {
+  "headword": "such that",
+  "source": "phrase",
+  "rank": 4023,
+  "band": 5,
+  "level": null,
+  "frequency": 1454,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It can be developed such that it does not interfere."
+ },
+ {
+  "headword": "out of (‘due to’)",
+  "source": "phrase",
+  "rank": 4025,
+  "band": 5,
+  "level": null,
+  "frequency": 1453,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "Most commuters drive out of pure necessity."
+ },
+ {
+  "headword": "next door",
+  "source": "phrase",
+  "rank": 4029,
+  "band": 5,
+  "level": null,
+  "frequency": 1449,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "The people next door didn’t seem to mind."
+ },
+ {
+  "headword": "to the point",
+  "source": "phrase",
+  "rank": 4032,
+  "band": 5,
+  "level": null,
+  "frequency": 1447,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It got to the point I couldn’t breathe."
+ },
+ {
+  "headword": "make its/one’s way",
+  "source": "phrase",
+  "rank": 4035,
+  "band": 5,
+  "level": null,
+  "frequency": 1446,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "The mouse made its way across the field."
+ },
+ {
+  "headword": "in hand",
+  "source": "phrase",
+  "rank": 4037,
+  "band": 5,
+  "level": null,
+  "frequency": 1443,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "It was well in hand by then."
+ },
+ {
+  "headword": "get to ('opportunity')",
+  "source": "phrase",
+  "rank": 4052,
+  "band": 5,
+  "level": null,
+  "frequency": 1437,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "Did you get to try the cheese?"
+ },
+ {
+  "headword": "by the way",
+  "source": "phrase",
+  "rank": 4058,
+  "band": 5,
+  "level": null,
+  "frequency": 1433,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "By the way, what day is the wedding?"
+ },
+ {
+  "headword": "by contrast",
+  "source": "phrase",
+  "rank": 4061,
+  "band": 5,
+  "level": null,
+  "frequency": 1430,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The weather was by contrast a pleasant surprise."
+ },
+ {
+  "headword": "run out (of)",
+  "source": "phrase",
+  "rank": 4062,
+  "band": 5,
+  "level": null,
+  "frequency": 1430,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "You need to get milk before you run out."
+ },
+ {
+  "headword": "in principle",
+  "source": "phrase",
+  "rank": 4063,
+  "band": 5,
+  "level": null,
+  "frequency": 1429,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "You can in principle."
+ },
+ {
+  "headword": "add to",
+  "source": "phrase",
+  "rank": 4071,
+  "band": 5,
+  "level": null,
+  "frequency": 1424,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It does nothing to add to the scenery."
+ },
+ {
+  "headword": "as yet",
+  "source": "phrase",
+  "rank": 4072,
+  "band": 5,
+  "level": null,
+  "frequency": 1423,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "I’m not convinced as yet."
+ },
+ {
+  "headword": "at risk",
+  "source": "phrase",
+  "rank": 4077,
+  "band": 5,
+  "level": null,
+  "frequency": 1419,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "There’s no reason to put passers by at risk."
+ },
+ {
+  "headword": "a mere",
+  "source": "phrase",
+  "rank": 4092,
+  "band": 5,
+  "level": null,
+  "frequency": 1410,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "She made a mere penny per shirt."
+ },
+ {
+  "headword": "shown to",
+  "source": "phrase",
+  "rank": 4093,
+  "band": 5,
+  "level": null,
+  "frequency": 1409,
+  "genre": {
+   "spoken": 0,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "Dogs have been shown to help."
+ },
+ {
+  "headword": "on the one hand",
+  "source": "phrase",
+  "rank": 4095,
+  "band": 5,
+  "level": null,
+  "frequency": 1406,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "On the one hand, it’s cheap."
+ },
+ {
+  "headword": "by way of",
+  "source": "phrase",
+  "rank": 4099,
+  "band": 5,
+  "level": null,
+  "frequency": 1404,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "It was only by way of bribery that they managed."
+ },
+ {
+  "headword": "on the road",
+  "source": "phrase",
+  "rank": 4107,
+  "band": 5,
+  "level": null,
+  "frequency": 1400,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "I can’t wait to get on the road again."
+ },
+ {
+  "headword": "bear in mind",
+  "source": "phrase",
+  "rank": 4109,
+  "band": 5,
+  "level": null,
+  "frequency": 1398,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It was designed bearing in mind environmental impact."
+ },
+ {
+  "headword": "old fashioned",
+  "source": "phrase",
+  "rank": 4113,
+  "band": 5,
+  "level": null,
+  "frequency": 1393,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "He’s just a bit old fashioned sometimes."
+ },
+ {
+  "headword": "for sale",
+  "source": "phrase",
+  "rank": 4136,
+  "band": 5,
+  "level": null,
+  "frequency": 1379,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "The house is for sale."
+ },
+ {
+  "headword": "or anything",
+  "source": "phrase",
+  "rank": 4138,
+  "band": 5,
+  "level": null,
+  "frequency": 1379,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "I don’t want any trouble or anything."
+ },
+ {
+  "headword": "most likely",
+  "source": "phrase",
+  "rank": 4143,
+  "band": 5,
+  "level": null,
+  "frequency": 1376,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It is most likely the reason for the warming."
+ },
+ {
+  "headword": "provide for",
+  "source": "phrase",
+  "rank": 4153,
+  "band": 5,
+  "level": null,
+  "frequency": 1370,
+  "genre": {
+   "spoken": 0,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "The other variables have been provided for."
+ },
+ {
+  "headword": "even so",
+  "source": "phrase",
+  "rank": 4165,
+  "band": 5,
+  "level": null,
+  "frequency": 1363,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "Even so, it’s no way to treat a guest."
+ },
+ {
+  "headword": "come across",
+  "source": "phrase",
+  "rank": 4167,
+  "band": 5,
+  "level": null,
+  "frequency": 1362,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "They happened to come across a map."
+ },
+ {
+  "headword": "first of all",
+  "source": "phrase",
+  "rank": 4182,
+  "band": 5,
+  "level": null,
+  "frequency": 1352,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 1
+  },
+  "example": "It is first of all what most people prefer."
+ },
+ {
+  "headword": "might as well",
+  "source": "phrase",
+  "rank": 4195,
+  "band": 5,
+  "level": null,
+  "frequency": 1348,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "We’re here now so we might as well."
+ },
+ {
+  "headword": "limited to",
+  "source": "phrase",
+  "rank": 4199,
+  "band": 5,
+  "level": null,
+  "frequency": 1346,
+  "genre": {
+   "spoken": 0,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "The dinner was limited to seniors."
+ },
+ {
+  "headword": "to me ('in my opinion')",
+  "source": "phrase",
+  "rank": 4201,
+  "band": 5,
+  "level": null,
+  "frequency": 1345,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 1
+  },
+  "example": "To me what matters is that it gets done."
+ },
+ {
+  "headword": "mind you",
+  "source": "phrase",
+  "rank": 4207,
+  "band": 5,
+  "level": null,
+  "frequency": 1342,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "Mind you, that’s one reason why I go there."
+ },
+ {
+  "headword": "at a time ('simultaneously')",
+  "source": "phrase",
+  "rank": 4210,
+  "band": 5,
+  "level": null,
+  "frequency": 1340,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "They went in two at a time."
+ },
+ {
+  "headword": "half past",
+  "source": "phrase",
+  "rank": 4232,
+  "band": 5,
+  "level": null,
+  "frequency": 1325,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "I make it half past."
+ },
+ {
+  "headword": "with respect to",
+  "source": "phrase",
+  "rank": 4233,
+  "band": 5,
+  "level": null,
+  "frequency": 1325,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "She had nothing to add with respect to the report."
+ },
+ {
+  "headword": "consistent with",
+  "source": "phrase",
+  "rank": 4242,
+  "band": 5,
+  "level": null,
+  "frequency": 1315,
+  "genre": {
+   "spoken": 0,
+   "written": 1,
+   "academic": 3
+  },
+  "example": "The results are consistent with our hypothesis."
+ },
+ {
+  "headword": "way out",
+  "source": "phrase",
+  "rank": 4248,
+  "band": 5,
+  "level": null,
+  "frequency": 1309,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "He lives way out in the country."
+ },
+ {
+  "headword": "third party",
+  "source": "phrase",
+  "rank": 4250,
+  "band": 5,
+  "level": null,
+  "frequency": 1307,
+  "genre": {
+   "spoken": 0,
+   "written": 0,
+   "academic": 3
+  },
+  "example": "They work with third party software too."
+ },
+ {
+  "headword": "contrary to",
+  "source": "phrase",
+  "rank": 4253,
+  "band": 5,
+  "level": null,
+  "frequency": 1303,
+  "genre": {
+   "spoken": 1,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "The city is clean, contrary to popular belief."
+ },
+ {
+  "headword": "worth of",
+  "source": "phrase",
+  "rank": 4257,
+  "band": 5,
+  "level": null,
+  "frequency": 1299,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "Two dollars worth of wood was all he needed."
+ },
+ {
+  "headword": "a good (‘at least’)",
+  "source": "phrase",
+  "rank": 4259,
+  "band": 5,
+  "level": null,
+  "frequency": 1298,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "It took him a good six or seven years."
+ },
+ {
+  "headword": "act on",
+  "source": "phrase",
+  "rank": 4261,
+  "band": 5,
+  "level": null,
+  "frequency": 1296,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "She never acted on that rage."
+ },
+ {
+  "headword": "except that",
+  "source": "phrase",
+  "rank": 4262,
+  "band": 5,
+  "level": null,
+  "frequency": 1296,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "It seemed fine except that it was pink."
+ },
+ {
+  "headword": "day to day",
+  "source": "phrase",
+  "rank": 4278,
+  "band": 5,
+  "level": null,
+  "frequency": 1289,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "They carried on with their day to day tasks."
+ },
+ {
+  "headword": "as usual",
+  "source": "phrase",
+  "rank": 4282,
+  "band": 5,
+  "level": null,
+  "frequency": 1287,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "As usual he left it until the last minute."
+ },
+ {
+  "headword": "long before",
+  "source": "phrase",
+  "rank": 4290,
+  "band": 5,
+  "level": null,
+  "frequency": 1282,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Long before I could quit I was offered a promotion."
+ },
+ {
+  "headword": "long ago",
+  "source": "phrase",
+  "rank": 4307,
+  "band": 5,
+  "level": null,
+  "frequency": 1273,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "I gave up on that idea long ago."
+ },
+ {
+  "headword": "in conjunction with",
+  "source": "phrase",
+  "rank": 4314,
+  "band": 5,
+  "level": null,
+  "frequency": 1270,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The police, in conjunction with the fire department, managed to keep the crowd under control."
+ },
+ {
+  "headword": "up to date",
+  "source": "phrase",
+  "rank": 4319,
+  "band": 5,
+  "level": null,
+  "frequency": 1268,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "I try to keep up to date."
+ },
+ {
+  "headword": "let alone",
+  "source": "phrase",
+  "rank": 4333,
+  "band": 5,
+  "level": null,
+  "frequency": 1261,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "I can’t run let alone walk."
+ },
+ {
+  "headword": "quite a lot",
+  "source": "phrase",
+  "rank": 4337,
+  "band": 5,
+  "level": null,
+  "frequency": 1260,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "I do swim quite a lot."
+ },
+ {
+  "headword": "if you like",
+  "source": "phrase",
+  "rank": 4342,
+  "band": 5,
+  "level": null,
+  "frequency": 1256,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "It was her ‘chutzpah’ if you like that impressed."
+ },
+ {
+  "headword": "to the extent",
+  "source": "phrase",
+  "rank": 4349,
+  "band": 5,
+  "level": null,
+  "frequency": 1253,
+  "genre": {
+   "spoken": 0,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "He’s interesting to the extent that he knows a lot."
+ },
+ {
+  "headword": "so far as",
+  "source": "phrase",
+  "rank": 4356,
+  "band": 5,
+  "level": null,
+  "frequency": 1251,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "So far as I know it’s not the first time either."
+ },
+ {
+  "headword": "given that",
+  "source": "phrase",
+  "rank": 4362,
+  "band": 5,
+  "level": null,
+  "frequency": 1247,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It was no surprise given that it was her job."
+ },
+ {
+  "headword": "in line with",
+  "source": "phrase",
+  "rank": 4372,
+  "band": 5,
+  "level": null,
+  "frequency": 1240,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The decision is in line with the department’s wishes."
+ },
+ {
+  "headword": "on the whole",
+  "source": "phrase",
+  "rank": 4374,
+  "band": 5,
+  "level": null,
+  "frequency": 1238,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It was acceptable on the whole."
+ },
+ {
+  "headword": "care to",
+  "source": "phrase",
+  "rank": 4396,
+  "band": 5,
+  "level": null,
+  "frequency": 1223,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "Do you care to comment at all?"
+ },
+ {
+  "headword": "take account of",
+  "source": "phrase",
+  "rank": 4408,
+  "band": 5,
+  "level": null,
+  "frequency": 1217,
+  "genre": {
+   "spoken": 1,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "We did not take account of the paperwork."
+ },
+ {
+  "headword": "something like that",
+  "source": "phrase",
+  "rank": 4461,
+  "band": 5,
+  "level": null,
+  "frequency": 1192,
+  "genre": {
+   "spoken": 3,
+   "written": 0,
+   "academic": 0
+  },
+  "example": "He said he had a meeting to go to or something like that."
+ },
+ {
+  "headword": "make use of",
+  "source": "phrase",
+  "rank": 4462,
+  "band": 5,
+  "level": null,
+  "frequency": 1191,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "We made use of the stopover."
+ },
+ {
+  "headword": "when it comes to",
+  "source": "phrase",
+  "rank": 4465,
+  "band": 5,
+  "level": null,
+  "frequency": 1188,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "I’m hopeless when it comes to goodbyes."
+ },
+ {
+  "headword": "fill in",
+  "source": "phrase",
+  "rank": 4466,
+  "band": 5,
+  "level": null,
+  "frequency": 1187,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The victim filled in what was stolen."
+ },
+ {
+  "headword": "for all ('considering')",
+  "source": "phrase",
+  "rank": 4471,
+  "band": 5,
+  "level": null,
+  "frequency": 1182,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "For all his money, he does not seem very happy."
+ },
+ {
+  "headword": "a question of",
+  "source": "phrase",
+  "rank": 4482,
+  "band": 5,
+  "level": null,
+  "frequency": 1174,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It’s a question of trust."
+ },
+ {
+  "headword": "for life",
+  "source": "phrase",
+  "rank": 4484,
+  "band": 5,
+  "level": null,
+  "frequency": 1172,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "And he stayed there for life."
+ },
+ {
+  "headword": "get away",
+  "source": "phrase",
+  "rank": 4497,
+  "band": 5,
+  "level": null,
+  "frequency": 1165,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "They managed to get away."
+ },
+ {
+  "headword": "in the meantime",
+  "source": "phrase",
+  "rank": 4501,
+  "band": 5,
+  "level": null,
+  "frequency": 1161,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "I’ll keep working on it in the meantime."
+ },
+ {
+  "headword": "something of a",
+  "source": "phrase",
+  "rank": 4522,
+  "band": 5,
+  "level": null,
+  "frequency": 1154,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "She’s something of a mathematics wiz."
+ },
+ {
+  "headword": "the odd",
+  "source": "phrase",
+  "rank": 4523,
+  "band": 5,
+  "level": null,
+  "frequency": 1154,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "I do play the odd jazz tune."
+ },
+ {
+  "headword": "little more than",
+  "source": "phrase",
+  "rank": 4556,
+  "band": 5,
+  "level": null,
+  "frequency": 1133,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It’s little more than pageantry if you ask me."
+ },
+ {
+  "headword": "would you like",
+  "source": "phrase",
+  "rank": 4558,
+  "band": 5,
+  "level": null,
+  "frequency": 1133,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "Would you like tea?"
+ },
+ {
+  "headword": "in need",
+  "source": "phrase",
+  "rank": 4584,
+  "band": 5,
+  "level": null,
+  "frequency": 1122,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "We want to help children in need."
+ },
+ {
+  "headword": "take for granted",
+  "source": "phrase",
+  "rank": 4587,
+  "band": 5,
+  "level": null,
+  "frequency": 1120,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "It’s just something I’ve always taken for granted."
+ },
+ {
+  "headword": "in this respect",
+  "source": "phrase",
+  "rank": 4605,
+  "band": 5,
+  "level": null,
+  "frequency": 1110,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "In this respect, our study refutes earlier research."
+ },
+ {
+  "headword": "provided that",
+  "source": "phrase",
+  "rank": 4606,
+  "band": 5,
+  "level": null,
+  "frequency": 1110,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It’s OK provided that he come up with the goods."
+ },
+ {
+  "headword": "allow for (‘calculate in’)",
+  "source": "phrase",
+  "rank": 4614,
+  "band": 5,
+  "level": null,
+  "frequency": 1105,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Even if you allow for inflation, the price increase still seems exhorbitant."
+ },
+ {
+  "headword": "catch up",
+  "source": "phrase",
+  "rank": 4634,
+  "band": 5,
+  "level": null,
+  "frequency": 1095,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "I took extra classes just to catch up."
+ },
+ {
+  "headword": "a go (‘attempt’)",
+  "source": "phrase",
+  "rank": 4639,
+  "band": 5,
+  "level": null,
+  "frequency": 1093,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "Why don’t you have a go?"
+ },
+ {
+  "headword": "for the moment",
+  "source": "phrase",
+  "rank": 4649,
+  "band": 5,
+  "level": null,
+  "frequency": 1092,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "For the moment things seem stable."
+ },
+ {
+  "headword": "at the expense of",
+  "source": "phrase",
+  "rank": 4656,
+  "band": 5,
+  "level": null,
+  "frequency": 1086,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "They were laughing at the expense of the photo."
+ },
+ {
+  "headword": "put together",
+  "source": "phrase",
+  "rank": 4670,
+  "band": 5,
+  "level": null,
+  "frequency": 1082,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "He put together the proposal in a matter of days."
+ },
+ {
+  "headword": "things like that",
+  "source": "phrase",
+  "rank": 4671,
+  "band": 5,
+  "level": null,
+  "frequency": 1082,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "He does karate and things like that, you see."
+ },
+ {
+  "headword": "of little",
+  "source": "phrase",
+  "rank": 4682,
+  "band": 5,
+  "level": null,
+  "frequency": 1079,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "It was of little relevance, really."
+ },
+ {
+  "headword": "shut up",
+  "source": "phrase",
+  "rank": 4683,
+  "band": 5,
+  "level": null,
+  "frequency": 1079,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "I just couldn’t shut up."
+ },
+ {
+  "headword": "as of",
+  "source": "phrase",
+  "rank": 4703,
+  "band": 5,
+  "level": null,
+  "frequency": 1069,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It was completed as of June."
+ },
+ {
+  "headword": "over time",
+  "source": "phrase",
+  "rank": 4704,
+  "band": 5,
+  "level": null,
+  "frequency": 1069,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It might change over time."
+ },
+ {
+  "headword": "would appear",
+  "source": "phrase",
+  "rank": 4710,
+  "band": 5,
+  "level": null,
+  "frequency": 1068,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "They people have spoken, it would appear."
+ },
+ {
+  "headword": "the other day",
+  "source": "phrase",
+  "rank": 4711,
+  "band": 5,
+  "level": null,
+  "frequency": 1066,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "I thought of you the other day."
+ },
+ {
+  "headword": "in theory",
+  "source": "phrase",
+  "rank": 4712,
+  "band": 5,
+  "level": null,
+  "frequency": 1065,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "In theory that is why he went there."
+ },
+ {
+  "headword": "thought of (as)",
+  "source": "phrase",
+  "rank": 4713,
+  "band": 5,
+  "level": null,
+  "frequency": 1065,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Beaches are thought of as vacation spots."
+ },
+ {
+  "headword": "for good",
+  "source": "phrase",
+  "rank": 4721,
+  "band": 5,
+  "level": null,
+  "frequency": 1061,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "It’s gone for good."
+ },
+ {
+  "headword": "opposed to",
+  "source": "phrase",
+  "rank": 4726,
+  "band": 5,
+  "level": null,
+  "frequency": 1059,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "He’s strangely opposed to gun control."
+ },
+ {
+  "headword": "common sense",
+  "source": "phrase",
+  "rank": 4749,
+  "band": 5,
+  "level": null,
+  "frequency": 1049,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "To me it’s common sense."
+ },
+ {
+  "headword": "bother to",
+  "source": "phrase",
+  "rank": 4754,
+  "band": 5,
+  "level": null,
+  "frequency": 1046,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "He never bothered to reply."
+ },
+ {
+  "headword": "as good as ('like')",
+  "source": "phrase",
+  "rank": 4759,
+  "band": 5,
+  "level": null,
+  "frequency": 1043,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "It’s as good as gone."
+ },
+ {
+  "headword": "back up",
+  "source": "phrase",
+  "rank": 4761,
+  "band": 5,
+  "level": null,
+  "frequency": 1042,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "I have proof to back up my story."
+ },
+ {
+  "headword": "take care of",
+  "source": "phrase",
+  "rank": 4791,
+  "band": 5,
+  "level": null,
+  "frequency": 1034,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "I’ll take care of this customer."
+ },
+ {
+  "headword": "the sight of",
+  "source": "phrase",
+  "rank": 4816,
+  "band": 5,
+  "level": null,
+  "frequency": 1024,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "I can’t stand the sight of it."
+ },
+ {
+  "headword": "go round",
+  "source": "phrase",
+  "rank": 4819,
+  "band": 5,
+  "level": null,
+  "frequency": 1022,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "I’ll go round asking if anyone wants any more."
+ },
+ {
+  "headword": "the whole thing",
+  "source": "phrase",
+  "rank": 4834,
+  "band": 5,
+  "level": null,
+  "frequency": 1015,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "Why don’t we just forget the whole thing?"
+ },
+ {
+  "headword": "at one time",
+  "source": "phrase",
+  "rank": 4837,
+  "band": 5,
+  "level": null,
+  "frequency": 1014,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "At one time I thought that too."
+ },
+ {
+  "headword": "head to",
+  "source": "phrase",
+  "rank": 4839,
+  "band": 5,
+  "level": null,
+  "frequency": 1014,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "Meanwhile, he decided to head to the hospital."
+ },
+ {
+  "headword": "in a sense",
+  "source": "phrase",
+  "rank": 4840,
+  "band": 5,
+  "level": null,
+  "frequency": 1014,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 2
+  },
+  "example": "The food was in a sense only part of the experience."
+ },
+ {
+  "headword": "on average",
+  "source": "phrase",
+  "rank": 4841,
+  "band": 5,
+  "level": null,
+  "frequency": 1014,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "How much does he make on average?"
+ },
+ {
+  "headword": "way round",
+  "source": "phrase",
+  "rank": 4846,
+  "band": 5,
+  "level": null,
+  "frequency": 1013,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "Do you know your way round?"
+ },
+ {
+  "headword": "can tell",
+  "source": "phrase",
+  "rank": 4850,
+  "band": 5,
+  "level": null,
+  "frequency": 1011,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "You can tell from the markings."
+ },
+ {
+  "headword": "free from",
+  "source": "phrase",
+  "rank": 4896,
+  "band": 5,
+  "level": null,
+  "frequency": 991,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "I dream of a life free from stress."
+ },
+ {
+  "headword": "and all that",
+  "source": "phrase",
+  "rank": 4901,
+  "band": 5,
+  "level": null,
+  "frequency": 989,
+  "genre": {
+   "spoken": 3,
+   "written": 0,
+   "academic": 0
+  },
+  "example": "I like art and all that."
+ },
+ {
+  "headword": "as it were",
+  "source": "phrase",
+  "rank": 4909,
+  "band": 5,
+  "level": null,
+  "frequency": 985,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "The party was a smash as it were."
+ },
+ {
+  "headword": "what if",
+  "source": "phrase",
+  "rank": 4915,
+  "band": 5,
+  "level": null,
+  "frequency": 984,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 1
+  },
+  "example": "What if we could fly?"
+ },
+ {
+  "headword": "touch of",
+  "source": "phrase",
+  "rank": 4917,
+  "band": 5,
+  "level": null,
+  "frequency": 982,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "There was a touch of sadness in her voice."
+ },
+ {
+  "headword": "better off",
+  "source": "phrase",
+  "rank": 4919,
+  "band": 5,
+  "level": null,
+  "frequency": 980,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 1
+  },
+  "example": "You’re better off without him."
+ },
+ {
+  "headword": "stand for",
+  "source": "phrase",
+  "rank": 4932,
+  "band": 5,
+  "level": null,
+  "frequency": 977,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "That symbol used to stand for something."
+ },
+ {
+  "headword": "to blame",
+  "source": "phrase",
+  "rank": 4944,
+  "band": 5,
+  "level": null,
+  "frequency": 973,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "I think the government’s to blame, really."
+ },
+ {
+  "headword": "the bulk of",
+  "source": "phrase",
+  "rank": 4950,
+  "band": 5,
+  "level": null,
+  "frequency": 968,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The bulk of it was done by noon."
+ },
+ {
+  "headword": "a handful of",
+  "source": "phrase",
+  "rank": 4955,
+  "band": 5,
+  "level": null,
+  "frequency": 965,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Only a handful of them were actually awake."
+ },
+ {
+  "headword": "(at) the outset",
+  "source": "phrase",
+  "rank": 4959,
+  "band": 5,
+  "level": null,
+  "frequency": 963,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It went well, but not at the outset."
+ },
+ {
+  "headword": "by virtue of",
+  "source": "phrase",
+  "rank": 4991,
+  "band": 5,
+  "level": null,
+  "frequency": 954,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "She won by virtue of her superior intellect."
+ },
+ {
+  "headword": "turn down",
+  "source": "phrase",
+  "rank": 5001,
+  "band": 6,
+  "level": null,
+  "frequency": 951,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "I won’t turn down such a great offer."
+ },
+ {
+  "headword": "get on (‘relate’)",
+  "source": "phrase",
+  "rank": 5010,
+  "band": 6,
+  "level": null,
+  "frequency": 944,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "My parent don’t really get on very well."
+ },
+ {
+  "headword": "under way",
+  "source": "phrase",
+  "rank": 5022,
+  "band": 6,
+  "level": null,
+  "frequency": 939,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Changes are already under way."
+ },
+ {
+  "headword": "in the interest of",
+  "source": "phrase",
+  "rank": 5025,
+  "band": 6,
+  "level": null,
+  "frequency": 938,
+  "genre": {
+   "spoken": 1,
+   "written": 2,
+   "academic": 3
+  },
+  "example": "They stopped in the interest of time."
+ },
+ {
+  "headword": "on the market",
+  "source": "phrase",
+  "rank": 5051,
+  "band": 6,
+  "level": null,
+  "frequency": 928,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "How long has it been on the market?"
+ },
+ {
+  "headword": "by far",
+  "source": "phrase",
+  "rank": 5060,
+  "band": 6,
+  "level": null,
+  "frequency": 925,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 2
+  },
+  "example": "The rise in unemployment was by far the highest."
+ },
+ {
+  "headword": "a degree of",
+  "source": "phrase",
+  "rank": 5072,
+  "band": 6,
+  "level": null,
+  "frequency": 921,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "There is a degree of irony in the story."
+ },
+ {
+  "headword": "never mind",
+  "source": "phrase",
+  "rank": 5082,
+  "band": 6,
+  "level": null,
+  "frequency": 915,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "Never mind that it’s my birthday today."
+ },
+ {
+  "headword": "up and down",
+  "source": "phrase",
+  "rank": 5134,
+  "band": 6,
+  "level": null,
+  "frequency": 898,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "He was up and down the hall worrying about it."
+ },
+ {
+  "headword": "in one’s own right",
+  "source": "phrase",
+  "rank": 5156,
+  "band": 6,
+  "level": null,
+  "frequency": 891,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Gesture is a form of expression in its own right."
+ },
+ {
+  "headword": "a case of",
+  "source": "phrase",
+  "rank": 5169,
+  "band": 6,
+  "level": null,
+  "frequency": 888,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Now it’s just a case of getting them to subscribe."
+ },
+ {
+  "headword": "more so",
+  "source": "phrase",
+  "rank": 5171,
+  "band": 6,
+  "level": null,
+  "frequency": 887,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Boston is walkable, and San Francisco more so."
+ },
+ {
+  "headword": "come up to",
+  "source": "phrase",
+  "rank": 5193,
+  "band": 6,
+  "level": null,
+  "frequency": 881,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "Men always come up to me first."
+ },
+ {
+  "headword": "in which case",
+  "source": "phrase",
+  "rank": 5216,
+  "band": 6,
+  "level": null,
+  "frequency": 872,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "That means it’s midnight, in which case it’s closed."
+ },
+ {
+  "headword": "no sign of",
+  "source": "phrase",
+  "rank": 5222,
+  "band": 6,
+  "level": null,
+  "frequency": 871,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "Still no sign of him?"
+ },
+ {
+  "headword": "just as (‘when’)",
+  "source": "phrase",
+  "rank": 5231,
+  "band": 6,
+  "level": null,
+  "frequency": 869,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "I saw him just as he left."
+ },
+ {
+  "headword": "for the sake of",
+  "source": "phrase",
+  "rank": 5244,
+  "band": 6,
+  "level": null,
+  "frequency": 865,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "He exaggerated his points for the sake of effect."
+ },
+ {
+  "headword": "in a position to",
+  "source": "phrase",
+  "rank": 5247,
+  "band": 6,
+  "level": null,
+  "frequency": 864,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "I’m not in a position to comment right now."
+ },
+ {
+  "headword": "to come (future)",
+  "source": "phrase",
+  "rank": 5255,
+  "band": 6,
+  "level": null,
+  "frequency": 862,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "We’ll see how things go in the weeks to come."
+ },
+ {
+  "headword": "backed by",
+  "source": "phrase",
+  "rank": 5285,
+  "band": 6,
+  "level": null,
+  "frequency": 850,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "The group is backed by the drug trade."
+ },
+ {
+  "headword": "at best",
+  "source": "phrase",
+  "rank": 5303,
+  "band": 6,
+  "level": null,
+  "frequency": 844,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "He’s at best average."
+ },
+ {
+  "headword": "wealth of",
+  "source": "phrase",
+  "rank": 5306,
+  "band": 6,
+  "level": null,
+  "frequency": 844,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The library holds a wealth of knowledge."
+ },
+ {
+  "headword": "that sort of thing",
+  "source": "phrase",
+  "rank": 5309,
+  "band": 6,
+  "level": null,
+  "frequency": 843,
+  "genre": {
+   "spoken": 3,
+   "written": 0,
+   "academic": 0
+  },
+  "example": "He drinks a lot and that sort of thing."
+ },
+ {
+  "headword": "make out",
+  "source": "phrase",
+  "rank": 5311,
+  "band": 6,
+  "level": null,
+  "frequency": 842,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "He could barely make out her signature."
+ },
+ {
+  "headword": "come to terms with",
+  "source": "phrase",
+  "rank": 5323,
+  "band": 6,
+  "level": null,
+  "frequency": 839,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "They were finally able to come to terms with the change in weather."
+ },
+ {
+  "headword": "fond of",
+  "source": "phrase",
+  "rank": 5348,
+  "band": 6,
+  "level": null,
+  "frequency": 831,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "I’m not very fond of it, to be honest."
+ },
+ {
+  "headword": "with a view to",
+  "source": "phrase",
+  "rank": 5354,
+  "band": 6,
+  "level": null,
+  "frequency": 829,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "It was written with a view to inspiring hope."
+ },
+ {
+  "headword": "turn back",
+  "source": "phrase",
+  "rank": 5361,
+  "band": 6,
+  "level": null,
+  "frequency": 827,
+  "genre": {
+   "spoken": 1,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "There was no turning back now."
+ },
+ {
+  "headword": "get away with",
+  "source": "phrase",
+  "rank": 5366,
+  "band": 6,
+  "level": null,
+  "frequency": 824,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "Somehow they managed to get away with it."
+ },
+ {
+  "headword": "no wonder",
+  "source": "phrase",
+  "rank": 5384,
+  "band": 6,
+  "level": null,
+  "frequency": 820,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "No wonder he’s ranked first."
+ },
+ {
+  "headword": "well being",
+  "source": "phrase",
+  "rank": 5438,
+  "band": 6,
+  "level": null,
+  "frequency": 809,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "It was good for their overall well being."
+ },
+ {
+  "headword": "how about",
+  "source": "phrase",
+  "rank": 5447,
+  "band": 6,
+  "level": null,
+  "frequency": 805,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "How about tomorrow?"
+ },
+ {
+  "headword": "to go (‘remaining’)",
+  "source": "phrase",
+  "rank": 5463,
+  "band": 6,
+  "level": null,
+  "frequency": 801,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "Two more to go."
+ },
+ {
+  "headword": "straight away",
+  "source": "phrase",
+  "rank": 5479,
+  "band": 6,
+  "level": null,
+  "frequency": 794,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "They’ll get to it straight away."
+ },
+ {
+  "headword": "owing to",
+  "source": "phrase",
+  "rank": 5485,
+  "band": 6,
+  "level": null,
+  "frequency": 793,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "Owing to his honesty, he was held in high esteem."
+ },
+ {
+  "headword": "hold up",
+  "source": "phrase",
+  "rank": 5491,
+  "band": 6,
+  "level": null,
+  "frequency": 791,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 0
+  },
+  "example": "Sorry – we got held up on the M25."
+ },
+ {
+  "headword": "look to",
+  "source": "phrase",
+  "rank": 5492,
+  "band": 6,
+  "level": null,
+  "frequency": 790,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "He constantly looked to us for advice and support."
+ },
+ {
+  "headword": "lay out",
+  "source": "phrase",
+  "rank": 5496,
+  "band": 6,
+  "level": null,
+  "frequency": 789,
+  "genre": {
+   "spoken": 3,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "The countries laid out plans for a peace agreement."
+ },
+ {
+  "headword": "the lot",
+  "source": "phrase",
+  "rank": 5497,
+  "band": 6,
+  "level": null,
+  "frequency": 789,
+  "genre": {
+   "spoken": 3,
+   "written": 1,
+   "academic": 0
+  },
+  "example": "They tood the jewellery, the laptops, the lot."
+ },
+ {
+  "headword": "keep on",
+  "source": "phrase",
+  "rank": 5501,
+  "band": 6,
+  "level": null,
+  "frequency": 788,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "Freeways kept on being built."
+ },
+ {
+  "headword": "make up one’s mind",
+  "source": "phrase",
+  "rank": 5502,
+  "band": 6,
+  "level": null,
+  "frequency": 788,
+  "genre": {
+   "spoken": 3,
+   "written": 2,
+   "academic": 0
+  },
+  "example": "You’d better make up your mind."
+ },
+ {
+  "headword": "at work",
+  "source": "phrase",
+  "rank": 5503,
+  "band": 6,
+  "level": null,
+  "frequency": 787,
+  "genre": {
+   "spoken": 0,
+   "written": 3,
+   "academic": 3
+  },
+  "example": "There were strange forces at work."
+ },
+ {
+  "headword": "come about",
+  "source": "phrase",
+  "rank": 5504,
+  "band": 6,
+  "level": null,
+  "frequency": 787,
+  "genre": {
+   "spoken": 2,
+   "written": 3,
+   "academic": 1
+  },
+  "example": "It all came about through a meeting back in April."
+ },
+ {
+  "headword": "a means of sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "account for sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "accused of sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "act as sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "aimed at doing sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "aimed at sb",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "all the more",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "appeal to sb",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "apply to sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "as far as i am concerned",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "as far as sb/sth is concerned",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "as for sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "associated with sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "at some point",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "at the end of the day",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "at the expense of sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "at the hands of sb",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "at this stage",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "awareness of sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "back and forth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "back sb/sth up",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "be attributed to sb",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "be charged with sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "be derived from sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "be entitled to sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "be expected to do sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "be found to do sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "be known to do sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "be made up of sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "be meant to do sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "be reported to be sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "be said to be sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "be surrounded by sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "be to blame",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "bear sb/sth in mind",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "both sides",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "bound to do sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "bring sb up",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "bring sth about",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "bring sth up",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "by means of sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "call for sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "call on sb",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "case study",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "come across sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "come true",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "concerned about sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "concerned with sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "confidence in sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "consistent with sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "contribute to sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "control over sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "cope with sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "decline in sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "dedicated to sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "dependent on sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "deprive sb/sth of sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "despite the fact that",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "dispose of sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "draw attention to sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "engage in sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "engaged in sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "exposure to sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "far from sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "figure sb/sth out",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "find yourself doing sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "follow sth up",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "for that matter",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "for the benefit of sb",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "for the sake of sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "get away with sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "get in",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "get over sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "get rid of sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "go on to do sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "go through sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "have nothing to do with sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "have sb/sth in mind",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "human being",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "human rights",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "i have to say",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "i would say",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in a position to do sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in accordance with sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in action",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in an attempt to do sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in conjunction with sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in connection with sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in line with sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in relation to sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in respect of sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in spite of sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in such a way (that)",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in the absence of sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in the event of sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in the face of sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in the hands of sb",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in the light of sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in the midst of sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in the near future",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in the presence of sb",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "in the wake of sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "investment in sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "involvement in sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "live on sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "loads of sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "may well",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "mental health",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "no doubt",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "not to mention",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "nothing like",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "on behalf of sb",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "on the basis of sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "on the part of sb",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "opposed to sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "over the course of",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "potential for sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "pretty much",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "prove to be sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "put it",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "put sth forward",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "put sth together",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "quality of life",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "ranging from",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "regarded as sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "relevant to sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "rely on sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "role model",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "seek to do sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "set to do sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "short of sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "so as to do sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "something like",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "sort sb/sth/yourself out",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "stick to sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "subject to sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "sum up",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "take advantage of sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "take sth into account",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "that is",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "the vast majority of sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "turn into sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "up against sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "up to sb",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "when it comes to sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "with regard to sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "with respect to sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "with the exception of sb/sth",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "C1",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ },
+ {
+  "headword": "would rather",
+  "source": "opl",
+  "rank": null,
+  "band": null,
+  "level": "B2",
+  "frequency": null,
+  "genre": null,
+  "example": null
+ }
+]

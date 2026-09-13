@@ -1,0 +1,2865 @@
+[
+ {
+  "headword": "go on",
+  "verb": "go",
+  "particle": "on",
+  "rank": 1,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Happen, take place",
+    "percent": 64.5,
+    "example": "There is a debate going on right now between the two parties."
+   },
+   {
+    "n": 2,
+    "meaning": "(+ To) Proceed to do or tackle STH after doing STH else",
+    "percent": 13,
+    "example": "Does anyone have any questions before I go on to the next chapter?"
+   }
+  ]
+ },
+ {
+  "headword": "pick up",
+  "verb": "pick",
+  "particle": "up",
+  "rank": 2,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Get or take SB/STH from a place",
+    "percent": 70.5,
+    "example": "Can you pick up some food on the way home from work please?"
+   }
+  ]
+ },
+ {
+  "headword": "come back",
+  "verb": "come",
+  "particle": "back",
+  "rank": 3,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Return to a place or a conversation topic",
+    "percent": 96.5,
+    "example": "She came back to the kitchen with a bottle of fancy wine."
+   }
+  ]
+ },
+ {
+  "headword": "come up",
+  "verb": "come",
+  "particle": "up",
+  "rank": 4,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "(+ with) Bring forth or produce",
+    "percent": 34,
+    "example": "She instantly came up with a solution to the problem."
+   },
+   {
+    "n": 2,
+    "meaning": "(Be coming up) Be happening soon (esp. be broadcast soon)",
+    "percent": 27.5,
+    "example": "Coming up after the news, our cooking program will feature cheese."
+   }
+  ]
+ },
+ {
+  "headword": "go back",
+  "verb": "go",
+  "particle": "back",
+  "rank": 5,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Return to a place, time, situation, activity, conversation topic",
+    "percent": 90,
+    "example": "He washed the dishes and went back to his room."
+   }
+  ]
+ },
+ {
+  "headword": "find out",
+  "verb": "find",
+  "particle": "out",
+  "rank": 6,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Discover STH; obtain knowledge of STH",
+    "percent": 100,
+    "example": "We need to find out who did this to her."
+   }
+  ]
+ },
+ {
+  "headword": "come out",
+  "verb": "come",
+  "particle": "out",
+  "rank": 7,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Leave a place (room, building, container) or appear from it",
+    "percent": 38,
+    "example": "She went into the bank and came out with some money."
+   },
+   {
+    "n": 2,
+    "meaning": "Become known or revealed after being kept secret",
+    "percent": 13.5,
+    "example": "The news came out that he was leaving the team."
+   },
+   {
+    "n": 3,
+    "meaning": "(Come out and do STH) Make public knowledge a privately held position",
+    "percent": 11.5,
+    "example": "People need to come out and say what they think about it."
+   },
+   {
+    "n": 4,
+    "meaning": "Become available or released to the public (film, record, book)",
+    "percent": 10,
+    "example": "Their new album is coming out next month."
+   }
+  ]
+ },
+ {
+  "headword": "go out",
+  "verb": "go",
+  "particle": "out",
+  "rank": 8,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Leave a room, building, car, or one’s home to go to a social event",
+    "percent": 56.5,
+    "example": "We should go out for dinner sometime."
+   },
+   {
+    "n": 2,
+    "meaning": "(Go out and do STH) Used as an intensifier, to highlight the active nature of what is being done",
+    "percent": 19.5,
+    "example": "Do you think he’ll go out and buy the whole company?"
+   }
+  ]
+ },
+ {
+  "headword": "point out",
+  "verb": "point",
+  "particle": "out",
+  "rank": 9,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Direct attention toward STH (fact, idea, information)",
+    "percent": 89,
+    "example": "Experts have pointed out that eating too much sugar is extremely unhealthy."
+   }
+  ]
+ },
+ {
+  "headword": "grow up",
+  "verb": "grow",
+  "particle": "up",
+  "rank": 10,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Gradually advance in age and maturity",
+    "percent": 98,
+    "example": "Seeing my kids growing up is such a lovely thing."
+   }
+  ]
+ },
+ {
+  "headword": "set up",
+  "verb": "set",
+  "particle": "up",
+  "rank": 11,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Establish or create STH; arrange for STH to happen or exist",
+    "percent": 64.5,
+    "example": "An advisory committee is being set up."
+   },
+   {
+    "n": 2,
+    "meaning": "Place STH in a particular spot or position",
+    "percent": 16.5,
+    "example": "We need to set up a few more chairs so everyone can sit down."
+   }
+  ]
+ },
+ {
+  "headword": "turn out",
+  "verb": "turn",
+  "particle": "out",
+  "rank": 12,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Prove or be discovered to happen or be",
+    "percent": 91,
+    "example": "Her suspicion turned out to be justified."
+   }
+  ]
+ },
+ {
+  "headword": "get out",
+  "verb": "get",
+  "particle": "out",
+  "rank": 13,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Leave a container (vehicle, room, building) or make SB/STH leave a container",
+    "percent": 75.5,
+    "example": "These prisoners have no hope of ever getting out of jail."
+   }
+  ]
+ },
+ {
+  "headword": "come in",
+  "verb": "come",
+  "particle": "in",
+  "rank": 14,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Enter a place or area (room, building)",
+    "percent": 65,
+    "example": "She opened the door and he came in."
+   },
+   {
+    "n": 2,
+    "meaning": "Become involved in a situation",
+    "percent": 14,
+    "example": "We need experts to come in and give us advice."
+   }
+  ]
+ },
+ {
+  "headword": "take on",
+  "verb": "take",
+  "particle": "on",
+  "rank": 15,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Undertake or handle (role, task, responsibility, problem, issue)",
+    "percent": 42,
+    "example": "Nobody was willing to take on such an awful job."
+   },
+   {
+    "n": 2,
+    "meaning": "Acquire or assume as one’s own (quality, meaning, colour, shape)",
+    "percent": 41.5,
+    "example": "The story takes on a whole new meaning when you read it again."
+   }
+  ]
+ },
+ {
+  "headword": "give up",
+  "verb": "give",
+  "particle": "up",
+  "rank": 16,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Stop doing or having STH; abandon (activity, belief, possession)",
+    "percent": 80.5,
+    "example": "She had to give up smoking when she got pregnant."
+   }
+  ]
+ },
+ {
+  "headword": "make up",
+  "verb": "make",
+  "particle": "up",
+  "rank": 17,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Form the whole of an amount or entity",
+    "percent": 42.5,
+    "example": "Hispanics make up more than 15% of the U.S. population."
+   },
+   {
+    "n": 2,
+    "meaning": "(+ for) Compensate for STH lacking, lost or missed",
+    "percent": 18.5,
+    "example": "Some solution has to be found to make up for such losses."
+   },
+   {
+    "n": 3,
+    "meaning": "(Make up one’s mind) Make a decision",
+    "percent": 15.5,
+    "example": "You should make up your mind about who you will vote for."
+   }
+  ]
+ },
+ {
+  "headword": "end up",
+  "verb": "end",
+  "particle": "up",
+  "rank": 18,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Finally do STH or be in a particular place, state, or situation after doing STH or as a consequence of it, esp. unexpectedly",
+    "percent": 100,
+    "example": "She ended up having to sell her car after her accident."
+   }
+  ]
+ },
+ {
+  "headword": "get back",
+  "verb": "get",
+  "particle": "back",
+  "rank": 19,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Return to a place, position, state, activity, conversation topic",
+    "percent": 78.5,
+    "example": "She got back to London last Monday."
+   }
+  ]
+ },
+ {
+  "headword": "look up",
+  "verb": "look",
+  "particle": "up",
+  "rank": 20,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Raise one’s eyes",
+    "percent": 88,
+    "example": "He looked up from his book and shook his head."
+   }
+  ]
+ },
+ {
+  "headword": "figure out",
+  "verb": "figure",
+  "particle": "out",
+  "rank": 21,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Come to understand or determine STH",
+    "percent": 100,
+    "example": "Despite her efforts, she couldn’t figure out what had happened."
+   }
+  ]
+ },
+ {
+  "headword": "sit down",
+  "verb": "sit",
+  "particle": "down",
+  "rank": 22,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Move from a standing position to a sitting position",
+    "percent": 100,
+    "example": "Please sit down and have a drink."
+   }
+  ]
+ },
+ {
+  "headword": "get up",
+  "verb": "get",
+  "particle": "up",
+  "rank": 23,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Rise or cause to rise after lying in bed or sitting/kneeling",
+    "percent": 92,
+    "example": "She got up out of her chair and put on her shoes."
+   }
+  ]
+ },
+ {
+  "headword": "take out",
+  "verb": "take",
+  "particle": "out",
+  "rank": 24,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Remove STH/SB from somewhere (container or abstract whole)",
+    "percent": 50.5,
+    "example": "He tore open the envelope and took out a few bills."
+   },
+   {
+    "n": 2,
+    "meaning": "Invite to a recreational place or social event",
+    "percent": 13.5,
+    "example": "You should take her out to this new Chinese restaurant."
+   },
+   {
+    "n": 3,
+    "meaning": "Obtain an official document or service from an authority",
+    "percent": 12.5,
+    "example": "I had to take out a loan to cover all my expenses."
+   }
+  ]
+ },
+ {
+  "headword": "come on",
+  "verb": "come",
+  "particle": "on",
+  "rank": 25,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Said to encourage SB to try harder, or do or say STH",
+    "percent": 50,
+    "example": "Come on, don’t be shy and tell us your story."
+   },
+   {
+    "n": 2,
+    "meaning": "Said to show SB disbelief, disagreement, or anger",
+    "percent": 19.5,
+    "example": "Oh come on, you're just lying to me!"
+   }
+  ]
+ },
+ {
+  "headword": "go down",
+  "verb": "go",
+  "particle": "down",
+  "rank": 26,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Move down to a lower level or position",
+    "percent": 29,
+    "example": "After hitting the iceberg, the ship began to go down."
+   },
+   {
+    "n": 2,
+    "meaning": "Decrease in value or amount",
+    "percent": 27,
+    "example": "I don’t think prices will go down."
+   },
+   {
+    "n": 3,
+    "meaning": "Go from one place to another, esp. one that is further south or underneath",
+    "percent": 18,
+    "example": "We went down to Australia last year."
+   }
+  ]
+ },
+ {
+  "headword": "show up",
+  "verb": "show",
+  "particle": "up",
+  "rank": 27,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Make an appearance at a social or professional gathering",
+    "percent": 81,
+    "example": "She didn’t show up at the meeting."
+   }
+  ]
+ },
+ {
+  "headword": "take off",
+  "verb": "take",
+  "particle": "off",
+  "rank": 28,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Remove STH (esp. piece of clothing or jewellery from one’s body)",
+    "percent": 41,
+    "example": "I took off my shirt and went to bed."
+   },
+   {
+    "n": 2,
+    "meaning": "Leave a place, especially suddenly",
+    "percent": 28.5,
+    "example": "They jumped into the car and took off."
+   },
+   {
+    "n": 3,
+    "meaning": "Leave the ground and rise into the air",
+    "percent": 14,
+    "example": "The plane took off at 7am."
+   }
+  ]
+ },
+ {
+  "headword": "work out",
+  "verb": "work",
+  "particle": "out",
+  "rank": 29,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Plan, devise or think about STH carefully or in detail",
+    "percent": 33,
+    "example": "We still need to work out the details of the procedure."
+   },
+   {
+    "n": 2,
+    "meaning": "Exercise in order to improve health or strength",
+    "percent": 23,
+    "example": "He works out at the gym five times a week."
+   },
+   {
+    "n": 3,
+    "meaning": "(+ well/badly) Happen or develop in a particular way",
+    "percent": 15,
+    "example": "Everything worked out well in the end."
+   },
+   {
+    "n": 4,
+    "meaning": "Prove to be successful",
+    "percent": 12.5,
+    "example": "Despite our efforts, it just didn’t work out."
+   }
+  ]
+ },
+ {
+  "headword": "stand up",
+  "verb": "stand",
+  "particle": "up",
+  "rank": 30,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Rise to a standing position after sitting or lying down",
+    "percent": 67.5,
+    "example": "He pushed away from the table and stood up."
+   },
+   {
+    "n": 2,
+    "meaning": "(Stand up and say STH) Make public knowledge a privately held position",
+    "percent": 11,
+    "example": "Somebody’s got to stand up and say what’s wrong with this country."
+   }
+  ]
+ },
+ {
+  "headword": "come down",
+  "verb": "come",
+  "particle": "down",
+  "rank": 31,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Move from a higher spatial location to a lower one; fall/land onto the ground",
+    "percent": 32.5,
+    "example": "Come down from the roof or you will hurt yourself."
+   },
+   {
+    "n": 2,
+    "meaning": "(+ to) Reduce itself to one particular thing that is the most important or essential matter",
+    "percent": 20.5,
+    "example": "What it all comes down to is that the rules have not been respected."
+   },
+   {
+    "n": 3,
+    "meaning": "Become lower in amount or value",
+    "percent": 11,
+    "example": "Interest rates are currently coming down."
+   }
+  ]
+ },
+ {
+  "headword": "go ahead",
+  "verb": "go",
+  "particle": "ahead",
+  "rank": 32,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Proceed with a course of action without further hesitation",
+    "percent": 99,
+    "example": "Go ahead and ask me your question!"
+   }
+  ]
+ },
+ {
+  "headword": "go up",
+  "verb": "go",
+  "particle": "up",
+  "rank": 33,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Become higher in value; increase",
+    "percent": 47.5,
+    "example": "Oil prices have gone up last year."
+   },
+   {
+    "n": 2,
+    "meaning": "Move upward, or from a lower spatial location to a higher one",
+    "percent": 20.5,
+    "example": "He could see a few hands go up in the audience."
+   }
+  ]
+ },
+ {
+  "headword": "look back",
+  "verb": "look",
+  "particle": "back",
+  "rank": 34,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Think of STH again; reconsider STH past",
+    "percent": 49.5,
+    "example": "Looking back on those days, we had a very happy life."
+   },
+   {
+    "n": 2,
+    "meaning": "Look at STH/SB again after having momentarily looked elsewhere",
+    "percent": 30,
+    "example": "He closed the dictionary and looked back to his notes."
+   }
+  ]
+ },
+ {
+  "headword": "wake up",
+  "verb": "wake",
+  "particle": "up",
+  "rank": 35,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Become (or make SB become) conscious again after being asleep",
+    "percent": 92,
+    "example": "I was so tired that I woke up at 10 this morning."
+   }
+  ]
+ },
+ {
+  "headword": "carry out",
+  "verb": "carry",
+  "particle": "out",
+  "rank": 36,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Perform or complete (task, activity, study, experiment, attack, duties, etc)",
+    "percent": 63.5,
+    "example": "The experiment was carried out by a well-known academic."
+   },
+   {
+    "n": 2,
+    "meaning": "Put into execution; implement (plan, idea, wishes, orders, views, etc)",
+    "percent": 34,
+    "example": "Economic reform will soon be carried out."
+   }
+  ]
+ },
+ {
+  "headword": "take over",
+  "verb": "take",
+  "particle": "over",
+  "rank": 37,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Gain control, management, or possession of STH/SB (task, job, political party, organisation)",
+    "percent": 96.5,
+    "example": "After her father died, she took over the company."
+   }
+  ]
+ },
+ {
+  "headword": "hold up",
+  "verb": "hold",
+  "particle": "up",
+  "rank": 38,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Hold STH in a high position (e.g. above one’s waist or head), so it can be seen or reached",
+    "percent": 54,
+    "example": "The professor held up the picture so everyone could see it."
+   },
+   {
+    "n": 2,
+    "meaning": "Remain strong or in a fairly good condition after a bad period or the wear of time (person, business, device)",
+    "percent": 14,
+    "example": "These are really old shoes but they’re holding up quite well."
+   },
+   {
+    "n": 3,
+    "meaning": "Delay or prevent the progression of STH/SB",
+    "percent": 11.5,
+    "example": "We were held up by heavy traffic."
+   }
+  ]
+ },
+ {
+  "headword": "pull out",
+  "verb": "pull",
+  "particle": "out",
+  "rank": 39,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Take STH/SB out of a container, thing or place",
+    "percent": 75,
+    "example": "He reached in his pocket and pulled out a gun."
+   }
+  ]
+ },
+ {
+  "headword": "turn around",
+  "verb": "turn",
+  "particle": "around",
+  "rank": 40,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Move so as to face in the opposite direction",
+    "percent": 67.5,
+    "example": "She turned around and walked out the door."
+   },
+   {
+    "n": 2,
+    "meaning": "Make STH become better or more successful than it previously was (economy, business)",
+    "percent": 24.5,
+    "example": "People have stopped believing the President could turn around the economy."
+   }
+  ]
+ },
+ {
+  "headword": "take up",
+  "verb": "take",
+  "particle": "up",
+  "rank": 41,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Use a particular amount of space, time or effort",
+    "percent": 25.5,
+    "example": "The rewriting of the document took up a whole afternoon."
+   },
+   {
+    "n": 2,
+    "meaning": "Discuss or deal with (issue, idea, matter)",
+    "percent": 17.5,
+    "example": "The Senate will take up the issue tomorrow."
+   },
+   {
+    "n": 3,
+    "meaning": "Start doing a particular job or activity, esp. for pleasure",
+    "percent": 10.5,
+    "example": "He took up gardening last year."
+   },
+   {
+    "n": 4,
+    "meaning": "Grasp an object, often moving it from a lower to a higher position",
+    "percent": 10,
+    "example": "I have to take up the carpet before I start hoovering."
+   }
+  ]
+ },
+ {
+  "headword": "look down",
+  "verb": "look",
+  "particle": "down",
+  "rank": 42,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Lower one’s eyes to see what is below",
+    "percent": 92,
+    "example": "She looked down at the ground to see what she stepped on."
+   }
+  ]
+ },
+ {
+  "headword": "put up",
+  "verb": "put",
+  "particle": "up",
+  "rank": 43,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Display or attach STH (e.g. to a wall) so it can be seen",
+    "percent": 23,
+    "example": "They put up a few posters on the wall."
+   },
+   {
+    "n": 2,
+    "meaning": "(+ with) Be willing to accept STH unpleasant or not desirable; tolerate",
+    "percent": 19,
+    "example": "I won’t put up with your bad behaviour for much longer."
+   },
+   {
+    "n": 3,
+    "meaning": "Build or place STH somewhere",
+    "percent": 18,
+    "example": "They’re putting up a new fence after the previous one fell apart."
+   }
+  ]
+ },
+ {
+  "headword": "bring back",
+  "verb": "bring",
+  "particle": "back",
+  "rank": 44,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Make STH/SB return to a place, state, situation, or conversation topic",
+    "percent": 52.5,
+    "example": "This will bring back war into the country."
+   },
+   {
+    "n": 2,
+    "meaning": "Bring STH one has taken from a place they come from",
+    "percent": 22.5,
+    "example": "This is the hat he brought back from South America."
+   }
+  ]
+ },
+ {
+  "headword": "bring up",
+  "verb": "bring",
+  "particle": "up",
+  "rank": 45,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Raise for discussion or consideration",
+    "percent": 59.5,
+    "example": "I didn’t think he would bring up the subject."
+   },
+   {
+    "n": 2,
+    "meaning": "Care for/be responsible for a child until it becomes an adult",
+    "percent": 17.5,
+    "example": "She brought up her children under very difficult circumstances."
+   }
+  ]
+ },
+ {
+  "headword": "look out",
+  "verb": "look",
+  "particle": "out",
+  "rank": 46,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Look outside, or at the horizon",
+    "percent": 50.5,
+    "example": "She liked to go by the window and look out at the garden."
+   },
+   {
+    "n": 2,
+    "meaning": "Take care of SB and make sure they are well; protect SB’s interests",
+    "percent": 25.5,
+    "example": "We look out for each other as if we were family."
+   }
+  ]
+ },
+ {
+  "headword": "bring in",
+  "verb": "bring",
+  "particle": "in",
+  "rank": 47,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Bring STH to a place or situation",
+    "percent": 52,
+    "example": "I brought in my laptop computer today because my office computer is broken."
+   },
+   {
+    "n": 2,
+    "meaning": "Ask SB to do a particular job or task",
+    "percent": 30.5,
+    "example": "He had been brought in to save the company."
+   }
+  ]
+ },
+ {
+  "headword": "open up",
+  "verb": "open",
+  "particle": "up",
+  "rank": 48,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Make STH become available or possible, less limited",
+    "percent": 42.5,
+    "example": "This opened up opportunities he would never have imagined."
+   },
+   {
+    "n": 2,
+    "meaning": "Open STH (door, gate, book, bag)",
+    "percent": 27.5,
+    "example": "She opened up the bag and grabbed some documents."
+   }
+  ]
+ },
+ {
+  "headword": "check out",
+  "verb": "check",
+  "particle": "out",
+  "rank": 49,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Have a look at; examine STH/SB (esp. to get more information or make a judgement)",
+    "percent": 97,
+    "example": "Check out our website for more information."
+   }
+  ]
+ },
+ {
+  "headword": "move on",
+  "verb": "move",
+  "particle": "on",
+  "rank": 50,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Start doing or discussing STH new (job, activity, conversation topic)",
+    "percent": 42,
+    "example": "Let’s move on to our next topic."
+   },
+   {
+    "n": 2,
+    "meaning": "Change physical location (spot, room, country)",
+    "percent": 28,
+    "example": "She lived in New York, then London, and finally moved on to Rome."
+   },
+   {
+    "n": 3,
+    "meaning": "Forget about a difficult experience and move forward mentally/emotionally",
+    "percent": 25,
+    "example": "He’s had a difficult year but he’s now ready to move on."
+   }
+  ]
+ },
+ {
+  "headword": "put out",
+  "verb": "put",
+  "particle": "out",
+  "rank": 51,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Make STH known or accessible to the public (information, products)",
+    "percent": 47,
+    "example": "Police have put out a warning about thieves in the area."
+   },
+   {
+    "n": 2,
+    "meaning": "Stop STH from burning or shining",
+    "percent": 14,
+    "example": "The fire has finally been put out."
+   },
+   {
+    "n": 3,
+    "meaning": "Place STH somewhere in order for it to be seen or used",
+    "percent": 10,
+    "example": "I’ve put out some glasses and a bottle of wine."
+   }
+  ]
+ },
+ {
+  "headword": "look around",
+  "verb": "look",
+  "particle": "around",
+  "rank": 52,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Examine a place or one’s surroundings so as to view what it might contain or look for a particular thing",
+    "percent": 100,
+    "example": "They entered the shop and looked around but nobody was there."
+   }
+  ]
+ },
+ {
+  "headword": "catch up",
+  "verb": "catch",
+  "particle": "up",
+  "rank": 53,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "(Be/Get caught up) Become involved in STH which prevents SB from making progress or moving forward",
+    "percent": 26,
+    "example": "He is very busy and always caught up in his work."
+   },
+   {
+    "n": 2,
+    "meaning": "Reach SB that is ahead by walking, running, or driving faster",
+    "percent": 18,
+    "example": "She was running so fast that it was impossible to catch up with her."
+   },
+   {
+    "n": 3,
+    "meaning": "Reach the same level or standard as SB who is more advanced",
+    "percent": 14,
+    "example": "They made considerable improvements, which makes it hard for us to catch up."
+   }
+  ]
+ },
+ {
+  "headword": "go in",
+  "verb": "go",
+  "particle": "in",
+  "rank": 54,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Enter (place, area, room, building)",
+    "percent": 90,
+    "example": "This restaurant looks really nice; let’s go in and have lunch."
+   }
+  ]
+ },
+ {
+  "headword": "break down",
+  "verb": "break",
+  "particle": "down",
+  "rank": 55,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Stop working or functioning; fail or collapse (vehicle, device, relationship, negotiations)",
+    "percent": 24,
+    "example": "Our car broke down yesterday."
+   },
+   {
+    "n": 2,
+    "meaning": "Divide or separate into categories or smaller components so as to make it easier to understand or deal with",
+    "percent": 20,
+    "example": "Let’s break down the task into three easy steps."
+   },
+   {
+    "n": 3,
+    "meaning": "Lose control of one’s emotions and yield to tears or distress",
+    "percent": 17.5,
+    "example": "He broke down at his son’s funeral."
+   },
+   {
+    "n": 4,
+    "meaning": "Undergo chemical decomposition; separate into different substances",
+    "percent": 13.5,
+    "example": "Digestion breaks down food into small molecules."
+   }
+  ]
+ },
+ {
+  "headword": "get off",
+  "verb": "get",
+  "particle": "off",
+  "rank": 56,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Go away from, leave (train, bus, aircraft, lift)",
+    "percent": 54,
+    "example": "You need to take the bus and get off at the third stop."
+   },
+   {
+    "n": 2,
+    "meaning": "(Get off to a ... start) Begin something in a certain way",
+    "percent": 12.5,
+    "example": "The team has got off to a good start this season."
+   },
+   {
+    "n": 3,
+    "meaning": "Manage to avoid serious trouble or consequences (esp. legal punishment)",
+    "percent": 12,
+    "example": "It’s not right that he could commit such a crime and get off so easily."
+   }
+  ]
+ },
+ {
+  "headword": "keep up",
+  "verb": "keep",
+  "particle": "up",
+  "rank": 57,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Move, progress or increase at the same rate or pace as SB/STH",
+    "percent": 46,
+    "example": "Workers’ income has not kept up with inflation."
+   },
+   {
+    "n": 2,
+    "meaning": "Make STH continue",
+    "percent": 32.5,
+    "example": "This is amazing; keep up the good work!"
+   }
+  ]
+ },
+ {
+  "headword": "put down",
+  "verb": "put",
+  "particle": "down",
+  "rank": 58,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Place STH/SB on the floor or on a flat surface",
+    "percent": 62,
+    "example": "She put down her glass and left the bar."
+   }
+  ]
+ },
+ {
+  "headword": "reach out",
+  "verb": "reach",
+  "particle": "out",
+  "rank": 59,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Stretch an arm in order to hold, touch, or get STH that is within short distance",
+    "percent": 48.5,
+    "example": "She reached out for the empty jar on the table."
+   },
+   {
+    "n": 2,
+    "meaning": "Make an effort to address or communicate with SB, so as to help them or involve them in STH",
+    "percent": 39.5,
+    "example": "The government’s efforts to reach out to right-wing voters have paid off."
+   }
+  ]
+ },
+ {
+  "headword": "go off",
+  "verb": "go",
+  "particle": "off",
+  "rank": 60,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Go somewhere, esp. for a particular purpose",
+    "percent": 44.5,
+    "example": "He decided to go off to college."
+   },
+   {
+    "n": 2,
+    "meaning": "Emit a loud noise or sudden light as a signal or warning",
+    "percent": 22,
+    "example": "Let’s hope the alarm doesn’t go off."
+   },
+   {
+    "n": 3,
+    "meaning": "Explode (bomb) or be fired (gun)",
+    "percent": 14,
+    "example": "They could hear bombs going off at a distance."
+   }
+  ]
+ },
+ {
+  "headword": "cut off",
+  "verb": "cut",
+  "particle": "off",
+  "rank": 61,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Remove a part of STH by cutting it",
+    "percent": 27,
+    "example": "Take the carrots and cut the ends off."
+   },
+   {
+    "n": 2,
+    "meaning": "Interrupt SB as they are speaking",
+    "percent": 24.5,
+    "example": "The teacher cut off the student in the middle of her sentence."
+   },
+   {
+    "n": 3,
+    "meaning": "End the provision of STH, or be deprived of a provision (supply, money)",
+    "percent": 23.5,
+    "example": "The government decided to cut off food supplies."
+   }
+  ]
+ },
+ {
+  "headword": "turn back",
+  "verb": "turn",
+  "particle": "back",
+  "rank": 62,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Turn around so as to face the opposite direction",
+    "percent": 51.5,
+    "example": "Before leaving through the door, he turned back to kiss her goodbye."
+   },
+   {
+    "n": 2,
+    "meaning": "Go back (or make SB/STH go back) in the direction SB/STH has come from",
+    "percent": 25.5,
+    "example": "When the storm hit, we had to turn back."
+   }
+  ]
+ },
+ {
+  "headword": "pull up",
+  "verb": "pull",
+  "particle": "up",
+  "rank": 63,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Stop or cause a vehicle to stop",
+    "percent": 47,
+    "example": "A van pulled up in front of them."
+   },
+   {
+    "n": 2,
+    "meaning": "Move STH/SB from a lower position to a higher one; lift from the ground",
+    "percent": 35.5,
+    "example": "She pulled up her scarf to cover her cold face."
+   }
+  ]
+ },
+ {
+  "headword": "set out",
+  "verb": "set",
+  "particle": "out",
+  "rank": 64,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Start doing or working on STH, esp. with a particular goal in mind",
+    "percent": 42.5,
+    "example": "I set out to discover the truth behind the story."
+   },
+   {
+    "n": 2,
+    "meaning": "Start a journey",
+    "percent": 26.5,
+    "example": "We set out for San Francisco on the following day."
+   },
+   {
+    "n": 3,
+    "meaning": "Explain or present STH clearly, esp. officially and in writing",
+    "percent": 16,
+    "example": "The official recommendations were set out in the document."
+   }
+  ]
+ },
+ {
+  "headword": "clean up",
+  "verb": "clean",
+  "particle": "up",
+  "rank": 65,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Get rid of dirt, mess, pollution, or chemical substances in a place or area",
+    "percent": 74,
+    "example": "Make sure you clean up your mess because I won’t do it for you."
+   },
+   {
+    "n": 2,
+    "meaning": "Make STH free from dangerous, unacceptable or controversial activities or contents",
+    "percent": 22,
+    "example": "He was asked to clean up his bad language during his interview."
+   }
+  ]
+ },
+ {
+  "headword": "shut down",
+  "verb": "shut",
+  "particle": "down",
+  "rank": 66,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Stop (or make STH stop) working or operating (machine, computer, business, premise, strategy)",
+    "percent": 94,
+    "example": "You should shut down your computer at night to save electricity."
+   }
+  ]
+ },
+ {
+  "headword": "turn over",
+  "verb": "turn",
+  "particle": "over",
+  "rank": 67,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Surrender possession or control to SB/STH (esp. in authority)",
+    "percent": 59.5,
+    "example": "The policeman turned over the criminal to the jail guard."
+   },
+   {
+    "n": 2,
+    "meaning": "Change position so that the other side is facing towards the outside or the top, or another direction",
+    "percent": 34,
+    "example": "Put the chicken on the grill and turn it over a few times."
+   }
+  ]
+ },
+ {
+  "headword": "slow down",
+  "verb": "slow",
+  "particle": "down",
+  "rank": 68,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Move, proceed or progress at a slower pace (vehicle, economy)",
+    "percent": 88.5,
+    "example": "Economic growth has dramatically slowed down."
+   }
+  ]
+ },
+ {
+  "headword": "wind up",
+  "verb": "wind",
+  "particle": "up",
+  "rank": 69,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "End up in a particular situation, condition or place, esp. an unpleasant one",
+    "percent": 87,
+    "example": "They wound up having to pay off his debts."
+   }
+  ]
+ },
+ {
+  "headword": "turn up",
+  "verb": "turn",
+  "particle": "up",
+  "rank": 70,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Yield; be (or make STH be) found, discovered, or noticed",
+    "percent": 48,
+    "example": "The search turned up solid evidence against him."
+   },
+   {
+    "n": 2,
+    "meaning": "Increase the volume or level of STH",
+    "percent": 21.5,
+    "example": "I really like this song; could you turn up the radio?"
+   },
+   {
+    "n": 3,
+    "meaning": "Arrive or make an appearance somewhere",
+    "percent": 14,
+    "example": "He turned up to the meeting half an hour late."
+   }
+  ]
+ },
+ {
+  "headword": "line up",
+  "verb": "line",
+  "particle": "up",
+  "rank": 71,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Form or make SB/STH form into a line (also figurative)",
+    "percent": 75,
+    "example": "Dozens of taxis were lined up at the entrance."
+   }
+  ]
+ },
+ {
+  "headword": "take back",
+  "verb": "take",
+  "particle": "back",
+  "rank": 72,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Take STH/SB to a place, or time period (fig.), they were in before",
+    "percent": 50,
+    "example": "After dinner, he took her back to her house."
+   },
+   {
+    "n": 2,
+    "meaning": "Regain possession or control over STH",
+    "percent": 33.5,
+    "example": "The politician’s ultimate goal is to take back the Senate."
+   }
+  ]
+ },
+ {
+  "headword": "lay out",
+  "verb": "lay",
+  "particle": "out",
+  "rank": 73,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Describe or explain STH clearly or in detail, esp. officially and in writing",
+    "percent": 46,
+    "example": "The whole strategy was laid out in detail in a twenty-page document."
+   },
+   {
+    "n": 2,
+    "meaning": "Spread STH out on a flat surface, so it can be seen or used",
+    "percent": 35,
+    "example": "He laid out the plates on the table."
+   }
+  ]
+ },
+ {
+  "headword": "go over",
+  "verb": "go",
+  "particle": "over",
+  "rank": 74,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Move towards a place or person, esp. by crossing an area (room, city, country)",
+    "percent": 63,
+    "example": "She went over to the window so she could watch the scene."
+   },
+   {
+    "n": 2,
+    "meaning": "Examine or discuss each part of STH in detail in order to understand or remember it better, or make sure it is correct",
+    "percent": 20,
+    "example": "We need to go over the list once again."
+   }
+  ]
+ },
+ {
+  "headword": "hang up",
+  "verb": "hang",
+  "particle": "up",
+  "rank": 75,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Finish a conversation on the telephone by putting the receiver down or switching the phone off",
+    "percent": 76.5,
+    "example": "He hung up the phone without letting her answer his question."
+   }
+  ]
+ },
+ {
+  "headword": "go through",
+  "verb": "go",
+  "particle": "through",
+  "rank": 76,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Experience STH difficult or unpleasant",
+    "percent": 61,
+    "example": "You have to understand the tough situation she went through before judging"
+   },
+   {
+    "n": 2,
+    "meaning": "Be officially accepted or approved",
+    "percent": 10,
+    "example": "I hope the tax cut goes through next year."
+   }
+  ]
+ },
+ {
+  "headword": "hold on",
+  "verb": "hold",
+  "particle": "on",
+  "rank": 77,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Refuse to let go of STH",
+    "percent": 57,
+    "example": "He held on to his job until the very last day."
+   },
+   {
+    "n": 2,
+    "meaning": "Wait for a short time",
+    "percent": 35.5,
+    "example": "I’ll be quick, please hold on for one minute."
+   }
+  ]
+ },
+ {
+  "headword": "pay off",
+  "verb": "pay",
+  "particle": "off",
+  "rank": 78,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Pay the complete amount of STH",
+    "percent": 49,
+    "example": "It will take a dozen years for him to pay off his debts."
+   },
+   {
+    "n": 2,
+    "meaning": "Pay back the effort spent in doing STH by becoming profitable or effective",
+    "percent": 48.5,
+    "example": "All the hard work will pay off in the end."
+   }
+  ]
+ },
+ {
+  "headword": "hold out",
+  "verb": "hold",
+  "particle": "out",
+  "rank": 79,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Move one’s hand or an object in one’s hand forward or towards SB, in order to grab or give STH",
+    "percent": 61,
+    "example": "He took the keys and held them out to her."
+   },
+   {
+    "n": 2,
+    "meaning": "Hold STH as likely to happen or succeed (hope, possibility, prospect, promise)",
+    "percent": 15,
+    "example": "We don’t hold out much hope of finding the murderer."
+   }
+  ]
+ },
+ {
+  "headword": "break up",
+  "verb": "break",
+  "particle": "up",
+  "rank": 80,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "End or cause to end or fail (esp. relationship)",
+    "percent": 59,
+    "example": "Their marriage broke up in 2007."
+   },
+   {
+    "n": 2,
+    "meaning": "Divide into smaller parts or components",
+    "percent": 34.5,
+    "example": "The USSR broke up into more than 10 countries."
+   }
+  ]
+ },
+ {
+  "headword": "bring out",
+  "verb": "bring",
+  "particle": "out",
+  "rank": 81,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Make a particular detail, quality or feeling more noticeable than it usually is",
+    "percent": 36,
+    "example": "This haircut brings out the natural curl in your hair."
+   },
+   {
+    "n": 2,
+    "meaning": "Make SB or STH available for the public or an audience to see, know or buy",
+    "percent": 33,
+    "example": "The band was about to bring out their new album."
+   },
+   {
+    "n": 3,
+    "meaning": "Take STH/SB out of a container or enclosed space",
+    "percent": 27,
+    "example": "They brought out another plate from the kitchen."
+   }
+  ]
+ },
+ {
+  "headword": "pull back",
+  "verb": "pull",
+  "particle": "back",
+  "rank": 82,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Move backwards or make SB/STH move backwards",
+    "percent": 66.5,
+    "example": "She pulled back the hair from her face."
+   },
+   {
+    "n": 2,
+    "meaning": "Withdraw or retreat from an activity or location, esp. military",
+    "percent": 31,
+    "example": "The army was forced to pull back due to bad weather."
+   }
+  ]
+ },
+ {
+  "headword": "hang on",
+  "verb": "hang",
+  "particle": "on",
+  "rank": 83,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Wait for a short time",
+    "percent": 41.5,
+    "example": "Please hang on for a minute, I’ll be quick."
+   },
+   {
+    "n": 2,
+    "meaning": "Refuse to let go of STH",
+    "percent": 35.5,
+    "example": "He hung on to his job until the very last day."
+   }
+  ]
+ },
+ {
+  "headword": "build up",
+  "verb": "build",
+  "particle": "up",
+  "rank": 84,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Increase or cause STH to increase, accumulate, or strengthen, especially progressively",
+    "percent": 76,
+    "example": "Tension was building up among competitors."
+   }
+  ]
+ },
+ {
+  "headword": "throw out",
+  "verb": "throw",
+  "particle": "out",
+  "rank": 85,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Refuse to accept or consider (esp. by people of authority)",
+    "percent": 29,
+    "example": "The president attempted to have the death penalty thrown out."
+   },
+   {
+    "n": 2,
+    "meaning": "Put STH in a rubbish bin",
+    "percent": 25.5,
+    "example": "He threw out a dozen empty boxes that were piled up in the room."
+   },
+   {
+    "n": 3,
+    "meaning": "Make SB leave a place, activity or organization, esp. forcibly and unexpectedly",
+    "percent": 21,
+    "example": "Several students were caught cheating and subsequently thrown out of school."
+   }
+  ]
+ },
+ {
+  "headword": "hang out",
+  "verb": "hang",
+  "particle": "out",
+  "rank": 86,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Spend time relaxing or enjoying oneself",
+    "percent": 84,
+    "example": "I don't like to hang out with people I work with."
+   }
+  ]
+ },
+ {
+  "headword": "put on",
+  "verb": "put",
+  "particle": "on",
+  "rank": 87,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Put a piece of clothing or jewellery onto one’s body",
+    "percent": 52,
+    "example": "You should put on your gloves, it’s really cold outside."
+   },
+   {
+    "n": 2,
+    "meaning": "Present or stage (play, show, competition)",
+    "percent": 14.5,
+    "example": "They put on such an incredible show last night!"
+   }
+  ]
+ },
+ {
+  "headword": "get down",
+  "verb": "get",
+  "particle": "down",
+  "rank": 88,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "(+ to) Begin to pay serious attention to STH",
+    "percent": 26,
+    "example": "We should get down to discussing those issues as soon as possible."
+   },
+   {
+    "n": 2,
+    "meaning": "Lower one’s body as by kneeling, sitting or lying",
+    "percent": 22.5,
+    "example": "Get down on your knees so you can get a better view."
+   },
+   {
+    "n": 3,
+    "meaning": "Come down from STH; descend (car, horse, tree)",
+    "percent": 17.5,
+    "example": "He loves climbing trees but finds it hard to get down."
+   }
+  ]
+ },
+ {
+  "headword": "come over",
+  "verb": "come",
+  "particle": "over",
+  "rank": 89,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Come to a place or area (spot, room, town, country), esp. towards SB or to join SB",
+    "percent": 95,
+    "example": "Could you come over and give me a hand with this?"
+   }
+  ]
+ },
+ {
+  "headword": "move in",
+  "verb": "move",
+  "particle": "in",
+  "rank": 90,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Settle into a new house or place",
+    "percent": 62.5,
+    "example": "He liked the house so much that he decided to move in immediately."
+   },
+   {
+    "n": 2,
+    "meaning": "Go towards SB/STH, esp. to attack or take control of them",
+    "percent": 34,
+    "example": "The assault was led by Lieutenant Jones, moving in from behind the hill."
+   }
+  ]
+ },
+ {
+  "headword": "start out",
+  "verb": "start",
+  "particle": "out",
+  "rank": 91,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Start a life, existence, profession, or course of action in a particular way or by doing a particular thing",
+    "percent": 95,
+    "example": "She started out as a shop assistant and gradually climbed the employment"
+   }
+  ]
+ },
+ {
+  "headword": "call out",
+  "verb": "call",
+  "particle": "out",
+  "rank": 92,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Speak or utter loudly",
+    "percent": 79,
+    "example": "He could hear a voice call out his name."
+   }
+  ]
+ },
+ {
+  "headword": "sit up",
+  "verb": "sit",
+  "particle": "up",
+  "rank": 93,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Rise from a lying to a sitting position",
+    "percent": 93.5,
+    "example": "The sudden noise made her sit up in her bed and listen."
+   }
+  ]
+ },
+ {
+  "headword": "turn down",
+  "verb": "turn",
+  "particle": "down",
+  "rank": 94,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Refuse or dismiss (request, offer, opportunity)",
+    "percent": 82.5,
+    "example": "This is an opportunity you would be foolish to turn down."
+   }
+  ]
+ },
+ {
+  "headword": "back up",
+  "verb": "back",
+  "particle": "up",
+  "rank": 95,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Move or drive backwards a short way",
+    "percent": 26,
+    "example": "He got into his car and backed up out of the alley."
+   },
+   {
+    "n": 2,
+    "meaning": "Take action in order to support STH or make it happen",
+    "percent": 21,
+    "example": "Politicians often fail to back up their words with actions."
+   },
+   {
+    "n": 3,
+    "meaning": "Establish as valid or genuine",
+    "percent": 20.5,
+    "example": "You have to back up your accusations with solid evidence."
+   }
+  ]
+ },
+ {
+  "headword": "put back",
+  "verb": "put",
+  "particle": "back",
+  "rank": 96,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Move STH/SB to a place, position, or state they were in before",
+    "percent": 85.5,
+    "example": "Could you put the milk back in the fridge please?"
+   }
+  ]
+ },
+ {
+  "headword": "send out",
+  "verb": "send",
+  "particle": "out",
+  "rank": 97,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Mail, send or distribute to a number of people",
+    "percent": 57,
+    "example": "Hundreds of copies were sent out to the local population."
+   },
+   {
+    "n": 2,
+    "meaning": "Send SB to a place for a particular purpose",
+    "percent": 32.5,
+    "example": "Military troops were sent out to secure the region."
+   }
+  ]
+ },
+ {
+  "headword": "get in",
+  "verb": "get",
+  "particle": "in",
+  "rank": 98,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Go (or make STH/SB go) inside a place (car, house, room)",
+    "percent": 65.5,
+    "example": "The new security lock prevents thieves from getting in."
+   },
+   {
+    "n": 2,
+    "meaning": "(+ on) Get involved in an exciting or profitable activity/opportunity",
+    "percent": 12.5,
+    "example": "You should get in on the act!"
+   }
+  ]
+ },
+ {
+  "headword": "blow up",
+  "verb": "blow",
+  "particle": "up",
+  "rank": 99,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Explode or destroy STH with a bomb, or cause to be exploded or destroyed",
+    "percent": 75.5,
+    "example": "Several attempts were made at blowing up official buildings."
+   }
+  ]
+ },
+ {
+  "headword": "carry on",
+  "verb": "carry",
+  "particle": "on",
+  "rank": 100,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Continue to do or be involved with STH, or make STH continue (especially despite difficulty)",
+    "percent": 66,
+    "example": "I would like to carry on working after I retire."
+   },
+   {
+    "n": 2,
+    "meaning": "Engage or take part in",
+    "percent": 15,
+    "example": "His illness makes it difficult for him to carry on conversations."
+   }
+  ]
+ },
+ {
+  "headword": "set off",
+  "verb": "set",
+  "particle": "off",
+  "rank": 101,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Start on a trip or journey",
+    "percent": 30.5,
+    "example": "We will finish packing and set off in the morning."
+   },
+   {
+    "n": 2,
+    "meaning": "Cause a device to explode, or a signal to start, esp. by accident",
+    "percent": 27.5,
+    "example": "He accidentally set off my car alarm."
+   },
+   {
+    "n": 3,
+    "meaning": "Make STH happen or emerge, esp. without intending to",
+    "percent": 25.5,
+    "example": "Employees started to protest, setting off a dispute over workers’ rights."
+   }
+  ]
+ },
+ {
+  "headword": "keep on",
+  "verb": "keep",
+  "particle": "on",
+  "rank": 102,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Continue doing STH without stopping, or repeatedly",
+    "percent": 92.5,
+    "example": "She wiped tears off her cheeks but kept on crying."
+   }
+  ]
+ },
+ {
+  "headword": "run out",
+  "verb": "run",
+  "particle": "out",
+  "rank": 103,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "(+ of) Use STH (or become used) completely so that nothing is left",
+    "percent": 49.5,
+    "example": "We’ve run out of biscuits."
+   },
+   {
+    "n": 2,
+    "meaning": "Leave suddenly, as if in a hurry",
+    "percent": 34,
+    "example": "After the argument, she ran out into the garden and screamed."
+   }
+  ]
+ },
+ {
+  "headword": "make out",
+  "verb": "make",
+  "particle": "out",
+  "rank": 104,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "See or hear with difficulty",
+    "percent": 60.5,
+    "example": "I could barely make out his face in the dark."
+   },
+   {
+    "n": 2,
+    "meaning": "Represent as being a particular way, esp. falsely",
+    "percent": 11,
+    "example": "He was innocent, but the media made him out to be a criminal."
+   },
+   {
+    "n": 3,
+    "meaning": "(Make it out) Deal with a difficult situation successfully",
+    "percent": 10.5,
+    "example": "We were lucky to make it out of the war alive."
+   }
+  ]
+ },
+ {
+  "headword": "shut up",
+  "verb": "shut",
+  "particle": "up",
+  "rank": 105,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Stop (or make SB/STH stop) talking or making a noise",
+    "percent": 97,
+    "example": "Just sit down and shut up!"
+   }
+  ]
+ },
+ {
+  "headword": "turn off",
+  "verb": "turn",
+  "particle": "off",
+  "rank": 106,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Stop a piece of equipment working temporarily or a supply flowing by turning a tap, pressing a button, or moving a switch",
+    "percent": 69.5,
+    "example": "People were asked to turn off their phones."
+   },
+   {
+    "n": 2,
+    "meaning": "Cause to feel intense dislike",
+    "percent": 20.5,
+    "example": "His speech turned off left-wing voters."
+   }
+  ]
+ },
+ {
+  "headword": "bring about",
+  "verb": "bring",
+  "particle": "about",
+  "rank": 107,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Cause to happen or emerge, esp. STH positive",
+    "percent": 100,
+    "example": "This decision will bring about change in the political sphere."
+   }
+  ]
+ },
+ {
+  "headword": "step back",
+  "verb": "step",
+  "particle": "back",
+  "rank": 108,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Move back by lifting one’s foot and putting it down backwards",
+    "percent": 72,
+    "example": "He stepped back when the big man threatened him."
+   },
+   {
+    "n": 2,
+    "meaning": "Stop being involved in STH so as to consider it more carefully/objectively",
+    "percent": 22.5,
+    "example": "We need to step back and take a broader perspective on the past events."
+   }
+  ]
+ },
+ {
+  "headword": "lay down",
+  "verb": "lay",
+  "particle": "down",
+  "rank": 109,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Put STH away or down on a surface, esp. because one has stopped using it",
+    "percent": 31,
+    "example": "I laid down my book and stood up."
+   },
+   {
+    "n": 2,
+    "meaning": "Lie flat on a surface, usually to rest",
+    "percent": 28,
+    "example": "He laid the child down on the bed and wished her good night."
+   },
+   {
+    "n": 3,
+    "meaning": "Lay the foundations of; establish or create",
+    "percent": 17,
+    "example": "The principles of good conduct were laid down decades ago."
+   }
+  ]
+ },
+ {
+  "headword": "bring down",
+  "verb": "bring",
+  "particle": "down",
+  "rank": 110,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Cause SB/STH to move downward or fall to the ground",
+    "percent": 32.5,
+    "example": "The rocket attack brought down the airliner."
+   },
+   {
+    "n": 2,
+    "meaning": "Reduce the level, rate, or amount of STH",
+    "percent": 26,
+    "example": "The company’s expenses need to be brought down."
+   },
+   {
+    "n": 3,
+    "meaning": "Cause SB/STH in a position of power (government, president, system, organisation) to lose its power/status",
+    "percent": 25,
+    "example": "They helped bring down one of the most corrupt dictatorships in history."
+   }
+  ]
+ },
+ {
+  "headword": "stand out",
+  "verb": "stand",
+  "particle": "out",
+  "rank": 111,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Distinguish oneself/itself by being better, more significant or more impressive than other people/things",
+    "percent": 60.5,
+    "example": "Excellent product quality is what made the brand stand out from its"
+   },
+   {
+    "n": 2,
+    "meaning": "Be easily seen or noticeable",
+    "percent": 38,
+    "example": "Flashing lights make planes stand out at night."
+   }
+  ]
+ },
+ {
+  "headword": "come along",
+  "verb": "come",
+  "particle": "along",
+  "rank": 112,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Appear or arrive; come into existence",
+    "percent": 72.5,
+    "example": "Such an opportunity comes along only once in a lifetime."
+   },
+   {
+    "n": 2,
+    "meaning": "Go somewhere with SB",
+    "percent": 20.5,
+    "example": "We’re going to the cinema tonight; you should come along with us!"
+   }
+  ]
+ },
+ {
+  "headword": "play out",
+  "verb": "play",
+  "particle": "out",
+  "rank": 113,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Happen or develop; be enacted or performed",
+    "percent": 79.5,
+    "example": "The way these negotiations play out will have important consequences."
+   }
+  ]
+ },
+ {
+  "headword": "break out",
+  "verb": "break",
+  "particle": "out",
+  "rank": 114,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Start suddenly, esp. STH undesirable and unpleasant",
+    "percent": 69.5,
+    "example": "Riots broke out that night."
+   }
+  ]
+ },
+ {
+  "headword": "go around",
+  "verb": "go",
+  "particle": "around",
+  "rank": 115,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Go from one place/person to another; circulate",
+    "percent": 76,
+    "example": "There is a rumour going around that she is pregnant."
+   }
+  ]
+ },
+ {
+  "headword": "walk out",
+  "verb": "walk",
+  "particle": "out",
+  "rank": 116,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Leave a place or event, especially suddenly or angrily",
+    "percent": 81.5,
+    "example": "She walked out of the meeting feeling irritated by her colleagues."
+   }
+  ]
+ },
+ {
+  "headword": "get through",
+  "verb": "get",
+  "particle": "through",
+  "rank": 117,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "(+ to) Succeed in reaching a physical destination or stage",
+    "percent": 27,
+    "example": "The food supplies never got through to the local population."
+   },
+   {
+    "n": 2,
+    "meaning": "Be successfully communicated or understood",
+    "percent": 22.5,
+    "example": "He needed to speak slowly and clearly so his message would get through to the"
+   },
+   {
+    "n": 3,
+    "meaning": "Succeed in contacting SB on the telephone",
+    "percent": 20.5,
+    "example": "I cannot seem to get through to the customer service department."
+   },
+   {
+    "n": 4,
+    "meaning": "Overcome STH, esp. difficult or unpleasant",
+    "percent": 14.5,
+    "example": "He gave me useful advice, which helped me get through this difficult situation."
+   }
+  ]
+ },
+ {
+  "headword": "hold back",
+  "verb": "hold",
+  "particle": "back",
+  "rank": 118,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Decide not to do or say STH",
+    "percent": 23.5,
+    "example": "They should not hold back from joining us if they want to."
+   },
+   {
+    "n": 2,
+    "meaning": "Prevent SB/STH from reaching their full potential",
+    "percent": 21,
+    "example": "You cannot let a few unmotivated pupils hold back the rest of the group."
+   },
+   {
+    "n": 3,
+    "meaning": "Prevent SB/STH from going somewhere",
+    "percent": 17.5,
+    "example": "Security guards tried to hold back the crowd."
+   },
+   {
+    "n": 4,
+    "meaning": "Contain an unwanted physical manifestation (tears, laughter, sigh, sneeze)",
+    "percent": 16,
+    "example": "She was holding back the laughter with great effort."
+   }
+  ]
+ },
+ {
+  "headword": "write down",
+  "verb": "write",
+  "particle": "down",
+  "rank": 119,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Record information on paper",
+    "percent": 98,
+    "example": "You should write down his contact details in case you want to get in touch."
+   }
+  ]
+ },
+ {
+  "headword": "move back",
+  "verb": "move",
+  "particle": "back",
+  "rank": 120,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Return to a place one has lived in before",
+    "percent": 75,
+    "example": "We moved back to New York last year."
+   }
+  ]
+ },
+ {
+  "headword": "fill out",
+  "verb": "fill",
+  "particle": "out",
+  "rank": 121,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Complete a form or official document",
+    "percent": 81.5,
+    "example": "We had to fill out a dozen forms in total."
+   }
+  ]
+ },
+ {
+  "headword": "sit back",
+  "verb": "sit",
+  "particle": "back",
+  "rank": 122,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Rest in a comfortable position against the back of a seat",
+    "percent": 66,
+    "example": "She sat back in her chair and turned on the TV."
+   },
+   {
+    "n": 2,
+    "meaning": "(Sit back and do STH) Deliberately take no action/remain passive about STH",
+    "percent": 34,
+    "example": "We won’t just sit back and watch the situation getting worse and worse."
+   }
+  ]
+ },
+ {
+  "headword": "rule out",
+  "verb": "rule",
+  "particle": "out",
+  "rank": 123,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Exclude STH as a possibility, plausible cause or explanation",
+    "percent": 93.5,
+    "example": "They ruled out the possibility of a mass murder."
+   }
+  ]
+ },
+ {
+  "headword": "move up",
+  "verb": "move",
+  "particle": "up",
+  "rank": 124,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Move to a better position; advance to a higher level/rank",
+    "percent": 47,
+    "example": "She moved up from secretary to senior manager in just a few years."
+   },
+   {
+    "n": 2,
+    "meaning": "Move upward, from a lower spatial location to a higher one",
+    "percent": 22.5,
+    "example": "She put her hand on his shoulder and moved it up along the back of his neck."
+   }
+  ]
+ },
+ {
+  "headword": "pick out",
+  "verb": "pick",
+  "particle": "out",
+  "rank": 125,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Choose SB/STH among a number of alternatives",
+    "percent": 71.5,
+    "example": "She picked out the best-looking dress she could find."
+   },
+   {
+    "n": 2,
+    "meaning": "Detect/be noticed among a group of things or people",
+    "percent": 19,
+    "example": "My mum could easily be picked out in the picture."
+   }
+  ]
+ },
+ {
+  "headword": "take down",
+  "verb": "take",
+  "particle": "down",
+  "rank": 126,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Remove STH that was previously put up or put in place",
+    "percent": 38.5,
+    "example": "After the exhibition, they took the paintings down."
+   },
+   {
+    "n": 2,
+    "meaning": "Destroy, kill, or disable",
+    "percent": 27.5,
+    "example": "The terrorists tried to take down the President's plane."
+   },
+   {
+    "n": 3,
+    "meaning": "Take SB to a place, esp. further south or at a lower level",
+    "percent": 18,
+    "example": "My dad decided to take us down to Florida."
+   }
+  ]
+ },
+ {
+  "headword": "get on",
+  "verb": "get",
+  "particle": "on",
+  "rank": 127,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "(+ with) Continue doing STH after stopping",
+    "percent": 51,
+    "example": "We might as well get on with it if we want to finish on time."
+   },
+   {
+    "n": 2,
+    "meaning": "Get on board some form of public transportation (train, bus, plane, elevator)",
+    "percent": 14.5,
+    "example": "He got on the bus to go to school."
+   }
+  ]
+ },
+ {
+  "headword": "give back",
+  "verb": "give",
+  "particle": "back",
+  "rank": 128,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Return STH to its original owner/provider",
+    "percent": 100,
+    "example": "It’s nice to be able to give back to the community."
+   }
+  ]
+ },
+ {
+  "headword": "hand over",
+  "verb": "hand",
+  "particle": "over",
+  "rank": 129,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Give STH to SB by holding it in one’s hand and offering it to them",
+    "percent": 58.5,
+    "example": "She turned around to hand over her keys to her husband."
+   },
+   {
+    "n": 2,
+    "meaning": "Surrender control or responsibility for STH/SB to SB else, esp. officially",
+    "percent": 41.5,
+    "example": "The government isn’t willing to hand over power to local authorities."
+   }
+  ]
+ },
+ {
+  "headword": "sum up",
+  "verb": "sum",
+  "particle": "up",
+  "rank": 130,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Express or represent the most important/representative facts, ideas, or characteristics of SB/STH, especially in a brief manner",
+    "percent": 97,
+    "example": "He summed up the whole discussion in just a few minutes."
+   }
+  ]
+ },
+ {
+  "headword": "move out",
+  "verb": "move",
+  "particle": "out",
+  "rank": 131,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Leave one’s place of residence permanently",
+    "percent": 94.5,
+    "example": "Our neighbour is going to move out next month."
+   }
+  ]
+ },
+ {
+  "headword": "come off",
+  "verb": "come",
+  "particle": "off",
+  "rank": 132,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Become detached or removed from a larger whole",
+    "percent": 34,
+    "example": "The button is coming off my shirt."
+   },
+   {
+    "n": 2,
+    "meaning": "Appear or seem to be a particular way",
+    "percent": 24.5,
+    "example": "He was tired and not prepared, and so came off poorly in the interview."
+   },
+   {
+    "n": 3,
+    "meaning": "Be finished with STH; have completed STH",
+    "percent": 17.5,
+    "example": "The team just came off an incredibly successful season."
+   }
+  ]
+ },
+ {
+  "headword": "pass on",
+  "verb": "pass",
+  "particle": "on",
+  "rank": 133,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Circulate or communicate; give STH to SB after receiving it from SB else (information, ideas, object)",
+    "percent": 37.5,
+    "example": "I got this message this morning and was asked to pass it on to you."
+   },
+   {
+    "n": 2,
+    "meaning": "Transmit from one generation to the next (traditions, beliefs, skills, possessions)",
+    "percent": 37,
+    "example": "These ancient traditions have been passed on from generation to generation."
+   },
+   {
+    "n": 3,
+    "meaning": "Die (euphemism)",
+    "percent": 12.5,
+    "example": "She has been very depressed since her mother passed on."
+   }
+  ]
+ },
+ {
+  "headword": "take in",
+  "verb": "take",
+  "particle": "in",
+  "rank": 134,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Provide a place for SB to live or stay",
+    "percent": 24.5,
+    "example": "The family took her in when she was abandoned by her parents."
+   },
+   {
+    "n": 2,
+    "meaning": "Fully understand or grasp the meaning of STH",
+    "percent": 17.5,
+    "example": "You have to explain more thoroughly; it’s too difficult to take in."
+   },
+   {
+    "n": 3,
+    "meaning": "Deceive by behaving in a dishonest way",
+    "percent": 10,
+    "example": "He was very convincing, so I was easily taken in."
+   }
+  ]
+ },
+ {
+  "headword": "set down",
+  "verb": "set",
+  "particle": "down",
+  "rank": 135,
+  "senses": []
+ },
+ {
+  "headword": "sort out",
+  "verb": "sort",
+  "particle": "out",
+  "rank": 136,
+  "senses": []
+ },
+ {
+  "headword": "follow up",
+  "verb": "follow",
+  "particle": "up",
+  "rank": 137,
+  "senses": []
+ },
+ {
+  "headword": "come through",
+  "verb": "come",
+  "particle": "through",
+  "rank": 138,
+  "senses": []
+ },
+ {
+  "headword": "settle down",
+  "verb": "settle",
+  "particle": "down",
+  "rank": 139,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Adopt a quieter and steadier lifestyle",
+    "percent": 31,
+    "example": "I just want to fall in love with the right guy and settle down."
+   },
+   {
+    "n": 2,
+    "meaning": "Become calmer, quieter, more orderly",
+    "percent": 26.5,
+    "example": "We need things to settle down before we can make a serious decision."
+   },
+   {
+    "n": 3,
+    "meaning": "Get into a comfortable position, either sitting or lying",
+    "percent": 20,
+    "example": "When he reached the top of the hill, he settled down in the grass to have a rest."
+   }
+  ]
+ },
+ {
+  "headword": "come around",
+  "verb": "come",
+  "particle": "around",
+  "rank": 140,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Come in the area near STH/SB",
+    "percent": 45,
+    "example": "He came around to my room and kissed me goodnight."
+   },
+   {
+    "n": 2,
+    "meaning": "(+ to) Convert to an opinion or decision",
+    "percent": 22,
+    "example": "I believe she will come around to our way of thinking eventually."
+   },
+   {
+    "n": 3,
+    "meaning": "Happen again as a regular event, at its usual time",
+    "percent": 10,
+    "example": "You’ll have to wait until summer comes around."
+   }
+  ]
+ },
+ {
+  "headword": "fill in",
+  "verb": "fill",
+  "particle": "in",
+  "rank": 141,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "(+ for) Do SB’s work temporarily because they cannot or will not do it themselves",
+    "percent": 31,
+    "example": "I had to fill in for her yesterday because she was ill."
+   },
+   {
+    "n": 2,
+    "meaning": "(+ on) Give SB extra or missing information they want or need",
+    "percent": 29.5,
+    "example": "She filled Carol in on the plan."
+   },
+   {
+    "n": 3,
+    "meaning": "Put material or substance into STH in order to make it full or complete",
+    "percent": 19,
+    "example": "All the remaining holes had to be filled in with concrete."
+   }
+  ]
+ },
+ {
+  "headword": "give out",
+  "verb": "give",
+  "particle": "out",
+  "rank": 142,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Give to each of a large number of people",
+    "percent": 40,
+    "example": "The committee gave out more than 100 copies in the last meeting."
+   },
+   {
+    "n": 2,
+    "meaning": "Make known openly or publicly",
+    "percent": 33.5,
+    "example": "You should be more careful and not give out your phone number so easily."
+   },
+   {
+    "n": 3,
+    "meaning": "Collapse/fail; stop functioning properly (heart, knees)",
+    "percent": 11.5,
+    "example": "At 95 years of age, her heart finally gave out."
+   }
+  ]
+ },
+ {
+  "headword": "give in",
+  "verb": "give",
+  "particle": "in",
+  "rank": 143,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Cease resistance to (liking/temptation/habit, or to SB’s demands/control)",
+    "percent": 100,
+    "example": "She shouldn’t give in to her children’s demands."
+   }
+  ]
+ },
+ {
+  "headword": "go along",
+  "verb": "go",
+  "particle": "along",
+  "rank": 144,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Progress or proceed with an activity",
+    "percent": 44,
+    "example": "You will learn as you go along."
+   },
+   {
+    "n": 2,
+    "meaning": "Act in cooperation or express agreement",
+    "percent": 28,
+    "example": "The Democrats are not likely to go along with the plan."
+   },
+   {
+    "n": 3,
+    "meaning": "Go to a place or event, esp. without much planning",
+    "percent": 15.5,
+    "example": "Would you like to go along with us to the party?"
+   }
+  ]
+ },
+ {
+  "headword": "break off",
+  "verb": "break",
+  "particle": "off",
+  "rank": 145,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Separate a part (or become separate) from a larger piece",
+    "percent": 40,
+    "example": "He accidentally broke off a piece of wood from the fence."
+   },
+   {
+    "n": 2,
+    "meaning": "Stop speaking, especially suddenly",
+    "percent": 28,
+    "example": "“There is something that…” He broke off abruptly."
+   },
+   {
+    "n": 3,
+    "meaning": "Put an end to STH (relationship, discussion, talks, negotiations)",
+    "percent": 24,
+    "example": "They broke off diplomatic relations in 1986."
+   }
+  ]
+ },
+ {
+  "headword": "put off",
+  "verb": "put",
+  "particle": "off",
+  "rank": 146,
+  "senses": []
+ },
+ {
+  "headword": "come about",
+  "verb": "come",
+  "particle": "about",
+  "rank": 147,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Take place or happen/occur, esp. unexpectedly",
+    "percent": 81.5,
+    "example": "I did not expect this to come about."
+   }
+  ]
+ },
+ {
+  "headword": "close down",
+  "verb": "close",
+  "particle": "down",
+  "rank": 148,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Stop operating or functioning",
+    "percent": 87,
+    "example": "Non-profitable companies were closed down."
+   }
+  ]
+ },
+ {
+  "headword": "put in",
+  "verb": "put",
+  "particle": "in",
+  "rank": 149,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Put one thing inside another; include or insert",
+    "percent": 50,
+    "example": "You need to put in your contact details in case there is a problem."
+   },
+   {
+    "n": 2,
+    "meaning": "Invest or devote so as to achieve STH (time, effort, work)",
+    "percent": 26.5,
+    "example": "I put in ten hours a day at the office."
+   }
+  ]
+ },
+ {
+  "headword": "set about",
+  "verb": "set",
+  "particle": "about",
+  "rank": 150,
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Begin a course of action, usually with a specific purpose/objective in mind",
+    "percent": 97,
+    "example": "We set about laying the table before our guests arrived."
+   }
+  ]
+ }
+]

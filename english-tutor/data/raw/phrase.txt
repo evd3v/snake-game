@@ -1,0 +1,3628 @@
+Appendix: The PHRASE List
+Phrasal expressions divided to match 1K frequency bands of the most common word families in the BNC.  The ‘Integrated List Rank’ represents where each item falls when both lists (individual and phrase lists) are merged together. 
+There are three categories of genre with frequency information to help the list user discern the appropriateness/usefulness of each phrase. The frequency information breaks down as follows:
+* * * 	=	 phrase most common in this genre (or as common)
+* *  	=	 phrase less common in this genre
+* 	=	 phrase infrequent in this genre
+X 	= 	 phrase rare or non-existent in this genre
+
+
+Integrated        
+List 
+Rank
+Phrase
+Frequency
+(per 100 million)
+Spoken general
+Written general
+Written academic
+Example
+107
+HAVE TO
+83092
+* * *
+* * 
+* 
+I exercise because I have to.
+165
+THERE IS/ARE
+59833
+* * *
+* * *
+* * 
+There are some problems.
+415
+SUCH AS
+30857
+* 
+* * *
+* * *
+We have questions, such as how it happened.
+463
+GOING TO (FUTURE)
+28259
+* * *
+* * 
+x
+I’m going to think about it.
+483
+OF COURSE
+26966
+* * *
+* * 
+*
+He said he’d come of course.
+489
+A FEW
+26451
+* * *
+* * 
+* 
+After a few drinks, she started to dance.
+518
+AT LEAST
+25034
+* * *
+* * 
+* * 
+Well, you could email me at least.
+551
+SUCH A(N)
+23894
+* * *
+* * 
+* 
+She had such a strange sense of humor. 
+556
+I MEAN
+23616
+* * *
+x
+x
+It’s fine, but, I mean, is it worth the price?
+598
+A LOT
+22332
+* * *
+* 
+x
+They go camping a lot in the summer.
+631
+RATHER THAN
+21085
+* * *
+* * *
+* * *
+Children, rather than adults, tend to learn quickly.
+635
+SO THAT
+20966
+* * *
+* * 
+* 
+Park it so that the wheels are curbed.
+655
+A LITTLE
+20296
+* * *
+* * 
+* 
+I like to work out a little before dinner.
+674
+A BIT (OF)
+19618
+* * *
+* * 
+x
+There was a bit of drama today at the office.
+717
+AS WELL AS
+18041
+* * *
+* * *
+* * *
+She jogs as well as swims. 
+803
+IN FACT
+15983
+* * *
+* * *
+* * 
+The researchers tried several approaches, in fact.
+807
+(BE) LIKELY TO
+15854
+* * *
+* * *
+* * *
+To be honest, I’m likely to forget.
+825
+GO ON
+15610
+* * *
+* * *
+* 
+He went on for a while before stopping for lunch.
+845
+IS TO 
+15232
+x
+* * *
+x
+Obama is to address the media this afternoon.
+854
+A NUMBER OF
+15090
+* * 
+* * *
+* * *
+A number of concerns were raised.
+879
+AT ALL
+14650
+* * *
+* * *
+* * 
+Do you have any kids at all?
+888
+AS IF
+14470
+* * 
+* * *
+x
+They walked together as if no time had passed.
+892
+USED TO (PAST)
+14411
+* * *
+* 
+x
+It used to snow much more often.
+894
+WAS TO 
+14366
+x
+* * *
+* * 
+The message was to be transmitted worldwide.
+908
+NOT ONLY
+14110
+* * *
+* * *
+* * *
+Not only was it cheap, it was delicious.
+913
+THOSE WHO
+13951
+x
+* * *
+* * *
+He would defend those who had no voice.
+934
+DEAL WITH
+13634
+* * *
+* * *
+* * 
+The police had several issues to deal with.
+939
+LEAD TO ('CAUSE')
+13555
+* 
+* * *
+* * 
+Excessive smoking can lead to heart disease.
+951
+SORT OF
+13361
+* * *
+x
+x
+It’s sort of why I’m here.
+974
+THE FOLLOWING
+12963
+x
+* 
+* * *
+He made the following remarks.
+984
+IN ORDER TO
+12762
+* * 
+* * *
+* * *
+We shared a room in order to reduce costs
+988
+HAVE GOT (+NP)
+12734
+* * *
+* 
+x
+I don’t know what he has got planned.
+
+---------------------------------------------------------------------------------end of 1k
+
+
+
+
+
+
+
+
+1033
+HAVE GOT TO
+12270
+* * *
+* * 
+x
+You have got to try this salad.
+1079
+SET UP
+11560
+* * 
+* * *
+* * 
+The whole thing was set up beforehand.
+1082
+AS TO
+11535
+* 
+* * *
+* * *
+There was some confusion as to its whereabouts.
+1083
+AS WELL
+11519
+* * *
+* * *
+* * *
+I like it as well.
+1088
+BASED ON
+11440
+* * 
+* * *
+* * *
+Based on the reports, it seems it was an accident.
+1146
+CARRY OUT
+10753
+* 
+* * 
+* * *
+It was not as easy to carry out without funding.
+1169
+TAKE PLACE
+10556
+* * *
+* * *
+* * 
+No one was sure exactly why it took place there.
+1175
+TEND TO
+10504
+* * *
+* * *
+* * *
+I tend to think it’s actually a political matter.
+1183
+DUE TO
+10454
+* * *
+* * *
+* * *
+Many people believe it is due to global warming.
+1204
+FAIL TO
+10263
+* * *
+* * *
+* * *
+I fail to see the humor in all this.
+1209
+EACH OTHER
+10160
+* * *
+* * 
+* 
+The good thing is that they still have each other.
+1234
+IN TERMS OF
+9881
+* * *
+* * *
+* * *
+What is your limit, in terms of price?
+1262
+NO ONE
+9597
+* * *
+* * 
+* 
+I will speak to no one about this.
+1299
+PICK UP
+9252
+* * *
+* * 
+x
+She dropped by to pick up her friend.
+1352
+UP TO (MAXIMUM)
+8733
+* * *
+* * *
+* * *
+Up to twenty people may be interviewed for the job.
+1356
+A SINGLE (‘ANY’)
+8710
+* * *
+* * 
+* 
+Not a single idea emerged from the meeting.
+1371
+NO LONGER
+8556
+* * 
+* * *
+* * 
+Fortunately, it is no longer a concern now.
+1387
+LOOK FOR
+8377
+* * *
+* * 
+* 
+Bargains can be found if you know what to look for.
+1427
+LAST NIGHT
+7992
+* * *
+* 
+x
+What did he say last night?
+1438
+AS A RESULT
+7939
+* 
+* * 
+* * *
+He was tired and as a result not very aware.
+1453
+IN ADDITION (TO)
+7822
+* * 
+* * *
+* * *
+The house was well located in addition.
+1487
+WORK ON
+7600
+* * *
+* * 
+* 
+That kid needs to work on his attitude.
+1517
+THINK ABOUT
+7243
+* * *
+* * 
+x
+I’m thinking about changing careers.
+1529
+FOR INSTANCE
+7138
+* 
+* * *
+* * *
+That holds true for even the governor for instance.
+1530
+TOO MUCH
+7123
+* * *
+* * 
+* 
+I don’t worry about it too much.
+1532
+YOU SEE
+7102
+* * *
+x
+x
+And the problem you see is with awareness-raising.
+1533
+IN PARTICULAR
+7092
+* *
+* * *
+* * *
+There’s nothing in particular wrong with it.
+1542
+A COUPLE OF
+7007
+* * *
+* * 
+x
+They need a couple of minutes still.
+1556
+INSTEAD OF
+6907
+* * *
+* * *
+* * 
+He can go instead of me.
+1573
+COME BACK
+6772
+* * *
+* * *
+* * *
+But we can come back to that later.
+
+
+
+
+
+
+
+1591
+LOOK LIKE
+6595
+* * *
+* * 
+x
+It’s not what it looks like.
+1605
+FIND OUT
+6499
+* * *
+* * *
+* * 
+How did you find out?
+1638
+POINT OUT
+6325
+* * *
+* * *
+* * *
+She pointed out that it was getting late.
+1647
+APART FROM
+6287
+* * *
+* * *
+* * *
+Are there any others, apart from him?
+1657
+CALL FOR
+6243
+* 
+* * *
+* * 
+Hard times call for tough measures.
+1661
+MANAGE TO
+6234
+* * *
+* * *
+* * 
+Did you manage to get in touch at all?
+1667
+OR TWO
+6192
+* * *
+* * 
+* 
+He had a thing or two to drink, then left.
+1681
+A FURTHER (‘ANOTHER’)
+6121
+*
+* * 
+* * *
+It’s a further reason to reconsider the project.
+1696
+COME OUT
+6031
+* * *
+* * *
+* * *
+It’s supposed to come out on Friday.
+1713
+BE EXPECTED TO
+5964
+* * *
+* * *
+* * 
+They can’t be expected to just sit there and wait.
+1716
+SEEK TO
+5937
+* 
+* * *
+* * *
+The new board sought to find alternative solutions.
+1733
+GO THROUGH
+5857
+* * *
+* * *
+* * 
+You can’t imagine what I’m going through.
+1740
+LONG TERM
+5831
+* * *
+* * *
+* * *
+It seems to work, but what of the long term effects?
+1759
+RESULT IN
+5763
+* 
+* * 
+* * *
+Excessive criticism resulted in feelings of animosity.
+1764
+THAT IS (REPHRASING)
+5737
+* * *
+* * *
+* * *
+It’s yours, as long as you pay that is.
+1778
+EVEN THOUGH
+5664
+* * *
+* * *
+* * *
+I can’t even though it looks easy enough.
+1779
+A RANGE OF
+5651
+* * *
+* * *
+* * *
+Eventually, a range of events changed that.
+1815
+THE LATTER (anaphor)
+5519
+x
+* * 
+* * *
+The latter may still be a challenge.
+1818
+MAKE SURE
+5510
+* * *
+* * *
+* * 
+I had to make sure before I opened the door.
+1843
+TAKE OVER
+5394
+* * *
+* * *
+* * 
+You can’t just let the kids take over.
+1850
+CONSIST OF
+5362
+* 
+* * *
+* * *
+What does it consist of?
+1861
+AS SOON AS
+5323
+* * *
+* * *
+* * 
+As soon as he can he will call you back.
+1873
+AT THE TIME ('WHEN THIS HAPPENED')
+5282
+* * *
+* * *
+* * 
+I was busy at the time.
+1877
+ON THE OTHER HAND
+5267
+* * *
+* * *
+* * 
+On the other hand, the business did make a profit.
+1886
+ON ONE'S OWN
+5240
+* * *
+* * *
+* 
+You did this on your own?
+1894
+ALL RIGHT
+5230
+* * *
+* * 
+x
+If it’s all right I think I’ll head off to bed.
+1900
+SUBJECT TO
+5218
+x
+* 
+* * *
+All baggage is subject to inspection.
+1904
+AFTER ALL (adv.)
+5197
+* * *
+* * *
+* 
+He is only six years old, after all.
+1908
+IN FRONT OF ('BEFORE')
+5190
+* * *
+* * *
+* * 
+She did not want to say anything in front of the kids.
+1910
+TO DO WITH
+5184
+* * *
+* 
+*  
+I think it has something to do with physics.
+1912
+GO OUT
+5173
+* * *
+* * *
+*
+Brochures went out to prospective buyers.
+1920
+A GOOD/GREAT DEAL ('MUCH')
+5126
+* * *
+* * *
+* 
+She means a great deal to me.
+1929
+ON THE WAY
+5085
+* * *
+* * 
+* 
+We can stop for lunch on the way.
+1931
+AS LONG AS
+5084
+* * *
+* * *
+* 
+It makes no difference as long as it’s done.
+1951
+SO FAR ('UNTIL NOW')
+5018
+* * *
+* * *
+* * *
+Any questions so far?
+1958
+OUGHT TO
+5002
+* * *
+* 
+x
+She hasn’t but she ought to.
+1959
+AT THE MOMENT
+5001
+* * *
+* * *
+* * 
+They have a lot going on at the moment.
+1967
+AS THOUGH
+4988
+* 
+* * *
+* * 
+He smiled then, as though remembering a joke.
+1970
+COME TO ('EVOLVE TO')
+4970
+* * 
+* * *
+* 
+We came to see it for what it was.
+1974
+ALONG WITH
+4948
+* * 
+* * *
+* * 
+Along with his dog, the cat slowly stopped eating.
+1982
+MAY WELL ('COULD')
+4931
+* * *
+* * *
+* * *
+He hasn’t yet but may well try before long.
+2001
+GET OUT
+4858
+* * *
+* * 
+x
+There was no way to get out of work that Friday.
+2013
+FOLLOWED BY
+4816
+* 
+* * *
+* * *
+The workshop will be followed by time for questions.
+2018
+IN (THE SENSE) THAT
+4805
+* * *
+* * *
+* * *
+It’s great in that there are so many restaurants.
+2022
+THE CASE ('TRUE')
+4794
+* * 
+* * *
+* * *
+It’s not the case that I don’t love him.
+2038
+TAKE UP
+4717
+* * *
+* * 
+*
+I don’t wish to take up more time than is necessary.
+2060
+ACCOUNT FOR
+4642
+* 
+* * *
+* * *
+They’ll need to account for their actions.
+2064
+SET OUT
+4624
+* 
+* * *
+* * 
+She accomplished what she set out to do.
+2067
+AS FAR AS
+4619
+* * *
+* * *
+* * 
+What are you thinking, as far as feasibility on this?
+2068
+CONCERNED WITH
+4619
+* 
+* * *
+* * *
+They spoke on issues concerned with culture.
+2075
+ABOUT TO
+4600
+* * *
+* * *
+* 
+Things were about to change.
+2086
+SUPPOSED TO
+4586
+* * *
+* * 
+* * 
+I didn’t go, but I was supposed to.
+2087
+AND SO ON
+4584
+* * *
+* * *
+* * *
+My parents arrived, then John, his wife, and so on.
+2105
+COME ON
+4519
+* * *
+* 
+x
+Come on, think about it!
+
+----------------------------------------------------------------------------------end of 2k
+
+
+
+
+
+
+
+
+
+2124
+TAKE ON
+4451
+* * 
+* * *
+* 
+You’d better think twice before taking on more work.
+2131
+WORK OUT
+4432
+* * *
+* * 
+* * 
+I’m trying to work out what it stands for.
+2135
+ALL OVER ('EVERYWHERE')
+4420
+* * *
+* * *
+* 
+The news was all over the web.
+2149
+OTHER THAN
+4380
+* * 
+* * *
+* * *
+No one other than you could have come up with it.
+2156
+OUT OF (‘IN’/’FROM’)
+4361
+* 
+* * *
+* * *
+In terms of colour, three out of five were silver.
+2157
+TURN OUT
+4354
+* * *
+* * *
+* * 
+How did it turn out?
+2164
+LOOK AFTER
+4332
+* * *
+* * 
+x
+She did more than just look after the finances.
+2173
+AT LAST
+4306
+* * 
+* * *
+* 
+At last we met over coffee last week.
+2179
+A VARIETY OF
+4283
+* * 
+* * *
+* * *
+And a variety of issues seemed to stall the process.
+2180
+AT FIRST
+4275
+* * *
+* * *
+* * *
+Not at first, but just the other day there was one.
+2216
+OR SO
+4164
+* * *
+* * *
+* * *
+A day or so later he called me back on my mobile.
+2231
+IN FAVOUR
+4073
+* * *
+* * *
+* * *
+I don’t know about you but I’m in favour. 
+2258
+GIVE UP
+3997
+* * *
+* * *
+* 
+You can’t just give up.
+2263
+GET TO ('ARRIVE AT')
+3979
+* * *
+* * 
+* 
+When he got to the end he started to weep.
+2280
+FIND ONESELF
+3917
+* * 
+* * *
+* 
+I found myself driving home.
+2298
+GET UP
+3857
+* * *
+* * 
+x
+It was easy getting up but the commute was awful.
+2345
+CARRY ON
+3759
+* * *
+* * *
+* * 
+He could simply not carry on.
+2361
+GO BACK
+3722
+* * *
+* * *
+* * *
+If I could I’d go back and do it all over again.
+2371
+FOCUS ON
+3703
+* * 
+* * *
+* * *
+But today I’d like to focus on something different.
+2379
+AT ONCE
+3684
+* * 
+* * *
+* * 
+I did it at once.
+2384
+IT TAKES
+3670
+* * *
+* * *
+* * *
+No matter what it takes.
+2388
+GET ON/OFF (TRANs)
+3656
+* * *
+* * 
+x
+We waited for hours in the queue to get on.
+2404
+AS A WHOLE
+3615
+* * 
+* * *
+* * *
+As a whole it’s OK.
+2407
+IN PRACTICE
+3609
+* 
+* * *
+* * *
+There was nothing she could do in practice.
+2408
+BY THE TIME
+3607
+* * *
+* * *
+* 
+By the time dinner started there were none left.
+2409
+LOTS OF
+3605
+* * *
+* * 
+x
+Lots of them do travel during the winter months.
+2417
+SAID TO BE
+3586
+x
+* * *
+* 
+The priest was said to be missing.
+2425
+IN TIME
+3566
+* * 
+* * *
+* * 
+You will in time.
+2429
+IN TURN
+3558
+* 
+* * 
+* * *
+The supermarket in turn will donate seven thousand.
+2437
+ONCE AGAIN
+3532
+* * *
+* * *
+* * *
+Once again, this was completely unforeseen. 
+2439
+ALL THE TIME
+3527
+* * *
+* * 
+* 
+I go there all the time.
+2442
+ON THE BASIS (OF)
+3515
+* 
+* * *
+* * *
+She came on the basis that it would help her.
+2445
+KIND OF
+3510
+* * *
+* 
+x
+The windows are kind of fogged up.
+2446
+GET INTO
+3508
+* * *
+* * 
+* 
+I really got into what he was talking about.
+2454
+RELY ON
+3488
+* * *
+* * *
+* * *
+He has no one else to rely on.
+2483
+GO FOR
+3421
+* * *
+* 
+x
+I could really go for a hamburger right now.
+2484
+AIM TO
+3415
+* 
+* * *
+* * *
+They aim to complete the project by the spring.
+2498
+MAKE UP (‘COMPRISE’)
+3394
+* 
+* * *
+* * *
+Hispanics make up a large part of the population.
+2531
+APPEAL TO
+3299
+* * 
+* * *
+* * 
+It appeals to younger learners.
+2536
+END UP
+3285
+* * *
+* * *
+* * 
+We ended up going anyway.
+2548
+SHAKE ONE’S HEAD
+3250
+* 
+* * *
+x
+He just shook his head and laughed.
+2557
+NO MORE THAN (‘ONLY’)
+3226
+* 
+* * 
+* * *
+No more than five of them had auto insurance.
+2575
+GET BACK
+3178
+* * *
+* * 
+* 
+What time will we get back?
+2584
+WHAT ABOUT
+3160
+* * *
+* * 
+x 
+But what about tomorrow?
+2586
+IN OTHER WORDS
+3159
+* * *
+* * *
+* * *
+The groups are in other words conservative.
+2588
+AS FOR
+3157
+* * 
+* * *
+* * 
+As for the promotion, there may be other options.
+2599
+NOT EVEN
+3128
+* * *
+* * *
+* * *
+No one cared, not even when they saw the photos.
+2606
+ENTITLED TO
+3113
+* 
+* * *
+* * *
+You’re entitled to your opinion.
+2608
+PRIOR TO
+3110
+* 
+* * *
+* * *
+Prior to the event, the organizers called the band.
+2616
+CHOOSE TO
+3099
+* * 
+* * *
+* * *
+You may choose to believe what the papers say.
+2622
+SOMETHING LIKE (‘AROUND’)
+3092
+* * *
+* 
+x
+She makes something like five grand a month.
+2624
+KNOWN TO
+3091
+x
+* * *
+* * *
+He’s known to be like that.
+2636
+IN TOUCH (WITH)
+3060
+* * *
+* * *
+* 
+Are you two at all in touch?
+2637
+IN THE END
+3050
+* * *
+* * *
+* * 
+In the end it’s like what they say about horses.
+2654
+IN THE WAY
+3013
+* * *
+* * 
+x
+I won’t stand in the way.
+2657
+CARE FOR
+3004
+* * *
+* * 
+*  
+He doesn’t care for it very much in his tea.
+2658
+IN THE EVENT (OF)
+2998
+x
+* * *
+* * *
+In the event you change your mind, let me know.
+2675
+THEY SAY
+2962
+* * *
+* 
+x
+They say it tastes like chicken.
+2688
+SO CALLED
+2944
+* * 
+* * *
+* * *
+Any so called rumors are as easily their fault.
+2702
+TAKE INTO ACCOUNT
+2921
+* 
+* * *
+* * *
+You must also take into account the rush hour.
+2709
+IN RESPECT OF
+2909
+x
+* * *
+* * *
+There was nothing in respect of drink.
+2711
+OUT OF ('USING')
+2907
+* * *
+* * *
+* * 
+The walls are made out of wood.
+2719
+AT THE SAME TIME ('CONVERSELY')
+2892
+* * 
+* * *
+* * *
+At the same time it may be worth it.
+2724
+NEXT TO
+2882
+* * *
+* * *
+* 
+Next to his sister, he was the best looking of them.
+2734
+TURN UP
+2865
+* * *
+* 
+x
+The money turned up later.
+2735
+POINT OF VIEW
+2864
+* * 
+* * *
+* * *
+They all had a different point of view.
+2744
+AT PRESENT
+2847
+*
+* * *
+* * *
+There’s nothing to do at present.
+2752
+USED TO (ACCUSTOMED)
+2831
+* * *
+* * *
+* 
+It may take a while to get used to.
+2759
+WHETHER OR NOT
+2824
+* 
+* * *
+* * *
+It depends on whether or not he comes on time.
+2767
+IN PLACE
+2805
+* 
+* * *
+* * *
+There are systems in place to handle that.
+2776
+NO DOUBT ('SURELY')
+2791
+* *
+* * *
+* 
+She can and will no doubt improve over time.
+2785
+FULL TIME
+2761
+* * *
+* * *
+* 
+I’m a full time fan of his music.
+2817
+SORT OUT
+2696
+* * *
+* * 
+* * 
+They managed to sort out everything on their own.
+2823
+IN A WAY
+2684
+* * *
+* * *
+* 
+It’s funny in a way.
+2826
+OR SOMETHING ('PERHAPS')
+2683
+* * *
+* 
+x
+The sales clerk seemed distracted or something.
+2827
+ON BEHALF OF
+2679
+x
+* 
+* * *
+I’d like to apologize on behalf of the committee. 
+2828
+OVER THERE
+2678
+* * *
+* 
+x
+He put it way over there.
+2829
+IN SPITE OF
+2676
+* 
+* * *
+* * *
+In spite of all the work there were few alterations.
+2831
+THAT'S IT
+2674
+* * *
+*
+x
+That’s it for today, I’m afraid.
+2848
+IN PART
+2652
+x
+* * *
+* * *
+It is in part the reason people come here.
+2857
+OH NO
+2642
+* * *
+x
+x
+Oh no not again.
+2859
+IN MIND
+2638
+* * *
+* * *
+* * 
+Do you have anything special in mind?
+2863
+(WITH) REGARD TO
+2630
+* 
+* * *
+* * *
+There was some confusion with regard to payment.
+2868
+ONE ANOTHER
+2623
+* 
+* * *
+* 
+They looked at one another for a few minutes.
+2871
+AS FOLLOWS
+2620
+x
+* * 
+* * *
+The plan is as follows.
+2879
+THE ABOVE
+2608
+x
+* * *
+* * *
+The above only underscores strength of the data.
+2888
+TO DATE
+2600
+* 
+* * *
+* * *
+To date there have been over nine instances.
+2892
+GO INTO
+2595
+* * *
+* * 
+* 
+I won’t go into what he said.
+2898
+TOO MANY
+2587
+* * *
+* * *
+* * *
+You don’t see too many like that one, I’ll tell you.
+2899
+IN THE COURSE OF
+2585
+* 
+* * *
+* * *
+In the course of the discussion the manager left.
+2903
+MORE OR LESS
+2579
+* * *
+* * *
+* * *
+It’s more or less what we imagined I suppose.
+2906
+SHORT TERM
+2574
+* * *
+* * *
+* * *
+There are many short term gains to be had.
+2907
+AIMED AT
+2573
+* 
+* * *
+* * *
+The study is aimed at exploring how people use it.
+2919
+GO OFF
+2551
+* 
+* * *
+x
+She went off without even saying goodbye.
+2926
+IN CASE
+2536
+* * *
+* * *
+* * *
+In case you’re wondering, this isn’t my natural color.
+2941
+OUT THERE
+2513
+* * *
+* * 
+x
+There are simply no jobs out there right now.
+2942
+LED BY
+2511
+x
+* * *
+* * 
+He was led by his competitive drive above all.
+2967
+MORE AND MORE
+2468
+* * *
+* * *
+* * 
+More and more it’s about the customer.
+2970
+HAVE A LOOK
+2464
+* * *
+* 
+x
+Why don’t you have a look?
+2981
+BELIEVE IN
+2450
+* * *
+* * *
+x
+I don’t believe in corporal punishment.
+2983
+PUT IT ('SAY')
+2449
+* * *
+* * 
+* 
+There’s no better way to put it, I think.
+2992
+THESE DAYS
+2440
+* * *
+* * *
+* 
+It’s what these days the media call ‘viral’.
+2999
+IN CHARGE
+2432
+* * *
+* * *
+* * *
+He was able to stay in charge while she was away.
+3000
+FEEL LIKE
+2431
+* * *
+* 
+x
+I feel like eating out.
+3016
+UP TO (UNTIL)
+2409
+* * *
+* * *
+* * 
+I walked up to the window and paused.
+3022
+HEARD OF
+2403
+* * *
+* * *
+* 
+Haven’t you ever heard of manners?
+3044
+TAKE PART IN
+2374
+* 
+* * *
+* * *
+It’s something we all wanted to take part in.
+3059
+IN SO FAR AS
+2344
+* 
+* * 
+* * *
+The plan was fine in so far as time and transport.
+3061
+PART TIME
+2343
+* * *
+* * *
+* 
+She can take it on part time.
+3067
+LOOK FORWARD TO
+2331
+* * 
+* * *
+x
+It’s something we can all look forward to.
+3094
+AS SUCH
+2290
+* 
+* * *
+* * *
+The film was not a horror as such.
+3104
+BOUND TO
+2278
+* * *
+* * *
+* * *
+It’s bound to be better next time.
+3113
+TURN ON
+2266
+* * *
+* * *
+* 
+It won’t turn on.
+3121
+SET TO
+2258
+* * *
+* * *
+* 
+He’s set to arrive today.
+3134
+MOVE ON
+2245
+* * *
+* * *
+* 
+I’d like to move on if I may.
+3149
+IN CONTRAST (TO)
+2229
+* 
+* * *
+* * *
+The inside was amazing in contrast.
+3152
+THIS STAGE
+2223
+* * *
+* * *
+* * *
+We can’t at this stage.
+3157
+ALL BUT
+2214
+* * *
+* * 
+*
+She all but sent him chocolates and flowers.
+3160
+ABOVE ALL
+2212
+* * 
+* * *
+* * *
+It is above all what people care most about.
+3162
+RID OF
+2212
+* * *
+* * *
+* 
+She was happy to be rid of it.
+3197
+IN ANY CASE
+2159
+* * *
+* * *
+* * *
+It’s not due till tomorrow in any case.
+3199
+THANKS TO
+2159
+* * *
+* * *
+* * *
+And it’s thanks to her research that we know that.
+3205
+GO AWAY
+2150
+* * *
+* * 
+* 
+The problem won’t just go away.
+3207
+ONCE MORE
+2146
+* * 
+* * *
+* * 
+I call on you once more my fellow citizens.
+3220
+OH WELL
+2129
+* * *
+x
+x
+It was due yesterday? Oh well.
+3222
+FOLLOW UP
+2128
+* 
+* * 
+* * *
+I’d like to follow up on what that gentleman said.
+3224
+WOULD SAY
+2128
+* * *
+* * *
+* * *
+I don’t know, but I would say at least twenty.
+3235
+FOUND TO
+2104
+x
+* * 
+* * *
+It was found to be of little use in battle.
+3240
+MEANT TO
+2098
+* * *
+* * *
+* * 
+I haven’t seen it but it’s meant to be his best so far.
+
+
+----------------------------------------------------------------------------------end of 3k
+
+
+
+
+
+
+
+
+
+3263
+HANG ON
+2074
+* * *
+* * 
+x
+If you can hang on for just a second.
+3265
+TURN INTO
+2072
+* * *
+* * *
+* 
+The idea turned into something amazing.
+3268
+SOMETHING ABOUT
+2071
+* * *
+* * 
+x
+There’s something about her I find interesting.
+3295
+BY NOW
+2044
+* * *
+* * *
+* 
+I thought they’d be here by now.
+3308
+THINK SO
+2033
+* * *
+* 
+* 
+Do you think so?
+3320
+GO AHEAD
+2023
+* * *
+* * 
+* 
+Why don’t you go ahead and call him again?
+3322
+BRING ABOUT
+2022
+x
+* * *
+* * 
+It was expected that he would bring about change.
+3323
+HAD BETTER
+2022
+* * *
+* * *
+* 
+They had better listen.
+3327
+IN ACCORDANCE WITH
+2017
+x
+* * 
+* * *
+The plan was execute in accordance with municipal guidelines.
+3328
+CALL ON
+2016
+* 
+* * *
+* 
+He called on his members of staff for advice.
+3331
+AT TIMES
+2014
+* * *
+* * *
+* * *
+It can be slightly frustrating at times.
+3340
+ALL THE WAY
+2007
+* * *
+* * *
+* * *
+I’m with you all the way.
+3349
+IN EFFECT
+1995
+* * 
+* * *
+* * *
+In effect it was like being in space.
+3355
+AFFORD TO
+1989
+* * *
+* * *
+* 
+It’s something you can’t afford to miss.
+3357
+SIGHT OF
+1988
+* * *
+* * *
+* * 
+I can’t stand the sight of it, to tell you the truth.
+3362
+IN ADVANCE
+1983
+* * *
+* * *
+* * *
+It’s something you should do in advance.
+3379
+ON THE PART OF
+1965
+* 
+* * *
+* * *
+There are no barriers on the part of the government.
+3387
+BRING UP
+1958
+* * *
+* * 
+* * 
+Did you manage to bring up the holiday pay?
+3388
+TAKE OFF
+1957
+* * *
+* * *
+* 
+I was hungry by the time we took off.
+3390
+SO AS TO
+1954
+* * 
+* * *
+* * *
+He cluttered his desk so as to appear busy.
+3396
+TAKE ADVANTAGE
+1949
+* * *
+* * *
+* * *
+Some people just want to take advantage.
+3399
+SHORT OF
+1944
+* 
+* * *
+* * *
+Short of calling the doctor, I don’t know what to do.
+3402
+OVER THE YEARS
+1942
+* * *
+* * *
+* * *
+She has over the years visited many cities.
+3406
+SWITCH ON
+1935
+* * *
+* * 
+* 
+It’s plugged in but it won’t switch on.
+3417
+BY NO MEANS
+1925
+* * 
+* * *
+* * *
+We have by no means concluded the matter.
+3431
+COULD HARDLY
+1911
+* * *
+* * *
+* 
+I could hardly wait for the weekend.
+3446
+COME UP WITH
+1898
+* * *
+* * 
+* 
+Is that the best you could come up with?
+3448
+IN QUESTION
+1898
+x
+* 
+* * *
+The book in question was published last year.
+3450
+IN THE FIRST PLACE
+1897
+* * *
+* * 
+* * 
+He couldn’t see how it got there in the first place.
+3456
+PROVE TO BE
+1893
+* 
+* * *
+* * *
+The bicycle proved to be of immense value.
+3457
+IN COMMON
+1890
+* * *
+* * *
+* * *
+What they have in common is their stamina.
+3461
+NO MATTER
+1888
+* * *
+* * *
+* 
+No matter what they say, it’s down to you now.
+3465
+AT THIS POINT
+1884
+* * 
+* * *
+* * *
+At this point there’s no telling who might win.
+3491
+IN ITSELF
+1855
+* * 
+* * *
+* * *
+The car in itself wasn’t enough incentive. 
+3502
+THE FORMER
+1842
+x
+* * *
+* * *
+The former can actually require much more money.
+3511
+IF ONLY
+1830
+* * 
+* * *
+* 
+If only I’d known sooner.
+3525
+YET TO
+1818
+* * 
+* * *
+* * *
+The package is yet to arrive.
+3534
+UP TO (DECISIONS)
+1807
+* * *
+* * *
+* * 
+I’ll leave it up to you if that’s all right.
+3536
+OR WHATEVER
+1806
+* * *
+x
+x
+The challenge or whatever is doing it under budget.
+3548
+HAND OVER
+1798
+* * *
+* * 
+* 
+The responsibility was expected to be handed over.
+3554
+IN THE LIGHT OF
+1789
+* 
+* * *
+* * *
+In the light of the results, we delayed the study.
+3560
+IN THE SAME WAY
+1784
+* * 
+* * *
+* * *
+In the same way, Apple appeals to the young.
+3567
+THAT MUCH
+1781
+* * *
+* 
+x
+I don’t go out that much.
+3601
+THE EXTENT TO WHICH
+1751
+x
+* 
+* * *
+The extent to which the preceding can be asserted is largely dependent on what emerges in the study.
+3632
+FOR SOME TIME
+1725
+* * 
+* * *
+* * 
+He’s actually been studying for some time now.
+3640
+IN RETURN (FOR)
+1720
+* * *
+* * *
+* * *
+In return I’d like to present you with this gift.
+3650
+TO DEATH
+1714
+* * *
+* * 
+x
+The children were bored to death.
+3652
+ON THE GROUNDS
+1713
+* * 
+* * *
+* * *
+The decision was made on the grounds of safety.
+3670
+OH DEAR
+1700
+* * *
+x
+x
+He didn’t? Oh dear.
+3672
+IN FULL
+1698
+x
+* * 
+* * *
+She paid in full.
+3673
+ON BOARD
+1698
+* * *
+* * *
+* 
+Are you on board with the decision?
+3686
+TO SOME EXTENT
+1688
+* * *
+* * *
+* * *
+It is to some extent what is considered standard.
+3695
+SOME KIND OF
+1678
+* * *
+* * 
+x
+What are you, some kind of genius?
+3700
+KEEP UP
+1674
+* * *
+* * *
+* 
+Keep up if you can.
+3709
+NO IDEA
+1670
+* * *
+* 
+x
+You have no idea.
+3712
+GREATER THAN
+1666
+* 
+* * 
+* * *
+Anything greater than five is fine.
+3715
+HAPPEN TO (BE)
+1664
+* * *
+* * 
+x
+This happens to be my first conference.
+3718
+HELD THAT (‘BELIEVED’)
+1661
+x
+* * 
+* * *
+The congress held that it was acceptable.
+3722
+FACED WITH
+1658
+* 
+* * *
+* 
+Faced with defeat, he changed tactics.
+3733
+DO(ING) SO
+1647
+* 
+* * *
+* * *
+Unfortunately, doing so also meant facing traffic.
+3738
+SET OFF
+1644
+* * 
+* * *
+x
+We set off at noon.
+3740
+PUT FORWARD
+1640
+* 
+* * 
+* * *
+The group put forward several other proposals.
+3760
+FROM TIME TO TIME
+1627
+* * *
+* * 
+* 
+He does come round from time to time.
+3791
+THE MEANS
+1626
+* 
+* * *
+* * *
+He hasn’t the means to get there.
+3762
+EVER SINCE
+1622
+* * *
+* * *
+* 
+And they haven’t been the same ever since.
+3763
+JUST ABOUT
+1622
+* * *
+* 
+x
+Am I finished? Just about.
+3771
+AS OPPOSED TO
+1615
+* *
+* * *
+* * *
+Better now, as opposed to what?
+3774
+GIVE RISE TO
+1613
+* 
+* * *
+* * *
+The protests gave rise to new violence.
+3780
+LARGE SCALE
+1610
+* 
+* * *
+* * *
+They were thinking on a large scale.
+3782
+MAKE SENSE
+1608
+* * *
+* * 
+* 
+Doesn’t it make sense to do it that way?
+3789
+BY MEANS OF
+1602
+* 
+* * *
+* * *
+It was possible to achieve by means of coercion. 
+3790
+IN SHORT
+1602
+x
+* * 
+* * *
+The employees were in short tired of it.
+3791
+A BIT OF A
+1599
+* * *
+* 
+x
+He’s a bit of a film fanatic.
+3796
+BREAK UP
+1595
+* * *
+* * 
+x
+They did keep in touch after they broke up.
+3803
+BUT THEN (AGAIN)
+1589
+* * *
+* * 
+x
+I went over budget, but then I expected I would.
+3830
+ALL TOO
+1571
+* * *
+* * *
+x
+Why is this all too familiar?
+3831
+PUT UP
+1571
+* * *
+* * *
+x
+The authorities put up a sign to notify the public.
+3847
+GOOD AT
+1562
+* * *
+* 
+x
+You need to find something you’re good at.
+3851
+A LONG WAY
+1557
+* * *
+* * *
+* 
+A little bit of compassion can go a long way.
+3854
+AMOUNT TO
+1556
+* *
+* * *
+* * *
+Unfortunately, the player never amounted to much.
+3861
+FOR LONG
+1553
+* * *
+* * *
+*
+He did attend university, but not for long.
+3883
+(BE) RUN BY
+1540
+* * 
+* * *
+* * 
+The operation is run by two college students.
+3887
+SOME MORE
+1539
+* * *
+* 
+* 
+I’ll have to think some more before deciding.
+3888
+IN THE ABSENCE OF
+1538
+x
+* * 
+* * *
+In the absence of truth, there is only conjecture.
+3895
+ALL SORTS OF
+1535
+* * *
+* * *
+* 
+We have all sorts of time left.
+3896
+GET ON WITH
+1535
+* * *
+* * *
+x
+I need to get on with my work.
+3902
+NO GOOD
+1528
+* * *
+* * 
+x
+It’s no good sitting there – you have to type.
+3939
+YET ANOTHER
+1500
+* * 
+* * *
+* * *
+That’s yet another day gone by with nothing done.
+3940
+KEY TO
+1499
+* * 
+* * *
+* * *
+Her input was key to the project’s success.
+3947
+I'M AFRAID
+1495
+* * *
+* 
+x
+It hasn’t arrived, I’m afraid.
+3955
+THAT WHICH
+1491
+x
+* * *
+* * *
+You cannot undo that which has already been done.
+3960
+IF SO
+1488
+* * 
+* * *
+* * *
+If so, you may want to consider Greece.
+3973
+RIGHT NOW
+1482
+* * *
+* * 
+x
+The best time is right now.
+3979
+IN VIEW OF
+1477
+x
+* * 
+* * *
+She reconsidered in view of her children.
+3984
+IN DETAIL
+1473
+* * 
+* * *
+* * *
+I can explain in detail.
+3989
+REFLECTED IN
+1471
+* * 
+* * *
+* * *
+The artist’s angst is reflected in her painting.
+3992
+NO SUCH
+1470
+* * 
+* * *
+* * *
+He said no such thing.
+4004
+NOTHING BUT
+1466
+* * *
+* * *
+* 
+I have nothing but respect for her.
+4020
+IN THE FACE OF
+1457
+* 
+* * *
+* * *
+They quit in the face of the media scrutiny.
+4023
+SUCH THAT
+1454
+* 
+* * *
+* * *
+It can be developed such that it does not interfere.
+4025
+OUT OF (‘DUE TO’)
+1453
+* * *
+* * *
+* 
+Most commuters drive out of pure necessity.
+4029
+NEXT DOOR
+1449
+* * *
+* * *
+x
+The people next door didn’t seem to mind.
+4032
+TO THE POINT
+1447
+* * *
+* * *
+* * *
+It got to the point I couldn’t breathe.  
+4035
+MAKE ITS/ONE’S WAY
+1446
+* 
+* * *
+x
+The mouse made its way across the field.
+4037
+IN HAND
+1443
+* * 
+* * *
+x
+It was well in hand by then.
+4052
+GET TO ('OPPORTUNITY')
+1437
+* * *
+* * *
+x
+Did you get to try the cheese?
+4058
+BY THE WAY
+1433
+* * *
+* * 
+x
+By the way, what day is the wedding?
+4061
+BY CONTRAST
+1430
+* *
+* * *
+* * *
+The weather was by contrast a pleasant surprise.
+4062
+RUN OUT (OF)
+1430
+* * *
+* * 
+x
+You need to get milk before you run out.
+4063
+IN PRINCIPLE
+1429
+* 
+* * *
+* * *
+You can in principle.
+4071
+ADD TO
+1424
+* * 
+* * *
+* * *
+It does nothing to add to the scenery.
+4072
+AS YET
+1423
+* 
+* * *
+* * *
+I’m not convinced as yet.
+4077
+AT RISK
+1419
+* 
+* * *
+* * *
+There’s no reason to put passers by at risk.
+4092
+A MERE
+1410
+* 
+* * *
+* * *
+She made a mere penny per shirt.
+4093
+SHOWN TO
+1409
+x
+* * 
+* * *
+Dogs have been shown to help.
+4095
+ON THE ONE HAND
+1406
+* * *
+* * 
+*
+On the one hand, it’s cheap.
+4099
+BY WAY OF
+1404
+* 
+* * *
+* * 
+It was only by way of bribery that they managed.
+4107
+ON THE ROAD
+1400
+* * 
+* * *
+x
+I can’t wait to get on the road again.
+4109
+BEAR IN MIND
+1398
+* * *
+* * *
+* * *
+It was designed bearing in mind environmental impact.
+4113
+OLD FASHIONED
+1393
+* * *
+* * *
+x
+He’s just a bit old fashioned sometimes.
+4136
+FOR SALE
+1379
+* 
+* * *
+x
+The house is for sale.
+4138
+OR ANYTHING
+1379
+* * *
+* 
+x
+I don’t want any trouble or anything.
+4143
+MOST LIKELY
+1376
+* * *
+* * *
+* * *
+It is most likely the reason for the warming.
+4153
+PROVIDE FOR
+1370
+x
+* * 
+* * *
+The other variables have been provided for.
+4165
+EVEN SO
+1363
+* * *
+* * *
+* * 
+Even so, it’s no way to treat a guest.
+4167
+COME ACROSS
+1362
+* * 
+* * *
+* 
+They happened to come across a map.
+4182
+FIRST OF ALL
+1352
+* * *
+* 
+* 
+It is first of all what most people prefer.
+4195
+MIGHT AS WELL
+1348
+* * *
+* * 
+x
+We’re here now so we might as well.
+4199
+LIMITED TO
+1346
+x
+* * 
+* * *
+The dinner was limited to seniors.
+4201
+TO ME ('IN MY OPINION')
+1345
+* * *
+* 
+*
+To me what matters is that it gets done.
+4207
+MIND YOU
+1342
+* * *
+* 
+x
+Mind you, that’s one reason why I go there.
+4210
+AT A TIME ('SIMULTANEOUSLY')
+1340
+* * 
+* * *
+* * *
+They went in two at a time.
+4232
+HALF PAST
+1325
+* * 
+* * *
+x
+I make it half past.
+4233
+WITH RESPECT TO
+1325
+* 
+* * *
+* * *
+She had nothing to add with respect to the report.
+4242
+CONSISTENT WITH
+1315
+x
+* 
+* * *
+The results are consistent with our hypothesis.
+4248
+WAY OUT
+1309
+* * *
+* * *
+x
+He lives way out in the country.
+4250
+THIRD PARTY
+1307
+x
+x
+* * *
+They work with third party software too.
+4253
+CONTRARY TO
+1303
+* 
+* * 
+* * *
+The city is clean, contrary to popular belief.
+4257
+WORTH OF
+1299
+* * *
+* * 
+x
+Two dollars worth of wood was all he needed.
+4259
+A GOOD (‘AT LEAST’)
+1298
+* * *
+* * 
+* 
+It took him a good six or seven years.
+4261
+ACT ON
+1296
+* * *
+* * *
+* * 
+She never acted on that rage.
+4262
+EXCEPT THAT
+1296
+* * *
+* * *
+* 
+It seemed fine except that it was pink.
+4278
+DAY TO DAY
+1289
+* * *
+* * *
+* 
+They carried on with their day to day tasks.
+4282
+AS USUAL
+1287
+* * *
+* * *
+* 
+As usual he left it until the last minute.
+4290
+LONG BEFORE
+1282
+* * *
+* * *
+* * *
+Long before I could quit I was offered a promotion.
+4307
+LONG AGO
+1273
+* * *
+* * *
+* * *
+I gave up on that idea long ago.
+4314
+IN CONJUNCTION WITH
+1270
+x
+* * *
+* * *
+The police, in conjunction with the fire department, managed to keep the crowd under control.
+4319
+UP TO DATE
+1268
+* * *
+* * *
+* * *
+I try to keep up to date.
+4333
+LET ALONE
+1261
+* * *
+* * *
+* * *
+I can’t run let alone walk.
+4337
+QUITE A LOT
+1260
+* * *
+* * 
+x
+I do swim quite a lot.
+4342
+IF YOU LIKE
+1256
+* * *
+* 
+x
+It was her ‘chutzpah’ if you like that impressed.
+4349
+TO THE EXTENT
+1253
+x
+* * 
+* * *
+He’s interesting to the extent that he knows a lot.
+4356
+SO FAR AS
+1251
+* * 
+* * *
+* 
+So far as I know it’s not the first time either.
+4362
+GIVEN THAT
+1247
+* * 
+* * *
+* * *
+It was no surprise given that it was her job.
+4372
+IN LINE WITH
+1240
+* * 
+* * *
+* * *
+The decision is in line with the department’s wishes.
+4374
+ON THE WHOLE
+1238
+* * *
+* * *
+* * *
+It was acceptable on the whole. 
+4396
+CARE TO
+1223
+* * *
+* * *
+x
+Do you care to comment at all?
+4408
+TAKE ACCOUNT OF
+1217
+* 
+* * 
+* * *
+We did not take account of the paperwork.
+
+----------------------------------------------------------------------------------end of 4k
+
+
+
+
+
+
+
+
+4461
+SOMETHING LIKE THAT
+1192
+* * *
+x
+x
+He said he had a meeting to go to or something like that.
+4462
+MAKE USE OF
+1191
+* * *
+* * *
+* * *
+We made use of the stopover.
+4465
+WHEN IT COMES TO
+1188
+* * *
+* * *
+* * *
+I’m hopeless when it comes to goodbyes.
+4466
+FILL IN
+1187
+* * *
+* * *
+* * *
+The victim filled in what was stolen.
+4471
+FOR ALL ('CONSIDERING')
+1182
+* * *
+* * *
+* 
+For all his money, he does not seem very happy.
+4482
+A QUESTION OF
+1174
+* * *
+* * *
+* * *
+It’s a question of trust.
+4484
+FOR LIFE
+1172
+* * *
+* * *
+* * 
+And he stayed there for life.
+4497
+GET AWAY
+1165
+* * *
+* * *
+x
+They managed to get away.
+4501
+IN THE MEANTIME
+1161
+* * *
+* * *
+* * 
+I’ll keep working on it in the meantime.
+4522
+SOMETHING OF A
+1154
+* * *
+* * 
+x
+She’s something of a mathematics wiz.
+4523
+THE ODD
+1154
+* * *
+* * *
+* 
+I do play the odd jazz tune.
+4556
+LITTLE MORE THAN
+1133
+* 
+* * *
+* * *
+It’s little more than pageantry if you ask me.
+4558
+WOULD YOU LIKE
+1133
+* * *
+* 
+x
+Would you like tea?
+4584
+IN NEED
+1122
+*
+* * *
+* * *
+We want to help children in need.
+4587
+TAKE FOR GRANTED
+1120
+* * *
+* * *
+* 
+It’s just something I’ve always taken for granted.
+4605
+IN THIS RESPECT
+1110
+x
+* * *
+* * *
+In this respect, our study refutes earlier research.
+4606
+PROVIDED THAT
+1110
+* 
+* * *
+* * *
+It’s OK provided that he come up with the goods.
+4614
+ALLOW FOR (‘CALCULATE IN’)
+1105
+* 
+* * *
+* * *
+Even if you allow for inflation, the price increase still seems exhorbitant.
+4634
+CATCH UP
+1095
+* * *
+* * *
+x
+I took extra classes just to catch up.
+4639
+A GO (‘ATTEMPT’)
+1093
+* * *
+* * 
+x
+Why don’t you have a go?
+4649
+FOR THE MOMENT
+1092
+* * *
+* * *
+* 
+For the moment things seem stable.
+4656
+AT THE EXPENSE OF
+1086
+* 
+* * *
+* * *
+They were laughing at the expense of the photo.
+4670
+PUT TOGETHER
+1082
+* * *
+* * *
+* 
+He put together the proposal in a matter of days.
+4671
+THINGS LIKE THAT
+1082
+* * *
+* 
+x
+He does karate and things like that, you see.
+4682
+OF LITTLE
+1079
+* * 
+* * *
+* * 
+It was of little relevance, really.
+4683
+SHUT UP
+1079
+* * *
+* * 
+x
+I just couldn’t shut up.
+4703
+AS OF
+1069
+* * *
+* * *
+* * *
+It was completed as of June.
+4704
+OVER TIME
+1069
+* * 
+* * *
+* * *
+It might change over time.
+4710
+WOULD APPEAR
+1068
+* * *
+* * *
+* * 
+They people have spoken, it would appear.
+4711
+THE OTHER DAY
+1066
+* * *
+* 
+x
+I thought of you the other day.
+4712
+IN THEORY
+1065
+* * *
+* * *
+* * *
+In theory that is why he went there.
+4713
+THOUGHT OF (AS)
+1065
+* * *
+* * *
+* * *
+Beaches are thought of as vacation spots.
+4721
+FOR GOOD
+1061
+* * *
+* 
+x
+It’s gone for good.
+4726
+OPPOSED TO
+1059
+* 
+* * *
+* * 
+He’s strangely opposed to gun control.
+4749
+COMMON SENSE
+1049
+* * *
+* * *
+* * *
+To me it’s common sense.
+4754
+BOTHER TO
+1046
+* * *
+* * 
+x
+He never bothered to reply.
+4759
+AS GOOD AS ('LIKE')
+1043
+* * *
+* * *
+* 
+It’s as good as gone.
+4761
+BACK UP
+1042
+* * *
+* * *
+* 
+I have proof to back up my story.
+4791
+TAKE CARE OF
+1034
+* * *
+* * *
+*  
+I’ll take care of this customer.
+4816
+THE SIGHT OF
+1024
+* 
+* * *
+x
+I can’t stand the sight of it.
+4819
+GO ROUND
+1022
+* * *
+* * *
+x
+I’ll go round asking if anyone wants any more.
+4834
+THE WHOLE THING
+1015
+* * *
+* 
+x
+Why don’t we just forget the whole thing?
+4837
+AT ONE TIME
+1014
+* * 
+* * *
+* * 
+At one time I thought that too.
+4839
+HEAD TO
+1014
+* * *
+* * *
+x
+Meanwhile, he decided to head to the hospital. 
+4840
+IN A SENSE
+1014
+* * *
+* * 
+* * 
+The food was in a sense only part of the experience.
+4841
+ON AVERAGE
+1014
+* * 
+* * *
+* 
+How much does he make on average?
+4846
+WAY ROUND
+1013
+* * *
+* * *
+x
+Do you know your way round?
+4850
+CAN TELL
+1011
+* * *
+* 
+x
+You can tell from the markings.
+4896
+FREE FROM
+991
+x
+* * *
+* * *
+I dream of a life free from stress.
+4901
+AND ALL THAT
+989
+* * *
+x
+x
+I like art and all that.
+4909
+AS IT WERE
+985
+* * *
+* * 
+*
+The party was a smash as it were.
+4915
+WHAT IF
+984
+* * *
+* 
+*
+What if we could fly?
+4917
+TOUCH OF
+982
+* * *
+* * *
+x
+There was a touch of sadness in her voice.
+4919
+BETTER OFF
+980
+* * *
+* * 
+* 
+You’re better off without him.
+4932
+STAND FOR
+977
+* 
+* * *
+* 
+That symbol used to stand for something.
+4944
+TO BLAME
+973
+* * *
+* * *
+* * *
+I think the government’s to blame, really.
+4950
+THE BULK OF
+968
+* * *
+* * *
+* * *
+The bulk of it was done by noon.
+4955
+A HANDFUL OF
+965
+* * *
+* * *
+* * *
+Only a handful of them were actually awake.
+4959
+(AT) THE OUTSET
+963
+* * *
+* * *
+* * *
+It went well, but not at the outset.
+4991
+BY VIRTUE OF
+954
+* * 
+* * *
+* * *
+She won by virtue of her superior intellect.
+5001
+TURN DOWN
+951
+* * *
+* * *
+x
+I won’t turn down such a great offer.
+5010
+GET ON (‘RELATE’)
+944
+* * *
+* 
+x
+My parent don’t really get on very well.
+5022
+UNDER WAY
+939
+x
+* * *
+* * *
+Changes are already under way.
+5025
+IN THE INTEREST OF
+938
+* 
+* * 
+* * *
+They stopped in the interest of time.
+5051
+ON THE MARKET
+928
+* 
+* * *
+* * 
+How long has it been on the market?
+5060
+BY FAR
+925
+* * *
+* * *
+* * 
+The rise in unemployment was by far the highest.
+5072
+A DEGREE OF
+921
+*
+* * *
+* * *
+There is a degree of irony in the story.
+5082
+NEVER MIND
+915
+* * *
+* 
+x
+Never mind that it’s my birthday today.
+5134
+UP AND DOWN
+898
+* * 
+* * *
+x
+He was up and down the hall worrying about it.
+5156
+IN ONE’S OWN RIGHT
+891
+* * *
+* * *
+* * *
+Gesture is a form of expression in its own right.
+5169
+A CASE OF
+888
+* * *
+* * *
+* * *
+Now it’s just a case of getting them to subscribe.
+5171
+MORE SO
+887
+* * *
+* * *
+* * *
+Boston is walkable, and San Francisco more so.
+5193
+COME UP TO
+881
+* * *
+* * *
+x
+Men always come up to me first.
+5216
+IN WHICH CASE
+872
+* * 
+* * *
+* * *
+That means it’s midnight, in which case it’s closed.
+5222
+NO SIGN OF
+871
+* * *
+* * *
+x
+Still no sign of him?
+5231
+JUST AS (‘WHEN’)
+869
+* * *
+* * *
+x
+I saw him just as he left.
+5244
+FOR THE SAKE OF
+865
+* * *
+* * *
+* 
+He exaggerated his points for the sake of effect.
+5247
+IN A POSITION TO
+864
+* * *
+* * *
+* * *
+I’m not in a position to comment right now.
+5255
+TO COME (FUTURE)
+862
+* * *
+* * *
+* * *
+We’ll see how things go in the weeks to come.
+5285
+BACKED BY
+850
+x
+* * *
+x
+The group is backed by the drug trade.
+5303
+AT BEST
+844
+* * *
+* * *
+* 
+He’s at best average.
+5306
+WEALTH OF
+844
+* 
+* * *
+* * *
+The library holds a wealth of knowledge.
+5309
+THAT SORT OF THING
+843
+* * *
+x
+x
+He drinks a lot and that sort of thing.
+5311
+MAKE OUT
+842
+* 
+* * *
+x
+He could barely make out her signature.
+5323
+COME TO TERMS WITH
+839
+* 
+* * *
+* 
+They were finally able to come to terms with the change in weather.
+5348
+FOND OF
+831
+* * *
+* * *
+x
+I’m not very fond of it, to be honest.
+5354
+WITH A VIEW TO
+829
+* * 
+* * *
+* * *
+It was written with a view to inspiring hope.
+5361
+TURN BACK
+827
+* 
+* * *
+* 
+There was no turning back now.
+5366
+GET AWAY WITH
+824
+* * *
+* * *
+x
+Somehow they managed to get away with it.
+5384
+NO WONDER
+820
+* * *
+* * 
+x
+No wonder he’s ranked first.
+5438
+WELL BEING
+809
+* * *
+* * *
+* 
+It was good for their overall well being.
+5447
+HOW ABOUT
+805
+* * *
+* 
+x
+How about tomorrow?
+5463
+TO GO (‘REMAINING’)
+801
+* * *
+* * 
+x
+Two more to go.
+5479
+STRAIGHT AWAY
+794
+* * *
+* * *
+* 
+They’ll get to it straight away.
+5485
+OWING TO
+793
+* * 
+* * *
+* * *
+Owing to his honesty, he was held in high esteem.
+5491
+HOLD UP
+791
+* * *
+* * *
+x
+Sorry – we got held up on the M25.
+5492
+LOOK TO
+790
+* * 
+* * *
+* * *
+He constantly looked to us for advice and support.
+5496
+LAY OUT
+789
+* * *
+* * *
+* * *
+The countries laid out plans for a peace agreement.
+5497
+THE LOT
+789
+* * *
+* 
+x
+They tood the jewellery, the laptops, the lot.
+5501
+KEEP ON
+788
+* * *
+* * 
+x
+Freeways kept on being built.
+5502
+MAKE UP ONE’S MIND
+788
+* * *
+* * 
+x
+You’d better make up your mind.
+5503
+AT WORK
+787
+x
+* * *
+* * *
+There were strange forces at work.
+5504
+COME ABOUT
+787
+* * 
+* * *
+* 
+It all came about through a meeting back in April.
+----------------------------------------------------------------------------------end of 5k
+TOTAL: 505
+
+
+
+
+
+
+
+
+
+
+ PAGE   \* MERGEFORMAT 2
+
+
+
+
