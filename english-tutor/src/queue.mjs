@@ -172,7 +172,11 @@ export function status(db, now = new Date()) {
   // В бытовом слое считаем слова, а не карточки: одно слово может иметь две части речи,
   // а в аудит оно попадает одной строкой — иначе цифры в статусе и в аудите расходятся.
   by.basic.queued = db.prepare(`SELECT COUNT(DISTINCT headword) AS c FROM cards WHERE stream = 'basic' AND status = 'queued'`).get().c;
-  return { ...by, streak: streakDays(db, now), pending: pendingCard(db) };
+  const open = {
+    review: Boolean(getSetting(db, 'review_card_id')),
+    audit: (JSON.parse(getSetting(db, 'audit_batch') || '[]')).length > 0
+  };
+  return { ...by, streak: streakDays(db, now), pending: pendingCard(db), open };
 }
 
 const PARTICLES = new Set(['up', 'down', 'out', 'off', 'on', 'in', 'over', 'back', 'away', 'through', 'along', 'around', 'about', 'into', 'by', 'for', 'after', 'forward', 'apart', 'aside', 'ahead', 'across', 'behind', 'together']);
