@@ -169,6 +169,9 @@ export function status(db, now = new Date()) {
       }
     }
   }
+  // В бытовом слое считаем слова, а не карточки: одно слово может иметь две части речи,
+  // а в аудит оно попадает одной строкой — иначе цифры в статусе и в аудите расходятся.
+  by.basic.queued = db.prepare(`SELECT COUNT(DISTINCT headword) AS c FROM cards WHERE stream = 'basic' AND status = 'queued'`).get().c;
   return { ...by, streak: streakDays(db, now), pending: pendingCard(db) };
 }
 

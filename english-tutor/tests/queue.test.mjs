@@ -172,6 +172,7 @@ test('бытовой слой: отдельный поток, аудит пач�
   assert.equal(nc(db, {}).headword, 'mushroom', 'и выдаётся следующим');
   const s = st(db, new Date('2026-09-13T12:00:00.000Z'));
   assert.equal(s.basic.total, 2, 'mushroom переехал в основную очередь');
+  assert.equal(s.basic.queued, 0, 'kettle показан, spoon знаком: проверять нечего');
   assert.equal(s.word.total, 2, 'и считается там');
   assert.equal(s.basic.known, 1, 'spoon отмечен знакомым');
   assert.throws(() => auditMark(db, []), /нет открытой пачки/);
@@ -223,4 +224,17 @@ test('learnerContext: twin_known только для знакомого близ
   assert.deepEqual(ctx.known, ['respect']);
   assert.equal(ctx.twin_known, 'respect');
   assert.equal(learnerContext(db, { source: {} }).twin_known, null);
+});
+
+test('статус бытового слоя считает слова, а не карточки', async () => {
+  const { status: st } = await import('../src/queue.mjs');
+  const db = openDb(':memory:');
+  seed(db, [
+    { ...item('poison', 'word', 'noun'), stream: 'basic' },
+    { ...item('poison', 'word', 'verb'), stream: 'basic' },
+    { ...item('hunt', 'word', 'verb'), stream: 'basic' }
+  ]);
+  const s = st(db, new Date('2026-09-13T12:00:00.000Z'));
+  assert.equal(s.basic.total, 3, 'карточек три');
+  assert.equal(s.basic.queued, 2, 'слов на проверку два');
 });
