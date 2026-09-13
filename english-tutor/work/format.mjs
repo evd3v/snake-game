@@ -21,16 +21,22 @@ export function formatNeedExplanation(body) {
 }
 
 export function formatReview(body) {
-  const task = body.wanted_type === 'cloze' || /_{3,}/.test(body.test.sentence) ? 'вставь слово' : 'что значит выделенное';
+  const cloze = body.wanted_type === 'cloze' || /_{3,}/.test(body.test.sentence);
   return [
-    `Повторение · осталось ${body.left_today} · ${task}`,
+    `**Повторение** · осталось ${body.left_today} · ${cloze ? 'вставь слово' : 'что значит выделенное'}`,
+    `> ${body.test.sentence}`,
     '',
-    body.test.sentence,
+    `Ответ: ||${body.test.answer}||`,
     '',
-    `||${body.test.answer}||`,
-    '',
-    '1 снова · 2 трудно · 3 норм · 4 легко'
+    '_1 снова · 2 трудно · 3 норм · 4 легко_'
   ].join('\n');
+}
+
+export function lookupNote(body) {
+  if (body.created) return '_Этого слова не было в списках, добавил своей карточкой._';
+  if (body.previous_status === 'learning') return '_Это слово уже в повторении._';
+  if (body.previous_status === 'known') return '_Ты отмечал это слово как известное._';
+  return '';
 }
 
 export function formatNeedTest(body) {

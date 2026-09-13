@@ -5,7 +5,7 @@ import Fastify from 'fastify';
 import fastifyStatic from '@fastify/static';
 import fastifyCookie from '@fastify/cookie';
 import { openDb, nowIso, httpError } from './db.mjs';
-import { nextCard, pendingCard, resolveId, decide, suspend, setExplanation, addNote, cardDetails, listCards, status, getCard } from './queue.mjs';
+import { nextCard, pendingCard, resolveId, decide, suspend, setExplanation, addNote, cardDetails, listCards, status, getCard, lookupCard, learnerContext } from './queue.mjs';
 import { reviewNext, addTest, grade, currentReview } from './review.mjs';
 import { jobs } from './jobs.mjs';
 import { renderExplainPrompt, renderTestPrompt } from './prompts.mjs';
@@ -76,10 +76,16 @@ export function buildApp({ db, env, logger = false }) {
     const card = nextCard(db, { kind });
     if (!card) throw httpError(404, kind ? `очередь ${kind} пуста` : 'очередь пуста');
     const queued_left = db.prepare(`SELECT COUNT(*) AS c FROM cards WHERE status = 'queued'`).get().c;
-    return { card, explanation_md: card.explanation_md, prompt: card.explanation_md ? null : renderExplainPrompt(card), queued_left };
+    return { card, explanation_md: card.explanation_md, prompt: card.explanation_md ? null : renderExplainPrompt(card, learnerContext(db, card)), queued_left };
   });
 
   app.get('/api/pending', async () => ({ card: pendingCard(db) }));
+
+  app.post('/api/cards/lookup', async (req) => {
+    const { card, created, previous_status } = lookupCard(db, req.body?.text);
+    const queued_left = db.prepare(`SELECT COUNT(*) AS c FROM cards WHERE status = 'queued'`).get().c;
+    return { card, created, previous_status, explanation_md: card.explanation_md, prompt: card.explanation_md ? null : renderExplainPrompt(card, learnerContext(db, card)), queued_left };
+  });
 
   app.post('/api/cards/known-bulk', async (req) => {
     const ids = Array.isArray(req.body?.ids) ? req.body.ids.map(Number).filter(Number.isInteger) : [];

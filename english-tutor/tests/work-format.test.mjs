@@ -20,7 +20,8 @@ test('formatNeedExplanation содержит промпт и команду со
 
 test('formatReview: спойлер и шкала', () => {
   const t = formatReview({ card, test: { sentence: 'She inspected it.', answer: 'осматривать / examine' }, wanted_type: 'context', left_today: 4 });
-  assert.match(t, /Повторение · осталось 4/);
+  assert.match(t, /\*\*Повторение\*\* · осталось 4/);
+  assert.match(t, /^> She inspected it\.$/m);
   assert.match(t, /She inspected it\./);
   assert.match(t, /\|\|осматривать \/ examine\|\|/);
   assert.match(t, /1 снова · 2 трудно · 3 норм · 4 легко/);

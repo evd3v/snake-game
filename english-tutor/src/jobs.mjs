@@ -1,4 +1,4 @@
-import { hydrate } from './queue.mjs';
+import { hydrate, learnerContext } from './queue.mjs';
 import { requiredTestType, recentSentences } from './review.mjs';
 import { renderExplainPrompt, renderTestPrompt } from './prompts.mjs';
 
@@ -9,7 +9,7 @@ export function jobs(db, { explainAhead = 20, perKindAhead = 3, testsWithinHours
     if (seen.has(row.id)) return;
     seen.add(row.id);
     const card = hydrate(row);
-    explain.push({ card_id: card.id, headword: card.headword, kind: card.kind, prompt: renderExplainPrompt(card) });
+    explain.push({ card_id: card.id, headword: card.headword, kind: card.kind, prompt: renderExplainPrompt(card, learnerContext(db, card)) });
   };
   db.prepare(`SELECT * FROM cards WHERE explanation_md IS NULL AND status IN ('shown', 'discussing', 'learning') ORDER BY shown_at, order_index`).all().forEach(push);
   db.prepare(`SELECT * FROM cards WHERE explanation_md IS NULL AND status = 'queued' ORDER BY order_index LIMIT ?`).all(explainAhead).forEach(push);

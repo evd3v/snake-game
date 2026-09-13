@@ -103,3 +103,30 @@ test('setExplanation, addNote, cardDetails, suspend, listCards', () => {
   assert.equal(listCards(db, { q: 'terms' })[0].headword, 'in terms of');
   assert.equal(listCards(db, {}).length, 4);
 });
+
+test('lookupCard: существующее слово становится текущим, новое создаётся в конце, learnerContext делит семью', async () => {
+  const { lookupCard, learnerContext, guessKind } = await import('../src/queue.mjs');
+  const db = fresh();
+  const r1 = lookupCard(db, 'Respect');
+  assert.equal(r1.created, false);
+  assert.equal(r1.previous_status, 'queued');
+  assert.equal(r1.card.status, 'shown');
+  assert.equal(pendingCard(db).headword, 'respect');
+  const r2 = lookupCard(db, 'разбери make up for');
+  assert.equal(r2.created, true);
+  assert.equal(r2.card.headword, 'make up for');
+  assert.equal(r2.card.kind, 'pv');
+  assert.equal(r2.card.status, 'shown');
+  assert.equal(r2.card.order_index, 4);
+  assert.deepEqual(r2.card.source, { origin: 'adhoc' });
+  decide(db, r1.card.id, 'known');
+  const r3 = lookupCard(db, 'respect');
+  assert.equal(r3.previous_status, 'known');
+  assert.equal(r3.card.status, 'known');
+  assert.equal(guessKind('bleak'), 'word');
+  assert.equal(guessKind('in terms of'), 'expr');
+  assert.equal(guessKind('give up'), 'pv');
+  const ctx = learnerContext(db, { source: { family: ['respect', 'inspect', 'prospect'], twin: 'go on' } });
+  assert.deepEqual(ctx, { known: ['respect'], unknown: ['inspect', 'prospect', 'go on'] });
+  assert.throws(() => lookupCard(db, '   '), /нужно слово/);
+});

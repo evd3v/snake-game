@@ -119,3 +119,14 @@ test('статика: / отдаёт index.html', async () => {
   assert.equal(r.statusCode, 200);
   assert.match(r.headers['content-type'], /text\/html/);
 });
+
+test('lookup: своё слово в обход очереди', async () => {
+  const { a } = await app();
+  const r = await a.inject({ method: 'POST', url: '/api/cards/lookup', headers: auth, payload: { text: 'surpass' } });
+  assert.equal(r.statusCode, 200);
+  assert.equal(r.json().created, true);
+  assert.equal(r.json().card.status, 'shown');
+  assert.match(r.json().prompt, /Ученик уже знает/);
+  const learn = await a.inject({ method: 'POST', url: '/api/cards/pending/learn', headers: auth });
+  assert.equal(learn.json().card.headword, 'surpass');
+});

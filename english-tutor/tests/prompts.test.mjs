@@ -11,8 +11,11 @@ test('kindLabel', () => {
 });
 
 test('renderExplainPrompt подставляет поля и данные', () => {
-  const p = renderExplainPrompt(card);
-  assert.match(p, /\*\*inspect\*\* \(verb, B2\)/);
+  const p = renderExplainPrompt(card, { known: ['respect'], unknown: ['prospect'] });
+  assert.match(p, /\*\*inspect\*\* · verb · B2/);
+  assert.match(p, /уже знает или учит \(по его словарю\): respect/);
+  assert.match(p, /ещё не встречал: prospect/);
+  assert.match(renderExplainPrompt(card), /\(ничего\)/);
   assert.match(p, /Данные \(слово\)/);
   assert.match(p, /"root": "spect"/);
   assert.ok(!p.includes('{{'));

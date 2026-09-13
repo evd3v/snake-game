@@ -12,8 +12,10 @@ async function api(url, opts = {}) {
 const post = (url, payload) => api(url, { method: 'POST', body: JSON.stringify(payload || {}) });
 
 function md(text) {
-  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
-  return esc(text || '').replace(/\*\*([^*\n]+)\*\*/g, '<b>$1</b>').replace(/(^|\s)\*([^*\n]+)\*/g, '$1<i>$2</i>').replace(/\|\|([^|]+)\|\|/g, '<span class="answer">$1</span>');
+  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  let s = esc(text || '');
+  s = s.replace(/(^|\n)((?:&gt;!? ?[^\n]*(?:\n|$))+)/g, (m, lead, block) => `${lead}<blockquote>${block.replace(/\n$/, '').split('\n').map((l) => l.replace(/^&gt;!? ?/, '')).join('\n')}</blockquote>`);
+  return s.replace(/\*\*([^*\n]+)\*\*/g, '<b>$1</b>').replace(/(^|\s)_([^_\n]+)_/g, '$1<i>$2</i>').replace(/\|\|([^|]+)\|\|/g, '<span class="answer">$1</span>');
 }
 
 function show(tab) {

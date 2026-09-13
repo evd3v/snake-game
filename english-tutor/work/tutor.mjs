@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { formatNext, formatNeedExplanation, formatReview, formatNeedTest, formatStatus, formatDecision, parseGrade } from './format.mjs';
+import { formatNext, formatNeedExplanation, formatReview, formatNeedTest, formatStatus, formatDecision, parseGrade, lookupNote } from './format.mjs';
 
 function loadEnv() {
   const file = process.env.ENGLISH_TUTOR_ENV || path.join(os.homedir(), '.claude', 'english-tutor.env');
@@ -40,6 +40,12 @@ export async function run(argv, env, io = { call }) {
       const kind = rest[0] ? { word: 'word', слово: 'word', pv: 'pv', фразовый: 'pv', expr: 'expr', выражение: 'expr' }[rest[0]] : '';
       const body = await c('GET', `/api/next${kind ? `?kind=${kind}` : ''}`);
       return body.explanation_md ? formatNext(body) : formatNeedExplanation(body);
+    }
+    case 'word': {
+      const body = await c('POST', '/api/cards/lookup', { text: rest.join(' ') });
+      const note = lookupNote(body);
+      const text = body.explanation_md ? formatNext(body) : formatNeedExplanation(body);
+      return note ? `${note}\n\n${text}` : text;
     }
     case 'explain': {
       const id = rest[0];
@@ -86,7 +92,7 @@ export async function run(argv, env, io = { call }) {
       return `${head}\n\n${body.test ? formatReview(body) : formatNeedTest(body)}`;
     }
     default:
-      return 'Команды: next [word|pv|expr] · explain <id> · learn|known|discuss [id] · note [id] текст · pending · status · review · test [id] · grade <1-4> [id]';
+      return 'Команды: next [word|pv|expr] · word <слово или фраза> · explain <id> · learn|known|discuss [id] · note [id] текст · pending · status · review · test [id] · grade <1-4> [id]';
   }
 }
 
