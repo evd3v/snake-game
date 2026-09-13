@@ -191,3 +191,19 @@ test('аудит: одно слово с двумя частями речи за
   assert.equal(r.known, 1, 'hunt');
   assert.equal(db.prepare(`SELECT COUNT(*) AS c FROM cards WHERE headword = 'poison' AND stream = 'main'`).get().c, 2, 'обе карточки poison уехали в основную очередь');
 });
+
+test('undecidedCard: самое старое нерешённое, с учётом потока и вида', async () => {
+  const { undecidedCard } = await import('../src/queue.mjs');
+  const db = fresh();
+  assert.equal(undecidedCard(db, {}), null);
+  const a = nextCard(db, { now: '2026-09-13T10:00:00.000Z' });
+  const b = nextCard(db, { kind: 'pv', now: '2026-09-13T11:00:00.000Z' });
+  assert.equal(undecidedCard(db, {}).headword, a.headword, 'самое давнее');
+  assert.equal(undecidedCard(db, { kind: 'pv' }).headword, b.headword);
+  assert.equal(undecidedCard(db, { kind: 'expr' }), null);
+  decide(db, a.id, 'learn');
+  assert.equal(undecidedCard(db, {}).headword, b.headword);
+  decide(db, b.id, 'known');
+  assert.equal(undecidedCard(db, {}), null);
+  assert.throws(() => undecidedCard(db, { stream: 'нет' }), /stream/);
+});

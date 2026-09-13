@@ -69,7 +69,8 @@ function renderLearn(body) {
   $('#learn-card').hidden = false;
   $('#learn-meta').textContent = `${KIND[body.card.kind]} · ${body.card.level || ''} ${body.card.group_label ? '· ' + body.card.group_label : ''} · в очереди ${body.queued_left}`;
   const audio = body.card.source?.audio ? `\n\n[🔊 послушать](${body.card.source.audio})` : '';
-  $('#learn-explanation').innerHTML = body.explanation_md ? md(body.explanation_md + audio) : `<b>${body.card.headword}</b><br><span class="muted">Разбор ещё готовится (генератор на work). Можно решить сейчас или отложить.</span>`;
+  const repeat = body.repeat ? '_это слово ещё не решено_\n\n' : '';
+  $('#learn-explanation').innerHTML = body.explanation_md ? md(repeat + body.explanation_md + audio) : `<b>${body.card.headword}</b><br><span class="muted">Разбор ещё готовится (генератор на work). Можно решить сейчас или отложить.</span>`;
   $('#learn-message').textContent = '';
 }
 $('#learn-next').addEventListener('click', async () => {
@@ -85,7 +86,7 @@ async function learnDecide(decision) {
 }
 $('#learn-learn').addEventListener('click', () => learnDecide('learn'));
 $('#learn-known').addEventListener('click', () => learnDecide('known'));
-$('#learn-skip').addEventListener('click', () => { $('#learn-card').hidden = true; $('#learn-message').textContent = 'Отложено, найдёшь в списке со статусом «отложено»'; learnCard = null; });
+$('#learn-skip').addEventListener('click', () => { $('#learn-card').hidden = true; $('#learn-message').textContent = 'Отложено: вернётся первым при следующем «Следующий»'; learnCard = null; });
 
 let review = null;
 async function reviewNext() {

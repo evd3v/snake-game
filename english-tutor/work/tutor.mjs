@@ -40,9 +40,14 @@ export async function run(argv, env, io = { call }) {
       const arg = (rest[0] || '').toLowerCase();
       const kind = { word: 'word', слово: 'word', pv: 'pv', фразовый: 'pv', expr: 'expr', выражение: 'expr' }[arg] || '';
       const stream = ['basic', 'базовое', 'бытовое'].includes(arg) ? 'basic' : '';
-      const q = [kind && `kind=${kind}`, stream && `stream=${stream}`].filter(Boolean).join('&');
+      const force = rest.includes('--force') || arg === 'новое' ? 'force=1' : '';
+      const q = [kind && `kind=${kind}`, stream && `stream=${stream}`, force].filter(Boolean).join('&');
       const body = await c('GET', `/api/next${q ? `?${q}` : ''}`);
       return body.explanation_md ? formatNext(body) : formatNeedExplanation(body);
+    }
+    case 'skip': {
+      const r = await c('POST', `/api/cards/${rest[0] || 'pending'}/suspend`);
+      return `Убрал ${r.card.headword} из обучения. Вернуть можно, прислав это слово текстом.`;
     }
     case 'audit':
       return formatAudit(await c('GET', `/api/audit${rest[0] ? `?limit=${Number(rest[0]) || 25}` : ''}`));
@@ -105,7 +110,7 @@ export async function run(argv, env, io = { call }) {
       return `${head}\n\n${body.test ? formatReview(body) : formatNeedTest(body)}`;
     }
     default:
-      return 'Команды: next [word|pv|expr|базовое] · audit [N] · audit-mark <номера|пусто> · word <слово или фраза> · explain <id> · learn|known|discuss [id] · note [id] текст · pending · status · review · test [id] · grade <1-4> [id]';
+      return 'Команды: next [word|pv|expr|базовое|новое] · skip [id] · audit [N] · audit-mark <номера|пусто> · word <слово или фраза> · explain <id> · learn|known|discuss [id] · note [id] текст · pending · status · review · test [id] · grade <1-4> [id]';
   }
 }
 

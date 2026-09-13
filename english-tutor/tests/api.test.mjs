@@ -132,3 +132,21 @@ test('lookup: своё слово в обход очереди', async () => {
   const learn = await a.inject({ method: 'POST', url: '/api/cards/pending/learn', headers: auth });
   assert.equal(learn.json().card.headword, 'surpass');
 });
+
+test('next возвращает нерешённое слово, пока не решено; force и фильтры', async () => {
+  const { a } = await app();
+  const first = (await a.inject({ method: 'GET', url: '/api/next', headers: auth })).json();
+  assert.equal(first.card.headword, 'inspect');
+  assert.equal(first.repeat, false);
+  const again = (await a.inject({ method: 'GET', url: '/api/next', headers: auth })).json();
+  assert.equal(again.card.headword, 'inspect', 'то же слово, пока не решено');
+  assert.equal(again.repeat, true);
+  const pv = (await a.inject({ method: 'GET', url: '/api/next?kind=pv', headers: auth })).json();
+  assert.equal(pv.card.headword, 'go on', 'явный фильтр по виду не блокируется нерешённым словом');
+  const forced = (await a.inject({ method: 'GET', url: '/api/next?force=1', headers: auth })).json();
+  assert.equal(forced.card.headword, 'respect', 'force берёт новое из очереди');
+  await a.inject({ method: 'POST', url: `/api/cards/${first.card.id}/learn`, headers: auth });
+  const after = (await a.inject({ method: 'GET', url: '/api/next', headers: auth })).json();
+  assert.ok(['go on', 'respect'].includes(after.card.headword), 'решённое слово больше не возвращается, идёт другое нерешённое');
+  assert.equal(after.repeat, true);
+});

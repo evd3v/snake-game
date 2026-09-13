@@ -5,7 +5,7 @@ import Fastify from 'fastify';
 import fastifyStatic from '@fastify/static';
 import fastifyCookie from '@fastify/cookie';
 import { openDb, nowIso, httpError } from './db.mjs';
-import { nextCard, pendingCard, resolveId, decide, suspend, setExplanation, addNote, cardDetails, listCards, status, getCard, lookupCard, learnerContext, auditBatch, auditMark } from './queue.mjs';
+import { nextCard, undecidedCard, pendingCard, resolveId, decide, suspend, setExplanation, addNote, cardDetails, listCards, status, getCard, lookupCard, learnerContext, auditBatch, auditMark } from './queue.mjs';
 import { reviewNext, addTest, grade, currentReview } from './review.mjs';
 import { jobs } from './jobs.mjs';
 import { renderExplainPrompt, renderTestPrompt } from './prompts.mjs';
@@ -74,10 +74,11 @@ export function buildApp({ db, env, logger = false }) {
   app.get('/api/next', async (req) => {
     const kind = req.query.kind || null;
     const stream = req.query.stream || 'main';
-    const card = nextCard(db, { kind, stream });
+    const undecided = req.query.force === '1' ? null : undecidedCard(db, { kind, stream });
+    const card = undecided || nextCard(db, { kind, stream });
     if (!card) throw httpError(404, kind ? `очередь ${kind} пуста` : 'очередь пуста');
     const queued_left = db.prepare(`SELECT COUNT(*) AS c FROM cards WHERE status = 'queued' AND stream = ?`).get(stream).c;
-    return { card, explanation_md: card.explanation_md, prompt: card.explanation_md ? null : renderExplainPrompt(card, learnerContext(db, card)), queued_left };
+    return { card, repeat: Boolean(undecided), explanation_md: card.explanation_md, prompt: card.explanation_md ? null : renderExplainPrompt(card, learnerContext(db, card)), queued_left };
   });
 
   app.get('/api/pending', async () => ({ card: pendingCard(db) }));

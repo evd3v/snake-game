@@ -4,12 +4,13 @@ function meta(card, tail) {
   return [KIND[card.kind] || card.kind, card.level || null, card.group_label || null, tail].filter(Boolean).join(' · ');
 }
 
-export const LEARN_BUTTONS = '[[BUTTONS: 👍 Учу | 🤝 Знаю // Дальше]]';
+export const LEARN_BUTTONS = '[[BUTTONS: 👍 Учу | 🤝 Знаю]]';
 export const GRADE_BUTTONS = '[[BUTTONS: 1 снова | 2 трудно // 3 норм | 4 легко]]';
 
 export function formatNext(body) {
   const audio = body.card.source?.audio;
   return [
+    ...(body.repeat ? ['_это слово ещё не решено, поэтому оно снова первым_', ''] : []),
     body.explanation_md.trim(),
     '',
     `_${meta(body.card, `в очереди ${body.queued_left}`)}_`,
@@ -20,6 +21,7 @@ export function formatNext(body) {
 
 export function formatNeedExplanation(body) {
   return [
+    ...(body.repeat ? ['_это слово ещё не решено, поэтому оно снова первым_'] : []),
     `[НУЖЕН РАЗБОР] карточка ${body.card.id} (${body.card.headword}) ещё без разбора. Напиши его строго по промпту ниже, сохрани командой`,
     `  node ~/projects/personal-git/english-tutor/work/tutor.mjs explain ${body.card.id} <<'MD'`,
     `  <текст разбора>`,

@@ -4,11 +4,17 @@ import { formatNext, formatNeedExplanation, formatReview, formatNeedTest, format
 
 const card = { id: 5, kind: 'word', headword: 'inspect', pos: 'verb', level: 'B2', group_label: 'корень spect' };
 
+test('formatNext: пометка о нерешённом слове', () => {
+  const t = formatNext({ card, explanation_md: '**inspect** осматривать', queued_left: 5, repeat: true });
+  assert.match(t, /^_это слово ещё не решено, поэтому оно снова первым_\n\n\*\*inspect\*\*/);
+  assert.ok(!/не решено/.test(formatNext({ card, explanation_md: '**inspect** осматривать', queued_left: 5 })));
+});
+
 test('formatNext: разбор, хвост со статусом и кнопки', () => {
   const t = formatNext({ card, explanation_md: '**inspect** осматривать', queued_left: 120 });
   assert.match(t, /^\*\*inspect\*\* осматривать/);
   assert.match(t, /_слово · B2 · корень spect · в очереди 120_/);
-  assert.match(t, /\[\[BUTTONS: 👍 Учу \| 🤝 Знаю \/\/ Дальше\]\]$/);
+  assert.match(t, /\[\[BUTTONS: 👍 Учу \| 🤝 Знаю\]\]$/);
 });
 
 test('formatNeedExplanation содержит промпт и команду сохранения', () => {

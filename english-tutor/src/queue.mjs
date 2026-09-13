@@ -28,6 +28,19 @@ export function nextCard(db, { kind = null, stream = 'main', now = nowIso() } = 
   return getCard(db, row.id);
 }
 
+// Нерешённая карточка (показана, но не «учу» и не «знаю») возвращается раньше новых:
+// иначе слово молча выпадало из обучения. Фильтры по потоку и виду соблюдаются.
+export function undecidedCard(db, { kind = null, stream = 'main' } = {}) {
+  if (kind && !KINDS.includes(kind)) throw httpError(400, 'kind должен быть word, pv или expr');
+  if (!STREAMS.includes(stream)) throw httpError(400, 'stream должен быть main или basic');
+  const row = kind
+    ? db.prepare(`SELECT id FROM cards WHERE status IN ('shown', 'discussing') AND stream = ? AND kind = ? ORDER BY shown_at, order_index LIMIT 1`).get(stream, kind)
+    : db.prepare(`SELECT id FROM cards WHERE status IN ('shown', 'discussing') AND stream = ? ORDER BY shown_at, order_index LIMIT 1`).get(stream);
+  if (!row) return null;
+  setSetting(db, 'pending_card_id', String(row.id));
+  return getCard(db, row.id);
+}
+
 export function pendingCard(db) {
   const id = getSetting(db, 'pending_card_id');
   return id ? getCard(db, Number(id)) : null;
