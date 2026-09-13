@@ -15,7 +15,10 @@ function md(text) {
   const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   let s = esc(text || '');
   s = s.replace(/(^|\n)((?:&gt;!? ?[^\n]*(?:\n|$))+)/g, (m, lead, block) => `${lead}<blockquote>${block.replace(/\n$/, '').split('\n').map((l) => l.replace(/^&gt;!? ?/, '')).join('\n')}</blockquote>`);
-  return s.replace(/\*\*([^*\n]+)\*\*/g, '<b>$1</b>').replace(/(^|\s)_([^_\n]+)_/g, '$1<i>$2</i>').replace(/\|\|([^|]+)\|\|/g, '<span class="answer">$1</span>');
+  return s.replace(/\*\*([^*\n]+)\*\*/g, '<b>$1</b>')
+    .replace(/(^|\s)_([^_\n]+)_/g, '$1<i>$2</i>')
+    .replace(/\[([^\]\n]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noreferrer">$1</a>')
+    .replace(/\|\|([^|]+)\|\|/g, '<span class="answer">$1</span>');
 }
 
 function show(tab) {
@@ -65,7 +68,8 @@ function renderLearn(body) {
   learnCard = body.card;
   $('#learn-card').hidden = false;
   $('#learn-meta').textContent = `${KIND[body.card.kind]} · ${body.card.level || ''} ${body.card.group_label ? '· ' + body.card.group_label : ''} · в очереди ${body.queued_left}`;
-  $('#learn-explanation').innerHTML = body.explanation_md ? md(body.explanation_md) : `<b>${body.card.headword}</b><br><span class="muted">Разбор ещё готовится (генератор на work). Можно решить сейчас или отложить.</span>`;
+  const audio = body.card.source?.audio ? `\n\n[🔊 послушать](${body.card.source.audio})` : '';
+  $('#learn-explanation').innerHTML = body.explanation_md ? md(body.explanation_md + audio) : `<b>${body.card.headword}</b><br><span class="muted">Разбор ещё готовится (генератор на work). Можно решить сейчас или отложить.</span>`;
   $('#learn-message').textContent = '';
 }
 $('#learn-next').addEventListener('click', async () => {

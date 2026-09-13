@@ -71,3 +71,11 @@ test('formatAudit: нумерованная пачка и кнопки, formatAu
   assert.equal(bar(5, 10, 4), '▓▓░░');
   assert.equal(bar(1, 0, 3), '░░░');
 });
+
+test('formatNext: ссылка на озвучку только когда она есть в данных', async () => {
+  const { formatNext } = await import('../work/format.mjs');
+  const withAudio = formatNext({ card: { ...card, source: { audio: 'https://example.com/exceed.mp3' } }, explanation_md: '**exceed** превышать', queued_left: 10 });
+  assert.match(withAudio, /\[🔊 послушать\]\(https:\/\/example\.com\/exceed\.mp3\)\n\[\[BUTTONS/);
+  const without = formatNext({ card: { ...card, source: {} }, explanation_md: '**exceed** превышать', queued_left: 10 });
+  assert.ok(!/🔊/.test(without));
+});

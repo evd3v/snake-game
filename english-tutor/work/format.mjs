@@ -8,10 +8,12 @@ export const LEARN_BUTTONS = '[[BUTTONS: 👍 Учу | 🤝 Знаю // Даль
 export const GRADE_BUTTONS = '[[BUTTONS: 1 снова | 2 трудно // 3 норм | 4 легко]]';
 
 export function formatNext(body) {
+  const audio = body.card.source?.audio;
   return [
     body.explanation_md.trim(),
     '',
     `_${meta(body.card, `в очереди ${body.queued_left}`)}_`,
+    ...(audio ? [`[🔊 послушать](${audio})`] : []),
     LEARN_BUTTONS
   ].join('\n');
 }

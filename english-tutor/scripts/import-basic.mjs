@@ -2,12 +2,13 @@ import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { normalizeHeadword } from '../src/normalize.mjs';
 import { readFrequency } from './gen-topical.mjs';
+import { lookupAudio } from './import-audio.mjs';
 
 const BASIC_LEVELS = ['A1', 'A2', 'B1'];
 
 // Бытовой слой = Oxford 3000 уровней A1-B1 (структурный) + тематические слова,
 // которых в Oxford нет вовсе (mushroom, kettle, sleeve, jaw).
-export function buildBasic({ oxford, topical, rank, mainWords = new Set() }) {
+export function buildBasic({ oxford, topical, rank, mainWords = new Set(), audioMap = {} }) {
   const out = [];
   const seen = new Set();
   for (const e of Object.values(oxford)) {
@@ -20,7 +21,9 @@ export function buildBasic({ oxford, topical, rank, mainWords = new Set() }) {
     out.push({
       headword, pos: String(e.type || '').toLowerCase(), level, origin: 'oxford',
       definition: e.definition || '', example: e.example || '', examples: e.example ? [e.example] : [],
-      ru: '', topic: null, freq_rank: rank.get(headword) || null
+      ru: '', topic: null, freq_rank: rank.get(headword) || null,
+      phon: e.phon_br || (lookupAudio(audioMap, headword, e.type) || {}).ipa_uk || '',
+      audio: (lookupAudio(audioMap, headword, e.type) || {}).audio_uk || ''
     });
   }
   for (const t of topical) {
@@ -43,7 +46,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const rank = readFrequency('data/raw/en_50k.txt');
   const words = JSON.parse(fs.readFileSync('data/words.json', 'utf8'));
   const mainWords = new Set(words.map((w) => `${w.headword}|${w.pos}`));
-  const basic = buildBasic({ oxford, topical, rank, mainWords });
+  const audioMap = fs.existsSync('data/audio.json') ? JSON.parse(fs.readFileSync('data/audio.json', 'utf8')) : {};
+  const basic = buildBasic({ oxford, topical, rank, mainWords, audioMap });
   fs.writeFileSync('data/basic.json', JSON.stringify(basic, null, 1));
   const n = (o) => basic.filter((b) => b.origin === o).length;
   console.log(`basic: ${basic.length} (oxford A1-B1 ${n('oxford')}, тематические ${n('topical')}), тем ${Object.keys(topicalCache).length}`);

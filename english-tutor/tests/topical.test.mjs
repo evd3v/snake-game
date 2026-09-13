@@ -66,3 +66,19 @@ test('isPreknown: Oxford A1-A2 да, B1 и тематические нет', asy
   assert.equal(items[1].group_label, 'тема: еда');
   assert.equal(items[1].source.ru, 'гриб');
 });
+
+test('buildAudioMap и lookupAudio: ключ по слову и части речи, фолбэк по слову', async () => {
+  const { buildAudioMap, lookupAudio } = await import('../scripts/import-audio.mjs');
+  const map = buildAudioMap([
+    { value: { word: 'Exceed', type: 'verb', phonetics: { uk: '/ɪkˈsiːd/', us: '/ɪkˈsiːd/' }, uk: { mp3: 'u.mp3' }, us: { mp3: 's.mp3' } } },
+    { value: { word: 'record', type: 'noun', phonetics: { uk: '/ˈrekɔːd/' }, uk: { mp3: 'n.mp3' } } },
+    { value: { word: 'record', type: 'verb', phonetics: { uk: '/rɪˈkɔːd/' }, uk: { mp3: 'v.mp3' } } },
+    { value: { word: 'nothing', type: 'pronoun' } }
+  ]);
+  assert.equal(lookupAudio(map, 'exceed', 'verb').audio_uk, 'u.mp3');
+  assert.equal(lookupAudio(map, 'exceed').ipa_uk, '/ɪkˈsiːd/');
+  assert.equal(lookupAudio(map, 'record', 'verb').ipa_uk, '/rɪˈkɔːd/');
+  assert.equal(lookupAudio(map, 'record', 'adjective').ipa_uk, '/ˈrekɔːd/', 'фолбэк на первую часть речи');
+  assert.equal(lookupAudio(map, 'nothing'), null, 'без IPA и без mp3 в карту не попадает');
+  assert.equal(lookupAudio(map, 'zzz', 'noun'), null);
+});

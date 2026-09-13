@@ -45,7 +45,7 @@ function toWordItem(w, roots, module) {
     group_key: module ? module.key : null,
     group_label: module ? (tag.root ? `корень ${tag.root}` : `семья ${module.key}`) : null,
     source: {
-      definition: w.definition, example: w.example, examples: w.examples, phon: w.phon,
+      definition: w.definition, example: w.example, examples: w.examples, phon: w.phon, phon_us: w.phon_us || '', audio: w.audio || '',
       root: tag.root ?? null, root_meaning_ru: tag.root_meaning_ru ?? null, family,
       twin: tag.twin ?? null, twin_note_ru: tag.twin_note_ru ?? null
     }
@@ -114,7 +114,7 @@ export function basicStream(basic) {
       group_key: b.topic ? `тема ${b.topic}` : `уровень ${b.level || '?'}`,
       group_label: b.topic ? `тема: ${b.topic}` : `Oxford ${b.level || ''}`.trim(),
       stream: 'basic', topic: b.topic || null, freq_rank: b.freq_rank || null,
-      source: { definition: b.definition || '', example: b.example || '', examples: b.examples || [], ru: b.ru || '', origin: b.origin || 'oxford' }
+      source: { definition: b.definition || '', example: b.example || '', examples: b.examples || [], ru: b.ru || '', origin: b.origin || 'oxford', phon: b.phon || '', audio: b.audio || '' }
     }));
 }
 
