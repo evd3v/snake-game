@@ -205,39 +205,52 @@ const AUDIT_LIMIT = 25;
 // Бытовой слой: слова проверяются пачками (их тысячи и большинство известно),
 // а не по одному. Номера пачки держим в settings, чтобы ответ «1 5 12» был однозначным.
 export function auditBatch(db, limit = AUDIT_LIMIT) {
+  const size = Math.min(Number(limit) || AUDIT_LIMIT, 50);
+  // Одно слово в пачке = одна строка, даже если у него несколько частей речи
+  // (poison как существительное и как глагол): решение применяется ко всем его карточкам.
   const rows = db.prepare(`SELECT id, headword, source_json, level FROM cards
-    WHERE stream = 'basic' AND status = 'queued' ORDER BY order_index LIMIT ?`).all(Math.min(Number(limit) || AUDIT_LIMIT, 50));
-  const left = db.prepare(`SELECT COUNT(*) AS c FROM cards WHERE stream = 'basic' AND status = 'queued'`).get().c;
-  const items = rows.map((r, i) => {
-    const src = JSON.parse(r.source_json);
-    return { n: i + 1, id: r.id, headword: r.headword, ru: src.ru || '', level: r.level || '' };
-  });
-  setSetting(db, 'audit_batch', JSON.stringify(items.map((i) => i.id)));
+    WHERE stream = 'basic' AND status = 'queued' ORDER BY order_index LIMIT ?`).all(size * 3);
+  const left = db.prepare(`SELECT COUNT(DISTINCT headword) AS c FROM cards WHERE stream = 'basic' AND status = 'queued'`).get().c;
+  const items = [];
+  const groups = new Map();
+  for (const r of rows) {
+    if (!groups.has(r.headword)) {
+      if (groups.size >= size) continue;
+      const src = JSON.parse(r.source_json);
+      groups.set(r.headword, []);
+      items.push({ n: items.length + 1, headword: r.headword, ru: src.ru || '', level: r.level || '' });
+    }
+    groups.get(r.headword).push(r.id);
+  }
+  setSetting(db, 'audit_batch', JSON.stringify(items.map((i) => groups.get(i.headword))));
   return { items, left };
 }
 
 // Ответ на пачку: номера незнакомых уходят в основную очередь (в начало),
 // остальные отмечаются знакомыми.
 export function auditMark(db, unknownNumbers = [], now = nowIso()) {
-  const ids = JSON.parse(getSetting(db, 'audit_batch') || '[]');
-  if (!ids.length) throw httpError(404, 'нет открытой пачки: сначала /audit');
-  const nums = new Set((unknownNumbers || []).map(Number).filter((n) => Number.isInteger(n) && n >= 1 && n <= ids.length));
+  const groups = JSON.parse(getSetting(db, 'audit_batch') || '[]');
+  if (!groups.length) throw httpError(404, 'нет открытой пачки: сначала /audit');
+  const nums = new Set((unknownNumbers || []).map(Number).filter((n) => Number.isInteger(n) && n >= 1 && n <= groups.length));
   const moved = [];
-  const known = [];
+  let known = 0;
   const head = db.prepare('SELECT COALESCE(MIN(order_index), 0) AS m FROM cards').get().m;
   let slot = head - 1;
-  ids.forEach((id, idx) => {
-    const card = getCard(db, id);
-    if (!card || card.status !== 'queued') return;
-    if (nums.has(idx + 1)) {
-      db.prepare(`UPDATE cards SET stream = 'main', order_index = ? WHERE id = ?`).run(slot--, id);
-      moved.push(card.headword);
-    } else {
-      decide(db, id, 'known', now);
-      known.push(card.headword);
+  groups.forEach((ids, idx) => {
+    const unknown = nums.has(idx + 1);
+    for (const id of [].concat(ids)) {
+      const card = getCard(db, id);
+      if (!card || card.status !== 'queued') continue;
+      if (unknown) {
+        db.prepare(`UPDATE cards SET stream = 'main', order_index = ? WHERE id = ?`).run(slot--, id);
+        if (!moved.includes(card.headword)) moved.push(card.headword);
+      } else {
+        decide(db, id, 'known', now);
+        known++;
+      }
     }
   });
   setSetting(db, 'audit_batch', '');
-  const left = db.prepare(`SELECT COUNT(*) AS c FROM cards WHERE stream = 'basic' AND status = 'queued'`).get().c;
-  return { moved, known: known.length, left };
+  const left = db.prepare(`SELECT COUNT(DISTINCT headword) AS c FROM cards WHERE stream = 'basic' AND status = 'queued'`).get().c;
+  return { moved, known, left };
 }

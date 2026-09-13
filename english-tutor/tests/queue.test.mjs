@@ -158,6 +158,7 @@ test('бытовой слой: отдельный поток, аудит пач�
 
   const batch = auditBatch(db, 10);
   assert.deepEqual(batch.items.map((i) => [i.n, i.headword, i.ru]), [[1, 'mushroom', 'гриб'], [2, 'spoon', 'ложка']]);
+  assert.ok(!batch.items.some((i) => i.id), 'номер пачки указывает на все карточки слова, а не на одну');
   assert.equal(batch.left, 2, 'kettle уже показан, он не в пачке');
   const marked = auditMark(db, [1], '2026-09-13T10:00:00.000Z');
   assert.deepEqual(marked.moved, ['mushroom']);
@@ -172,4 +173,21 @@ test('бытовой слой: отдельный поток, аудит пач�
   assert.equal(s.word.total, 2, 'и считается там');
   assert.equal(s.basic.known, 1, 'spoon отмечен знакомым');
   assert.throws(() => auditMark(db, []), /нет открытой пачки/);
+});
+
+test('аудит: одно слово с двумя частями речи занимает один номер', async () => {
+  const { auditBatch, auditMark } = await import('../src/queue.mjs');
+  const db = openDb(':memory:');
+  seed(db, [
+    { ...item('poison', 'word', 'noun'), stream: 'basic', freq_rank: 5000 },
+    { ...item('poison', 'word', 'verb'), stream: 'basic', freq_rank: 5000 },
+    { ...item('hunt', 'word', 'verb'), stream: 'basic', freq_rank: 6000 }
+  ]);
+  const batch = auditBatch(db, 25);
+  assert.deepEqual(batch.items.map((i) => i.headword), ['poison', 'hunt']);
+  assert.equal(batch.left, 2, 'слова, а не карточки');
+  const r = auditMark(db, [1]);
+  assert.deepEqual(r.moved, ['poison']);
+  assert.equal(r.known, 1, 'hunt');
+  assert.equal(db.prepare(`SELECT COUNT(*) AS c FROM cards WHERE headword = 'poison' AND stream = 'main'`).get().c, 2, 'обе карточки poison уехали в основную очередь');
 });
