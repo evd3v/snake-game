@@ -79,3 +79,10 @@ test('formatNext: ссылка на озвучку только когда он�
   const without = formatNext({ card: { ...card, source: {} }, explanation_md: '**exceed** превышать', queued_left: 10 });
   assert.ok(!/🔊/.test(without));
 });
+
+test('formatReview: подсказка для pair', async () => {
+  const { formatReview } = await import('../work/format.mjs');
+  const t = formatReview({ card, test: { type: 'pair', sentence: 'The bill must not _____ the agreed sum here. (surpass / exceed)', answer: 'exceed' }, wanted_type: 'pair', left_today: 2 });
+  assert.match(t, /какой из двух вариантов сюда подходит/);
+  assert.match(t, /\(surpass \/ exceed\)/);
+});

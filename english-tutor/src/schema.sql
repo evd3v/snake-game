@@ -35,7 +35,7 @@ CREATE INDEX IF NOT EXISTS cards_due ON cards(status, fsrs_due);
 CREATE TABLE IF NOT EXISTS tests (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   card_id INTEGER NOT NULL REFERENCES cards(id),
-  type TEXT NOT NULL CHECK (type IN ('context','cloze')),
+  type TEXT NOT NULL,
   sentence TEXT NOT NULL,
   answer TEXT NOT NULL,
   created_at TEXT NOT NULL,

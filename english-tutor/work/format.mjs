@@ -30,11 +30,17 @@ export function formatNeedExplanation(body) {
   ].join('\n');
 }
 
+const REVIEW_HINT = {
+  pair: 'какой из двух вариантов сюда подходит',
+  cloze: 'какое слово на месте пропуска',
+  context: 'что значит слово из списка'
+};
+
 export function formatReview(body) {
-  const cloze = body.wanted_type === 'cloze' || /_{3,}/.test(body.test.sentence);
+  const type = body.test.type || (body.wanted_type === 'cloze' || /_{3,}/.test(body.test.sentence) ? 'cloze' : 'context');
   return [
     `**Повторение** · осталось ${body.left_today}`,
-    `_${cloze ? 'какое слово на месте пропуска' : 'что значит слово из списка'}_`,
+    `_${REVIEW_HINT[type] || REVIEW_HINT.context}_`,
     '',
     `> ${body.test.sentence}`,
     '',

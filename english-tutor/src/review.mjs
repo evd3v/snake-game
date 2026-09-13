@@ -1,6 +1,7 @@
 import { nowIso, getSetting, setSetting, httpError } from './db.mjs';
 import { applyRating } from './fsrs.mjs';
 import { getCard, hydrate } from './queue.mjs';
+import { normalizeHeadword } from './normalize.mjs';
 
 const PLACEHOLDERS = new Set(['sth', 'sb', 'sb/sth', 'sth/sb', "one's", "sb's", 'oneself', 'yourself', 'somebody', 'something', 'somewhere', 'etc', 'etc.']);
 
@@ -49,15 +50,38 @@ export function containsHeadword(card, sentence) {
 
 const norm = (s) => String(s || '').toLowerCase().replace(/\s+/g, ' ').trim();
 
+export const TEST_TYPES = ['context', 'cloze', 'pair'];
+
+// Различение пары: предложение с пропуском, а в скобках на конце два варианта —
+// само слово и его близнец по переводу. Проверяем, что оба варианта на месте,
+// а в самом предложении слова нет.
+export function splitPairOptions(sentence) {
+  const m = String(sentence || '').match(/\(([^()]*\/[^()]*)\)\s*$/);
+  if (!m) return null;
+  return { body: String(sentence).slice(0, m.index).trim(), options: m[1].split('/').map((x) => x.trim().toLowerCase()).filter(Boolean) };
+}
+
 export function validateSentence(card, { type, sentence, answer }, history = []) {
   const errors = [];
-  if (!['context', 'cloze'].includes(type)) errors.push('type');
+  if (!TEST_TYPES.includes(type)) errors.push('type');
   const words = String(sentence || '').trim().split(/\s+/).filter(Boolean);
   if (words.length < 8 || words.length > 28) errors.push(`length ${words.length}`);
   if (type === 'context' && !containsHeadword(card, sentence)) errors.push('headword');
   if (type === 'cloze') {
     if (!/_{3,}/.test(String(sentence))) errors.push('gap');
     if (containsHeadword(card, sentence)) errors.push('cloze-has-headword');
+  }
+  if (type === 'pair') {
+    const twin = norm(card.source?.twin);
+    const parts = splitPairOptions(sentence);
+    if (!/_{3,}/.test(String(sentence))) errors.push('gap');
+    if (!parts || parts.options.length !== 2) errors.push('options');
+    else {
+      if (!parts.options.includes(norm(card.headword))) errors.push('options-no-headword');
+      if (twin && !parts.options.includes(twin)) errors.push('options-no-twin');
+      if (containsHeadword(card, parts.body)) errors.push('pair-body-has-headword');
+    }
+    if (norm(answer) !== norm(card.headword)) errors.push('answer-not-headword');
   }
   if (history.some((h) => norm(h) === norm(sentence))) errors.push('repeat');
   if (card.source?.example && norm(card.source.example) === norm(sentence)) errors.push('source-example');
@@ -85,10 +109,25 @@ export function pickDueCard(db, now = nowIso()) {
   return db.prepare(`SELECT * FROM cards WHERE status = 'learning' AND fsrs_due <= ? ORDER BY fsrs_due, order_index LIMIT 1`).get(now) || null;
 }
 
+// Различение пары даём только после того, как ОБА слова выучены по отдельности:
+// две новые синонимичные единицы одновременно дают интерференцию (Tinkham 1993, Waring 1997),
+// а контраст на уже знакомом слове работает.
+export function twinReady(db, card) {
+  const twin = card.source?.twin;
+  if (!twin) return false;
+  const row = db.prepare(`SELECT status, fsrs_reps FROM cards WHERE headword = ?
+    ORDER BY CASE status WHEN 'learning' THEN 0 WHEN 'known' THEN 1 ELSE 2 END LIMIT 1`).get(normalizeHeadword(twin));
+  if (!row) return false;
+  if (row.status === 'known') return true;
+  return row.status === 'learning' && (row.fsrs_reps || 0) >= 2;
+}
+
 export function requiredTestType(db, card) {
   if ((card.fsrs_reps || 0) < 3) return 'context';
   const last = db.prepare('SELECT test_type FROM review_log WHERE card_id = ? ORDER BY id DESC LIMIT 1').get(card.id);
-  return last && last.test_type === 'context' ? 'cloze' : 'context';
+  const lastType = last?.test_type;
+  if ((card.fsrs_reps || 0) >= 4 && lastType !== 'pair' && twinReady(db, card)) return 'pair';
+  return lastType === 'context' ? 'cloze' : 'context';
 }
 
 export function takeTest(db, cardId, type) {

@@ -92,3 +92,41 @@ test('reviewNext без запаса отдаёт test: null и историю; 
   assert.equal(g.card.fsrs_reps, 1);
   assert.throws(() => grade(db, r.card.id, 9, null), /1\.\.4/);
 });
+
+test('pair: валидация вариантов и тела предложения', async () => {
+  const { validateSentence, splitPairOptions } = await import('../src/review.mjs');
+  const card = { headword: 'exceed', source: { twin: 'surpass', example: 'The price will not exceed £100.' } };
+  const good = 'The total repair bill must not _____ the amount agreed in the contract. (surpass / exceed)';
+  assert.deepEqual(validateSentence(card, { type: 'pair', sentence: good, answer: 'exceed' }, []), []);
+  assert.deepEqual(splitPairOptions(good).options, ['surpass', 'exceed']);
+  assert.equal(splitPairOptions('нет вариантов'), null);
+  assert.deepEqual(validateSentence(card, { type: 'pair', sentence: good, answer: 'surpass' }, []), ['answer-not-headword']);
+  assert.deepEqual(validateSentence(card, { type: 'pair', sentence: 'The total repair bill must not _____ the amount agreed here. (only / one)', answer: 'exceed' }, []),
+    ['options-no-headword', 'options-no-twin']);
+  assert.deepEqual(validateSentence(card, { type: 'pair', sentence: 'The bill must not exceed the amount agreed in the contract here. (surpass / exceed)', answer: 'exceed' }, []),
+    ['gap', 'pair-body-has-headword']);
+  assert.deepEqual(validateSentence(card, { type: 'pair', sentence: 'The total repair bill must not _____ the agreed amount. (surpass)', answer: 'exceed' }, []), ['options']);
+});
+
+test('requiredTestType: pair только когда близнец сам выучен', async () => {
+  const { requiredTestType, twinReady } = await import('../src/review.mjs');
+  const { decide } = await import('../src/queue.mjs');
+  const db = openDb(':memory:');
+  seed(db, [
+    { ...item('exceed'), source: { twin: 'surpass', example: 'x' } },
+    item('surpass')
+  ]);
+  const exceed = { ...db.prepare(`SELECT * FROM cards WHERE headword = 'exceed'`).get(), source: { twin: 'surpass' } };
+  assert.equal(twinReady(db, exceed), false, 'близнец ещё в очереди');
+  assert.equal(requiredTestType(db, { ...exceed, fsrs_reps: 5 }), 'context');
+
+  const surpassId = db.prepare(`SELECT id FROM cards WHERE headword = 'surpass'`).get().id;
+  decide(db, surpassId, 'learn');
+  assert.equal(twinReady(db, exceed), false, 'близнец только начат');
+  db.prepare(`UPDATE cards SET fsrs_reps = 2 WHERE id = ?`).run(surpassId);
+  assert.equal(twinReady(db, exceed), true);
+  assert.equal(requiredTestType(db, { ...exceed, fsrs_reps: 3 }), 'context', 'до 4 повторов пары не даём');
+  assert.equal(requiredTestType(db, { ...exceed, fsrs_reps: 4 }), 'pair');
+  db.prepare(`INSERT INTO review_log(card_id, ts, rating, test_type) VALUES (?, '2026-09-13T10:00:00.000Z', 3, 'pair')`).run(exceed.id);
+  assert.equal(requiredTestType(db, { ...exceed, fsrs_reps: 5 }), 'context', 'две пары подряд не даём');
+});

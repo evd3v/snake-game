@@ -19,6 +19,26 @@ export function openDb(file = process.env.DB_PATH || ':memory:') {
   if (!cols.includes('topic')) db.exec('ALTER TABLE cards ADD COLUMN topic TEXT');
   if (!cols.includes('freq_rank')) db.exec('ALTER TABLE cards ADD COLUMN freq_rank INTEGER');
   db.exec('CREATE INDEX IF NOT EXISTS cards_stream ON cards(stream, status, order_index)');
+  // миграция 13.09.2026: у типов теста появился 'pair' (различение пары), а старая
+  // таблица держала CHECK на два типа. Пересобираем её: там только заготовки предложений.
+  const testsSql = db.prepare(`SELECT sql FROM sqlite_master WHERE type='table' AND name='tests'`).get()?.sql || '';
+  if (/CHECK \(type IN \('context','cloze'\)\)/.test(testsSql)) {
+    db.exec(`BEGIN;
+      CREATE TABLE tests_new (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        card_id INTEGER NOT NULL REFERENCES cards(id),
+        type TEXT NOT NULL,
+        sentence TEXT NOT NULL,
+        answer TEXT NOT NULL,
+        created_at TEXT NOT NULL,
+        used_at TEXT
+      );
+      INSERT INTO tests_new SELECT id, card_id, type, sentence, answer, created_at, used_at FROM tests;
+      DROP TABLE tests;
+      ALTER TABLE tests_new RENAME TO tests;
+      CREATE INDEX IF NOT EXISTS tests_card_unused ON tests(card_id, used_at);
+      COMMIT;`);
+  }
   return db;
 }
 
