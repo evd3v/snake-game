@@ -49,11 +49,13 @@ function askClaude(prompt) {
   const env = { ...process.env, CLAUDE_CODE_SKIP_PROMPT_HISTORY: '1', ...(token ? { CLAUDE_CODE_OAUTH_TOKEN: token } : {}) };
   delete env.CLAUDECODE;
   delete env.CLAUDE_CODE_ENTRYPOINT;
-  const r = spawnSync(process.env.CLAUDE_BIN || 'claude', [
+  const local = path.join(os.homedir(), '.local', 'bin', 'claude');
+  const bin = process.env.CLAUDE_BIN || (fs.existsSync(local) ? local : 'claude');
+  const r = spawnSync(bin, [
     '-p', prompt, '--output-format', 'json', '--model', process.env.CLAUDE_MODEL || 'claude-opus-5',
     '--no-session-persistence', '--max-turns', '1'
   ], { encoding: 'utf8', maxBuffer: 20 * 1024 * 1024, timeout: 240000, env });
-  if (r.status !== 0) throw new Error(`claude exit ${r.status}: ${(r.stderr || '').slice(0, 500)}`);
+  if (r.status !== 0) throw new Error(`claude exit ${r.status}${r.error ? ` (${r.error.message})` : ''}: ${(r.stderr || '').slice(0, 500)}`);
   const json = JSON.parse(r.stdout);
   if (json.is_error) throw new Error(`claude error: ${String(json.result).slice(0, 500)}`);
   return json.result;
