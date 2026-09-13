@@ -61,14 +61,41 @@ function askClaude(prompt) {
   return json.result;
 }
 
+export function shardArg(argv) {
+  const i = argv.indexOf('--shard');
+  if (i < 0) return null;
+  const m = String(argv[i + 1] || '').match(/^(\d+)\/(\d+)$/);
+  if (!m) throw new Error('--shard ожидает k/n, например 1/3');
+  return { k: Number(m[1]), n: Number(m[2]) };
+}
+
+export function mergeShards(cache, shards) {
+  let out = { ...cache };
+  for (const shard of shards) for (const [key, value] of Object.entries(shard)) if (!out[key]) out[key] = value;
+  return out;
+}
+
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const words = JSON.parse(fs.readFileSync('data/words.json', 'utf8'));
   const cachePath = 'data/roots.json';
-  let cache = fs.existsSync(cachePath) ? JSON.parse(fs.readFileSync(cachePath, 'utf8')) : {};
+  const readJson = (p) => (fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : {});
+  if (process.argv.includes('--merge')) {
+    const shards = fs.readdirSync('data').filter((f) => /^roots-shard-\d+\.json$/.test(f)).map((f) => readJson(`data/${f}`));
+    const merged = mergeShards(readJson(cachePath), shards);
+    fs.writeFileSync(cachePath, JSON.stringify(merged, null, 1));
+    console.log(`слито: ${Object.keys(merged).length} из ${words.length}`);
+    process.exit(0);
+  }
+  const shard = shardArg(process.argv);
+  const main = readJson(cachePath);
+  const outPath = shard ? `data/roots-shard-${shard.k}.json` : cachePath;
+  let cache = shard ? mergeShards(readJson(outPath), []) : main;
   const template = fs.readFileSync('prompts/roots.md', 'utf8');
-  const todo = words.filter((w) => !cache[rootKey(w)]);
-  console.log(`всего ${words.length}, размечено ${words.length - todo.length}, осталось ${todo.length}`);
-  for (const [i, batch] of batches(todo, 40).entries()) {
+  let todo = words.filter((w) => !main[rootKey(w)] && !cache[rootKey(w)]);
+  const all = batches(todo, 40);
+  const mine = shard ? all.filter((_, i) => i % shard.n === shard.k - 1) : all;
+  console.log(`всего ${words.length}, в кэше ${Object.keys(main).length}, батчей ${all.length}, моих ${mine.length}${shard ? ` (шард ${shard.k}/${shard.n})` : ''}`);
+  for (const [i, batch] of mine.entries()) {
     const list = batch.map((w) => `${w.headword} | ${w.pos}`).join('\n');
     const prompt = template.replace('{{words}}', list);
     let replies;
@@ -79,7 +106,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       replies = parseRootsReply(askClaude(prompt));
     }
     cache = mergeRoots(cache, replies);
-    fs.writeFileSync(cachePath, JSON.stringify(cache, null, 1));
-    console.log(`батч ${i + 1}/${Math.ceil(todo.length / 40)}: +${replies.length}`);
+    fs.writeFileSync(outPath, JSON.stringify(cache, null, 1));
+    console.log(`${new Date().toISOString()} батч ${i + 1}/${mine.length}: +${replies.length}`);
   }
 }
