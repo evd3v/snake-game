@@ -3,12 +3,16 @@ import { fileURLToPath } from 'node:url';
 
 const byLevelThenName = (a, b) => (a.level === b.level ? a.headword.localeCompare(b.headword) : a.level.localeCompare(b.level));
 
+// Ключи семей приходят от модели пачками и могут разъехаться в мелочах (Spect, spect-, spec):
+// сводим к латинским буквам в нижнем регистре, чтобы одна семья не распалась на две.
+export const normalizeKey = (k) => String(k || '').toLowerCase().replace(/[^a-z]/g, '') || null;
+
 export function groupWords(words, roots) {
   const groups = new Map();
   const singles = [];
   for (const w of words) {
     const tag = roots[`${w.headword}|${w.pos}`] || {};
-    const key = tag.family_key || null;
+    const key = normalizeKey(tag.family_key);
     if (!key) { singles.push(w); continue; }
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key).push(w);

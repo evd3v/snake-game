@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildQueue, groupWords, interleave } from '../scripts/build-queue.mjs';
+import { buildQueue, groupWords, interleave, normalizeKey } from '../scripts/build-queue.mjs';
 
 const w = (headword, level = 'B2', pos = 'verb') => ({ headword, pos, level, definition: 'd', example: 'e', examples: ['e'], phon: '' });
 
@@ -47,4 +47,12 @@ test('buildQueue детерминирована и заполняет source', (
   const ex = q1.find((i) => i.kind === 'expr');
   assert.equal(ex.source.origin, 'phrase');
   assert.equal(ex.group_key, 'band-2');
+});
+
+test('normalizeKey сводит варианты ключа семьи', () => {
+  assert.equal(normalizeKey('Spect-'), 'spect');
+  assert.equal(normalizeKey(' spec '), 'spec');
+  assert.equal(normalizeKey(null), null);
+  const { modules } = groupWords([w('inspect'), w('respect')], { 'inspect|verb': { family_key: 'Spect' }, 'respect|verb': { family_key: 'spect-' } });
+  assert.deepEqual(modules.map((m) => m.key), ['spect']);
 });
