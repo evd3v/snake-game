@@ -1,0 +1,18 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3101:3000"
+    env_file: .env
+    environment:
+      TZ: Europe/Moscow
+      DB_PATH: /data/tutor.sqlite
+      PORT: "3000"
+    volumes:
+      - ./data-db:/data
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

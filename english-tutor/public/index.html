@@ -1,1 +1,113 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>English Tutor</title></head><body>English Tutor</body></html>
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English Tutor</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <h1>English Tutor</h1>
+  <nav id="tabs" hidden>
+    <button data-tab="status">Статус</button>
+    <button data-tab="learn">Учить</button>
+    <button data-tab="review">Повторение</button>
+    <button data-tab="list">Список</button>
+  </nav>
+</header>
+<main>
+  <section id="login">
+    <form id="login-form">
+      <input type="password" name="password" placeholder="Пароль" autocomplete="current-password" required>
+      <button type="submit">Войти</button>
+    </form>
+    <p id="login-error" class="error" hidden></p>
+  </section>
+
+  <section id="status" hidden>
+    <div id="status-cards" class="grid"></div>
+    <table id="status-table"></table>
+  </section>
+
+  <section id="learn" hidden>
+    <div class="row">
+      <select id="learn-kind">
+        <option value="">Любой поток</option>
+        <option value="word">Слово</option>
+        <option value="pv">Фразовый глагол</option>
+        <option value="expr">Выражение</option>
+      </select>
+      <button id="learn-next">Следующий</button>
+    </div>
+    <article id="learn-card" hidden>
+      <div class="meta" id="learn-meta"></div>
+      <div class="md" id="learn-explanation"></div>
+      <div class="row">
+        <button id="learn-learn" class="primary">Учу</button>
+        <button id="learn-known">Знаю</button>
+        <button id="learn-skip">Отложить</button>
+      </div>
+    </article>
+    <p id="learn-message" class="muted"></p>
+  </section>
+
+  <section id="review" hidden>
+    <p id="review-left" class="muted"></p>
+    <article id="review-card" hidden>
+      <div class="meta" id="review-meta"></div>
+      <p id="review-sentence" class="sentence"></p>
+      <button id="review-reveal">Показать ответ</button>
+      <p id="review-answer" class="answer" hidden></p>
+      <div class="row" id="review-grades" hidden>
+        <button data-rating="1">1 снова</button>
+        <button data-rating="2">2 трудно</button>
+        <button data-rating="3" class="primary">3 норм</button>
+        <button data-rating="4">4 легко</button>
+      </div>
+    </article>
+    <p id="review-message" class="muted"></p>
+    <button id="review-start">Начать</button>
+  </section>
+
+  <section id="list" hidden>
+    <div class="row">
+      <select id="list-status">
+        <option value="">Любой статус</option>
+        <option value="queued">В очереди</option>
+        <option value="shown">Отложено</option>
+        <option value="discussing">Обсуждается</option>
+        <option value="learning">Учу</option>
+        <option value="known">Знал</option>
+        <option value="suspended">Убрано</option>
+      </select>
+      <select id="list-kind">
+        <option value="">Любой поток</option>
+        <option value="word">Слово</option>
+        <option value="pv">Фразовый глагол</option>
+        <option value="expr">Выражение</option>
+      </select>
+      <input id="list-q" placeholder="Поиск">
+      <button id="list-go">Показать</button>
+    </div>
+    <table id="list-table"></table>
+  </section>
+
+  <section id="card" hidden>
+    <button id="card-back">← Список</button>
+    <div class="meta" id="card-meta"></div>
+    <div class="md" id="card-explanation"></div>
+    <div class="row">
+      <button id="card-learn">Учу</button>
+      <button id="card-known">Знаю</button>
+      <button id="card-suspend">Убрать из повторения</button>
+    </div>
+    <h3>Заметки</h3>
+    <ul id="card-notes"></ul>
+    <h3>История</h3>
+    <table id="card-history"></table>
+  </section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>
