@@ -3,8 +3,8 @@ import { fileURLToPath } from 'node:url';
 import { openDb } from '../src/db.mjs';
 
 export function seed(db, queue) {
-  const insert = db.prepare(`INSERT INTO cards (kind, headword, pos, level, source_json, group_key, group_label, order_index)
-    VALUES (@kind, @headword, @pos, @level, @source_json, @group_key, @group_label, @order_index)
+  const insert = db.prepare(`INSERT INTO cards (kind, headword, pos, level, source_json, group_key, group_label, order_index, stream, topic, freq_rank)
+    VALUES (@kind, @headword, @pos, @level, @source_json, @group_key, @group_label, @order_index, @stream, @topic, @freq_rank)
     ON CONFLICT(kind, headword, pos) DO NOTHING`);
   let inserted = 0;
   let skipped = 0;
@@ -13,7 +13,8 @@ export function seed(db, queue) {
     queue.forEach((item, order_index) => {
       const r = insert.run({
         kind: item.kind, headword: item.headword, pos: item.pos || '', level: item.level || '',
-        source_json: JSON.stringify(item.source), group_key: item.group_key, group_label: item.group_label, order_index
+        source_json: JSON.stringify(item.source), group_key: item.group_key, group_label: item.group_label, order_index,
+        stream: item.stream || 'main', topic: item.topic ?? null, freq_rank: item.freq_rank ?? null
       });
       if (r.changes) inserted++; else skipped++;
     });

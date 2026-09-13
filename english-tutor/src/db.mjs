@@ -14,6 +14,11 @@ export function openDb(file = process.env.DB_PATH || ':memory:') {
   // миграция 13.09.2026: «знаю» кладёт карточку в повторение зрелой, отметка хранится в known_at
   const cols = db.prepare('PRAGMA table_info(cards)').all().map((c) => c.name);
   if (!cols.includes('known_at')) db.exec('ALTER TABLE cards ADD COLUMN known_at TEXT');
+  // миграция 13.09.2026: бытовой слой (A1-B1 и повседневные слова) живёт отдельным потоком
+  if (!cols.includes('stream')) db.exec(`ALTER TABLE cards ADD COLUMN stream TEXT NOT NULL DEFAULT 'main'`);
+  if (!cols.includes('topic')) db.exec('ALTER TABLE cards ADD COLUMN topic TEXT');
+  if (!cols.includes('freq_rank')) db.exec('ALTER TABLE cards ADD COLUMN freq_rank INTEGER');
+  db.exec('CREATE INDEX IF NOT EXISTS cards_stream ON cards(stream, status, order_index)');
   return db;
 }
 

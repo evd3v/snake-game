@@ -14,11 +14,14 @@ export function getCard(db, id) {
   return hydrate(db.prepare('SELECT * FROM cards WHERE id = ?').get(Number(id)));
 }
 
-export function nextCard(db, { kind = null, now = nowIso() } = {}) {
+export const STREAMS = ['main', 'basic'];
+
+export function nextCard(db, { kind = null, stream = 'main', now = nowIso() } = {}) {
   if (kind && !KINDS.includes(kind)) throw httpError(400, 'kind должен быть word, pv или expr');
+  if (!STREAMS.includes(stream)) throw httpError(400, 'stream должен быть main или basic');
   const row = kind
-    ? db.prepare(`SELECT id FROM cards WHERE status = 'queued' AND kind = ? ORDER BY order_index LIMIT 1`).get(kind)
-    : db.prepare(`SELECT id FROM cards WHERE status = 'queued' ORDER BY order_index LIMIT 1`).get();
+    ? db.prepare(`SELECT id FROM cards WHERE status = 'queued' AND stream = ? AND kind = ? ORDER BY order_index LIMIT 1`).get(stream, kind)
+    : db.prepare(`SELECT id FROM cards WHERE status = 'queued' AND stream = ? ORDER BY order_index LIMIT 1`).get(stream);
   if (!row) return null;
   db.prepare(`UPDATE cards SET status = 'shown', shown_at = ? WHERE id = ?`).run(now, row.id);
   setSetting(db, 'pending_card_id', String(row.id));
@@ -135,12 +138,13 @@ export function streakDays(db, now = new Date()) {
 }
 
 export function status(db, now = new Date()) {
-  const rows = db.prepare('SELECT kind, status, fsrs_state, fsrs_scheduled_days, fsrs_due, known_at FROM cards').all();
+  const rows = db.prepare('SELECT kind, status, stream, fsrs_state, fsrs_scheduled_days, fsrs_due, known_at FROM cards').all();
   const today = localDay(now);
   const mk = () => ({ total: 0, queued: 0, shown: 0, learning: 0, learned: 0, known: 0, suspended: 0, due_today: 0 });
-  const by = { word: mk(), pv: mk(), expr: mk(), all: mk() };
+  const by = { word: mk(), pv: mk(), expr: mk(), all: mk(), basic: mk() };
   for (const r of rows) {
-    for (const b of [by[r.kind], by.all]) {
+    const buckets = r.stream === 'basic' ? [by.basic, by.all] : [by[r.kind], by.all];
+    for (const b of buckets) {
       b.total++;
       if (r.status === 'queued') b.queued++;
       else if (r.status === 'shown' || r.status === 'discussing') b.shown++;
@@ -194,4 +198,46 @@ export function learnerContext(db, card) {
     if (r && (r.status === 'known' || r.status === 'learning')) known.push(h); else unknown.push(h);
   }
   return { known, unknown };
+}
+
+const AUDIT_LIMIT = 25;
+
+// Бытовой слой: слова проверяются пачками (их тысячи и большинство известно),
+// а не по одному. Номера пачки держим в settings, чтобы ответ «1 5 12» был однозначным.
+export function auditBatch(db, limit = AUDIT_LIMIT) {
+  const rows = db.prepare(`SELECT id, headword, source_json, level FROM cards
+    WHERE stream = 'basic' AND status = 'queued' ORDER BY order_index LIMIT ?`).all(Math.min(Number(limit) || AUDIT_LIMIT, 50));
+  const left = db.prepare(`SELECT COUNT(*) AS c FROM cards WHERE stream = 'basic' AND status = 'queued'`).get().c;
+  const items = rows.map((r, i) => {
+    const src = JSON.parse(r.source_json);
+    return { n: i + 1, id: r.id, headword: r.headword, ru: src.ru || '', level: r.level || '' };
+  });
+  setSetting(db, 'audit_batch', JSON.stringify(items.map((i) => i.id)));
+  return { items, left };
+}
+
+// Ответ на пачку: номера незнакомых уходят в основную очередь (в начало),
+// остальные отмечаются знакомыми.
+export function auditMark(db, unknownNumbers = [], now = nowIso()) {
+  const ids = JSON.parse(getSetting(db, 'audit_batch') || '[]');
+  if (!ids.length) throw httpError(404, 'нет открытой пачки: сначала /audit');
+  const nums = new Set((unknownNumbers || []).map(Number).filter((n) => Number.isInteger(n) && n >= 1 && n <= ids.length));
+  const moved = [];
+  const known = [];
+  const head = db.prepare('SELECT COALESCE(MIN(order_index), 0) AS m FROM cards').get().m;
+  let slot = head - 1;
+  ids.forEach((id, idx) => {
+    const card = getCard(db, id);
+    if (!card || card.status !== 'queued') return;
+    if (nums.has(idx + 1)) {
+      db.prepare(`UPDATE cards SET stream = 'main', order_index = ? WHERE id = ?`).run(slot--, id);
+      moved.push(card.headword);
+    } else {
+      decide(db, id, 'known', now);
+      known.push(card.headword);
+    }
+  });
+  setSetting(db, 'audit_batch', '');
+  const left = db.prepare(`SELECT COUNT(*) AS c FROM cards WHERE stream = 'basic' AND status = 'queued'`).get().c;
+  return { moved, known: known.length, left };
 }

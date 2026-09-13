@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { formatNext, formatNeedExplanation, formatReview, formatNeedTest, formatStatus, formatDecision, parseGrade, lookupNote } from './format.mjs';
+import { formatNext, formatNeedExplanation, formatReview, formatNeedTest, formatStatus, formatDecision, parseGrade, lookupNote, formatAudit, formatAuditResult } from './format.mjs';
 
 function loadEnv() {
   const file = process.env.ENGLISH_TUTOR_ENV || path.join(os.homedir(), '.claude', 'english-tutor.env');
@@ -37,9 +37,18 @@ export async function run(argv, env, io = { call }) {
   const c = (m, p, b) => io.call(env, m, p, b);
   switch (cmd) {
     case 'next': {
-      const kind = rest[0] ? { word: 'word', слово: 'word', pv: 'pv', фразовый: 'pv', expr: 'expr', выражение: 'expr' }[rest[0]] : '';
-      const body = await c('GET', `/api/next${kind ? `?kind=${kind}` : ''}`);
+      const arg = (rest[0] || '').toLowerCase();
+      const kind = { word: 'word', слово: 'word', pv: 'pv', фразовый: 'pv', expr: 'expr', выражение: 'expr' }[arg] || '';
+      const stream = ['basic', 'базовое', 'бытовое'].includes(arg) ? 'basic' : '';
+      const q = [kind && `kind=${kind}`, stream && `stream=${stream}`].filter(Boolean).join('&');
+      const body = await c('GET', `/api/next${q ? `?${q}` : ''}`);
       return body.explanation_md ? formatNext(body) : formatNeedExplanation(body);
+    }
+    case 'audit':
+      return formatAudit(await c('GET', `/api/audit${rest[0] ? `?limit=${Number(rest[0]) || 25}` : ''}`));
+    case 'audit-mark': {
+      const unknown = rest.join(' ').match(/\d+/g) || [];
+      return formatAuditResult(await c('POST', '/api/audit', { unknown: unknown.map(Number) }));
     }
     case 'word': {
       const body = await c('POST', '/api/cards/lookup', { text: rest.join(' ') });
@@ -96,7 +105,7 @@ export async function run(argv, env, io = { call }) {
       return `${head}\n\n${body.test ? formatReview(body) : formatNeedTest(body)}`;
     }
     default:
-      return 'Команды: next [word|pv|expr] · word <слово или фраза> · explain <id> · learn|known|discuss [id] · note [id] текст · pending · status · review · test [id] · grade <1-4> [id]';
+      return 'Команды: next [word|pv|expr|базовое] · audit [N] · audit-mark <номера|пусто> · word <слово или фраза> · explain <id> · learn|known|discuss [id] · note [id] текст · pending · status · review · test [id] · grade <1-4> [id]';
   }
 }
 

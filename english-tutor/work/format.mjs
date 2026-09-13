@@ -4,8 +4,16 @@ function meta(card, tail) {
   return [KIND[card.kind] || card.kind, card.level || null, card.group_label || null, tail].filter(Boolean).join(' · ');
 }
 
+export const LEARN_BUTTONS = '[[BUTTONS: 👍 Учу | 🤝 Знаю // Дальше]]';
+export const GRADE_BUTTONS = '[[BUTTONS: 1 снова | 2 трудно // 3 норм | 4 легко]]';
+
 export function formatNext(body) {
-  return `${body.explanation_md.trim()}\n\n_${meta(body.card, `в очереди ${body.queued_left}`)}_\nок / знаю / вопрос`;
+  return [
+    body.explanation_md.trim(),
+    '',
+    `_${meta(body.card, `в очереди ${body.queued_left}`)}_`,
+    LEARN_BUTTONS
+  ].join('\n');
 }
 
 export function formatNeedExplanation(body) {
@@ -23,12 +31,13 @@ export function formatNeedExplanation(body) {
 export function formatReview(body) {
   const cloze = body.wanted_type === 'cloze' || /_{3,}/.test(body.test.sentence);
   return [
-    `**Повторение** · осталось ${body.left_today} · ${cloze ? 'вставь слово' : 'что значит выделенное'}`,
+    `**Повторение** · осталось ${body.left_today}`,
+    `_${cloze ? 'какое слово на месте пропуска' : 'что значит слово из списка'}_`,
+    '',
     `> ${body.test.sentence}`,
     '',
     `Ответ: ||${body.test.answer}||`,
-    '',
-    '_1 снова · 2 трудно · 3 норм · 4 легко_'
+    GRADE_BUTTONS
   ].join('\n');
 }
 
@@ -51,14 +60,54 @@ export function formatNeedTest(body) {
   ].join('\n');
 }
 
+export function bar(done, total, width = 12) {
+  if (!total) return '░'.repeat(width);
+  const filled = Math.min(width, Math.round((done / total) * width));
+  return '▓'.repeat(filled) + '░'.repeat(width - filled);
+}
+
 export function formatStatus(s) {
-  const line = (label, c) => `${label}: выучено ${c.learned}, учу ${c.learning}, знал ${c.known}, отложено ${c.shown}, в очереди ${c.queued}`;
+  const main = ['word', 'pv', 'expr'].reduce((acc, k) => ({
+    total: acc.total + s[k].total, queued: acc.queued + s[k].queued,
+    learning: acc.learning + s[k].learning, learned: acc.learned + s[k].learned, known: acc.known + s[k].known
+  }), { total: 0, queued: 0, learning: 0, learned: 0, known: 0 });
+  const passed = main.total - main.queued;
+  const line = (label, c) => `${label} — учу ${c.learning} · выучил ${c.learned} · знал ${c.known} · осталось ${c.queued}`;
+  const out = [
+    `**Английский** · учу ${s.all.learning} · выучил ${s.all.learned} · ждёт сегодня ${s.all.due_today}`,
+    '',
+    `${bar(passed, main.total)} ${passed} из ${main.total} разобрано`,
+    '',
+    '**Основная очередь**',
+    line('слова B2-C1', s.word),
+    line('фразовые', s.pv),
+    line('выражения', s.expr)
+  ];
+  if (s.basic && s.basic.total) {
+    out.push('', '**Бытовой слой** (A1-B1 и повседневное)', `знаю ${s.basic.known} · учу ${s.basic.learning} · проверить ${s.basic.queued}`);
+  }
+  out.push('', `_серия ${s.streak} ${s.streak === 1 ? 'день' : 'дней'} подряд_`);
+  out.push('[[BUTTONS: Дальше | Повторение // Аудит]]');
+  return out.join('\n');
+}
+
+// Пачка бытовых слов: отмечаем номерами только незнакомые, остальные уходят в «знаю».
+export function formatAudit(body) {
+  if (!body.items.length) return 'Бытовой слой проверен целиком.';
+  const list = body.items.map((i) => `${i.n} ${i.headword}${i.ru ? ` (${i.ru})` : ''}`).join(' · ');
   return [
-    `Выучено ${s.all.learned} из ${s.all.total} · учу ${s.all.learning} · ждёт сегодня ${s.all.due_today} · серия ${s.streak}`,
-    line('Слова', s.word),
-    line('Фразовые', s.pv),
-    line('Выражения', s.expr)
+    `**Аудит бытового слоя** · осталось ${body.left}`,
+    '_пришли номера тех, которых НЕ знаешь; остальные запишу как знакомые_',
+    '',
+    `> ${list}`,
+    '[[BUTTONS: Все знаю | Стоп]]'
   ].join('\n');
+}
+
+export function formatAuditResult(body) {
+  const head = `Записал знакомыми ${body.known}. Осталось проверить ${body.left}.`;
+  if (!body.moved.length) return `${head}\n[[BUTTONS: Ещё пачка | Дальше]]`;
+  return `${head}\nВ очередь на разбор: ${body.moved.join(', ')}.\n[[BUTTONS: Ещё пачка | Дальше]]`;
 }
 
 export function formatDecision(decision, r) {

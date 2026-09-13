@@ -33,3 +33,20 @@ test('readFrequency: ранг по позиции строки', () => {
   assert.ok(rank.get('mushroom') > 9000 && rank.get('mushroom') < 12000);
   assert.equal(rank.get('zzzzzz'), undefined);
 });
+
+test('buildBasic: Oxford A1-B1 плюс тематические, без дублей с основной очередью', async () => {
+  const { buildBasic } = await import('../scripts/import-basic.mjs');
+  const oxford = {
+    a: { word: 'spoon', type: 'noun', cefr: 'a2', definition: 'small tool', example: 'a spoon of sugar' },
+    b: { word: 'heritage', type: 'noun', cefr: 'c1', definition: 'x', example: 'y' },
+    c: { word: 'curtain', type: 'noun', cefr: 'b1', definition: 'cloth', example: 'draw the curtains' },
+    d: { word: 'absorb', type: 'verb', cefr: 'b2', definition: 'x', example: 'y' }
+  };
+  const topical = [{ headword: 'kettle', pos: 'noun', ru: 'чайник', topic: 'кухня и посуда', freq_rank: 8337 }, { headword: 'spoon', pos: 'noun', ru: 'ложка', topic: 'кухня и посуда', freq_rank: 3000 }];
+  const rank = new Map([['spoon', 3000], ['curtain', 5000], ['kettle', 8337]]);
+  const basic = buildBasic({ oxford, topical, rank, mainWords: new Set(['curtain|noun']) });
+  assert.deepEqual(basic.map((b) => [b.headword, b.level, b.origin]), [['spoon', 'A2', 'oxford'], ['kettle', 'A2-B1', 'topical']]);
+  assert.equal(basic[0].freq_rank, 3000);
+  assert.equal(basic[1].ru, 'чайник');
+  assert.equal(basic[1].topic, 'кухня и посуда');
+});

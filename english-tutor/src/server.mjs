@@ -5,7 +5,7 @@ import Fastify from 'fastify';
 import fastifyStatic from '@fastify/static';
 import fastifyCookie from '@fastify/cookie';
 import { openDb, nowIso, httpError } from './db.mjs';
-import { nextCard, pendingCard, resolveId, decide, suspend, setExplanation, addNote, cardDetails, listCards, status, getCard, lookupCard, learnerContext } from './queue.mjs';
+import { nextCard, pendingCard, resolveId, decide, suspend, setExplanation, addNote, cardDetails, listCards, status, getCard, lookupCard, learnerContext, auditBatch, auditMark } from './queue.mjs';
 import { reviewNext, addTest, grade, currentReview } from './review.mjs';
 import { jobs } from './jobs.mjs';
 import { renderExplainPrompt, renderTestPrompt } from './prompts.mjs';
@@ -73,9 +73,10 @@ export function buildApp({ db, env, logger = false }) {
 
   app.get('/api/next', async (req) => {
     const kind = req.query.kind || null;
-    const card = nextCard(db, { kind });
+    const stream = req.query.stream || 'main';
+    const card = nextCard(db, { kind, stream });
     if (!card) throw httpError(404, kind ? `очередь ${kind} пуста` : 'очередь пуста');
-    const queued_left = db.prepare(`SELECT COUNT(*) AS c FROM cards WHERE status = 'queued'`).get().c;
+    const queued_left = db.prepare(`SELECT COUNT(*) AS c FROM cards WHERE status = 'queued' AND stream = ?`).get(stream).c;
     return { card, explanation_md: card.explanation_md, prompt: card.explanation_md ? null : renderExplainPrompt(card, learnerContext(db, card)), queued_left };
   });
 
@@ -99,6 +100,9 @@ export function buildApp({ db, env, logger = false }) {
     }
     return { updated };
   });
+
+  app.get('/api/audit', async (req) => auditBatch(db, req.query.limit));
+  app.post('/api/audit', async (req) => auditMark(db, req.body?.unknown || []));
 
   app.get('/api/cards', async (req) => ({ items: listCards(db, req.query) }));
   app.get('/api/cards/:id', async (req) => cardDetails(db, resolveId(db, req.params.id)));

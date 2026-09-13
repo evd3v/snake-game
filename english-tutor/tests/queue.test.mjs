@@ -141,3 +141,35 @@ test('lookupCard: существующее слово становится те�
   assert.deepEqual(ctx, { known: ['respect'], unknown: ['inspect', 'prospect', 'go on'] });
   assert.throws(() => lookupCard(db, '   '), /нужно слово/);
 });
+
+test('бытовой слой: отдельный поток, аудит пачками, незнакомые уходят в начало основной очереди', async () => {
+  const { nextCard: nc, auditBatch, auditMark, status: st } = await import('../src/queue.mjs');
+  const db = openDb(':memory:');
+  seed(db, [
+    item('inspect'),
+    { ...item('kettle'), stream: 'basic', topic: 'кухня и посуда', freq_rank: 8337, source: { ru: 'чайник' } },
+    { ...item('mushroom'), stream: 'basic', topic: 'еда', freq_rank: 10166, source: { ru: 'гриб' } },
+    { ...item('spoon'), stream: 'basic', freq_rank: 3000, source: { ru: 'ложка' } }
+  ]);
+  assert.equal(nc(db, {}).headword, 'inspect', 'по умолчанию основная очередь');
+  const basicFirst = nc(db, { stream: 'basic' });
+  assert.equal(basicFirst.headword, 'kettle');
+  assert.throws(() => nc(db, { stream: 'нет' }), /stream/);
+
+  const batch = auditBatch(db, 10);
+  assert.deepEqual(batch.items.map((i) => [i.n, i.headword, i.ru]), [[1, 'mushroom', 'гриб'], [2, 'spoon', 'ложка']]);
+  assert.equal(batch.left, 2, 'kettle уже показан, он не в пачке');
+  const marked = auditMark(db, [1], '2026-09-13T10:00:00.000Z');
+  assert.deepEqual(marked.moved, ['mushroom']);
+  assert.equal(marked.known, 1);
+  assert.equal(marked.left, 0);
+  const moved = db.prepare(`SELECT stream, order_index, status FROM cards WHERE headword = 'mushroom'`).get();
+  assert.equal(moved.stream, 'main');
+  assert.ok(moved.order_index < 0, 'незнакомое слово встаёт в начало очереди');
+  assert.equal(nc(db, {}).headword, 'mushroom', 'и выдаётся следующим');
+  const s = st(db, new Date('2026-09-13T12:00:00.000Z'));
+  assert.equal(s.basic.total, 2, 'mushroom переехал в основную очередь');
+  assert.equal(s.word.total, 2, 'и считается там');
+  assert.equal(s.basic.known, 1, 'spoon отмечен знакомым');
+  assert.throws(() => auditMark(db, []), /нет открытой пачки/);
+});

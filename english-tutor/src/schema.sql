@@ -24,9 +24,13 @@ CREATE TABLE IF NOT EXISTS cards (
   fsrs_state INTEGER NOT NULL DEFAULT 0,
   fsrs_last_review TEXT,
   known_at TEXT,
+  stream TEXT NOT NULL DEFAULT 'main',
+  topic TEXT,
+  freq_rank INTEGER,
   UNIQUE (kind, headword, pos)
 );
 CREATE INDEX IF NOT EXISTS cards_status_order ON cards(status, order_index);
+CREATE INDEX IF NOT EXISTS cards_stream ON cards(stream, status, order_index);
 CREATE INDEX IF NOT EXISTS cards_due ON cards(status, fsrs_due);
 
 CREATE TABLE IF NOT EXISTS tests (

@@ -94,14 +94,30 @@ function exprStream(expr) {
   }));
 }
 
-export function buildQueue({ words, pv, expr, roots }) {
-  return interleave([[wordStream(words, roots), 6], [pvStream(pv), 2], [exprStream(expr), 2]]);
+// Бытовой слой идёт отдельным потоком в конце: он не мешает основной очереди,
+// проверяется пачками и сортируется по частоте живой речи (сначала самое ходовое).
+export function basicStream(basic) {
+  return [...basic]
+    .sort((a, b) => (a.freq_rank || 99999) - (b.freq_rank || 99999) || a.headword.localeCompare(b.headword))
+    .map((b) => ({
+      kind: 'word', headword: b.headword, pos: b.pos || '', level: b.level || '',
+      group_key: b.topic ? `тема ${b.topic}` : `уровень ${b.level || '?'}`,
+      group_label: b.topic ? `тема: ${b.topic}` : `Oxford ${b.level || ''}`.trim(),
+      stream: 'basic', topic: b.topic || null, freq_rank: b.freq_rank || null,
+      source: { definition: b.definition || '', example: b.example || '', examples: b.examples || [], ru: b.ru || '', origin: b.origin || 'oxford' }
+    }));
+}
+
+export function buildQueue({ words, pv, expr, roots, basic = [] }) {
+  const main = interleave([[wordStream(words, roots), 6], [pvStream(pv), 2], [exprStream(expr), 2]]);
+  return [...main, ...basicStream(basic)];
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const read = (f) => JSON.parse(fs.readFileSync(f, 'utf8'));
-  const queue = buildQueue({ words: read('data/words.json'), pv: read('data/pv.json'), expr: read('data/expr.json'), roots: read('data/roots.json') });
+  const basic = fs.existsSync('data/basic.json') ? read('data/basic.json') : [];
+  const queue = buildQueue({ words: read('data/words.json'), pv: read('data/pv.json'), expr: read('data/expr.json'), roots: read('data/roots.json'), basic });
   fs.writeFileSync('data/queue.json', JSON.stringify(queue, null, 1));
-  const n = (k) => queue.filter((i) => i.kind === k).length;
-  console.log(`queue: ${queue.length} (word ${n('word')}, pv ${n('pv')}, expr ${n('expr')})`);
+  const n = (k) => queue.filter((i) => i.kind === k && i.stream !== 'basic').length;
+  console.log(`queue: ${queue.length} (word ${n('word')}, pv ${n('pv')}, expr ${n('expr')}, basic ${queue.filter((i) => i.stream === 'basic').length})`);
 }
