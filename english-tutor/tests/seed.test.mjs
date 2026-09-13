@@ -27,3 +27,20 @@ test('seed: preknown-карточки сразу знакомые и в ауди
   assert.deepEqual(auditBatch(db).items.map((i) => i.headword), ['mushroom']);
   assert.ok(db.prepare(`SELECT decided_at FROM cards WHERE headword = 'you'`).get().decided_at);
 });
+
+test('refreshSources обновляет данные карточки и не трогает прогресс', async () => {
+  const { refreshSources } = await import('../scripts/seed.mjs');
+  const { nextCard, decide } = await import('../src/queue.mjs');
+  const db = openDb(':memory:');
+  seed(db, [{ ...item('exceed'), source: { definition: 'd' } }]);
+  const card = nextCard(db);
+  decide(db, card.id, 'learn', '2026-09-13T10:00:00.000Z');
+  const r = refreshSources(db, [{ ...item('exceed'), level: 'B2', group_label: 'корень ced', source: { definition: 'd', phon: '/ɪkˈsiːd/', audio: 'u.mp3' } }]);
+  assert.deepEqual(r, { updated: 1 });
+  const after = db.prepare(`SELECT status, source_json, group_label, fsrs_due FROM cards WHERE headword = 'exceed'`).get();
+  assert.equal(JSON.parse(after.source_json).phon, '/ɪkˈsiːd/');
+  assert.equal(after.group_label, 'корень ced');
+  assert.equal(after.status, 'learning', 'статус сохранён');
+  assert.equal(after.fsrs_due, '2026-09-13T10:00:00.000Z', 'прогресс сохранён');
+  assert.deepEqual(refreshSources(db, [{ ...item('exceed'), level: 'B2', group_label: 'корень ced', source: { definition: 'd', phon: '/ɪkˈsiːd/', audio: 'u.mp3' } }]), { updated: 0 }, 'повторный прогон ничего не меняет');
+});
