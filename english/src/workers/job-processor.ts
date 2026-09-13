@@ -3,7 +3,7 @@ import { eq } from 'drizzle-orm';
 import type { Database } from '../db/index.ts';
 import { bookSentences } from '../db/schema/books.ts';
 import { analyzeSentence } from '../lib/ai/analyze-sentence.ts';
-import { storeAnalysisResults } from '../services/analysis.ts';
+import { storeAnalysisResults, isServiceSentence } from '../services/analysis.ts';
 import { generateClozeExercises } from '../services/exercise-generator.ts';
 
 export async function processJob(db: Database, job: Job): Promise<any> {
@@ -14,9 +14,16 @@ export async function processJob(db: Database, job: Job): Promise<any> {
         sourceBook?: string;
         bookSentenceId?: number;
       };
+
+      // Skip service sentences (copyright, ToC, dedications, etc.)
+      if (isServiceSentence(text)) {
+        console.log(`Skipping service sentence: "${text.slice(0, 60)}..."`);
+        return { skipped: true, reason: 'service_sentence' };
+      }
+
       const analysis = await analyzeSentence(text);
       const result = await storeAnalysisResults(db, text, sourceBook, analysis, {
-        autoCreateSrsCards: !bookSentenceId,
+        autoCreateSrsCards: true,
       });
 
       // Link book_sentence to the analysis sentence

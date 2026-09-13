@@ -19,6 +19,44 @@ import { linkWordFamilies } from './word-family.ts';
 import { shouldAutoAddWord } from './cefr-filter.ts';
 import { getRedisUrl } from '../lib/redis.ts';
 
+/**
+ * Check if a sentence is a service/boilerplate page (copyright, ToC, dedications, etc.)
+ * These should not be analyzed for language learning.
+ */
+export function isServiceSentence(text: string): boolean {
+  const normalized = text.toLowerCase().trim();
+
+  // Too short to be meaningful (titles, headings, fragments)
+  if (normalized.split(/\s+/).length < 4) return true;
+
+  // Copyright / legal boilerplate
+  if (/copyright|©|all rights reserved|permission.*publisher|isbn|library of congress/i.test(text)) return true;
+
+  // Table of contents / navigation
+  if (/^(begin reading|table of contents|newsletters|copyright page|acknowledgments|about the author|also by)/i.test(normalized)) return true;
+
+  // Dedications (short ALL CAPS lines)
+  if (text === text.toUpperCase() && text.length < 100) return true;
+
+  // Epigraph attributions
+  if (/^—[A-Z]/.test(text.trim())) return true;
+
+  return false;
+}
+
+/**
+ * Filter vocabulary: remove single-word collocations and collocations
+ * that are too basic or aren't real fixed expressions.
+ */
+function filterCollocations(colls: SentenceAnalysis['collocations']): SentenceAnalysis['collocations'] {
+  return colls.filter(c => {
+    const wordCount = c.text.trim().split(/\s+/).length;
+    // Must have at least 2 words
+    if (wordCount < 2) return false;
+    return true;
+  });
+}
+
 let exerciseQueue: Queue | null = null;
 
 function getExerciseQueue(): Queue {
@@ -53,18 +91,40 @@ export async function storeAnalysisResults(
 }> {
   const { autoCreateSrsCards = true } = options;
 
-  // a. Insert sentence
-  const [insertedSentence] = await db
-    .insert(sentences)
-    .values({
-      text,
-      translation: analysis.translation,
-      cefrLevel: analysis.cefrLevel,
-      sourceBook: sourceBook ?? null,
-    })
-    .returning({ id: sentences.id });
+  // Filter collocations at code level (safety net for AI)
+  const filteredCollocations = filterCollocations(analysis.collocations);
 
-  const sentenceId = insertedSentence.id;
+  // a. Deduplicate: check if this sentence already exists
+  const [existingSentence] = await db
+    .select({ id: sentences.id })
+    .from(sentences)
+    .where(eq(sentences.text, text))
+    .limit(1);
+
+  let sentenceId: number;
+
+  if (existingSentence) {
+    sentenceId = existingSentence.id;
+    // Update translation if needed
+    await db
+      .update(sentences)
+      .set({
+        translation: analysis.translation,
+        cefrLevel: analysis.cefrLevel,
+      })
+      .where(eq(sentences.id, sentenceId));
+  } else {
+    const [insertedSentence] = await db
+      .insert(sentences)
+      .values({
+        text,
+        translation: analysis.translation,
+        cefrLevel: analysis.cefrLevel,
+        sourceBook: sourceBook ?? null,
+      })
+      .returning({ id: sentences.id });
+    sentenceId = insertedSentence.id;
+  }
 
   // b. Upsert words
   const insertedWordsMap = new Map<string, number>();
@@ -152,7 +212,7 @@ export async function storeAnalysisResults(
   // d. Upsert collocations
   let collocationsInserted = 0;
 
-  for (const coll of analysis.collocations) {
+  for (const coll of filteredCollocations) {
     const [upsertedCollocation] = await db
       .insert(collocations)
       .values({
