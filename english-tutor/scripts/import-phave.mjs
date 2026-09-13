@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { normalizeHeadword } from '../src/normalize.mjs';
 
 // Заголовки бывают с отступом и с несколькими пробелами после точки (ранги 100+).
-const HEAD = /^\s*(\d+)\.\s+([A-Z][A-Z ]+?)\s*$/;
+const HEAD = /^(\d+)\.\s+([A-Z][A-Z ]+)$/;
 const SENSE = /^(\d+)\. (.+?) \(([\d.]+)\s*%\)$/;
 
 export function parsePhave(text) {
@@ -11,11 +11,12 @@ export function parsePhave(text) {
   const out = [];
   let cur = null;
   let sense = null;
-  let wrapped = null; // длинное значение переносится на вторую строку, процент стоит в конце второй
+  let wrapped = null; // длинное значение переносится на следующую строку, процент стоит в конце последней
+  let inExample = false; // пример тоже может переноситься, до пустой строки
   for (const raw of lines) {
     const line = raw.trim();
-    if (!line) continue;
-    const h = raw.match(HEAD);
+    if (!line) { inExample = false; wrapped = null; continue; }
+    const h = line.match(HEAD);
     if (h) {
       const headword = normalizeHeadword(h[2]);
       const [verb, ...rest] = headword.split(' ');
@@ -23,19 +24,23 @@ export function parsePhave(text) {
       out.push(cur);
       sense = null;
       wrapped = null;
+      inExample = false;
       continue;
     }
-    const candidate = wrapped ? `${wrapped} ${line}` : raw;
+    if (!cur) continue;
+    const candidate = wrapped ? `${wrapped} ${line}` : line;
     const s = candidate.match(SENSE);
-    if (s && cur) {
+    if (s) {
       sense = { n: Number(s[1]), meaning: s[2].trim(), percent: Number(s[3]), example: '' };
       cur.senses.push(sense);
       wrapped = null;
+      inExample = false;
       continue;
     }
-    if (/^\d+\. /.test(raw) && !/\(\d[\d.]*\s*%\)$/.test(raw)) { wrapped = raw.trim(); continue; }
-    if (wrapped) { wrapped = null; }
-    if (sense && /^\s{4,}/.test(raw) && !sense.example) sense.example = line;
+    if (wrapped || /^\d+\. /.test(line)) { wrapped = candidate; continue; }
+    if (!sense) continue;
+    if (!sense.example) { sense.example = line; inExample = true; }
+    else if (inExample) sense.example += ` ${line}`;
   }
   return out;
 }

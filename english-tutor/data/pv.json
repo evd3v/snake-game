@@ -1467,7 +1467,7 @@
     "n": 1,
     "meaning": "Experience STH difficult or unpleasant",
     "percent": 61,
-    "example": "You have to understand the tough situation she went through before judging"
+    "example": "You have to understand the tough situation she went through before judging her."
    },
    {
     "n": 2,
@@ -1767,7 +1767,7 @@
     "n": 1,
     "meaning": "Start a life, existence, profession, or course of action in a particular way or by doing a particular thing",
     "percent": 95,
-    "example": "She started out as a shop assistant and gradually climbed the employment"
+    "example": "She started out as a shop assistant and gradually climbed the employment ladder."
    }
   ]
  },
@@ -2143,7 +2143,7 @@
     "n": 1,
     "meaning": "Distinguish oneself/itself by being better, more significant or more impressive than other people/things",
     "percent": 60.5,
-    "example": "Excellent product quality is what made the brand stand out from its"
+    "example": "Excellent product quality is what made the brand stand out from its competitors."
    },
    {
     "n": 2,
@@ -2245,7 +2245,7 @@
     "n": 2,
     "meaning": "Be successfully communicated or understood",
     "percent": 22.5,
-    "example": "He needed to speak slowly and clearly so his message would get through to the"
+    "example": "He needed to speak slowly and clearly so his message would get through to the audience."
    },
    {
     "n": 3,
@@ -2600,28 +2600,80 @@
   "verb": "set",
   "particle": "down",
   "rank": 135,
-  "senses": []
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Put something on a surface or on the ground",
+    "percent": 75,
+    "example": "He carried the bags to his room and set them down."
+   }
+  ]
  },
  {
   "headword": "sort out",
   "verb": "sort",
   "particle": "out",
   "rank": 136,
-  "senses": []
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Do what is needed to solve a problem, conflict or difficult situation",
+    "percent": 51,
+    "example": "A few ideas were raised to sort out the company’s financial issues."
+   },
+   {
+    "n": 2,
+    "meaning": "Find out information so as to understand STH",
+    "percent": 25.5,
+    "example": "He will need some time to sort out the reasons for his failure."
+   }
+  ]
  },
  {
   "headword": "follow up",
   "verb": "follow",
   "particle": "up",
   "rank": 137,
-  "senses": []
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Take action about STH after a previous action or thing, esp. so as to reinforce its effect",
+    "percent": 48.5,
+    "example": "You won’t be cured immediately after the operation; you will have to follow up with therapy."
+   },
+   {
+    "n": 2,
+    "meaning": "Try to find more information about STH",
+    "percent": 45.5,
+    "example": "Detectives are following up on a few promising leads."
+   }
+  ]
  },
  {
   "headword": "come through",
   "verb": "come",
   "particle": "through",
   "rank": 138,
-  "senses": []
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Be clearly perceived, noticed or seen (feeling, emotion, quality)",
+    "percent": 20.5,
+    "example": "Her disappointment came through by the tone of her voice."
+   },
+   {
+    "n": 2,
+    "meaning": "Reach success or a desired goal despite difficulty",
+    "percent": 20,
+    "example": "He worked really hard, and despite some difficulties, he came through in the"
+   },
+   {
+    "n": 3,
+    "meaning": "Arrive at a destination; come into view (train, ship)",
+    "percent": 10,
+    "example": "We had to wait for a ship to come through and rescue us."
+   }
+  ]
  },
  {
   "headword": "settle down",
@@ -2798,7 +2850,20 @@
   "verb": "put",
   "particle": "off",
   "rank": 146,
-  "senses": []
+  "senses": [
+   {
+    "n": 1,
+    "meaning": "Delay until a later time or date",
+    "percent": 68,
+    "example": "Now that I had more free time, there was no excuse to put off exercising any longer."
+   },
+   {
+    "n": 2,
+    "meaning": "Cause to feel intense dislike",
+    "percent": 27.5,
+    "example": "The bad smell put everyone off."
+   }
+  ]
  },
  {
   "headword": "come about",

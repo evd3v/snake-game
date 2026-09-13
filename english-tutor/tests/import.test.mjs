@@ -30,8 +30,13 @@ test('parseOxford берёт только b2 и c1 и подклеивает п�
 
 test('parsePhave: 2 глагола, значения с процентами и примерами', () => {
   const out = parsePhave(fx('phave-sample.txt'));
-  assert.equal(out.length, 4);
+  assert.equal(out.length, 5);
   assert.equal(out[0].headword, 'go on');
+  assert.equal(out[4].headword, 'follow up');
+  assert.equal(out[4].senses.length, 2);
+  assert.equal(out[4].senses[0].percent, 48.5);
+  assert.match(out[4].senses[0].example, /follow up with therapy\.$/);
+  assert.equal(out[4].senses[1].example, 'They followed up the story.');
   assert.deepEqual([out[3].headword, out[3].senses[0].percent, out[3].senses[0].example], ['end up', 100, 'We ended up staying at home all evening.']);
   assert.match(out[3].senses[0].meaning, /^Finally do STH .* series of events$/);
   assert.deepEqual([out[2].rank, out[2].headword, out[2].senses[0].percent], [100, 'carry on', 75]);
