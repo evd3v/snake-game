@@ -52,19 +52,7 @@ export function parseTestReply(text) {
 export async function runJobs({ jobs, ask, post, log, max = 10 }) {
   const result = { explained: 0, tested: 0, failed: 0 };
   let budget = max;
-  for (const job of jobs.explain) {
-    if (budget-- <= 0) return result;
-    try {
-      const md = (await ask(job.prompt)).replace(/^```(?:markdown)?\n?|```$/g, '').trim();
-      const r = await post(`/api/cards/${job.card_id}/explanation`, { md });
-      if (r.status !== 200) throw new Error(`${r.status} ${r.body?.error || ''}`);
-      result.explained++;
-      log.info(`explain ${job.headword}: ok`);
-    } catch (e) {
-      result.failed++;
-      log.error(`explain ${job.headword}: ${e.message}`);
-    }
-  }
+  // Предложения для повторения идут первыми: они нужны сегодня, а разборы заготовлены на 20 карточек вперёд.
   for (const job of jobs.tests) {
     if (budget-- <= 0) return result;
     try {
@@ -80,6 +68,19 @@ export async function runJobs({ jobs, ask, post, log, max = 10 }) {
     } catch (e) {
       result.failed++;
       log.error(`test ${job.headword}: ${e.message}`);
+    }
+  }
+  for (const job of jobs.explain) {
+    if (budget-- <= 0) return result;
+    try {
+      const md = (await ask(job.prompt)).replace(/^```(?:markdown)?\n?|```$/g, '').trim();
+      const r = await post(`/api/cards/${job.card_id}/explanation`, { md });
+      if (r.status !== 200) throw new Error(`${r.status} ${r.body?.error || ''}`);
+      result.explained++;
+      log.info(`explain ${job.headword}: ok`);
+    } catch (e) {
+      result.failed++;
+      log.error(`explain ${job.headword}: ${e.message}`);
     }
   }
   return result;

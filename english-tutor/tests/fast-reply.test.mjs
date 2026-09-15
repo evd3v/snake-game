@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { classifyReply, run, FALLBACK_EXIT } from '../work/tutor.mjs';
+import { classifyReply, run, FALLBACK_EXIT, kickGenerator } from '../work/tutor.mjs';
+process.env.ENGLISH_TUTOR_NO_KICK = '1';
 
 test('classifyReply: команды обучения распознаются без модели', () => {
   assert.deepEqual(classifyReply('/next'), { cmd: 'next', args: [] });
@@ -59,4 +60,27 @@ test('run reply: выполняет команду, отдаёт fallback на �
     }
   };
   assert.deepEqual(await run(['reply', 'дальше'], {}, noExplanation), { fallback: true }, 'разбор ещё не готов — пишет модель');
+});
+
+test('grade: оценка записана, при пустом запасе не откатывается к модели, а будит генератор', async () => {
+  delete process.env.ENGLISH_TUTOR_NO_KICK;
+  const spawned = [];
+  const io = {
+    spawn: (bin, args, opts) => { spawned.push({ args, max: opts.env.GENERATOR_MAX }); return { unref() {} }; },
+    call: async (env, method, p) => {
+      if (p === '/api/status') return { open: { review: true } };
+      if (p.endsWith('/grade')) return { scheduled_days: 3, next_left: 1, card: {} };
+      if (p === '/api/review/next') return { card: { id: 3, headword: 'precede', kind: 'word', source: {} }, test: null, wanted_type: 'context', prompt: 'P', left_today: 1 };
+      throw new Error(`unexpected ${p}`);
+    }
+  };
+  const out = await run(['reply', '3', 'норм'], {}, io);
+  assert.match(out, /^Записал 3, следующий раз через 3 дн\./);
+  assert.match(out, /Следующее предложение готовится/);
+  assert.match(out, /\[\[BUTTONS: Повторение\]\]$/);
+  assert.equal(spawned.length, 1, 'генератор разбужен один раз');
+  assert.match(spawned[0].args[0], /generator\.mjs$/);
+  assert.equal(spawned[0].max, '4');
+  process.env.ENGLISH_TUTOR_NO_KICK = '1';
+  assert.equal(kickGenerator(), false, 'в тестах генератор не запускается');
 });

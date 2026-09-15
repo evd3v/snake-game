@@ -30,8 +30,9 @@ test('runJobs: разборы и тесты, повтор теста после 
   const done = await runJobs({ jobs, ask, post, log: { info() {}, error() {} }, max: 10 });
   assert.deepEqual(done, { explained: 2, tested: 1, failed: 0 });
   assert.equal(asked.length, 4);
-  assert.match(asked[3], /^T1[\s\S]*length 2/);
-  assert.deepEqual(posted[0], ['/api/cards/1/explanation', { md: 'разбор для E1 достаточной длины' }]);
+  assert.match(asked[0], /^T1$/, 'предложения для повторения идут первыми');
+  assert.match(asked[1], /^T1[\s\S]*length 2/);
+  assert.deepEqual(posted[2], ['/api/cards/1/explanation', { md: 'разбор для E1 достаточной длины' }]);
   const limited = await runJobs({ jobs, ask, post, log: { info() {}, error() {} }, max: 1 });
-  assert.deepEqual(limited, { explained: 1, tested: 0, failed: 0 });
+  assert.deepEqual(limited, { explained: 0, tested: 1, failed: 0 }, 'при нехватке лимита разборы ждут, предложение нет');
 });

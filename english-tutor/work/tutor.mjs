@@ -2,7 +2,20 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { spawn } from 'node:child_process';
 import { formatNext, formatNeedExplanation, formatReview, formatNeedTest, formatStatus, formatDecision, parseGrade, lookupNote, formatAudit, formatAuditResult } from './format.mjs';
+
+// Пнуть генератор в фоне, когда нужного разбора или предложения нет в запасе:
+// он допишет недостающее за десятки секунд, следующее нажатие уже получит готовое.
+export function kickGenerator(io = {}) {
+  if (process.env.ENGLISH_TUTOR_NO_KICK) return false;
+  const script = new URL('./generator.mjs', import.meta.url).pathname;
+  const child = (io.spawn || spawn)(process.execPath, [script], {
+    detached: true, stdio: 'ignore', env: { ...process.env, GENERATOR_MAX: '4' }
+  });
+  child.unref?.();
+  return true;
+}
 
 function loadEnv() {
   const file = process.env.ENGLISH_TUTOR_ENV || path.join(os.homedir(), '.claude', 'english-tutor.env');
@@ -137,7 +150,10 @@ export async function run(argv, env, io = { call }) {
       const head = `Записал ${rating}, следующий раз через ${g.scheduled_days} дн.`;
       if (!g.next_left) return `${head} На сегодня всё.`;
       const body = await c('GET', '/api/review/next');
-      return `${head}\n\n${body.test ? formatReview(body) : formatNeedTest(body)}`;
+      if (body.test) return `${head}\n\n${formatReview(body)}`;
+      // Оценка уже записана: модели тут делать нечего, предложение допишет генератор
+      kickGenerator(io);
+      return `${head}\nСледующее предложение готовится, нажми «Повторение» через минуту.\n[[BUTTONS: Повторение]]`;
     }
     case 'reply': {
       const text = rest.join(' ');
@@ -146,8 +162,11 @@ export async function run(argv, env, io = { call }) {
       if (!plan) return { fallback: true };
       if (plan.cmd === 'stop') return 'Остановились. Скажи «дальше», когда продолжим.';
       const out = await run([plan.cmd, ...plan.args], env, io);
-      // Разбора или предложения ещё нет: это работа модели, отдаём ей
-      if (typeof out === 'string' && /^\[НУЖЕН (РАЗБОР|ТЕСТ)\]/m.test(out)) return { fallback: true };
+      // Разбора или предложения ещё нет: это работа модели, отдаём ей и заодно будим генератор
+      if (typeof out === 'string' && /^\[НУЖЕН (РАЗБОР|ТЕСТ)\]/m.test(out)) {
+        kickGenerator(io);
+        return { fallback: true };
+      }
       return out;
     }
     default:
