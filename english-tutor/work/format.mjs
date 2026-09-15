@@ -7,9 +7,11 @@ function meta(card, tail) {
 export const LEARN_BUTTONS = '[[BUTTONS: 👍 Учу | 🤝 Знаю]]';
 export const GRADE_BUTTONS = '[[BUTTONS: 1 снова | 2 трудно // 3 норм | 4 легко]]';
 
-export function formatNext(body) {
+export function formatNext(body, receipt = '') {
   const audio = body.card.source?.audio;
   return [
+    REPLACE,
+    ...(receipt ? [receipt, ''] : []),
     ...(body.repeat ? ['_это слово ещё не решено, поэтому оно снова первым_', ''] : []),
     body.explanation_md.trim(),
     '',
@@ -38,20 +40,46 @@ const REVIEW_HINT = {
   context: (card) => `Что здесь значит **${card.headword}**?`
 };
 
-export function formatReview(body) {
-  const type = body.test.type || (body.wanted_type === 'cloze' || /_{3,}/.test(body.test.sentence) ? 'cloze' : 'context');
-  const hint = (REVIEW_HINT[type] || REVIEW_HINT.context)(body.card);
+export const REPLACE = '[[REPLACE]]';
+
+function reviewType(body) {
+  return body.test?.type || (body.wanted_type === 'cloze' || /_{3,}/.test(body.test?.sentence || '') ? 'cloze' : 'context');
+}
+
+// Шаг 1: предложение и вопрос, ответ спрятан за кнопкой.
+export function formatReview(body, receipt = '') {
+  const type = reviewType(body);
   return [
+    REPLACE,
+    ...(receipt ? [receipt, ''] : []),
     `**Повторение** · осталось ${body.left_today}`,
     '',
     `> ${body.test.sentence}`,
     '',
-    hint,
-    `_Ответь себе, потом открой:_ ||${body.test.answer}||`,
+    (REVIEW_HINT[type] || REVIEW_HINT.context)(body.card),
+    '[[BUTTONS: Показать ответ]]'
+  ].join('\n');
+}
+
+// Шаг 2: то же предложение с ответом и оценками.
+export function formatReviewReveal(body) {
+  const type = reviewType(body);
+  return [
+    REPLACE,
+    `**Повторение** · осталось ${body.left_today}`,
+    '',
+    `> ${body.test.sentence}`,
+    '',
+    (REVIEW_HINT[type] || REVIEW_HINT.context)(body.card),
+    `**${body.card.headword}**: ${body.test.answer}`,
     '',
     '_Как вспомнилось?_',
     GRADE_BUTTONS
   ].join('\n');
+}
+
+export function formatReviewDone(receipt = '') {
+  return [REPLACE, ...(receipt ? [receipt, ''] : []), 'На сегодня всё повторено.', '[[BUTTONS: Дальше | Статус]]'].join('\n');
 }
 
 export function lookupNote(body) {
@@ -131,6 +159,15 @@ export function formatDecision(decision, r) {
   if (decision === 'learn') return `В повторении. Учу ${a.learning}, выучено ${a.learned}, ждёт сегодня ${a.due_today}.`;
   if (decision === 'known') return `Записал как знакомое: в повторение придёт через 3 месяца. Таких ${a.known}.`;
   return 'Обсуждаем. Скажи «ок», когда станет понятно.';
+}
+
+// Короткая квитанция о решении для шапки следующей карточки.
+export function receiptFor(decision, r) {
+  const a = r.status.all;
+  const word = r.card?.headword || '';
+  if (decision === 'learn') return `✓ ${word} → учу (всего ${a.learning})`;
+  if (decision === 'known') return `✓ ${word} → знакомое`;
+  return `✓ ${word}`;
 }
 
 // Оценка приходит цифрой, словом или подписью кнопки («3 норм»).

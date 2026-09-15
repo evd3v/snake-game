@@ -6,7 +6,7 @@ import fastifyStatic from '@fastify/static';
 import fastifyCookie from '@fastify/cookie';
 import { openDb, nowIso, httpError } from './db.mjs';
 import { nextCard, undecidedCard, pendingCard, resolveId, decide, suspend, setExplanation, addNote, cardDetails, listCards, status, getCard, lookupCard, learnerContext, auditBatch, auditMark } from './queue.mjs';
-import { reviewNext, addTest, grade, currentReview } from './review.mjs';
+import { reviewNext, addTest, grade, currentReview, currentReviewCard } from './review.mjs';
 import { jobs } from './jobs.mjs';
 import { renderExplainPrompt, renderTestPrompt } from './prompts.mjs';
 import { startReminder } from './reminder.mjs';
@@ -132,6 +132,12 @@ export function buildApp({ db, env, logger = false }) {
     const r = reviewNext(db);
     if (!r) return { card: null, test: null, wanted_type: null, prompt: null, left_today: 0 };
     return { card: r.card, test: r.test, wanted_type: r.wanted_type, prompt: r.test ? null : renderTestPrompt(r.card, r.wanted_type, r.history), left_today: r.left_today };
+  });
+
+  app.get('/api/review/current', async () => {
+    const r = currentReviewCard(db);
+    if (!r) return { card: null, test: null, wanted_type: null, left_today: 0 };
+    return r;
   });
 
   const reviewId = (param) => {

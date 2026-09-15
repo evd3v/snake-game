@@ -1,18 +1,21 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { formatNext, formatNeedExplanation, formatReview, formatNeedTest, formatStatus, formatDecision, parseGrade } from '../work/format.mjs';
+import { formatNext, formatNeedExplanation, formatReview, formatReviewReveal, formatReviewDone, formatNeedTest, formatStatus, formatDecision, receiptFor, parseGrade, REPLACE } from '../work/format.mjs';
 
 const card = { id: 5, kind: 'word', headword: 'inspect', pos: 'verb', level: 'B2', group_label: 'корень spect' };
 
 test('formatNext: пометка о нерешённом слове', () => {
   const t = formatNext({ card, explanation_md: '**inspect** осматривать', queued_left: 5, repeat: true });
-  assert.match(t, /^_это слово ещё не решено, поэтому оно снова первым_\n\n\*\*inspect\*\*/);
+  assert.match(t, /^\[\[REPLACE\]\]\n_это слово ещё не решено, поэтому оно снова первым_\n\n\*\*inspect\*\*/);
+  const withReceipt = formatNext({ card, explanation_md: '**inspect** осматривать', queued_left: 5 }, '✓ exceed → учу (всего 3)');
+  assert.match(withReceipt, /^\[\[REPLACE\]\]\n✓ exceed → учу \(всего 3\)\n\n\*\*inspect\*\*/);
   assert.ok(!/не решено/.test(formatNext({ card, explanation_md: '**inspect** осматривать', queued_left: 5 })));
 });
 
 test('formatNext: разбор, хвост со статусом и кнопки', () => {
   const t = formatNext({ card, explanation_md: '**inspect** осматривать', queued_left: 120 });
-  assert.match(t, /^\*\*inspect\*\* осматривать/);
+  assert.equal(REPLACE, '[[REPLACE]]');
+  assert.match(t, /^\[\[REPLACE\]\]\n\*\*inspect\*\* осматривать/);
   assert.match(t, /_слово · B2 · корень spect · в очереди 120_/);
   assert.match(t, /\[\[BUTTONS: 👍 Учу \| 🤝 Знаю\]\]$/);
 });
@@ -24,16 +27,23 @@ test('formatNeedExplanation содержит промпт и команду со
   assert.match(t, /tutor\.mjs explain 5/);
 });
 
-test('formatReview: спойлер и шкала', () => {
-  const t = formatReview({ card, test: { sentence: 'She inspected it.', answer: 'осматривать / examine' }, wanted_type: 'context', left_today: 4 });
-  assert.match(t, /\*\*Повторение\*\* · осталось 4/);
-  assert.match(t, /^> She inspected it\.$/m);
-  assert.match(t, /^Что здесь значит \*\*inspect\*\*\?$/m, 'проверяемое слово названо явно');
-  assert.match(t, /_Ответь себе, потом открой:_ \|\|осматривать \/ examine\|\|/);
-  assert.match(t, /She inspected it\./);
-  assert.match(t, /\|\|осматривать \/ examine\|\|/);
-  assert.match(t, /\[\[BUTTONS: 1 снова \| 2 трудно \/\/ 3 норм \| 4 легко\]\]$/);
+test('formatReview: шаг с вопросом, шаг с ответом, конец', () => {
+  const body = { card, test: { sentence: 'She inspected it.', answer: 'осматривать / examine', type: 'context' }, wanted_type: 'context', left_today: 4 };
+  const ask = formatReview(body);
+  assert.match(ask, /^\[\[REPLACE\]\]\n\*\*Повторение\*\* · осталось 4/);
+  assert.match(ask, /^> She inspected it\.$/m);
+  assert.match(ask, /^Что здесь значит \*\*inspect\*\*\?$/m);
+  assert.ok(!/examine/.test(ask), 'ответ на первом шаге не показан');
+  assert.match(ask, /\[\[BUTTONS: Показать ответ\]\]$/);
+  const withReceipt = formatReview(body, '✓ precede → через 3 дн.');
+  assert.match(withReceipt, /^\[\[REPLACE\]\]\n✓ precede → через 3 дн\.\n\n\*\*Повторение\*\*/);
+  const reveal = formatReviewReveal(body);
+  assert.match(reveal, /^\[\[REPLACE\]\]/);
+  assert.match(reveal, /^\*\*inspect\*\*: осматривать \/ examine$/m);
+  assert.match(reveal, /_Как вспомнилось\?_\n\[\[BUTTONS: 1 снова \| 2 трудно \/\/ 3 норм \| 4 легко\]\]$/);
   assert.match(formatReview({ card, test: { sentence: 'She _____ it. (осмотрела)', answer: 'inspect' }, wanted_type: 'cloze', left_today: 1 }), /Какое слово стоит на месте пропуска\?/);
+  assert.match(formatReviewDone('✓ x → через 1 дн.'), /^\[\[REPLACE\]\]\n✓ x → через 1 дн\.\n\nНа сегодня всё повторено\.\n\[\[BUTTONS: Дальше \| Статус\]\]$/);
+  assert.match(formatReviewDone(), /^\[\[REPLACE\]\]\nНа сегодня всё повторено\./);
 });
 
 test('formatNeedTest и formatStatus и formatDecision', () => {
@@ -55,6 +65,8 @@ test('formatNeedTest и formatStatus и formatDecision', () => {
   assert.ok(!/бытовые слова/.test(noBasic));
   assert.match(formatDecision('learn', { status: s }), /В повторении/);
   assert.match(formatDecision('known', { status: s }), /знакомое.*3 месяца/);
+  assert.equal(receiptFor('learn', { status: s, card: { headword: 'exceed' } }), '✓ exceed → учу (всего 40)');
+  assert.equal(receiptFor('known', { status: s, card: { headword: 'exceed' } }), '✓ exceed → знакомое');
 });
 
 test('parseGrade', () => {
@@ -99,7 +111,6 @@ test('formatNext: ссылка на озвучку только когда он�
 });
 
 test('formatReview: подсказка для pair', async () => {
-  const { formatReview } = await import('../work/format.mjs');
   const t = formatReview({ card, test: { type: 'pair', sentence: 'The bill must not _____ the agreed sum here. (surpass / exceed)', answer: 'exceed' }, wanted_type: 'pair', left_today: 2 });
   assert.match(t, /Какой из двух вариантов в скобках подходит\?/);
   assert.match(t, /\(surpass \/ exceed\)/);

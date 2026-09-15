@@ -16,6 +16,7 @@ test('classifyReply: команды обучения распознаются б
   assert.deepEqual(classifyReply('🤝 Знаю'), { cmd: 'known', args: [] });
   assert.deepEqual(classifyReply('пропусти'), { cmd: 'skip', args: [] });
   assert.deepEqual(classifyReply('стоп'), { cmd: 'stop', args: [] });
+  assert.deepEqual(classifyReply('Показать ответ'), { cmd: 'reveal', args: [] });
   assert.deepEqual(classifyReply('все знаю'), { cmd: 'audit-mark', args: [] });
   assert.equal(FALLBACK_EXIT, 3);
 });
@@ -41,17 +42,23 @@ test('run reply: выполняет команду, отдаёт fallback на �
       calls.push([method, p]);
       if (p === '/api/status') return { open: { review: false, audit: false }, all: { learning: 1, learned: 0, known: 0, due_today: 0, total: 10, queued: 5, shown: 0 }, word: { total: 10, queued: 5, learning: 1, learned: 0, known: 0, shown: 0 }, pv: { total: 0, queued: 0, learning: 0, learned: 0, known: 0, shown: 0 }, expr: { total: 0, queued: 0, learning: 0, learned: 0, known: 0, shown: 0 }, streak: 0 };
       if (p.endsWith('/learn')) return { card: { headword: 'exceed', status: 'learning' }, status: { all: { learning: 1, learned: 0, known: 0, due_today: 1 } } };
+      if (p === '/api/review/current') return { card: { headword: 'exceed' }, test: { sentence: 'A long sentence with exceed inside it.', answer: 'превышать / exceed', type: 'context' }, wanted_type: 'context', left_today: 1 };
       if (p.startsWith('/api/next')) return { card: { headword: 'exceed', kind: 'word', level: 'B2', source: {} }, explanation_md: '**exceed** превышать', queued_left: 5 };
       throw new Error(`unexpected ${p}`);
     }
   };
   const learned = await run(['reply', '👍', 'Учу'], {}, io);
-  assert.match(learned, /В повторении/);
-  assert.deepEqual(calls.map((c) => c[1]), ['/api/status', '/api/cards/pending/learn']);
+  assert.match(learned, /^\[\[REPLACE\]\]\n✓ exceed → учу \(всего 1\)\n\n\*\*exceed\*\* превышать/);
+  assert.match(learned, /\[\[BUTTONS: 👍 Учу \| 🤝 Знаю\]\]$/);
+  assert.deepEqual(calls.map((c) => c[1]), ['/api/status', '/api/cards/pending/learn', '/api/next']);
   const question = await run(['reply', 'а', 'чем', 'от', 'surpass'], {}, io);
   assert.deepEqual(question, { fallback: true });
   const stopped = await run(['reply', 'стоп'], {}, io);
   assert.match(stopped, /Остановились/);
+  const reveal = await run(['reply', 'Показать', 'ответ'], {}, io);
+  assert.match(reveal, /^\[\[REPLACE\]\]/);
+  assert.match(reveal, /\*\*exceed\*\*: превышать \/ exceed/);
+  assert.match(reveal, /\[\[BUTTONS: 1 снова/);
   const noExplanation = {
     call: async (env, method, p) => {
       if (p === '/api/status') return { open: {} };
@@ -69,13 +76,13 @@ test('grade: оценка записана, при пустом запасе н�
     spawn: (bin, args, opts) => { spawned.push({ args, max: opts.env.GENERATOR_MAX }); return { unref() {} }; },
     call: async (env, method, p) => {
       if (p === '/api/status') return { open: { review: true } };
-      if (p.endsWith('/grade')) return { scheduled_days: 3, next_left: 1, card: {} };
+      if (p.endsWith('/grade')) return { scheduled_days: 3, next_left: 1, card: { headword: 'exceed' } };
       if (p === '/api/review/next') return { card: { id: 3, headword: 'precede', kind: 'word', source: {} }, test: null, wanted_type: 'context', prompt: 'P', left_today: 1 };
       throw new Error(`unexpected ${p}`);
     }
   };
   const out = await run(['reply', '3', 'норм'], {}, io);
-  assert.match(out, /^Записал 3, следующий раз через 3 дн\./);
+  assert.match(out, /^\[\[REPLACE\]\]✓ exceed → через 3 дн\./);
   assert.match(out, /Следующее предложение готовится/);
   assert.match(out, /\[\[BUTTONS: Повторение\]\]$/);
   assert.equal(spawned.length, 1, 'генератор разбужен один раз');

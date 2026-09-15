@@ -168,3 +168,17 @@ test('пустое тело с json-заголовком принимается,
   const ok = await a.inject({ method: 'POST', url: '/api/cards/lookup', headers: auth, payload: { text: 'surpass' } });
   assert.equal(ok.statusCode, 200, 'обычный json по-прежнему разбирается');
 });
+
+test('GET /api/review/current отдаёт открытую карточку', async () => {
+  const { a, db } = await app();
+  const n = await a.inject({ method: 'GET', url: '/api/next', headers: auth });
+  const id = n.json().card.id;
+  await a.inject({ method: 'POST', url: `/api/cards/${id}/learn`, headers: auth });
+  db.prepare(`UPDATE cards SET fsrs_due = '2020-01-01T00:00:00.000Z' WHERE id = ?`).run(id);
+  assert.equal((await a.inject({ method: 'GET', url: '/api/review/current', headers: auth })).json().card, null);
+  await a.inject({ method: 'POST', url: `/api/review/${id}/test`, headers: auth, payload: { type: 'context', sentence: 'Before buying the flat, we hired an expert to inspect the wiring and the roof.', answer: 'осматривать / examine' } });
+  await a.inject({ method: 'GET', url: '/api/review/next', headers: auth });
+  const cur = (await a.inject({ method: 'GET', url: '/api/review/current', headers: auth })).json();
+  assert.equal(cur.card.id, id);
+  assert.match(cur.test.sentence, /inspect/);
+});

@@ -130,3 +130,21 @@ test('requiredTestType: pair только когда близнец сам вы�
   db.prepare(`INSERT INTO review_log(card_id, ts, rating, test_type) VALUES (?, '2026-09-13T10:00:00.000Z', 3, 'pair')`).run(exceed.id);
   assert.equal(requiredTestType(db, { ...exceed, fsrs_reps: 5 }), 'context', 'две пары подряд не даём');
 });
+
+test('currentReviewCard: текущая карточка без продвижения, после оценки пусто', async () => {
+  const { currentReviewCard } = await import('../src/review.mjs');
+  const db = learningDb();
+  const card = db.prepare(`SELECT * FROM cards WHERE headword = 'inspect'`).get();
+  db.prepare(`UPDATE cards SET fsrs_due = '2026-09-13T00:00:00.000Z' WHERE id = ?`).run(card.id);
+  db.prepare(`UPDATE cards SET fsrs_due = '2027-01-01T00:00:00.000Z' WHERE id != ?`).run(card.id);
+  assert.equal(currentReviewCard(db, '2026-09-13T10:00:00.000Z'), null, 'ничего не открыто');
+  const t = addTest(db, card.id, { type: 'context', sentence: 'Before buying the flat, we hired an expert to inspect the wiring and the roof.', answer: 'осматривать' });
+  reviewNext(db, '2026-09-13T10:00:00.000Z');
+  const cur = currentReviewCard(db, '2026-09-13T10:00:00.000Z');
+  assert.equal(cur.card.id, card.id);
+  assert.equal(cur.test.id, t.id);
+  assert.equal(cur.left_today, 1);
+  assert.equal(currentReviewCard(db, '2026-09-13T10:00:00.000Z').test.id, t.id, 'повторный вызов не продвигает');
+  grade(db, card.id, 3, t.id, new Date('2026-09-13T10:01:00.000Z'));
+  assert.equal(currentReviewCard(db, '2026-09-13T10:02:00.000Z'), null);
+});

@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
-import { formatNext, formatNeedExplanation, formatReview, formatNeedTest, formatStatus, formatDecision, parseGrade, lookupNote, formatAudit, formatAuditResult } from './format.mjs';
+import { formatNext, formatNeedExplanation, formatReview, formatReviewReveal, formatReviewDone, formatNeedTest, formatStatus, formatDecision, receiptFor, parseGrade, lookupNote, formatAudit, formatAuditResult, REPLACE } from './format.mjs';
 
 // Пнуть генератор в фоне, когда нужного разбора или предложения нет в запасе:
 // он допишет недостающее за десятки секунд, следующее нажатие уже получит готовое.
@@ -62,6 +62,7 @@ export function classifyReply(text, open = {}) {
   if (/^(review|повторение|повторить|проверь меня)$/.test(bare)) return { cmd: 'review', args: [] };
   if (/^(status|статус|сколько|прогресс)$/.test(bare)) return { cmd: 'status', args: [] };
   if (/^(audit|аудит|ещё пачка|еще пачка|следующая пачка)$/.test(bare)) return { cmd: 'audit', args: [] };
+  if (/^(показать ответ|ответ|показать|открой)$/.test(t)) return { cmd: 'reveal', args: [] };
   if (/^(👍 учу|учу|ок|окей|понял|поняла|ясно|да)$/.test(t)) return { cmd: 'learn', args: [] };
   if (/^(🤝 знаю|знаю|знал|знакомо)$/.test(t)) return { cmd: 'known', args: [] };
   if (/^(пропусти|пропустить|убери|не надо это слово)$/.test(t)) return { cmd: 'skip', args: [] };
@@ -117,7 +118,23 @@ export async function run(argv, env, io = { call }) {
         id = (await c('POST', '/api/cards/lookup', { text: rest.join(' ') })).card.id;
       }
       const r = await c('POST', `/api/cards/${id}/${cmd}`);
-      return formatDecision(cmd, r);
+      if (cmd === 'discuss') return formatDecision(cmd, r);
+      // Решение принято: на месте карточки сразу следующее слово с квитанцией о предыдущем
+      const receipt = receiptFor(cmd, r);
+      let next;
+      try {
+        next = await c('GET', '/api/next');
+      } catch (e) {
+        return `${REPLACE}${receipt}\n\n${formatDecision(cmd, r)}\nОчередь пуста.\n[[BUTTONS: Повторение | Статус]]`;
+      }
+      if (next.explanation_md) return formatNext(next, receipt);
+      kickGenerator(io);
+      return `${REPLACE}${receipt}\n\nСледующий разбор готовится, нажми «Дальше» через минуту.\n[[BUTTONS: Дальше | Повторение]]`;
+    }
+    case 'reveal': {
+      const body = await c('GET', '/api/review/current');
+      if (!body.card || !body.test) return `${REPLACE}Карточка повторения закрыта. Нажми «Повторение», чтобы продолжить.\n[[BUTTONS: Повторение]]`;
+      return formatReviewReveal(body);
     }
     case 'note': {
       const id = /^\d+$/.test(rest[0] || '') ? rest.shift() : 'pending';
@@ -129,10 +146,10 @@ export async function run(argv, env, io = { call }) {
       return r.card ? `Текущий: ${r.card.headword} (${r.card.id}, ${r.card.status})` : 'Текущего элемента нет.';
     }
     case 'status':
-      return formatStatus(await c('GET', '/api/status'));
+      return `${REPLACE}${formatStatus(await c('GET', '/api/status'))}`;
     case 'review': {
       const body = await c('GET', '/api/review/next');
-      if (!body.card) return 'На сегодня всё повторено.';
+      if (!body.card) return formatReviewDone();
       return body.test ? formatReview(body) : formatNeedTest(body);
     }
     case 'test': {
@@ -140,20 +157,20 @@ export async function run(argv, env, io = { call }) {
       const payload = JSON.parse(readStdin());
       await c('POST', `/api/review/${id}/test`, payload);
       const body = await c('GET', '/api/review/next');
-      if (!body.card) return 'На сегодня всё повторено.';
+      if (!body.card) return formatReviewDone();
       return body.test ? formatReview(body) : formatNeedTest(body);
     }
     case 'grade': {
       const rating = parseGrade(rest[0]);
       if (!rating) return 'Ошибка: оценка должна быть 1, 2, 3 или 4 (снова, трудно, норм, легко).';
       const g = await c('POST', `/api/review/${rest[1] || 'current'}/grade`, { rating });
-      const head = `Записал ${rating}, следующий раз через ${g.scheduled_days} дн.`;
-      if (!g.next_left) return `${head} На сегодня всё.`;
+      const receipt = `✓ ${g.card?.headword || ''} → через ${g.scheduled_days} дн.`;
+      if (!g.next_left) return formatReviewDone(receipt);
       const body = await c('GET', '/api/review/next');
-      if (body.test) return `${head}\n\n${formatReview(body)}`;
+      if (body.test) return formatReview(body, receipt);
       // Оценка уже записана: модели тут делать нечего, предложение допишет генератор
       kickGenerator(io);
-      return `${head}\nСледующее предложение готовится, нажми «Повторение» через минуту.\n[[BUTTONS: Повторение]]`;
+      return `${REPLACE}${receipt}\n\nСледующее предложение готовится, нажми «Повторение» через минуту.\n[[BUTTONS: Повторение]]`;
     }
     case 'reply': {
       const text = rest.join(' ');

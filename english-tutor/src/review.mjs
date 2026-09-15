@@ -152,6 +152,17 @@ export function reviewNext(db, now = nowIso()) {
   return { card, test, wanted_type, left_today, history: recentSentences(db, card.id) };
 }
 
+// Текущая карточка повторения с её предложением, без выбора следующей (шаг «Показать ответ»).
+export function currentReviewCard(db, now = nowIso()) {
+  const { cardId, testId } = currentReview(db);
+  if (!cardId) return null;
+  const card = getCard(db, cardId);
+  if (!card || card.status !== 'learning') return null;
+  const test = testId ? db.prepare('SELECT * FROM tests WHERE id = ? AND card_id = ?').get(testId, cardId) : null;
+  const left_today = db.prepare(`SELECT COUNT(*) AS c FROM cards WHERE status = 'learning' AND fsrs_due <= ?`).get(now).c;
+  return { card, test, wanted_type: test?.type || requiredTestType(db, card), left_today };
+}
+
 export function currentReview(db) {
   const cardId = getSetting(db, 'review_card_id');
   const testId = getSetting(db, 'review_test_id');
