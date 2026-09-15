@@ -33,20 +33,23 @@ export function formatNeedExplanation(body) {
 }
 
 const REVIEW_HINT = {
-  pair: 'какой из двух вариантов сюда подходит',
-  cloze: 'какое слово на месте пропуска',
-  context: 'что значит слово из списка'
+  pair: () => 'Какой из двух вариантов в скобках подходит?',
+  cloze: () => 'Какое слово стоит на месте пропуска?',
+  context: (card) => `Что здесь значит **${card.headword}**?`
 };
 
 export function formatReview(body) {
   const type = body.test.type || (body.wanted_type === 'cloze' || /_{3,}/.test(body.test.sentence) ? 'cloze' : 'context');
+  const hint = (REVIEW_HINT[type] || REVIEW_HINT.context)(body.card);
   return [
     `**Повторение** · осталось ${body.left_today}`,
-    `_${REVIEW_HINT[type] || REVIEW_HINT.context}_`,
     '',
     `> ${body.test.sentence}`,
     '',
-    `Ответ: ||${body.test.answer}||`,
+    hint,
+    `_Ответь себе, потом открой:_ ||${body.test.answer}||`,
+    '',
+    '_Как вспомнилось?_',
     GRADE_BUTTONS
   ].join('\n');
 }
@@ -130,8 +133,9 @@ export function formatDecision(decision, r) {
   return 'Обсуждаем. Скажи «ок», когда станет понятно.';
 }
 
+// Оценка приходит цифрой, словом или подписью кнопки («3 норм»).
 export function parseGrade(text) {
-  const t = String(text || '').trim().toLowerCase();
+  const t = String(text || '').trim().toLowerCase().replace(/^([1-4])\s+\S+$/, '$1');
   if (/^(1|снова|не понял|не поняла|нет)$/.test(t)) return 1;
   if (/^(2|трудно|сложно)$/.test(t)) return 2;
   if (/^(3|норм|нормально|понял|поняла|ок|да)$/.test(t)) return 3;

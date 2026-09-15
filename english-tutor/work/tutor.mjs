@@ -54,7 +54,7 @@ export function classifyReply(text, open = {}) {
   if (/^(пропусти|пропустить|убери|не надо это слово)$/.test(t)) return { cmd: 'skip', args: [] };
   if (/^(стоп|хватит|всё|все на сегодня)$/.test(t)) return { cmd: 'stop', args: [] };
   if (/^(все знаю|всё знаю|все знакомы|нет таких|таких нет)$/.test(t)) return { cmd: 'audit-mark', args: [] };
-  const grade = /^([1-4]|снова|трудно|сложно|норм|нормально|легко|не понял|не поняла)$/.test(t);
+  const grade = /^([1-4](?:\s+\S+)?|снова|трудно|сложно|норм|нормально|легко|не понял|не поняла)$/.test(t);
   const numbers = t.match(/^\d+(?:[ ,]+\d+)*$/);
   if (open.audit && numbers) return { cmd: 'audit-mark', args: numbers[0].split(/[ ,]+/) };
   if (open.review && grade) return { cmd: 'grade', args: [t] };

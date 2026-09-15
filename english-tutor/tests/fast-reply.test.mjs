@@ -21,6 +21,8 @@ test('classifyReply: команды обучения распознаются б
 
 test('classifyReply: цифры это оценка или номера пачки, вопрос уходит модели', () => {
   assert.deepEqual(classifyReply('3', { review: true }), { cmd: 'grade', args: ['3'] });
+  assert.deepEqual(classifyReply('3 норм', { review: true }), { cmd: 'grade', args: ['3 норм'] }, 'подпись кнопки');
+  assert.deepEqual(classifyReply('1 снова', {}), { cmd: 'grade', args: ['1 снова'] });
   assert.deepEqual(classifyReply('не понял', { review: true }), { cmd: 'grade', args: ['не понял'] });
   assert.deepEqual(classifyReply('2 7 15', { audit: true }), { cmd: 'audit-mark', args: ['2', '7', '15'] });
   assert.deepEqual(classifyReply('3', { audit: true }), { cmd: 'audit-mark', args: ['3'] }, 'при открытой пачке цифра это номер');

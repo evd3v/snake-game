@@ -28,10 +28,12 @@ test('formatReview: спойлер и шкала', () => {
   const t = formatReview({ card, test: { sentence: 'She inspected it.', answer: 'осматривать / examine' }, wanted_type: 'context', left_today: 4 });
   assert.match(t, /\*\*Повторение\*\* · осталось 4/);
   assert.match(t, /^> She inspected it\.$/m);
+  assert.match(t, /^Что здесь значит \*\*inspect\*\*\?$/m, 'проверяемое слово названо явно');
+  assert.match(t, /_Ответь себе, потом открой:_ \|\|осматривать \/ examine\|\|/);
   assert.match(t, /She inspected it\./);
   assert.match(t, /\|\|осматривать \/ examine\|\|/);
   assert.match(t, /\[\[BUTTONS: 1 снова \| 2 трудно \/\/ 3 норм \| 4 легко\]\]$/);
-  assert.match(formatReview({ card, test: { sentence: 'She _____ it. (осмотрела)', answer: 'inspect' }, wanted_type: 'cloze', left_today: 1 }), /на месте пропуска/);
+  assert.match(formatReview({ card, test: { sentence: 'She _____ it. (осмотрела)', answer: 'inspect' }, wanted_type: 'cloze', left_today: 1 }), /Какое слово стоит на месте пропуска\?/);
 });
 
 test('formatNeedTest и formatStatus и formatDecision', () => {
@@ -67,6 +69,10 @@ test('parseGrade', () => {
   assert.equal(parseGrade('4'), 4);
   assert.equal(parseGrade('легко'), 4);
   assert.equal(parseGrade('дальше'), null);
+  assert.equal(parseGrade('3 норм'), 3, 'подпись кнопки');
+  assert.equal(parseGrade('1 снова'), 1);
+  assert.equal(parseGrade('4 легко'), 4);
+  assert.equal(parseGrade('5 что-то'), null);
 });
 
 test('formatAudit: нумерованная пачка и кнопки, formatAuditResult, bar', async () => {
@@ -95,6 +101,6 @@ test('formatNext: ссылка на озвучку только когда он�
 test('formatReview: подсказка для pair', async () => {
   const { formatReview } = await import('../work/format.mjs');
   const t = formatReview({ card, test: { type: 'pair', sentence: 'The bill must not _____ the agreed sum here. (surpass / exceed)', answer: 'exceed' }, wanted_type: 'pair', left_today: 2 });
-  assert.match(t, /какой из двух вариантов сюда подходит/);
+  assert.match(t, /Какой из двух вариантов в скобках подходит\?/);
   assert.match(t, /\(surpass \/ exceed\)/);
 });
