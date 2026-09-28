@@ -31,7 +31,7 @@
 
 **Ленты по факту:**
 - Кодик: оплаты, продления, переходы на Max, автосписания и сбои оплаты («Кодик. Подписки»);
-- Aventra: установки и удаления («Aventra Stat»);
+- Aventra: установки и удаления («Aventra Stat»); отзывы в Маркете и сообщения модераторов из кабинета вендора («Aventra Dev»);
 - Edumotion: новые регистрации без демо-стендов, все события по счетам, запись на демо и напоминание за 30 минут;
 - карточки поддержки с черновиками и кнопками во всех проектах, как были;
 - аварии: 5xx и падение API Edumotion, бэкап не сделан, бэкенд Кодика молчит, проблема сразу на 3+ порталах Aventra, dev/poll/qr.aventra.ru упали;
@@ -58,7 +58,7 @@
 | Мак work, банк | «💰 Счета» каждые 15 минут, импорт личных выписок, PDF в 07:00 и платежи в 07:00 и по понедельникам | у двух наблюдателей снят `--send`, три задания перенесены в утро | плисты в `~/Library/LaunchAgents/disabled-20260927/` |
 | Мак work, Edumotion | вечерний отчёт поддержки 18:35 (28.09: теперь утром в конце аналитики), лист в 07:15 (28.09: лист в 11:00 с итогом рассылки) | `ru.edumotion.support-daily` снят, у листа и драфтов `SVODKA_TO_MORNING=1`, лист строится в 05:30 | плисты в `disabled-20260927/` |
 | Мак work, Кодик | «Без ответа N» каждый час, пожелания по понедельникам, сводка тихо закрытых раз в 3 дня, отдельный PDF в 08:00 и диагностика в 09:00 | два задания сняты, `quietReporting.dailyDigest=false`, `appsReport.enabled=false`, `CODIK_DIAG_TO_MORNING=1` | плисты и `~/.claude/bot-lite/config.json.bak-morning-20260927` |
-| Мак work, Aventra | отдельный PDF приложений в 08:00, сводка тихо закрытых 19:00, диагностика порталов 09:00, чат модератора Маркета и отзывы | `appsReport.enabled=false`, `dailyDigest=false`, `WORK_DIAGNOSTIC_TO_MORNING=1`, `VENDOR_WATCH_TO_MORNING=1` | флаги в плистах и config.json |
+| Мак work, Aventra | отдельный PDF приложений в 08:00, сводка тихо закрытых 19:00, диагностика порталов 09:00, чат модератора Маркета и отзывы (возвращены 28.09) | `appsReport.enabled=false`, `dailyDigest=false`, `WORK_DIAGNOSTIC_TO_MORNING=1`, `VENDOR_WATCH_TO_MORNING=1` | флаги в плистах и config.json |
 | Мак work, боты | лимиты, паузы авторазбора, память ботов, падения ботов, синк кода, статусы сторов, «черновик ждёт решения» | ящик утра вместо Telegram; `pendingReminders` не включён | `WATCHDOG_TELEGRAM=1` у bots-watchdog, `pendingReminders: true` в config.json |
 | TidyKit | PDF за вчера в 08:00 (28.09: возвращён на 07:00) | задание снято | плист в `disabled-20260927/` |
 | Старый бэкенд Кодика | кроны пушей по пустой старой базе и ошибки 401 | контейнер `coursme_coursme.backend` остановлен | `docker update --restart=always coursme_coursme.backend && docker start coursme_coursme.backend` |
